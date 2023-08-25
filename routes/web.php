@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test_pdf', [App\Http\Controllers\PdfController::class, 'test_pdf']);
