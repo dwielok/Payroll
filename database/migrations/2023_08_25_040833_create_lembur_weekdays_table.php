@@ -14,7 +14,7 @@ class CreateLemburWeekdaysTable extends Migration
     public function up()
     {
         Schema::create('lembur_weekdays', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_lemburWeekdays');
             $table->string('jam_lebur');
             $table->string('nominal_weekdays');
             $table->timestamps();

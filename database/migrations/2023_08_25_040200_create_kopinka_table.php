@@ -14,8 +14,9 @@ class CreateKopinkaTable extends Migration
     public function up()
     {
         Schema::create('kopinka', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_kopinka');
             $table->string('potongan_kopinka');
+
             $table->timestamps();
         });
     }

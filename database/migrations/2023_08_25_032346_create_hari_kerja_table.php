@@ -14,7 +14,7 @@ class CreateHariKerjaTable extends Migration
     public function up()
     {
         Schema::create('hari_kerja', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_hariKerja');
             $table->string('jumlah_hari');
             $table->string('bulan');
             $table->string('tahun');
