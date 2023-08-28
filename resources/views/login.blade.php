@@ -13,15 +13,16 @@
 </head>
 
 <body>
-    <img src="{{asset('img/bolder 3.png')}}" alt="bolder3" class="position-absolute" style="right: 0px;height:250px">
-    <img src="{{asset('img/Bolder 2.png')}}" alt="bolder2" class="position-absolute" style="bottom: 0px;height:150px">
+    <img src="{{ asset('img/bolder 3.png') }}" alt="bolder3" class="position-absolute" style="right: 0px;height:250px">
+    <img src="{{ asset('img/Bolder 2.png') }}" alt="bolder2" class="position-absolute"
+        style="bottom: 0px;height:150px">
     <div class="container vh-100">
         <div class="row">
             <div class="col-md-4 d-flex align-items-center ">
                 <div class="w-100">
                     <img src="{{ asset('img/logo.png') }}" alt="logo">
                     <h2 class="text-center mb-1 mt-3">PAYROLL</h2>
-                    <h5 class="text-center mb-3"> PT. REKAINDO GLOBAL JASA</h5>
+                    <h5 class="text-center mb-3"> PT. REKAINDO GLOBAL JASAA</h5>
                     @if (session('error'))
                         <div class="alert alert-danger">
                             <b>Opps!</b> {{ session('error') }}
