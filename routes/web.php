@@ -19,12 +19,11 @@ use App\Http\Controllers\DashboardController;
 //     return view('welcome');
 // });
 
+Route::get('/test_pdf', [App\Http\Controllers\PdfController::class, 'test_pdf']);
 //ROUTING UNTUK LOGIN
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
 
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+// Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
-
-//ROUTING UNTUK DASHBOARD
-
