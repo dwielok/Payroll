@@ -14,7 +14,7 @@ class CreateIkkTable extends Migration
     public function up()
     {
         Schema::create('ikk', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_IKK');
             $table->string('dana_ikk');
             $table->string('nilai ikk');
             $table->timestamps();

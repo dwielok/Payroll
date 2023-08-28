@@ -14,7 +14,7 @@ class CreatePenyesuaianPenguranganTable extends Migration
     public function up()
     {
         Schema::create('penyesuaian_pengurangan', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_penyesuaianKurang');
             $table->string('nominal_kurang');
             $table->timestamps();
         });

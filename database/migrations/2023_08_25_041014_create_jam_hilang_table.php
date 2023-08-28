@@ -14,7 +14,7 @@ class CreateJamHilangTable extends Migration
     public function up()
     {
         Schema::create('jam_hilang', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_jamHilang');
             $table->string('jumlah_jamHilang');
             $table->timestamps();
         });

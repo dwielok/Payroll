@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKeuanganTable extends Migration
+class CreateGajiPokokTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateKeuanganTable extends Migration
      */
     public function up()
     {
-        Schema::create('keuangan', function (Blueprint $table) {
-            $table->id();
-            $table->string('potongan_keuangan');
+        Schema::create('gaji_pokok', function (Blueprint $table) {
+            $table->increments('id_gajiPokok');
+            $table->foreignId('id_golongan')->constrained('golongan');
+            $table->foreignId('id_karyawan')->constrained('karyawan');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateKeuanganTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('keuangan');
+        Schema::dropIfExists('gaji_pokok');
     }
 }
