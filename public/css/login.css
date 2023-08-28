@@ -1,0 +1,102 @@
+:root {
+    --black: rgba(0, 0, 0, 1);
+    --colorwarna12: rgba(1, 11, 23, 1);
+    --colorprimary: rgba(26, 29, 78, 1);
+    --cell0: rgba(40, 56, 84, 1);
+    --white: rgba(255, 255, 255, 0.004);
+    --colorwarna03: rgba(255, 255, 255, 1);
+
+    --font-size-xs: 12px;
+    --font-size-s: 14px;
+    --font-size-m: 16px;
+    --font-size-l: 20px;
+    --font-size-xl: 24px;
+    --font-size-xxl: 32px;
+    --font-size-xxxl: 40px;
+
+    --font-family-inter: "inter";
+    --font-family-poppins: "Poppins";
+}
+
+.fontpoppins---display---16px---bold {
+    font-family: var(--font-family-poppins);
+    font-size: var(--font-size-m);
+    letter-spacing: 0px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.poppins-normal-black-14px {
+    color: var(--black);
+    font-family: var(--font-family-poppins);
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.inter-normal-blue-charcoal-12px {
+    color: var(--colorprimary);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.inter-medium-black-14px {
+    color: var(--black);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-s);
+    font-weight: 500;
+    font-style: normal;
+}
+
+.inter-medium-white-16px {
+    color: var(--colorwarna03);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-m);
+    font-weight: 500;
+    font-style: normal;
+}
+
+.fontpoppins---display---12px---medium {
+    font-family: var(--font-family-poppins);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0px;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.fontpoppins---display---12px---nold {
+    font-family: var(--font-family-poppins);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0px;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.fontpoppins---display---16px---medium {
+    font-family: var(--font-family-poppins);
+    font-size: var(--font-size-m);
+    letter-spacing: 0px;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.btn-login {
+    background-color: #283854 !important;
+    border: 1px solid;
+    border-color: var(--colorwarna12) !important;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 50px;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.input {
+    background-color: var(--colorwarna03);
+    border: 1px solid;
+    border-color: var(--colorwarna12);
+    border-radius: 8px;
+    height: 50px;
+}
