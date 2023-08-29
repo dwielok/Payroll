@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\KaryawanPerbantuanInkaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\listTetap;
+>>>>>>> 7ee869c4a2c4b77cc264ba90297c6309fc498f93
 
 /*
 |--------------------------------------------------------------------------
