@@ -8,6 +8,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\listTetap;
 use App\Http\Controllers\KaryawanPKWTController;
+use App\Http\Controllers\SlipController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,3 +49,6 @@ Route::get('karyawanperbantuaninka', [KaryawanPerbantuanInkaController::class, '
 
 //Routing Halaman PKWT
 Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('karyawanPKWT');
+
+//Routing Halaman Slip Gaji
+Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip_gaji');
