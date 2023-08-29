@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\KaryawanPerbantuanInkaController;
+use App\Http\Controllers\KaryawanTetapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KaryawanPKWTController;
 use App\Http\Controllers\listTetap;
 
 
@@ -34,3 +36,14 @@ Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('acti
 
 
 Route::get('listtetap', [listTetapController::class,'index'])->name('listTetap');
+
+//Routing Halaman Karyawan Tetap
+Route::get('KaryawanTetap',[KaryawanTetapController::class, 'index'])->name('karyawantetap');
+
+
+//Routing Halaman Perbantuan Inka
+Route::get('karyawanperbantuaninka',[KaryawanPerbantuanInkaController::class, 'index'])->name('karyawanperbantuaninka');
+
+//Routing Halaman PKWT
+Route::get('karyawanPKWT',[KaryawanPKWTController::class, 'index'])->name('karyawanPKWT');
+
