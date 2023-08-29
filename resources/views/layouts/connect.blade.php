@@ -108,7 +108,7 @@
                                     data-feather="menu"></i></a>
                         </li>
                         <!-- search -->
-                        <li class="nav-item" style="margin-left: 50px">
+                        <!-- <li class="nav-item" style="margin-left: 50px">
                             <div class="input-group" style="position: absolute; width:50%; margin:10px">
                                 <span class="input-group-prepend">
                                     <button class="btn btn-outline-secondary bg-white border-end-0  border ms-n5"
@@ -119,7 +119,7 @@
                                 <input class="form-control border-start-0 border" type="search" value="search"
                                     id="example-search-input">
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
