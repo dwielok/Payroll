@@ -63,3 +63,8 @@ Route::get('slip',[SlipController::class, 'index'])->name('slip');
 Route::get('template', [TemplateController::class, 'index'])->name('template');
 
 Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('karyawanPKWT');
+
+
+//Route Logout
+
+Route::get('logout',[LoginController::class, 'index'])->name('logout');
