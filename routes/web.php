@@ -8,6 +8,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\listTetap;
 use App\Http\Controllers\KaryawanPKWTController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\RekapController;
+>>>>>>> ad06b6e193c1543e7283235e0450eda5fea269ce
 use App\Http\Controllers\SlipController;
 
 /*
@@ -34,6 +38,8 @@ Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actio
 // Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
+
+
 Route::get('template', [TemplateController::class, 'index'])->name('template');
 Route::get('listtetap', [listTetapController::class, 'index'])->name('listTetap');
 
@@ -48,6 +54,17 @@ Route::get('KaryawanTetap', [KaryawanTetapController::class, 'index'])->name('ka
 Route::get('karyawanperbantuaninka', [KaryawanPerbantuanInkaController::class, 'index'])->name('karyawanperbantuaninka');
 
 //Routing Halaman PKWT
+Route::get('karyawanPKWT',[KaryawanPKWTController::class, 'index'])->name('karyawanPKWT');
+
+//Routing Halaman Rekap Gaji
+Route::get('rekap',[RekapController::class, 'index'])->name('rekap');
+
+//Routing Halaman Slip
+Route::get('slip',[SlipController::class, 'index'])->name('slip');
+
+//Route untuk Download Template
+Route::get('template', [TemplateController::class, 'index'])->name('template');
+
 Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('karyawanPKWT');
 
 //Routing Halaman Slip Gaji
