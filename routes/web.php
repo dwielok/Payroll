@@ -20,6 +20,7 @@ use App\Http\Controllers\DashboardController;
 // });
 
 Route::get('/test_pdf', [App\Http\Controllers\PdfController::class, 'test_pdf']);
+
 //ROUTING UNTUK LOGIN
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
