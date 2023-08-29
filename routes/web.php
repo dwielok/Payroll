@@ -5,15 +5,12 @@ use App\Http\Controllers\KaryawanTetapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
-<<<<<<< HEAD
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\listTetap;
-=======
 use App\Http\Controllers\KaryawanPKWTController;
-use App\Http\Controllers\listTetap;
+use App\Http\Controllers\RekapController;
+use App\Http\Controllers\SlipController;
 
-
->>>>>>> 6ac97e064d82c7b9b1040ababc8e1f14308c229e
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,10 +35,9 @@ Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actio
 // Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
-<<<<<<< HEAD
-Route::get('template', [TemplateController::class, 'index'])->name('template');
+
+
 Route::get('listtetap', [listTetapController::class, 'index'])->name('listTetap');
-=======
 
 
 Route::get('listtetap', [listTetapController::class,'index'])->name('listTetap');
@@ -56,4 +52,12 @@ Route::get('karyawanperbantuaninka',[KaryawanPerbantuanInkaController::class, 'i
 //Routing Halaman PKWT
 Route::get('karyawanPKWT',[KaryawanPKWTController::class, 'index'])->name('karyawanPKWT');
 
->>>>>>> 6ac97e064d82c7b9b1040ababc8e1f14308c229e
+//Routing Halaman Rekap Gaji
+Route::get('rekap',[RekapController::class, 'index'])->name('rekap');
+
+//Routing Halaman Slip
+Route::get('slip',[SlipController::class, 'index'])->name('slip');
+
+//Route untuk Download Template
+Route::get('template', [TemplateController::class, 'index'])->name('template');
+
