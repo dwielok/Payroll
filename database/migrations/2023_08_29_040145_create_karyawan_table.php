@@ -14,8 +14,8 @@ class CreateKaryawanTable extends Migration
     public function up()
     {
         Schema::create('karyawan', function (Blueprint $table) {
-            $table->increments('id_karyawan');
-            $table->foreignId('id_tipeKaryawan')->constrained('tipe_karyawan');
+            $table->id('id_karyawan');
+            $table->foreignId('id_tipeKaryawan')->constrained('tipe_karyawan')->onUpdate('cascade')->onDelete('cascade');
             $table->string('NIP');
             $table->string('nama_karyawan');
             $table->string('masa_kerja');

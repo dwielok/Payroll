@@ -14,7 +14,7 @@ class CreateTipeKaryawanTable extends Migration
     public function up()
     {
         Schema::create('tipe_karyawan', function (Blueprint $table) {
-            $table->increments('id_tipeKaryawan');
+            $table->id('id_tipeKaryawan');
             $table->string('nama_tipe');
             $table->timestamps();
         });

@@ -12,6 +12,9 @@
 </head>
 
 <body>
+    <img src="{{ asset('img/bolder 3.png') }}" alt="bolder3" class="position-absolute" style="right: 0px;height:250px">
+    <img src="{{ asset('img/Bolder 2.png') }}" alt="bolder2" class="position-absolute"
+        style="bottom: 0px;height:150px">
     <div class="container">
         <div class="row mt-5">
 
