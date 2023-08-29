@@ -8,9 +8,28 @@
         <div class="page-titles">
             <div class="row">
                 <div class="col-lg-8 col-md-6 col-12 align-self-center">
-                    <nav aria-label="breadcrumb">
+                    {{-- <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 d-flex align-items-center">
                             <li class="breadcrumb-item">
+<<<<<<< HEAD
+                                <a href="index.html" class="link"><i class="ri-home-3-line fs-5"></i></a>
+                            </li> --}}
+                    {{-- <li class="breadcrumb-item active" aria-current="page">
+                                Import Data Karyawan Tetap
+                            </li> --}}
+                    </ol>
+                    </nav>
+                    <h1 class="mb-0 fw-bold">Import Data Karyawan Tetap</h1>
+                </div>
+                <div
+                    class="
+                            col-lg-4 col-md-6
+                            d-none d-md-flex
+                            align-items-center
+                            justify-content-end">
+                    <select class="form-select theme-select border-0" aria-label="Default select example">
+                        <option value="1">Today 23 March</option>
+=======
                                 <a href="index.html" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
@@ -29,6 +48,7 @@
           ">
                     {{-- <select class="form-select theme-select border-0" aria-label="Default select example">
                         <option value="1">Filter Periode</option>
+>>>>>>> ad06b6e193c1543e7283235e0450eda5fea269ce
                         <option value="2">Today 24 March</option>
                         <option value="3">Today 25 March</option>
                     </select> --}}
@@ -145,11 +165,30 @@
                     </div>
 
                     <a href="javascript:void(0)" class="btn btn-info d-flex align-items-center ms-2">
+<<<<<<< HEAD
+                        <i class="ri-add-line me-1"></i>
+                        Import
+=======
                         Import
                     </a>
                     <a href="javascript:void(0)" class="btn btn-info d-flex align-items-center ms-2">
                         Export
+>>>>>>> ad06b6e193c1543e7283235e0450eda5fea269ce
                     </a>
+                    <a href="javascript:void(0)" class="btn btn-info d-flex align-items-center ms-2">
+                        <i class="ri-add-line me-1"></i>
+                        Export
+                    </a>
+
+                    {{-- <div id="button">
+                    <a class="button_waterpump" href="#">Water Pump On</a>
+                    <a class="button_waterpump" href="#">Water Pump Off</a>
+
+                    <a class="button_airpump" href="#">Air Pump On</a>
+                    <a class="button_airpump" href="#">Air Pump Off</a>
+                </div> --}}
+
+
                 </div>
             </div>
         </div>
@@ -169,6 +208,9 @@
                     <div class="card" <div class="card-body">
                         <div class="table-responsive">
                             <table id="zero_config" class="table table-striped table-bordered text-nowrap">
+<<<<<<< HEAD
+
+=======
                                 <thead>
                                     <tr>
                                         <th>Bulan</th>
@@ -188,6 +230,7 @@
                                         <th>Aksi</th>
                                     </tr>
                                 </tfoot>
+>>>>>>> ad06b6e193c1543e7283235e0450eda5fea269ce
                             </table>
                         </div>
                     </div>
@@ -202,8 +245,11 @@
     <!-- End Container fluid  -->
     <!-- ============================================================= -->
     <!-- ============================================================= -->
+<<<<<<< HEAD
+=======
 
         
+>>>>>>> ad06b6e193c1543e7283235e0450eda5fea269ce
 
     </div>
 @endsection
