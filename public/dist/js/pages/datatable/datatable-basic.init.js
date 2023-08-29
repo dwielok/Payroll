@@ -17,7 +17,11 @@ $(function () {
 /****************************************
  *       Basic Table                   *
  ****************************************/
-$("#zero_config").DataTable();
+$("#zero_config").DataTable({
+  //remove show entries and search
+  lengthChange: false,
+  searching: false,
+});
 
 /****************************************
  *       Default Order Table           *
