@@ -1,7 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.connect')
 
 @section('content')
     <div class="page-wrapper">
+        <div class="page-titles">
+            <div class="row">
+                <div class="col-lg-8 col-md-6 col-12 align-self-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 d-flex align-items-center">
+                            <li class="breadcrumb-item">
+                                <a href="index.html" class="link"><i data-feather="grid"></i></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                List Data Karyawan Tetap
+                            </li>
+                        </ol>
+                    </nav>
+                    <h1 class="mb-0 fw-bold">List Data Karyawan Tetap</h1>
+                </div>
+            </div>
+        </div>
         <!-- ============================================================= -->
         <!-- Container fluid  -->
         <!-- ============================================================= -->
