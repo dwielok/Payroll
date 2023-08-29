@@ -174,16 +174,16 @@
                                 </span></a>
                             <ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
-                                    <a href="inbox-email.html" class="sidebar-link"><span class="hide-menu"> Karyawan
+                                    <a href="/KaryawanTetap" class="sidebar-link"><span class="hide-menu"> Karyawan
                                             Tetap </span></a>
                                 </li>
                                 <li class="sidebar-item">
-                                    <a href="inbox-email-detail.html" class="sidebar-link"><span class="hide-menu">
+                                    <a href="/karyawanperbantuaninka" class="sidebar-link"><span class="hide-menu">
                                             Karyawan Perbantuan INKA
                                         </span></a>
                                 </li>
                                 <li class="sidebar-item">
-                                    <a href="inbox-email-compose.html" class="sidebar-link"><span class="hide-menu">
+                                    <a href="/karyawanPKWT" class="sidebar-link"><span class="hide-menu">
                                             Karyawan PKWT
                                         </span></a>
                                 </li>
