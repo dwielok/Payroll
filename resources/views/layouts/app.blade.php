@@ -196,19 +196,19 @@
                             </ul>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index2.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/rekap"
                                 aria-expanded="false">
                                 <i data-feather="book-open"></i><span class="hide-menu">Rekap Gaji</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index2.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/slip"
                                 aria-expanded="false">
                                 <i data-feather="archive"></i><span class="hide-menu">Slip Gaji</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index2.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/template"
                                 aria-expanded="false">
                                 <i data-feather="download"></i><span class="hide-menu">Download Template</span>
                             </a>

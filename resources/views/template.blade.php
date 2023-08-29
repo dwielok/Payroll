@@ -1,17 +1,20 @@
-<html lang="en">
+@extends('layouts.app')
+@section('content')
+
+<!-- <html lang="en">
 
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <!-- <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <title>Download Template</title>
-</head>
+    <title>Download Template</title> -->
+<!-- </head> -->
 
-<body>
+<!-- <body>
     <img src="{{ asset('img/bolder 3.png') }}" alt="bolder3" class="position-absolute" style="right: 0px;height:250px">
     <img src="{{ asset('img/Bolder 2.png') }}" alt="bolder2" class="position-absolute"
         style="bottom: 0px;height:150px">
@@ -33,6 +36,7 @@
             </div>
         </div>
     </div>
-</body>
+</body> -->
 
-</html>
+<!-- </html> -->
+@endsection

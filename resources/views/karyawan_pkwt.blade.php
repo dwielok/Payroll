@@ -54,13 +54,13 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="border-bottom title-part-padding">
-                            <h4>Zero Configuration</h4>
+                            <!-- <h4>Zero Configuration</h4>
                             <h6 class="card-subtitle mb-0">
                                 DataTables has most features enabled by default, so all you
                                 need to do to use it with your own tables is to call the
                                 construction function:<code> $().DataTable();</code>. You
                                 can refer full documentation from here
-                                <a href="https://datatables.net/">Datatables</a>
+                                <a href="https://datatables.net/">Datatables</a> -->
                             </h6>
                         </div>
                         <div class="card-body">
