@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGajiPokokTable extends Migration
+class CreateTipeKaryawanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateGajiPokokTable extends Migration
      */
     public function up()
     {
-        Schema::create('gaji_pokok', function (Blueprint $table) {
-            $table->increments('id_gajiPokok');
-            $table->foreignId('id_golongan')->constrained('golongan');
-            $table->foreignId('id_karyawan')->constrained('karyawan');
+        Schema::create('tipe_karyawan', function (Blueprint $table) {
+            $table->increments('id_tipeKaryawan');
+            $table->string('nama_tipe');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateGajiPokokTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gaji_pokok');
+        Schema::dropIfExists('tipe_karyawan');
     }
 }
