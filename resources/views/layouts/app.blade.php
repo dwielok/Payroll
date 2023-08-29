@@ -108,11 +108,17 @@
                                     data-feather="menu"></i></a>
                         </li>
                         <!-- search -->
-                        <li class="nav-item search-box">
-                            <form style="position: absolute; width:50%; padding:15px">
-                                <i data-feather="search"></i>
-                                <input type="text" class="form-control" placeholder="Search data"/>
-                            </form>
+                        <li class="nav-item" style="margin-left: 50px">
+                            <div class="input-group" style="position: absolute; width:50%; margin:10px">
+                                <span class="input-group-prepend">
+                                    <button class="btn btn-outline-secondary bg-white border-end-0  border ms-n5"
+                                        type="button">
+                                        <i data-feather="search"></i>
+                                    </button>
+                                </span>
+                                <input class="form-control border-start-0 border" type="search" value="search"
+                                    id="example-search-input">
+                            </div>
                         </li>
                     </ul>
                     <!-- ============================================================== -->
@@ -128,14 +134,14 @@
                                 <img src="../../assets/images/users/user.jpg" alt="user" width="30"
                                     class="profile-pic rounded-circle" />
                                 <div class="d-none d-md-flex">
-                                    <span class="ms-2">Hi,
-                                        <span class="text-dark fw-bold">Johnathan</span></span>
+                                    <span class="ms-2">
+                                        <span class="text-dark fw-bold">User</span></span>
                                     {{-- <span>
                                         <i data-feather="chevron-down" class="feather-sm"></i>
                                     </span> --}}
                                 </div>
                             </a>
-                            
+
                         </li>
                     </ul>
                 </div>
@@ -230,7 +236,7 @@
         <!-- footer -->
         <!-- ============================================================= -->
         <footer class="footer text-center">
-            2023© All Rights Reserved by Wrappixel
+            2023© Payroll Rekaindo Global Jasa
         </footer>
         <!-- ============================================================= -->
         <!-- End footer -->
