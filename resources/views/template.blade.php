@@ -1,7 +1,11 @@
 @extends('layouts.app')
+<<<<<<< HEAD
+<html lang="en">
+=======
 @section('content')
 
 <!-- <html lang="en">
+>>>>>>> ad06b6e193c1543e7283235e0450eda5fea269ce
 
 <head>
     <!-- Required meta tags -->
@@ -14,15 +18,22 @@
     <title>Download Template</title> -->
 <!-- </head> -->
 
+<<<<<<< HEAD
+<body>
+    {{-- <img src="{{ asset('img/bolder 3.png') }}" alt="bolder3" class="position-absolute" style="right: 0px;height:250px">
+    <img src="{{ asset('img/Bolder 2.png') }}" alt="bolder2" class="position-absolute" --}}
+    style="bottom: 0px;height:150px">
+=======
 <!-- <body>
     <img src="{{ asset('img/bolder 3.png') }}" alt="bolder3" class="position-absolute" style="right: 0px;height:250px">
     <img src="{{ asset('img/Bolder 2.png') }}" alt="bolder2" class="position-absolute"
         style="bottom: 0px;height:150px">
+>>>>>>> ad06b6e193c1543e7283235e0450eda5fea269ce
     <div class="container">
         <div class="row mt-5">
 
             <div class="col-md-6">
-                <h2 class="text-left mb-1 mt-3">Download Template</h2>
+                <h2 class="text-left mb-3 mt-3">Download Template</h2>
                 {{-- <h1>Download Template</h1> --}}
                 <p>Download Template
                     <a

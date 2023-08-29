@@ -2,30 +2,6 @@
 
 @section('content')
     <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <div class="page-titles">
-            <div class="row">
-                <div class="col-lg-8 col-md-6 col-12 align-self-center">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 d-flex align-items-center">
-                            <li class="breadcrumb-item">
-                                <a href="index.html" class="link"><i data-feather="grid"></i></a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                List Data
-                            </li>
-                        </ol>
-                    </nav>
-                    <h1 class="mb-0 fw-bold">List Data</h1>
-                </div>
-
-            </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
         <!-- ============================================================= -->
         <!-- Container fluid  -->
         <!-- ============================================================= -->
