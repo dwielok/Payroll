@@ -11,7 +11,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 d-flex align-items-center">
                             <li class="breadcrumb-item">
-                                <a href="index.html" class="link"><i class="ri-home-3-line fs-5"data-feather="home"></i></a>
+                                <a href="index.html" class="link" data-feather="grid"></a>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Dashboard
                             </li>

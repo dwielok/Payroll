@@ -22,7 +22,7 @@
                 <div class="w-100">
                     <img src="{{ asset('img/logo.png') }}" alt="logo">
                     <h2 class="text-center mb-1 mt-3">PAYROLL</h2>
-                    <h5 class="text-center mb-3"> PT. REKAINDO GLOBAL JASAA</h5>
+                    <h5 class="text-center mb-3"> PT. REKAINDO GLOBAL JASA</h5>
                     @if (session('error'))
                         <div class="alert alert-danger">
                             <b>Opps!</b> {{ session('error') }}
