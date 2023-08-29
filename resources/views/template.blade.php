@@ -1,3 +1,4 @@
+@extends('layouts.app')
 <html lang="en">
 
 <head>
@@ -12,14 +13,14 @@
 </head>
 
 <body>
-    <img src="{{ asset('img/bolder 3.png') }}" alt="bolder3" class="position-absolute" style="right: 0px;height:250px">
-    <img src="{{ asset('img/Bolder 2.png') }}" alt="bolder2" class="position-absolute"
-        style="bottom: 0px;height:150px">
+    {{-- <img src="{{ asset('img/bolder 3.png') }}" alt="bolder3" class="position-absolute" style="right: 0px;height:250px">
+    <img src="{{ asset('img/Bolder 2.png') }}" alt="bolder2" class="position-absolute" --}}
+    style="bottom: 0px;height:150px">
     <div class="container">
         <div class="row mt-5">
 
             <div class="col-md-6">
-                <h2 class="text-left mb-1 mt-3">Download Template</h2>
+                <h2 class="text-left mb-3 mt-3">Download Template</h2>
                 {{-- <h1>Download Template</h1> --}}
                 <p>Download Template
                     <a
