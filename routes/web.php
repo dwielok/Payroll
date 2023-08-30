@@ -15,6 +15,8 @@ use App\Http\Controllers\KaryawanPKWTController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RekapController;
 use App\Http\Controllers\SlipController;
+use App\Http\Controllers\viewInkaController;
+use App\Http\Controllers\viewPkwtController;
 use App\Http\Controllers\viewTetapController;
 
 /*
@@ -86,3 +88,9 @@ Route::get('Export', [ExportTetapController::class, 'index'])->name('export_teta
 
 //Routing View Tetap
 Route::get('viewTetap', [viewTetapController::class, 'index'])->name('viewTetap');
+
+//Routing View INKA
+Route::get('viewInka', [viewInkaController::class, 'index'])->name('viewInka');
+
+//Routing View PKWT
+Route::get('viewPkwt', [viewPkwtController::class, 'index'])->name('viewPkwt');
