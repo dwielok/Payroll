@@ -11,11 +11,11 @@
                                 <a href="index.html" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                List Data Karyawan Tetap
+                                Export
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data Karyawan Tetap</h1>
+                    <h1 class="mb-0 fw-bold">Export Data</h1>
                 </div>
             </div>
         </div>
@@ -71,18 +71,7 @@
                                         </div>
                                     </ul>
                                 </div>
-                                <div class="d-flex align-items-center g-2">
 
-                                    <a href="{{ url('/Import') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Import
-                                    </a>
-                                    {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Export
-                                    </a> --}}
-                                    <a href="{{ url('/Export') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Export
-                                    </a>
-                                </div>
                             </div>
                             <div class="table-responsive">
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap">
@@ -90,9 +79,7 @@
                                         <tr>
                                             <th>Bulan</th>
                                             <th>Tahun</th>
-                                            <th>Status</th>
-                                            <th>Keterangan</th>
-                                            <th>Aksi</th>
+
                                         </tr>
                                     </thead>
 
@@ -106,6 +93,16 @@
                                         </tr>
                                     </tfoot> --}}
                                 </table>
+                            </div>
+                            <div class="d-flex justify-content-end">
+
+                                {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
+                                    Import --}}
+                                </a>
+                                <a href="{{ url('test_pdf') }}" class="btn btn-navy d-flex align-items-center ms-2"
+                                    style="margin-top: 30px">
+                                    Print
+                                </a>
                             </div>
                         </div>
                     </div>

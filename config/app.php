@@ -177,6 +177,12 @@ return [
 
     ],
 
+    // 'providers' => [
+    //     Barryvdh\DomPDF\ServiceProvider::class,
+    // ],
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Class Aliases
@@ -231,5 +237,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+
+
+    // 'aliases' => [
+    //     'PDF' => Barryvdh\DomPDF\Facade::class,
+    // ]
 
 ];
