@@ -11,6 +11,7 @@ use App\Http\Controllers\listTetap;
 use App\Http\Controllers\KaryawanPKWTController;
 use App\Http\Controllers\RekapController;
 use App\Http\Controllers\SlipController;
+use App\Http\Controllers\viewTetapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,3 +76,6 @@ Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
 
 //Routing Import
 Route::get('import', [ImportController::class, 'index'])->name('import');
+
+//Routing View Tetap
+Route::get('viewTetap', [viewTetapController::class, 'index'])->name('viewTetap');
