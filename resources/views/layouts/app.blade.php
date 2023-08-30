@@ -214,7 +214,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index2.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/logout"
                                 aria-expanded="false">
                                 <i data-feather="log-out"></i><span class="hide-menu">Logout</span>
                             </a>
