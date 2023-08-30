@@ -60598,8 +60598,8 @@ button.toast-close-button {
 }
 
 [type="checkbox"].material-inputs:checked.chk-col-red+label:before {
-    border-right: 2px solid #fb3a3a;
-    border-bottom: 2px solid #fb3a3a;
+    border-right: 2px solid #283854;
+    border-bottom: 2px solid #283854;
 }
 
 [type="checkbox"].material-inputs:checked.chk-col-pink+label:before {
@@ -60803,8 +60803,8 @@ button.toast-close-button {
 }
 
 [type="checkbox"].material-inputs.filled-in:checked.chk-col-red+label:after {
-    border: 2px solid #fb3a3a;
-    background-color: #fb3a3a;
+    border: 2px solid #283854;
+    background-color: #283854;
 }
 
 [type="checkbox"].material-inputs.filled-in:checked.chk-col-pink+label:after {
@@ -62403,4 +62403,14 @@ html[dir="rtl"] [type="radio"].material-inputs+label:before {
     position: absolute;
     top: 5px;
     right: 5px;
+}
+
+.btn-navy {
+background-color:#283854;
+color:white;
+}
+
+.btn-navy:hover {
+    background-color:#283854;
+color:white;
 }
