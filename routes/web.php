@@ -63,11 +63,6 @@ Route::get('slip', [SlipController::class, 'index'])->name('slip');
 Route::get('template', [TemplateController::class, 'index'])->name('template');
 
 Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('karyawanPKWT');
-<<<<<<< HEAD
 
 //Routing Halaman Slip Gaji
 Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
-
-
-=======
->>>>>>> f61de03e6cfa5557560a4e8b65746b0a5c0687eb
