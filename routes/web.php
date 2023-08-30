@@ -9,6 +9,7 @@ use App\Http\Controllers\ImportController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\listTetap;
 use App\Http\Controllers\KaryawanPKWTController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RekapController;
 use App\Http\Controllers\SlipController;
 
@@ -67,9 +68,7 @@ Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('kary
 
 
 //Route Logout
-
-Route::get('logout',[LoginController::class, 'index'])->name('logout');
-
+Route::get('logout', [LogoutController::class,'index'])->name('logout');
 //Routing Halaman Slip Gaji
 Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
 
