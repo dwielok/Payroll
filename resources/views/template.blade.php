@@ -1,41 +1,74 @@
 @extends('layouts.connect')
+
 @section('content')
-    <html lang="en">
-
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-        <title>Download Template</title> -->
-    </head>
-
-    <body>
-        {{-- <img src="{{ asset('img/bolder 3.png') }}" alt="bolder3" class="position-absolute" style="right: 0px;height:250px"> --}}
-        {{-- <img src="{{ asset('img/Bolder 2.png') }}" alt="bolder2" class="position-absolute" --}}
-        style="bottom: 0px;height:150px">
-        <div class="container">
-            <div class="row mt-5">
-
-                <div class="col-md-6">
-                    <h2 class="text-left mb-3 mt-3">Download Template</h2>
-                    {{-- <h1>Download Template</h1> --}}
-                    <p>Download Template
-                        <a
-                            href="https://docs.google.com/spreadsheets/d/11DlVrfaviZOmylyN0U2NK92_lBO81itT/edit?usp=drive_link&ouid=114092274562304563324&rtpof=true&sd=true">Karyawan
-                            Tetap dan Perbantuan INKA</a>
-                        <a
-                            href="https://docs.google.com/spreadsheets/d/1UXV-pnnRzEPuVjgdevKalEQvZSv-_0Vm/edit?usp=drive_link&ouid=114092274562304563324&rtpof=true&sd=true">Karyawan
-                            PKWT </a>
-                    </p>
-                    {{-- <a class="btn btn-success btn-sm" href="download.php?file=file-download.txt">Click Here</a> --}}
+    <div class="page-wrapper">
+        <div class="page-titles">
+            <div class="row">
+                <div class="col-lg-8 col-md-6 col-12 align-self-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 d-flex align-items-center">
+                            <li class="breadcrumb-item">
+                                <a href="index.html" class="link"><i data-feather="grid"></i></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Download Template
+                            </li>
+                        </ol>
+                    </nav>
+                    <h1 class="mb-0 fw-bold">Download Template</h1>
                 </div>
             </div>
         </div>
-    </body> -->
+        <!-- ============================================================= -->
+        <!-- Container fluid  -->
+        <!-- ============================================================= -->
+        <div class="container-fluid">
+            <!-- ============================================================= -->
+            <!-- Start Page Content -->
+            <!-- ============================================================= -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div
+                                class="
+            col-lg-12 col-md-12
+            d-none d-md-flex
+            align-items-center
+            justify-content-between
+            mb-0
+          ">
+                                <div class="container">
+                                    <div class="row mt-0">
 
-    </html>
-@endsection
+                                        <div class="col-md-8">
+                                            <h2 class="text-left mb-3 mt-3">Download Template</h2>
+                                            <p>Download Template
+                                                <a
+                                                    href="https://docs.google.com/spreadsheets/d/11DlVrfaviZOmylyN0U2NK92_lBO81itT/edit?usp=drive_link&ouid=114092274562304563324&rtpof=true&sd=true">Karyawan
+                                                    Tetap dan Perbantuan INKA, </a>
+                                                <a
+                                                    href="https://docs.google.com/spreadsheets/d/1UXV-pnnRzEPuVjgdevKalEQvZSv-_0Vm/edit?usp=drive_link&ouid=114092274562304563324&rtpof=true&sd=true">Karyawan
+                                                    PKWT </a>
+                                            </p>
+                                            {{-- <a class="btn btn-success btn-sm" href="download.php?file=file-download.txt">Click Here</a> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ============================================================= -->
+                <!-- End PAge Content -->
+                <!-- ============================================================= -->
+            </div>
+            <!-- ============================================================= -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================= -->
+            <!-- ============================================================= -->
+
+        </div>
+    @endsection
