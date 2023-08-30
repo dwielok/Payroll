@@ -8,10 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\listTetap;
 use App\Http\Controllers\KaryawanPKWTController;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\RekapController;
->>>>>>> ad06b6e193c1543e7283235e0450eda5fea269ce
 use App\Http\Controllers\SlipController;
 
 /*
