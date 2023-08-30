@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
+<<<<<<< HEAD
 class LogoutController extends Controller
 {
     public function logout()
@@ -19,3 +20,10 @@ class LogoutController extends Controller
         return view('livewire.admin.logout');
     }
 }
+=======
+class LogoutController extends Controller{
+    public function index(){
+        return view('logout');
+    }
+}
+>>>>>>> cb267501b7656306de14749bf70cd1a47fc2f896

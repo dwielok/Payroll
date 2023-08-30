@@ -11,11 +11,11 @@
                                 <a href="index.html" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Rekap Gaji
+                                List Data
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">Rekap Gaji</h1>
+                    <h1 class="mb-0 fw-bold">List Data</h1>
                 </div>
             </div>
         </div>
@@ -50,47 +50,9 @@
                                         <input class="form-control border-start-0 border" type="search" value="search"
                                             id="example-search-input">
                                     </div>
-
-                                    <div class="btn-group" style="margin-left: 275px">
-                                        <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            Filter Periode
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width:300px">
-                                            {{-- <li><a class="dropdown-item" href="#">Action</a></li> --}}
-                                            <div class="row mt-4 ps-4 pe-4 pt-4 pb-4">
-                                                <div class="col-6">
-                                                    @foreach (['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'] as $bulan)
-                                                        <div class="mb-3">
-                                                            <input type="checkbox" id="md_checkbox_{{ $loop->iteration }}"
-                                                                class="material-inputs filled-in chk-col-red">
-                                                            <label
-                                                                for="md_checkbox_{{ $loop->iteration }}">{{ $bulan }}</label>
-                                                        </div>
-                                                    @endforeach
-                                                </div>
-                                                <div class="col-6">
-                                                    @for ($tahun = 2017; $tahun <= 2023; $tahun++)
-                                                        <div class="mb-3">
-                                                            <input type="checkbox" id="md_checkbox_{{ $tahun }}"
-                                                                class="material-inputs filled-in chk-col-red">
-                                                            <label
-                                                                for="md_checkbox_{{ $tahun }}">{{ $tahun }}</label>
-                                                        </div>
-                                                    @endfor
-                                                </div>
-                                            </div>
-                                        </ul>
-                                    </div>
-                                    {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Import
-                                    </a>
-                                    <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Export
-                                    </a> --}}
                                 </div>
                             </div>
-                            <div class="table-responsive">
+                            <div class="table-responsive-" style="overflow-x:auto;">
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap">
                                     <thead>
                                         <tr>
@@ -98,14 +60,30 @@
                                             <th>Tahun</th>
                                             <th>NIP</th>
                                             <th>Nama</th>
+                                            <th>Jabatan</th>
+                                            <th>Golongan</th>
+                                            <th>Gaji Pokok</th>
+                                            <th>Tunjangan Tetap</th>
+                                            <th>Kehadiran</th>
+                                            <th>Hari Kerja</th>
+                                            <th>Nilai IKK</th>
+                                            <th>Dana IKK</th>
+                                            <th>Tunjangan Transportasi</th>
+                                            <th>Tunjangan Profesional</th>
+                                            <th>Tunjangan Karya</th>
+                                            <th>BPJS Kesehatan</th>
+                                            <th>BPJS Ketenagakerjaan</th>
+                                            <th>Jam Hilang</th>
+                                            <th>Penghasilan Tetap</th>
+                                            <th>Lembur Weekdays</th>
+                                            <th>Lembur Weekend</th>
+                                            <th>Penyesuaian Penambahan</th>
+                                            <th>Penyesuaian Pengurangan</th>
+                                            <th>Penghasilan Bruto</th>
+                                            <th>Penghasilan Netto</th>
                                         </tr>
                                     </thead>
                                 </table>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2" style="margin-top: 30px">
-                                    Print
-                                </a>
                             </div>
                         </div>
                     </div>
