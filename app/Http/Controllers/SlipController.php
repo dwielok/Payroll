@@ -7,16 +7,11 @@ use Illuminate\Http\Request;
 <<<<<<< HEAD
 class SlipController extends Controller
 {
-    public function index()
-    {
-        return view('slip_gaji');
-    }
-}
 =======
 class SlipController extends Controller{
+>>>>>>> f61de03e6cfa5557560a4e8b65746b0a5c0687eb
     public function index()
     {
         return view('slip');
     }
 }
->>>>>>> ad06b6e193c1543e7283235e0450eda5fea269ce
