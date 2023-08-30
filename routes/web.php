@@ -17,6 +17,9 @@ use App\Http\Controllers\KaryawanPKWTController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RekapController;
 use App\Http\Controllers\SlipController;
+use App\Http\Controllers\viewInkaController;
+use App\Http\Controllers\viewPkwtController;
+use App\Http\Controllers\viewTetapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,7 +78,11 @@ Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('kary
 
 //Route Logout
 
+<<<<<<< HEAD
 Route::get('logout', [LogoutController::class, 'index'])->name('logout');
+=======
+Route::get('logout',[LoginController::class, 'index'])->name('logout');
+>>>>>>> cb267501b7656306de14749bf70cd1a47fc2f896
 
 //Routing Halaman Slip Gaji
 Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
@@ -83,6 +90,7 @@ Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
 //Routing Import Tetap
 Route::get('ImportTetap', [ImportTetapController::class, 'index'])->name('import_tetap');
 
+<<<<<<< HEAD
 //Routing Export Tetap
 Route::get('ExportTetap', [ExportTetapController::class, 'index'])->name('export_tetap');
 
@@ -91,3 +99,16 @@ Route::get('ImportInka', [ImportInkaController::class, 'index'])->name('import_i
 
 //Routing Export Inka
 Route::get('ExportInka', [ExportInkaController::class, 'index'])->name('export_inka');
+=======
+//Routing Export
+Route::get('Export', [ExportTetapController::class, 'index'])->name('export_tetap');
+
+//Routing View Tetap
+Route::get('viewTetap', [viewTetapController::class, 'index'])->name('viewTetap');
+
+//Routing View INKA
+Route::get('viewInka', [viewInkaController::class, 'index'])->name('viewInka');
+
+//Routing View PKWT
+Route::get('viewPkwt', [viewPkwtController::class, 'index'])->name('viewPkwt');
+>>>>>>> cb267501b7656306de14749bf70cd1a47fc2f896
