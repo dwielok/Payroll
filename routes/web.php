@@ -5,6 +5,7 @@ use App\Http\Controllers\KaryawanTetapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\listTetap;
 use App\Http\Controllers\KaryawanPKWTController;
@@ -66,3 +67,6 @@ Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('kary
 
 //Routing Halaman Slip Gaji
 Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
+
+//Routing Import
+Route::get('import', [ImportController::class, 'index'])->name('import');
