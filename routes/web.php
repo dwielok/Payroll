@@ -5,6 +5,8 @@ use App\Http\Controllers\KaryawanTetapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\ExportTetapController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\listTetap;
@@ -70,3 +72,6 @@ Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
 
 //Routing Import
 Route::get('import', [ImportController::class, 'index'])->name('import');
+
+//Routing Export
+Route::get('Export', [ExportTetapController::class, 'index'])->name('export_tetap');
