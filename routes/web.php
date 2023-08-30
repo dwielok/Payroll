@@ -5,10 +5,14 @@ use App\Http\Controllers\KaryawanTetapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\ExportTetapController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\ImportTetapController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\listTetap;
 use App\Http\Controllers\KaryawanPKWTController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RekapController;
 use App\Http\Controllers\SlipController;
 use App\Http\Controllers\viewTetapController;
@@ -75,7 +79,10 @@ Route::get('logout',[LoginController::class, 'index'])->name('logout');
 Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
 
 //Routing Import
-Route::get('import', [ImportController::class, 'index'])->name('import');
+Route::get('Import', [ImportTetapController::class, 'index'])->name('import_tetap');
+
+//Routing Export
+Route::get('Export', [ExportTetapController::class, 'index'])->name('export_tetap');
 
 //Routing View Tetap
 Route::get('viewTetap', [viewTetapController::class, 'index'])->name('viewTetap');
