@@ -51,13 +51,13 @@ Route::get('KaryawanTetap', [KaryawanTetapController::class, 'index'])->name('ka
 Route::get('karyawanperbantuaninka', [KaryawanPerbantuanInkaController::class, 'index'])->name('karyawanperbantuaninka');
 
 //Routing Halaman PKWT
-Route::get('karyawanPKWT',[KaryawanPKWTController::class, 'index'])->name('karyawanPKWT');
+Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('karyawanPKWT');
 
 //Routing Halaman Rekap Gaji
-Route::get('rekap',[RekapController::class, 'index'])->name('rekap');
+Route::get('rekap', [RekapController::class, 'index'])->name('rekap');
 
 //Routing Halaman Slip
-Route::get('slip',[SlipController::class, 'index'])->name('slip');
+Route::get('slip', [SlipController::class, 'index'])->name('slip');
 
 //Route untuk Download Template
 Route::get('template', [TemplateController::class, 'index'])->name('template');
@@ -70,4 +70,4 @@ Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('kary
 Route::get('logout',[LoginController::class, 'index'])->name('logout');
 
 //Routing Halaman Slip Gaji
-Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip_gaji');
+Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');

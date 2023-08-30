@@ -52,7 +52,7 @@
             {{-- <div class="row">
                 <div class="col-12">
                     <div class="card"> --}}
-                        {{-- <div class="border-bottom title-part-padding">
+            {{-- <div class="border-bottom title-part-padding">
                             <h4>Zero Configuration</h4>
                             <h6 class="card-subtitle mb-0">
                                 DataTables has most features enabled by default, so all you
@@ -62,8 +62,8 @@
                                 <a href="https://datatables.net/">Datatables</a>
                             </h6>
                         </div> --}}
-                        
-                    {{-- </div>
+
+            {{-- </div>
                 </div>
             </div> --}}
             <!-- ============================================================= -->
