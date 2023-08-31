@@ -75,7 +75,7 @@ Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('kary
 
 //Route Logout
 
-Route::get('logout',[LoginController::class, 'index'])->name('logout');
+Route::get('logout',[LogoutController::class, 'index'])->name('logout');
 
 //Routing Halaman Slip Gaji
 Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
