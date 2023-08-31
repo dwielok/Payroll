@@ -297,7 +297,7 @@
                                 <button type="button" class="btn btn-danger"
                                     data-bs-dismiss="modal">No</button>
                                 <button type="button" class="btn btn-navy">Yes</button>
-                                <a href="/"></a>
+                                
                             </div>
                         </div>
                     </div>
