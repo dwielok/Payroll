@@ -11,8 +11,8 @@
                                 <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/KaryawanTetap" class="link">
-                                    List Data Karyawan Tetap </a>
+                                <a href="/karyawanPKWT" class="link">
+                                    List Data Karyawan PKWT </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Import Data

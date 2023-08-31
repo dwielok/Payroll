@@ -59,10 +59,7 @@
                                                                         class="form-control" required>
                                                                 </div>
                                                                 <div class="col-lg-1">
-                                                                    <button class="btn btn-navy d-flex align-items-center">
-                                                                        {{-- style="" data-toggle="modal"
-                                                                        data-target="#importExcel" --}}
-                                                                        Submit</button>
+                                                                    <button class="btn btn-">Submit</button>
                                                                 </div>
                                                             </div>
                                                         </form>
