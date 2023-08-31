@@ -8,7 +8,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 d-flex align-items-center">
                             <li class="breadcrumb-item">
-                                <a href="index.html" class="link"><i data-feather="grid"></i></a>
+                                <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Slip Gaji
@@ -94,16 +94,17 @@
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th>Bulan</th>
-                                            <th>Tahun</th>
-                                            <th>NIP</th>
-                                            <th>Nama</th>
+                                            <th class="text-center">Bulan</th>
+                                            <th class="text-center">Tahun</th>
+                                            <th class="text-center">NIP</th>
+                                            <th class="text-center">Nama</th>
                                         </tr>
                                     </thead>
                                 </table>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2" style="margin-top: 30px">
+                                <a href="{{ url('/test_pdf') }}" class="btn btn-navy d-flex align-items-center ms-2"
+                                    style="margin-top: 30px">
                                     Print
                                 </a>
                             </div>
