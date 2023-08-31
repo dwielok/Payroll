@@ -73,13 +73,13 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
-                                    <a href="{{ url('/Import') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
                                     </a>
                                     {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a> --}}
-                                    <a href="{{ url('/Export') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ExportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
                                 </div>
