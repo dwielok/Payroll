@@ -214,14 +214,16 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/logout"
-                                aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                aria-expanded="false" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <i data-feather="log-out"></i><span class="hide-menu">Logout</span>
                             </a>
                         </li>
 
                     </ul>
                 </nav>
+       
+
                 <!-- End Sidebar navigation -->
             </div>
 
@@ -244,11 +246,13 @@
         <!-- ============================================================= -->
         <!-- End Page wrapper  -->
         <!-- ============================================================= -->
+
+
+
     </div>
     <!-- ============================================================= -->
     <!-- End Wrapper -->
     <!-- ============================================================= -->
-
     <!-- ============================================================= -->
     <!-- All Jquery -->
     <!-- ============================================================= -->
@@ -273,6 +277,29 @@
     <script src="../../dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 
     <script src="../../dist/js/pages/datatable/datatable-basic.init.js"></script>
+    
 </body>
+  <!-- Modal Logout -->
 
+       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Logout</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Do you want to Logout?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger"
+                                    data-bs-dismiss="modal">No</button>
+                                <button type="button" class="btn btn-navy">Yes</button>
+                                <a href="/"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 </html>
