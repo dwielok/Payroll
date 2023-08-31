@@ -222,7 +222,7 @@
 
                     </ul>
                 </nav>
-       
+
 
                 <!-- End Sidebar navigation -->
             </div>
@@ -277,9 +277,9 @@
     <script src="../../dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 
     <script src="../../dist/js/pages/datatable/datatable-basic.init.js"></script>
-    
+
 </body>
-  <!-- Modal Logout -->
+<!-- Modal Logout -->
 
        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -297,7 +297,7 @@
                                 <button type="button" class="btn btn-danger"
                                     data-bs-dismiss="modal">No</button>
                                 <button type="button" class="btn btn-navy">Yes</button>
-                                
+                                <a href="/"></a>
                             </div>
                         </div>
                     </div>
