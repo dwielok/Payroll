@@ -6,8 +6,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\ExportInkaController;
 use App\Http\Controllers\ExportTetapController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\ImportFileController;
+use App\Http\Controllers\ImportInkaController;
 use App\Http\Controllers\ImportTetapController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\listTetap;
@@ -45,6 +48,7 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard'
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
 
+
 Route::get('template', [TemplateController::class, 'index'])->name('template');
 Route::get('listtetap', [listTetapController::class, 'index'])->name('listTetap');
 
@@ -75,13 +79,24 @@ Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('kary
 
 //Route Logout
 
-Route::get('logout',[LoginController::class, 'index'])->name('logout');
+
+Route::get('logout', [LogoutController::class, 'index'])->name('logout');
+Route::get('logout', [LoginController::class, 'index'])->name('logout');
 
 //Routing Halaman Slip Gaji
 Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
 
-//Routing Import
-Route::get('Import', [ImportTetapController::class, 'index'])->name('import_tetap');
+//Routing Import Tetap
+Route::get('ImportTetap', [ImportTetapController::class, 'index'])->name('import_tetap');
+
+//Routing Export Tetap
+Route::get('ExportTetap', [ExportTetapController::class, 'index'])->name('export_tetap');
+
+//Routing Import Inka
+Route::get('ImportInka', [ImportInkaController::class, 'index'])->name('import_inka');
+
+//Routing Export Inka
+Route::get('ExportInka', [ExportInkaController::class, 'index'])->name('export_inka');
 
 //Routing Export
 Route::get('Export', [ExportTetapController::class, 'index'])->name('export_tetap');
@@ -94,3 +109,6 @@ Route::get('viewInka', [viewInkaController::class, 'index'])->name('viewInka');
 
 //Routing View PKWT
 Route::get('viewPkwt', [viewPkwtController::class, 'index'])->name('viewPkwt');
+
+//Routing Import FIle
+Route::get('import_file', [ImportFileController::class, 'index'])->name('import_file');
