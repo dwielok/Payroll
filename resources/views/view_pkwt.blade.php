@@ -8,10 +8,14 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 d-flex align-items-center">
                             <li class="breadcrumb-item">
-                                <a href="index.html" class="link"><i data-feather="grid"></i></a>
+                                <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                List Data
+                                <a href="/karyawanPKWT" class="link">
+                                List Data Karyawan PKWT </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                View List Data
                             </li>
                         </ol>
                     </nav>
