@@ -96,8 +96,8 @@
                                         <tr>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
-                                            <th class="text-center">NIP</th>
-                                            <th class="text-center">Nama</th>
+                                            {{-- <th class="text-center">NIP</th>
+                                            <th class="text-center">Nama</th> --}}
                                         </tr>
                                     </thead>
                                 </table>
