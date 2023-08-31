@@ -36,22 +36,14 @@
                         <div class="card-body">
                             <div
                                 class="col-lg-12 col-md-12 d-none d-md-flex align-items-center justify-content-between mb-0">
+                   
 
                                 <div class="container">
-                                    <div class="row mt-0 justify-content-center">
+                                    <div class="row mt-0">
 
                                         <div class="col-md-8">
-                                            <h2 class="text-center mb-3 mt-3 " style="">Upload Or Import
-                                                Data</h2>
-
-
-                                        </div>
-
-                                        <div class="d-flex justify-content-center w-100">
-                                            <button type="button" class="btn btn-navy d-flex align-items-center ms-2"
-                                                style="" data-toggle="modal" data-target="#importExcel">Upload
-                                                File</button>
-
+                                            <h2 class="text-left mb-3 mt-3" >Upload Or Import Data</h2>
+                                            <button type="button" class="btn btn-navy mr-5" data-toggle="modal" data-target="#importExcel">Upload File</button>
                                         </div>
                                     </div>
                                 </div>
@@ -60,5 +52,9 @@
                     </div>
                 </div>
             </div>
+                </div>
+            </div>
         </div>
-    @endsection
+    </div>
+@endsection
+
