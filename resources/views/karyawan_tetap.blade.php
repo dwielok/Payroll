@@ -8,7 +8,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 d-flex align-items-center">
                             <li class="breadcrumb-item">
-                                <a href="index.html" class="link"><i data-feather="grid"></i></a>
+                                <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 List Data Karyawan Tetap
@@ -73,28 +73,37 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
-                                    <a href="{{ url('/Import') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
                                     </a>
                                     {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a> --}}
-                                    <a href="{{ url('/Export') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ExportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                <table id="zero_config" class="table table-striped table-bordered text-nowrap">
+                                <table id="zero_config" class="table table-striped table-bordered text-center ">
                                     <thead>
                                         <tr>
-                                            <th>Bulan</th>
-                                            <th>Tahun</th>
-                                            <th>Status</th>
-                                            <th>Keterangan</th>
-                                            <th>Aksi</th>
+                                            <th class="text-center">Bulan</th>
+                                            <th class="text-center">Tahun</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Keterangan</th>
+                                            <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        <th>Januari</th>
+                                        <th>2020</th>
+                                        <th>Disetujui</th>
+                                        <th>-</th>
+                                        <th><a href="{{ url('/viewTetap') }}" class="btn btn-navy align-items-center ms-2">
+                                                View
+                                            </a></th>
+                                    </tbody>
 
                                     {{-- <tfoot>
                                         <tr>
