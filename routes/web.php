@@ -21,6 +21,7 @@ use App\Http\Controllers\KaryawanPKWTController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RekapController;
 use App\Http\Controllers\SlipController;
+use App\Http\Controllers\SuccessLogoutController;
 use App\Http\Controllers\viewInkaController;
 use App\Http\Controllers\viewPkwtController;
 use App\Http\Controllers\viewTetapController;
@@ -84,6 +85,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Route Logout
     Route::get('logout', [LogoutController::class, 'index'])->name('logout');
+    Route::get('successlogout', [SuccessLogoutController::class, 'index'])->name('successlogout');
     Route::get('logout', [LoginController::class, 'index'])->name('logout');
 
     //Routing Halaman Slip Gaji
@@ -124,4 +126,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Routing Ajukan Tetap
     Route::get('AjukanTetap', [AjukanTetapController::class, 'index'])->name('ajukan_tetap');
+
+    // //Routing Success Logout
+    // Route::get('seccesslogout', [SuccessLogoutController::class, 'index'])->name('successlogout');
 });

@@ -222,7 +222,7 @@
 
                     </ul>
                 </nav>
-       
+
 
                 <!-- End Sidebar navigation -->
             </div>
@@ -277,29 +277,31 @@
     <script src="../../dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 
     <script src="../../dist/js/pages/datatable/datatable-basic.init.js"></script>
-    
-</body>
-  <!-- Modal Logout -->
 
-       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Logout</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Do you want to Logout?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger"
-                                    data-bs-dismiss="modal">No</button>
-                                <button type="button" class="btn btn-navy">Yes</button>
-                                <a href="/"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+</body>
+<!-- Modal Logout -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Logout</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Do you want to Logout?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                {{-- <button type="button" class="btn btn-navy">Yes</button> --}}
+                <a href="{{ url('successlogout') }}"class="btn btn-navy">Yes</button>
+                </a>
+                {{-- <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                    Import
+                </a> --}}
+            </div>
+        </div>
+    </div>
+</div>
+
 </html>
