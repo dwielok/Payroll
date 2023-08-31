@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjukanTetapController;
 use App\Http\Controllers\KaryawanPerbantuanInkaController;
 use App\Http\Controllers\KaryawanTetapController;
 use Illuminate\Support\Facades\Route;
@@ -44,80 +45,83 @@ Route::get('/test_pdf', [App\Http\Controllers\PdfController::class, 'test_pdf'])
 //ROUTING UNTUK LOGIN
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
+//route group middleware auth
+Route::group(['middleware' => 'auth'], function () {
 
-// Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
-
-
-
-Route::get('template', [TemplateController::class, 'index'])->name('template');
-Route::get('listtetap', [listTetapController::class, 'index'])->name('listTetap');
+    // Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
 
-Route::get('listtetap', [listTetapController::class, 'index'])->name('listTetap');
 
-//Routing Halaman Karyawan Tetap
-Route::get('KaryawanTetap', [KaryawanTetapController::class, 'index'])->name('karyawantetap');
-
-
-//Routing Halaman Perbantuan Inka
-Route::get('karyawanperbantuaninka', [KaryawanPerbantuanInkaController::class, 'index'])->name('karyawanperbantuaninka');
-
-//Routing Halaman PKWT
-Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('karyawanPKWT');
-
-//Routing Halaman Rekap Gaji
-Route::get('rekap', [RekapController::class, 'index'])->name('rekap');
-
-//Routing Halaman Slip
-Route::get('slip', [SlipController::class, 'index'])->name('slip');
-
-//Route untuk Download Template
-Route::get('template', [TemplateController::class, 'index'])->name('template');
-
-Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('karyawanPKWT');
+    Route::get('template', [TemplateController::class, 'index'])->name('template');
+    Route::get('listtetap', [listTetapController::class, 'index'])->name('listTetap');
 
 
-//Route Logout
+    Route::get('listtetap', [listTetapController::class, 'index'])->name('listTetap');
 
-Route::get('logout',[LogoutController::class, 'index'])->name('logout');
+    //Routing Halaman Karyawan Tetap
+    Route::get('KaryawanTetap', [KaryawanTetapController::class, 'index'])->name('karyawantetap');
 
-Route::get('logout', [LogoutController::class, 'index'])->name('logout');
-Route::get('logout', [LoginController::class, 'index'])->name('logout');
 
-//Routing Halaman Slip Gaji
-Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
+    //Routing Halaman Perbantuan Inka
+    Route::get('karyawanperbantuaninka', [KaryawanPerbantuanInkaController::class, 'index'])->name('karyawanperbantuaninka');
 
-//Routing Import Tetap
-Route::get('ImportTetap', [ImportTetapController::class, 'index'])->name('import_tetap');
+    //Routing Halaman PKWT
+    Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('karyawanPKWT');
 
-//Routing Export Tetap
-Route::get('ExportTetap', [ExportTetapController::class, 'index'])->name('export_tetap');
+    //Routing Halaman Rekap Gaji
+    Route::get('rekap', [RekapController::class, 'index'])->name('rekap');
 
-//Routing Import Inka
-Route::get('ImportInka', [ImportInkaController::class, 'index'])->name('import_inka');
+    //Routing Halaman Slip
+    Route::get('slip', [SlipController::class, 'index'])->name('slip');
 
-//Routing Export Inka
-Route::get('ExportInka', [ExportInkaController::class, 'index'])->name('export_inka');
+    //Route untuk Download Template
+    Route::get('template', [TemplateController::class, 'index'])->name('template');
 
-//Routing Import Pkwt
-Route::get('ImportPkwt', [ImportPkwtController::class, 'index'])->name('import_pkwt');
+    Route::get('karyawanPKWT', [KaryawanPKWTController::class, 'index'])->name('karyawanPKWT');
 
-//Routing Export Pkwt
-Route::get('ExportPkwt', [ExportPkwtController::class, 'index'])->name('export_pkwt');
 
-//Routing Export
-Route::get('Export', [ExportTetapController::class, 'index'])->name('export_tetap');
+    //Route Logout
+    Route::get('logout', [LogoutController::class, 'index'])->name('logout');
+    Route::get('logout', [LoginController::class, 'index'])->name('logout');
 
-//Routing View Tetap
-Route::get('viewTetap', [viewTetapController::class, 'index'])->name('viewTetap');
+    //Routing Halaman Slip Gaji
+    Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
 
-//Routing View INKA
-Route::get('viewInka', [viewInkaController::class, 'index'])->name('viewInka');
+    //Routing Import Tetap
+    Route::get('ImportTetap', [ImportTetapController::class, 'index'])->name('import_tetap');
 
-//Routing View PKWT
-Route::get('viewPkwt', [viewPkwtController::class, 'index'])->name('viewPkwt');
+    //Routing Export Tetap
+    Route::get('ExportTetap', [ExportTetapController::class, 'index'])->name('export_tetap');
 
-//Routing Import FIle
-Route::get('import_file', [ImportFileController::class, 'index'])->name('import_file');
+    //Routing Import Inka
+    Route::get('ImportInka', [ImportInkaController::class, 'index'])->name('import_inka');
+
+    //Routing Export Inka
+    Route::get('ExportInka', [ExportInkaController::class, 'index'])->name('export_inka');
+
+    //Routing Import Pkwt
+    Route::get('ImportPkwt', [ImportPkwtController::class, 'index'])->name('import_pkwt');
+
+    //Routing Export Pkwt
+    Route::get('ExportPkwt', [ExportPkwtController::class, 'index'])->name('export_pkwt');
+
+    //Routing Export
+    Route::get('Export', [ExportTetapController::class, 'index'])->name('export_tetap');
+
+    //Routing View Tetap
+    Route::get('viewTetap', [viewTetapController::class, 'index'])->name('viewTetap');
+
+    //Routing View INKA
+    Route::get('viewInka', [viewInkaController::class, 'index'])->name('viewInka');
+
+    //Routing View PKWT
+    Route::get('viewPkwt', [viewPkwtController::class, 'index'])->name('viewPkwt');
+
+    //Routing Import FIle
+    Route::get('import_file', [ImportFileController::class, 'index'])->name('import_file');
+
+    //Routing Ajukan Tetap
+    Route::get('AjukanTetap', [AjukanTetapController::class, 'index'])->name('ajukan_tetap');
+});
