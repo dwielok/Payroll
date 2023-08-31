@@ -60,31 +60,31 @@
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th>Bulan</th>
-                                            <th>Tahun</th>
-                                            <th>NIP</th>
-                                            <th>Nama</th>
-                                            <th>Jabatan</th>
-                                            <th>Golongan</th>
-                                            <th>Gaji Pokok</th>
-                                            <th>Tunjangan Tetap</th>
-                                            <th>Kehadiran</th>
-                                            <th>Hari Kerja</th>
-                                            <th>Nilai IKK</th>
-                                            <th>Dana IKK</th>
-                                            <th>Tunjangan Transportasi</th>
-                                            <th>Tunjangan Profesional</th>
-                                            <th>Tunjangan Karya</th>
-                                            <th>BPJS Kesehatan</th>
-                                            <th>BPJS Ketenagakerjaan</th>
-                                            <th>Jam Hilang</th>
-                                            <th>Penghasilan Tetap</th>
-                                            <th>Lembur Weekdays</th>
-                                            <th>Lembur Weekend</th>
-                                            <th>Penyesuaian Penambahan</th>
-                                            <th>Penyesuaian Pengurangan</th>
-                                            <th>Penghasilan Bruto</th>
-                                            <th>Penghasilan Netto</th>
+                                            <th class="text-center">Bulan</th>
+                                            <th class="text-center">Tahun</th>
+                                            <th class="text-center">NIP</th>
+                                            <th class="text-center">Nama</th>
+                                            <th class="text-center">Jabatan</th>
+                                            <th class="text-center">Golongan</th>
+                                            <th class="text-center">Gaji Pokok</th>
+                                            <th class="text-center">Tunjangan Tetap</th>
+                                            <th class="text-center">Kehadiran</th>
+                                            <th class="text-center">Hari Kerja</th>
+                                            <th class="text-center">Nilai IKK</th>
+                                            <th class="text-center">Dana IKK</th>
+                                            <th class="text-center">Tunjangan Transportasi</th>
+                                            <th class="text-center">Tunjangan Profesional</th>
+                                            <th class="text-center">Tunjangan Karya</th>
+                                            <th class="text-center">BPJS Kesehatan</th>
+                                            <th class="text-center">BPJS Ketenagakerjaan</th>
+                                            <th class="text-center">Jam Hilang</th>
+                                            <th class="text-center">Penghasilan Tetap</th>
+                                            <th class="text-center">Lembur Weekdays</th>
+                                            <th class="text-center">Lembur Weekend</th>
+                                            <th class="text-center">Penyesuaian Penambahan</th>
+                                            <th class="text-center">Penyesuaian Pengurangan</th>
+                                            <th class="text-center">Penghasilan Bruto</th>
+                                            <th class="text-center">Penghasilan Netto</th>
                                         </tr>
                                     </thead>
                                 </table>

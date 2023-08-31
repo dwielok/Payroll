@@ -94,10 +94,10 @@
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th>Bulan</th>
-                                            <th>Tahun</th>
-                                            <th>NIP</th>
-                                            <th>Nama</th>
+                                            <th class="text-center">Bulan</th>
+                                            <th class="text-center">Tahun</th>
+                                            <th class="text-center">NIP</th>
+                                            <th class="text-center">Nama</th>
                                         </tr>
                                     </thead>
                                 </table>

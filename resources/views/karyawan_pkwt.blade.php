@@ -73,10 +73,10 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
-                                    <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ImportPkwt') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
                                     </a>
-                                    <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ExportPkwt') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
                                 </div>

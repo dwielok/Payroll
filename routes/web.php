@@ -7,10 +7,12 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ExportInkaController;
+use App\Http\Controllers\ExportPkwtController;
 use App\Http\Controllers\ExportTetapController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ImportFileController;
 use App\Http\Controllers\ImportInkaController;
+use App\Http\Controllers\ImportPkwtController;
 use App\Http\Controllers\ImportTetapController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\listTetap;
@@ -97,6 +99,12 @@ Route::get('ImportInka', [ImportInkaController::class, 'index'])->name('import_i
 
 //Routing Export Inka
 Route::get('ExportInka', [ExportInkaController::class, 'index'])->name('export_inka');
+
+//Routing Import Pkwt
+Route::get('ImportPkwt', [ImportPkwtController::class, 'index'])->name('import_pkwt');
+
+//Routing Export Pkwt
+Route::get('ExportPkwt', [ExportPkwtController::class, 'index'])->name('export_pkwt');
 
 //Routing Export
 Route::get('Export', [ExportTetapController::class, 'index'])->name('export_tetap');
