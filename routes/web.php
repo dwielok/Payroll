@@ -46,12 +46,13 @@ Route::get('/test_pdf', [App\Http\Controllers\PdfController::class, 'test_pdf'])
 //ROUTING UNTUK LOGIN
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
+Route::get('successlogout', [SuccessLogoutController::class, 'index'])->name('successlogout');
 //route group middleware auth
 Route::group(['middleware' => 'auth'], function () {
 
     // Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
+    Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout');
 
 
 
@@ -85,7 +86,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Route Logout
     Route::get('logout', [LogoutController::class, 'index'])->name('logout');
-    Route::get('successlogout', [SuccessLogoutController::class, 'index'])->name('successlogout');
+
     Route::get('logout', [LoginController::class, 'index'])->name('logout');
 
     //Routing Halaman Slip Gaji
