@@ -25,7 +25,7 @@
                         <h2 class="text-center mt-3 pt-8 fw-bold">Logged Out</h2>
                         <h5 class="text-center mb-3">Thank you for using Payroll</h5>
                         <div class="d-grid gap-2 d-md-block text-center">
-                            <button type="submit" class="btn btn-login">Sign In Again</button>
+                            <a href="{{ url('/') }}" class="btn btn-login">Sign In Again</a>
                         </div>
                         <h4 class="text-center"> See You Later</h4>
                     </div>

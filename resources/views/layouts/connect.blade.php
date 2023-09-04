@@ -292,8 +292,11 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger"
                                     data-bs-dismiss="modal">No</button>
-                                <button type="button" class="btn btn-navy">Yes</button>
-                                <a href="/"></a>
+                                    <form id="logout-form" action="{{ url('/actionlogout') }}">
+
+</form>
+<button class="btn btn-navy" onclick="document.getElementById(
+                        'logout-form').submit();">Yes</button>
                             </div>
                         </div>
                     </div>
