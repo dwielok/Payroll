@@ -23,9 +23,7 @@
                 </div>
             </div>
         </div>
-        <!-- ============================================================= -->
-        <!-- Container fluid  -->
-        <!-- ============================================================= -->
+
         <div class="container-fluid">
             <!-- ============================================================= -->
             <!-- Start Page Content -->
@@ -36,14 +34,53 @@
                         <div class="card-body">
                             <div
                                 class="col-lg-12 col-md-12 d-none d-md-flex align-items-center justify-content-between mb-0">
-                   
 
                                 <div class="container">
-                                    <div class="row mt-0">
+                                    <div class="row mt-0 justify-content-center">
 
                                         <div class="col-md-8">
-                                            <h2 class="text-left mb-3 mt-3" >Upload Or Import Data</h2>
-                                            <button type="button" class="btn btn-navy mr-5" data-toggle="modal" data-target="#importExcel">Upload File</button>
+                                            <h2 class="text-center mb-3 mt-3 " style="">Upload Or Import
+                                                Data</h2>
+
+
+                                        </div>
+
+                                        <div class="d-flex justify-content-center w-100">
+
+                                            <button type="button" class="btn btn-navy d-flex align-items-center ms-2"
+                                                data-toggle="modal" data-target="#exampleModal">
+                                                Launch demo modal
+                                            </button>
+                                        </div>
+
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Import File</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Cancel"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        {{ csrf_field() }}
+
+                                                        <label>Pilih file excel</label>
+                                                        <div class="form-group">
+                                                            <input type="file" name="file" required="required">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Save
+                                                                changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -52,9 +89,4 @@
                     </div>
                 </div>
             </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
-
+        @endsection
