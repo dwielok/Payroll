@@ -62414,3 +62414,13 @@ color:white;
     background-color:#283854;
 color:white;
 }
+
+.btn-merah {
+    background-color:#a50d22;
+    color:white;
+}
+
+.btn-merah:hover {
+    background-color:#a50d22;
+    color:white;
+}
