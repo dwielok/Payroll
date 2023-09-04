@@ -46,6 +46,7 @@
                                         </div>
 
                                         <div class="d-flex justify-content-center w-100">
+<<<<<<< HEAD
 
                                             <button type="button" class="btn btn-navy d-flex align-items-center ms-2"
                                                 data-toggle="modal" data-target="#exampleModal">
@@ -80,6 +81,11 @@
                                                     </div>
                                                 </div>
                                             </div>
+=======
+                                            <button type="button" class="btn btn-navy d-flex align-items-center ms-2"
+                                                style="" data-toggle="modal" data-target="#importExcel">Upload
+                                                File</button>
+>>>>>>> 25fd80c2db14234f8df955b39a566a9b9c579e2d
 
                                         </div>
                                     </div>
@@ -89,4 +95,11 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
         @endsection
+=======
+        </div>
+    </div>
+@endsection
+
+>>>>>>> 25fd80c2db14234f8df955b39a566a9b9c579e2d
