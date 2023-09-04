@@ -11,15 +11,19 @@
                                 <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/KaryawanTetap" class="link">
-                                    List Data Karyawan Tetap </a>
+                                <a href="/KaryawanPKWT" class="link">
+                                    List Data Karyawan PKWT </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Import Data
+                                <a href="/ImportPkwt" class="link">
+                                    Import Data </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Ajukan Persetujuan
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">Import Data</h1>
+                    <h1 class="mb-0 fw-bold">Ajukan Persetujuan</h1>
                 </div>
             </div>
         </div>
@@ -41,17 +45,13 @@
                                     <div class="row mt-0 justify-content-center">
 
                                         <div class="col-md-8">
-                                            <h2 class="text-center mb-3 mt-3 " style="">Upload Or Import
-                                                Data</h2>
-
-
+                                            <h2 class="text-center mb-3 mt-3">Data Berhasil Di Upload</h2>
                                         </div>
 
                                         <div class="d-flex justify-content-center w-100">
-                                            <button type="button" class="btn btn-navy d-flex align-items-center ms-2"
-                                                style="" data-toggle="modal" data-target="#importExcel">Upload
-                                                File</button>
-
+                                            <button type="button" class="btn btn-merah d-flex align-items-center ms-2"
+                                                data-toggle="modal" data-target="#importExcel">Ajukan
+                                                Persetujuan</button>
                                         </div>
                                     </div>
                                 </div>
@@ -63,4 +63,3 @@
         </div>
     </div>
 @endsection
-

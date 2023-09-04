@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AjukanInkaController;
+use App\Http\Controllers\AjukanPkwtController;
 use App\Http\Controllers\AjukanTetapController;
 use App\Http\Controllers\KaryawanPerbantuanInkaController;
 use App\Http\Controllers\KaryawanTetapController;
@@ -126,6 +128,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Routing Ajukan Tetap
     Route::get('AjukanTetap', [AjukanTetapController::class, 'index'])->name('ajukan_tetap');
+
+    //Routing Ajukan Inka
+    Route::get('AjukanInka', [AjukanInkaController::class, 'index'])->name('ajukan_inka');
+
+    //Routing Ajukan Pkwt
+    Route::get('AjukanPkwt', [AjukanPkwtController::class, 'index'])->name('ajukan_pkwt');
 
     // //Routing Success Logout
     // Route::get('seccesslogout', [SuccessLogoutController::class, 'index'])->name('successlogout');
