@@ -11,11 +11,11 @@
                                 <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/KaryawanTetap" class="link">
-                                    List Data Karyawan Tetap </a>
+                                <a href="/KaryawanPKWT" class="link">
+                                    List Data Karyawan PKWT </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/ImportTetap" class="link">
+                                <a href="/ImportPkwt" class="link">
                                     Import Data </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
@@ -61,5 +61,5 @@
                 </div>
             </div>
         </div>
-    </div>    
-    @endsection
+    </div>
+@endsection
