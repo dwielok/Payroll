@@ -37,15 +37,15 @@
                             <div
                                 class="col-lg-12 col-md-12 d-none d-md-flex align-items-center justify-content-between mb-0">
 
-                            <div class="container">
-                                <div class="row mt-0 justify-content-center">
+                                <div class="container">
+                                    <div class="row mt-0 justify-content-center">
 
-                                    <div class="col-md-8">
-                                        <h2 class="text-center mb-3 mt-3 " style="">Upload Or Import
-                                            Data</h2>
+                                        <div class="col-md-8">
+                                            <h2 class="text-center mb-3 mt-3 " style="">Upload Or Import
+                                                Data</h2>
 
 
-                                    </div>
+                                        </div>
 
                                         {{-- notifikasi form validasi --}}
                                         @if ($errors->has('file'))
@@ -63,8 +63,6 @@
                                         @endif
 
                                         <div class="d-flex justify-content-center w-100">
-<<<<<<< HEAD
-
 
                                             <button type="button" class="btn btn-navy d-flex align-items-center ms-2"
                                                 data-toggle="modal" data-target="#exampleModal">
@@ -100,12 +98,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-=======
-                                            <button type="button" class="btn btn-navy d-flex align-items-center ms-2"
-                                                style="" data-toggle="modal" data-target="#importExcel">Upload
-                                                File</button>
-
->>>>>>> ceadb290c777bf890bc39051ce9188a1b495b6af
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +106,7 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
+
 
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -126,9 +118,3 @@
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
             </script>
         @endsection
-=======
-        </div>
-    </div>
-@endsection
-
->>>>>>> ceadb290c777bf890bc39051ce9188a1b495b6af
