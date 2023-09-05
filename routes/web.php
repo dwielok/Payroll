@@ -3,6 +3,7 @@
 use App\Http\Controllers\AjukanInkaController;
 use App\Http\Controllers\AjukanPkwtController;
 use App\Http\Controllers\AjukanTetapController;
+use App\Http\Controllers\cobaController;
 use App\Http\Controllers\KaryawanPerbantuanInkaController;
 use App\Http\Controllers\KaryawanTetapController;
 use Illuminate\Support\Facades\Route;
@@ -156,4 +157,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
     // //Routing Success Logout
     // Route::get('seccesslogout', [SuccessLogoutController::class, 'index'])->name('successlogout');
+
+    //coba
+    Route::get('coba', [cobaController::class, 'index'])->name('coba');
 });
