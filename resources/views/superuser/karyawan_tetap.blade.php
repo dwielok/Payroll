@@ -52,7 +52,8 @@
 
                                 <div class="btn-group" style="margin-left: 275px">
                                     <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        aria-expanded="false">
+                                        {{-- data-bs-toggle="dropdown"  cari itu hapus --}}
                                         Filter Periode
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width:300px">
@@ -83,10 +84,10 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
-                                    <a href="{{ url('/ImportPkwt') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ImportTetapSuper') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
                                     </a>
-                                    <a href="{{ url('/ExportPkwt') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ExportTetapSuper') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
                                 </div>
@@ -124,8 +125,47 @@
                                             <th class="text-center">Penyesuaian Pengurangan</th>
                                             <th class="text-center">Penghasilan Bruto</th>
                                             <th class="text-center">Penghasilan Netto</th>
+                                            <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        <th>Januari</th>
+                                        <th>2020</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th><a href="{{ url('/#') }}" class="btn btn-navy align-items-center ms-2">
+                                                Edit
+                                            </a>
+                                            <a href="{{ url('/#') }}" class="btn btn-merah align-items-center ms-2">
+                                                Delete
+                                            </a>
+                                        </th>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

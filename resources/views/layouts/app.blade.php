@@ -236,32 +236,32 @@
                                                 Tetap </span></a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="#" class="sidebar-link"><span
+                                        <a href="/KaryawanInkaSuper" class="sidebar-link"><span
                                                 class="hide-menu">
                                                 Karyawan Perbantuan INKA
                                             </span></a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="#" class="sidebar-link"><span class="hide-menu">
+                                        <a href="/KaryawanPkwtSuper" class="sidebar-link"><span class="hide-menu">
                                                 Karyawan PKWT
                                             </span></a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/RekapSuper"
                                     aria-expanded="false">
                                     <i data-feather="book-open"></i><span class="hide-menu">Rekap Gaji</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/SlipSuper"
                                     aria-expanded="false">
                                     <i data-feather="archive"></i><span class="hide-menu">Slip Gaji</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/TemplateSuper"
                                     aria-expanded="false">
                                     <i data-feather="download"></i><span class="hide-menu">Download Template</span>
                                 </a>
@@ -338,6 +338,24 @@
     <script src="../../dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 
     <script src="../../dist/js/pages/datatable/datatable-basic.init.js"></script>
+
+    <script>
+        //document ready
+        $(document).ready(function() {
+            $('button.dropdown-toggle').on('click', function() {
+                // .dropdown-menu toggleClass('show');
+                $(this).next().toggleClass('show');
+            });
+
+            $('body').on('click', function(e) {
+                if (!$('button.dropdown-toggle').is(e.target) && $('button.dropdown-toggle').has(e.target)
+                    .length === 0 && $(
+                        '.show').has(e.target).length === 0) {
+                    $('button.dropdown-toggle').next().removeClass('show');
+                }
+            });
+        })
+    </script>
 
 </body>
 <!-- Modal Logout -->

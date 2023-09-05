@@ -12,13 +12,19 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardSuperController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ExportInkaController;
+use App\Http\Controllers\ExportInkaSuperController;
 use App\Http\Controllers\ExportPkwtController;
+use App\Http\Controllers\ExportPkwtSuperController;
 use App\Http\Controllers\ExportTetapController;
+use App\Http\Controllers\ExportTetapSuperController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ImportFileController;
 use App\Http\Controllers\ImportInkaController;
+use App\Http\Controllers\ImportInkaSuperController;
 use App\Http\Controllers\ImportPkwtController;
+use App\Http\Controllers\ImportPkwtSuperController;
 use App\Http\Controllers\ImportTetapController;
+use App\Http\Controllers\ImportTetapSuperController;
 use App\Http\Controllers\KaryawanInkaSuperController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\listTetap;
@@ -27,8 +33,11 @@ use App\Http\Controllers\KaryawanPkwtSuperController;
 use App\Http\Controllers\KaryawanTetapSuperController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RekapController;
+use App\Http\Controllers\RekapSuperController;
 use App\Http\Controllers\SlipController;
+use App\Http\Controllers\SlipSuperController;
 use App\Http\Controllers\SuccessLogoutController;
+use App\Http\Controllers\TemplateSuperController;
 use App\Http\Controllers\viewInkaController;
 use App\Http\Controllers\viewPkwtController;
 use App\Http\Controllers\viewTetapController;
@@ -154,6 +163,32 @@ Route::group(['middleware' => 'auth'], function () {
         //Routing Halaman Karyawan PKWT
         Route::get('KaryawanPkwtSuper', [KaryawanPkwtSuperController::class, 'index'])->name('superuser.karyawan_pkwt');
 
+        //Routing Halaman Export Tetap
+        Route::get('ExportTetapSuper', [ExportTetapSuperController::class, 'index'])->name('superuser.export_tetap');
+
+        //Routing Halaman Export Inka
+        Route::get('ExportInkaSuper', [ExportInkaSuperController::class, 'index'])->name('superuser.export_inka');
+
+        //Rotuing Halaman Export Pkwt
+        Route::get('ExportPkwtSuper', [ExportPkwtSuperController::class, 'index'])->name('superuser.export_pkwt');
+
+        //Routing Halaman Import Tetap
+        Route::get('ImportTetapSuper', [ImportTetapSuperController::class, 'index'])->name('superuser.import_tetap');
+
+        //Routing Halaman Import Inka
+        Route::get('ImportInkaSuper', [ImportInkaSuperController::class, 'index'])->name('superuser.import_inka');
+
+        //Routing Halaman Import Pkwt
+        Route::get('ImportPkwtSuper', [ImportPkwtSuperController::class, 'index'])->name('superuser.import_pkwt');
+
+        //Routing Halaman Rekap Superuser
+        Route::get('RekapSuper', [RekapSuperController::class, 'index'])->name('superuser.rekap');
+
+        //Routing Halaman Slip Superuser
+        Route::get('SlipSuper', [SlipSuperController::class, 'index'])->name('superuser.slip');
+
+        //Routing Halaman Template Superuser
+        Route::get('TemplateSuper', [TemplateSuperController::class, 'index'])->name('superuser.template');
     });
     // //Routing Success Logout
     // Route::get('seccesslogout', [SuccessLogoutController::class, 'index'])->name('successlogout');
