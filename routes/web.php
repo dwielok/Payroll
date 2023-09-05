@@ -8,6 +8,7 @@ use App\Http\Controllers\KaryawanTetapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardSuperController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ExportInkaController;
 use App\Http\Controllers\ExportPkwtController;
@@ -17,9 +18,12 @@ use App\Http\Controllers\ImportFileController;
 use App\Http\Controllers\ImportInkaController;
 use App\Http\Controllers\ImportPkwtController;
 use App\Http\Controllers\ImportTetapController;
+use App\Http\Controllers\KaryawanInkaSuperController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\listTetap;
 use App\Http\Controllers\KaryawanPKWTController;
+use App\Http\Controllers\KaryawanPkwtSuperController;
+use App\Http\Controllers\KaryawanTetapSuperController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RekapController;
 use App\Http\Controllers\SlipController;
@@ -136,6 +140,20 @@ Route::group(['middleware' => 'auth'], function () {
     //Routing Ajukan Pkwt
     Route::get('AjukanPkwt', [AjukanPkwtController::class, 'index'])->name('ajukan_pkwt');
 
+    Route::group(['middleware' => ['superuser']], function () {
+        Route::get('dashboardSuperuser', [DashboardSuperController::class, 'index'])->name('superuser.dashboard');
+        //taroh rute superadmin ng kene
+
+        //Routing Halaman Karyawan Tetap
+        Route::get('KaryawanTetapSuper', [KaryawanTetapSuperController::class, 'index'])->name('superuser.karyawan_tetap');
+
+        //Routing Halaman Karyawan Inka
+        Route::get('KaryawanInkaSuper', [KaryawanInkaSuperController::class, 'index'])->name('superuser.karyawan_inka');
+
+        //Routing Halaman Karyawan PKWT
+        Route::get('KaryawanPkwtSuper', [KaryawanPkwtSuperController::class, 'index'])->name('superuser.karyawan_pkwt');
+
+    });
     // //Routing Success Logout
     // Route::get('seccesslogout', [SuccessLogoutController::class, 'index'])->name('successlogout');
 });
