@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -26,7 +27,12 @@ class LoginController extends Controller
         ];
 
         if (Auth::Attempt($data)) {
-            return redirect('dashboard');
+            $user = User::where('email', $request->input('email'))->first();
+            if ($user->role === 0) {
+                return redirect('dashboard');
+            } else {
+                return redirect('dashboardSuperuser');
+            }
         } else {
             Session::flash('error', 'Email atau Password Salah');
             return redirect('/');

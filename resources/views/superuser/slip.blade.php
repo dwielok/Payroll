@@ -8,14 +8,14 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 d-flex align-items-center">
                             <li class="breadcrumb-item">
-                                <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
+                                <a href="/dashboardSuperuser" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Rekap Gaji
+                                Slip Gaji
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">Rekap Gaji</h1>
+                    <h1 class="mb-0 fw-bold">Slip Gaji</h1>
                 </div>
             </div>
         </div>
@@ -96,8 +96,8 @@
                                         <tr>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
-                                            {{-- <th class="text-center">NIP</th>
-                                            <th class="text-center">Nama</th> --}}
+                                            <th class="text-center">NIP</th>
+                                            <th class="text-center">Nama</th>
                                         </tr>
                                     </thead>
                                 </table>

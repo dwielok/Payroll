@@ -107,8 +107,8 @@
                             <a class="nav-link sidebartoggler d-none d-md-block" href="javascript:void(0)"><i
                                     data-feather="menu"></i></a>
                         </li>
-                        <!-- search -->
-                        <!-- <li class="nav-item" style="margin-left: 50px">
+                        {{-- <!-- search -->
+                        <li class="nav-item" style="margin-left: 50px">
                             <div class="input-group" style="position: absolute; width:50%; margin:10px">
                                 <span class="input-group-prepend">
                                     <button class="btn btn-outline-secondary bg-white border-end-0  border ms-n5"
@@ -119,7 +119,7 @@
                                 <input class="form-control border-start-0 border" type="search" value="search"
                                     id="example-search-input">
                             </div>
-                        </li> -->
+                        </li> --}}
                     </ul>
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
@@ -135,7 +135,8 @@
                                     class="profile-pic rounded-circle" />
                                 <div class="d-none d-md-flex">
                                     <span class="ms-2">
-                                        <span class="text-dark fw-bold">User</span></span>
+                                        <span
+                                            class="text-dark fw-bold">{{ Auth::user()->role == 1 ? 'Superuser' : 'User' }}</span></span>
                                     {{-- <span>
                                         <i data-feather="chevron-down" class="feather-sm"></i>
                                     </span> --}}
@@ -167,52 +168,112 @@
                             <i class="nav-small-line"></i>
                             <span class="hide-menu">Dashboards</span>
                         </li> --}}
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ url('/dashboard') }}" aria-expanded="false">
-                                <i data-feather="grid"></i><span class="hide-menu">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="inbox"></i><span class="hide-menu">Gaji
-                                    Karyawan
-                                </span></a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item">
-                                    <a href="/KaryawanTetap" class="sidebar-link"><span class="hide-menu"> Karyawan
-                                            Tetap </span></a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/karyawanperbantuaninka" class="sidebar-link"><span class="hide-menu">
-                                            Karyawan Perbantuan INKA
-                                        </span></a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/karyawanPKWT" class="sidebar-link"><span class="hide-menu">
-                                            Karyawan PKWT
-                                        </span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/rekap"
-                                aria-expanded="false">
-                                <i data-feather="book-open"></i><span class="hide-menu">Rekap Gaji</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/slip"
-                                aria-expanded="false">
-                                <i data-feather="archive"></i><span class="hide-menu">Slip Gaji</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/template"
-                                aria-expanded="false">
-                                <i data-feather="download"></i><span class="hide-menu">Download Template</span>
-                            </a>
-                        </li>
+                        @if (Auth::user()->role == 0)
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                    href="{{ url('/dashboard') }}" aria-expanded="false">
+                                    <i data-feather="grid"></i><span class="hide-menu">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><i data-feather="inbox"></i><span class="hide-menu">Gaji
+                                        Karyawan
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+                                        <a href="/KaryawanTetap" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan
+                                                Tetap </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/karyawanperbantuaninka" class="sidebar-link"><span
+                                                class="hide-menu">
+                                                Karyawan Perbantuan INKA
+                                            </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/karyawanPKWT" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan PKWT
+                                            </span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/rekap"
+                                    aria-expanded="false">
+                                    <i data-feather="book-open"></i><span class="hide-menu">Rekap Gaji</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/slip"
+                                    aria-expanded="false">
+                                    <i data-feather="archive"></i><span class="hide-menu">Slip Gaji</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/template"
+                                    aria-expanded="false">
+                                    <i data-feather="download"></i><span class="hide-menu">Download Template</span>
+                                </a>
+                            </li>
+                        @else
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                    href="{{ url('/dashboardSuperuser') }}" aria-expanded="false">
+                                    <i data-feather="grid"></i><span class="hide-menu">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><i data-feather="inbox"></i><span class="hide-menu">Gaji
+                                        Karyawan
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+                                        <a href="/KaryawanTetapSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan
+                                                Tetap </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="KaryawanInkaSuper" class="sidebar-link"><span
+                                                class="hide-menu">
+                                                Karyawan Perbantuan INKA
+                                            </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="KaryawanPkwtSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan PKWT
+                                            </span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/RekapSuper"
+                                    aria-expanded="false">
+                                    <i data-feather="book-open"></i><span class="hide-menu">Rekap Gaji</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/SlipSuper"
+                                    aria-expanded="false">
+                                    <i data-feather="archive"></i><span class="hide-menu">Slip Gaji</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/TemplateSuper"
+                                    aria-expanded="false">
+                                    <i data-feather="download"></i><span class="hide-menu">Download Template</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                    aria-expanded="false">
+                                    <i data-feather="check-circle"></i><span class="hide-menu">Aproval</span>
+                                </a>
+                            </li>
+                        @endif
+
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                                 aria-expanded="false" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -222,6 +283,8 @@
 
                     </ul>
                 </nav>
+
+
                 <!-- End Sidebar navigation -->
             </div>
 
@@ -244,11 +307,13 @@
         <!-- ============================================================= -->
         <!-- End Page wrapper  -->
         <!-- ============================================================= -->
+
+
+
     </div>
     <!-- ============================================================= -->
     <!-- End Wrapper -->
     <!-- ============================================================= -->
-
     <!-- ============================================================= -->
     <!-- All Jquery -->
     <!-- ============================================================= -->
@@ -273,32 +338,49 @@
     <script src="../../dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 
     <script src="../../dist/js/pages/datatable/datatable-basic.init.js"></script>
-</body>
 
+    <script>
+        //document ready
+        $(document).ready(function() {
+            $('button.dropdown-toggle').on('click', function() {
+                // .dropdown-menu toggleClass('show');
+                $(this).next().toggleClass('show');
+            });
+
+            $('body').on('click', function(e) {
+                if (!$('button.dropdown-toggle').is(e.target) && $('button.dropdown-toggle').has(e.target)
+                    .length === 0 && $(
+                        '.show').has(e.target).length === 0) {
+                    $('button.dropdown-toggle').next().removeClass('show');
+                }
+            });
+        })
+    </script>
+
+</body>
 <!-- Modal Logout -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Logout</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Do you want to Logout?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger"
-                                    data-bs-dismiss="modal">No</button>
-                                    <form id="logout-form" action="{{ url('/actionlogout') }}">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Logout</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Do you want to Logout?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                <form id="logout-form" action="{{ url('/actionlogout') }}">
 
-</form>
-<button class="btn btn-navy" onclick="document.getElementById(
-                        'logout-form').submit();">Yes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </form>
+                <button class="btn btn-navy"
+                    onclick="document.getElementById(
+                                        'logout-form').submit();">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </html>
