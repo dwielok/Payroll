@@ -42,7 +42,7 @@
 
                                 <div class="btn-group">
                                     <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        aria-expanded="false">
                                         Filter Periode
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width:300px">
