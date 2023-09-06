@@ -12,7 +12,7 @@
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 <a href="/KaryawanTetap" class="link">
-                                    List Data Karyawan Tetap </a>
+                                    List Data Karyawan Tetap</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Import Data
@@ -23,9 +23,7 @@
                 </div>
             </div>
         </div>
-        <!-- ============================================================= -->
-        <!-- Container fluid  -->
-        <!-- ============================================================= -->
+
         <div class="container-fluid">
             <!-- ============================================================= -->
             <!-- Start Page Content -->
@@ -63,6 +61,7 @@
                                         @endif
 
                                         <div class="d-flex justify-content-center w-100">
+
 
                                             <button type="button" class="btn btn-navy d-flex align-items-center ms-2"
                                                 data-toggle="modal" data-target="#exampleModal">
@@ -106,7 +105,6 @@
                     </div>
                 </div>
             </div>
-
 
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
