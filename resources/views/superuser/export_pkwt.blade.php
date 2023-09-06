@@ -8,14 +8,18 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 d-flex align-items-center">
                             <li class="breadcrumb-item">
-                                <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
+                                <a href="/dashboardSuperuser" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                List Data Karyawan PKWT
+                                <a href="/KaryawanPkwtSuper" class="link">
+                                    List Data Karyawan PKWT </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Export Data
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data Karyawan PKWT</h1>
+                    <h1 class="mb-0 fw-bold">Export Data</h1>
                 </div>
             </div>
         </div>
@@ -42,7 +46,7 @@
 
                                 <div class="btn-group">
                                     <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        aria-expanded="false">
+                                        \aria-expanded="false">
                                         Filter Periode
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width:300px">
@@ -71,36 +75,16 @@
                                         </div>
                                     </ul>
                                 </div>
-                                <div class="d-flex align-items-center g-2">
 
-                                    <a href="{{ url('/ImportPkwt') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Import
-                                    </a>
-                                    <a href="{{ url('/ExportPkwt') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Export
-                                    </a>
-                                </div>
                             </div>
                             <div class="table-responsive">
-                                <table id="zero_config" class="table table-striped table-bordered text-center ">
+                                <table id="zero_config" class="table table-striped table-bordered text-nowrap">
                                     <thead>
                                         <tr>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
-                                            <th class="text-center">Status</th>
-                                            <th class="text-center">Keterangan</th>
-                                            <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <th>Januari</th>
-                                        <th>2020</th>
-                                        <th>Disetujui</th>
-                                        <th>-</th>
-                                        <th><a href="{{ url('/viewPkwt') }}" class="btn btn-navy align-items-center ms-2">
-                                                View
-                                            </a></th>
-                                    </tbody>
 
                                     {{-- <tfoot>
                                         <tr>
@@ -112,6 +96,16 @@
                                         </tr>
                                     </tfoot> --}}
                                 </table>
+                            </div>
+                            <div class="d-flex justify-content-end">
+
+                                {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
+                                    Import --}}
+                                </a>
+                                <a href="{{ url('test_pdf') }}" class="btn btn-navy d-flex align-items-center ms-2"
+                                    style="margin-top: 30px">
+                                    Print
+                                </a>
                             </div>
                         </div>
                     </div>
