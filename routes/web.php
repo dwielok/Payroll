@@ -142,4 +142,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //coba
     Route::get('coba', [cobaController::class, 'index'])->name('coba');
+
+    // Route::get('/siswa/export_excel', 'SiswaController@export_excel');
+    // Route::post('importTetap/import_excell', [ImportTetapController::class, 'import_excel'])->name('importTetap');
 });
