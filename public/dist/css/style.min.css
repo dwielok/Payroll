@@ -35114,6 +35114,11 @@ fieldset:disabled .btn {
 
 .dropdown-menu.show {
     display: block;
+    width: 300px;
+    position: absolute;
+    inset: 0px auto auto 0px;
+    margin: 0px;
+    transform: translate(0px, 43px);
 }
 
 .dropdown-header {

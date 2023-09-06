@@ -8,14 +8,14 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 d-flex align-items-center">
                             <li class="breadcrumb-item">
-                                <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
+                                <a href="/dashboardSuperuser" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 List Data Karyawan PKWT
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data Karyawan PKWT</h1>
+                    <h1 class="mb-0 fw-bold">List Data</h1>
                 </div>
             </div>
         </div>
@@ -39,8 +39,18 @@
             justify-content-between
             mb-4
           ">
+                                <div class="input-group" style="position: absolute; width:20%; margin:50px">
+                                    <span class="input-group-prepend">
+                                        <button class="btn btn-outline-secondary bg-white border-end-0  border ms-n5"
+                                            type="button">
+                                            <i data-feather="search"></i>
+                                        </button>
+                                    </span>
+                                    <input class="form-control border-start-0 border" type="search" value="search"
+                                        id="example-search-input">
+                                </div>
 
-                                <div class="btn-group">
+                                <div class="btn-group" style="margin-left: 275px">
                                     <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
                                         aria-expanded="false">
                                         Filter Periode
@@ -73,44 +83,80 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
-                                    <a href="{{ url('/ImportPkwt') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ImportPkwtSuper') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
                                     </a>
-                                    <a href="{{ url('/ExportPkwt') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ExportPkwtSuper') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
                                 </div>
                             </div>
-                            <div class="table-responsive">
-                                <table id="zero_config" class="table table-striped table-bordered text-center ">
+                            <div class="table-responsive-" style="overflow-x:auto;">
+                                <table id="zero_config" class="table table-striped table-bordered text-nowrap">
                                     <thead>
                                         <tr>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
-                                            <th class="text-center">Status</th>
-                                            <th class="text-center">Keterangan</th>
+                                            <th class="text-center">NIP</th>
+                                            <th class="text-center">Nama</th>
+                                            <th class="text-center">Jabatan</th>
+                                            <th class="text-center">Golongan</th>
+                                            <th class="text-center">Gaji Pokok</th>
+                                            <th class="text-center">Tunjangan Tetap</th>
+                                            <th class="text-center">Kehadiran</th>
+                                            <th class="text-center">Hari Kerja</th>
+                                            <th class="text-center">Nilai IKK</th>
+                                            <th class="text-center">Dana IKK</th>
+                                            <th class="text-center">Tunjangan Transportasi</th>
+                                            <th class="text-center">Tunjangan Profesional</th>
+                                            <th class="text-center">Tunjangan Karya</th>
+                                            <th class="text-center">BPJS Kesehatan</th>
+                                            <th class="text-center">BPJS Ketenagakerjaan</th>
+                                            <th class="text-center">Jam Hilang</th>
+                                            <th class="text-center">Penghasilan Tetap</th>
+                                            <th class="text-center">Lembur Weekdays</th>
+                                            <th class="text-center">Lembur Weekend</th>
+                                            <th class="text-center">Penyesuaian Penambahan</th>
+                                            <th class="text-center">Penyesuaian Pengurangan</th>
+                                            <th class="text-center">Penghasilan Bruto</th>
+                                            <th class="text-center">Penghasilan Netto</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <th>Januari</th>
                                         <th>2020</th>
-                                        <th>Disetujui</th>
                                         <th>-</th>
-                                        <th><a href="{{ url('/viewPkwt') }}" class="btn btn-navy align-items-center ms-2">
-                                                View
-                                            </a></th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th><a href="{{ url('/#') }}" class="btn btn-navy align-items-center ms-2">
+                                                Edit
+                                            </a>
+                                            <a href="{{ url('/#') }}" class="btn btn-merah align-items-center ms-2">
+                                                Delete
+                                            </a>
+                                        </th>
                                     </tbody>
-
-                                    {{-- <tfoot>
-                                        <tr>
-                                            <th>Bulan</th>
-                                            <th>Tahun</th>
-                                            <th>Status</th>
-                                            <th>Keterangan</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </tfoot> --}}
                                 </table>
                             </div>
                         </div>
