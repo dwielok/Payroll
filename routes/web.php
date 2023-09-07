@@ -3,6 +3,7 @@
 use App\Http\Controllers\AjukanInkaController;
 use App\Http\Controllers\AjukanPkwtController;
 use App\Http\Controllers\AjukanTetapController;
+use App\Http\Controllers\ApprovalSuperController;
 use App\Http\Controllers\cobaController;
 use App\Http\Controllers\KaryawanPerbantuanInkaController;
 use App\Http\Controllers\KaryawanTetapController;
@@ -189,6 +190,14 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Routing Halaman Template Superuser
         Route::get('TemplateSuper', [TemplateSuperController::class, 'index'])->name('superuser.template');
+
+
+        //Routing Halaman Approval Superusser
+        Route::get('ApprovalSuper', [ApprovalSuperController::class, 'index'])->name('superuser.approval');
+
+        //Routing decline approval superuser
+        Route::patch('ApprovalSuper/decline', [ApprovalSuperController::class, 'decline'])->name('superuser.approval.decline');
+        Route::patch('ApprovalSuper/approve', [ApprovalSuperController::class, 'approve'])->name('superuser.approval.approve');
     });
     // //Routing Success Logout
     // Route::get('seccesslogout', [SuccessLogoutController::class, 'index'])->name('successlogout');
