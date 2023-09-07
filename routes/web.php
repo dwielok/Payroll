@@ -201,4 +201,13 @@ Route::group(['middleware' => 'auth'], function () {
     });
     // //Routing Success Logout
     // Route::get('seccesslogout', [SuccessLogoutController::class, 'index'])->name('successlogout');
+<<<<<<< HEAD
+
+    //coba
+    Route::get('coba', [cobaController::class, 'index'])->name('coba');
+
+    // Route::get('/siswa/export_excel', 'SiswaController@export_excel');
+    // Route::post('importTetap/import_excell', [ImportTetapController::class, 'import_excel'])->name('importTetap');
+=======
+>>>>>>> 9a2847e93c42871b2ca6720e48374379803df087
 });
