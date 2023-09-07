@@ -3,6 +3,7 @@
 use App\Http\Controllers\AjukanInkaController;
 use App\Http\Controllers\AjukanPkwtController;
 use App\Http\Controllers\AjukanTetapController;
+use App\Http\Controllers\ApprovalSuperController;
 use App\Http\Controllers\cobaController;
 use App\Http\Controllers\KaryawanPerbantuanInkaController;
 use App\Http\Controllers\KaryawanTetapController;
@@ -202,10 +203,20 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Routing Halaman Edit Pkwt Superuser
         Route::get('EditPkwtSuper', [EditPkwtSuperController::class, 'index'])->name('superuser.edit_pkwt');
+
+        //Routing Halaman Approval Superusser
+        Route::get('ApprovalSuper', [ApprovalSuperController::class, 'index'])->name('superuser.approval');
+
+        //Routing decline approval superuser
+        Route::patch('ApprovalSuper/decline', [ApprovalSuperController::class, 'decline'])->name('superuser.approval.decline');
+        Route::patch('ApprovalSuper/approve', [ApprovalSuperController::class, 'approve'])->name('superuser.approval.approve');
     });
     // //Routing Success Logout
     // Route::get('seccesslogout', [SuccessLogoutController::class, 'index'])->name('successlogout');
 
     //coba
     Route::get('coba', [cobaController::class, 'index'])->name('coba');
+
+    // Route::get('/siswa/export_excel', 'SiswaController@export_excel');
+    // Route::post('importTetap/import_excell', [ImportTetapController::class, 'import_excel'])->name('importTetap');
 });
