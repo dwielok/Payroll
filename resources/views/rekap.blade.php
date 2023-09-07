@@ -103,7 +103,7 @@
                                 </table>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <a href="{{ url('/test_pdf') }}" class="btn btn-navy d-flex align-items-center ms-2"
+                                <a href="{{ url('/test_rar') }}" class="btn btn-navy d-flex align-items-center ms-2"
                                     style="margin-top: 30px">
                                     Print
                                 </a>
