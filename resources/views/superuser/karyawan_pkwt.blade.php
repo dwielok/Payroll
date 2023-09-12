@@ -149,7 +149,7 @@
                                         <th>-</th>
                                         <th>-</th>
                                         <th>-</th>
-                                        <th><a href="{{ url('/#') }}" class="btn btn-navy align-items-center ms-2">
+                                        <th><a href="{{ url('/EditPkwtSuper') }}" class="btn btn-navy align-items-center ms-2">
                                                 Edit
                                             </a>
                                             <a href="{{ url('/#') }}" class="btn btn-merah align-items-center ms-2">
