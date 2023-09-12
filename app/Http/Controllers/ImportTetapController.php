@@ -10,7 +10,9 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use App\Imports\KaryawanTetapImport;
 use App\Models\Approval;
+use App\Models\GajiTemp;
 use App\Models\ImportTetap;
+use App\Models\Karyawan;
 use Illuminate\Support\Facades\Session;
 
 class ImportTetapController extends Controller
@@ -60,10 +62,10 @@ class ImportTetapController extends Controller
 
         $nama_file = rand() . $file->getClientOriginalName();
 
-        $file->move('importTetap', $nama_file);
+        $file->move('importTetapDoc', $nama_file);
 
         // Excel::import(new KaryawanTetapImport, public_path('/importTetap/' . $nama_file));
-        $collection = Excel::toCollection(new KaryawanTetapImport, public_path('/importTetap/' . $nama_file));
+        $collection = Excel::toCollection(new KaryawanTetapImport, public_path('/importTetapDoc/' . $nama_file));
         // $collection = (new KaryawanTetapImport)->toCollection($file);
 
         $collection = $collection[0];
@@ -77,7 +79,7 @@ class ImportTetapController extends Controller
         //lowercase type
         $type = strtolower($type);
 
-        Approval::insert([
+        $approval = Approval::create([
             'bulan' => $bulan,
             'year' => $tahun,
             'tipe_karyawan' => $type,
@@ -87,6 +89,31 @@ class ImportTetapController extends Controller
 
         //remove the 3 index top
         $datas = $collection->splice(3);
+        $id_approval = $approval->id;
+
+        //search NIP in karyawan by looping $datas
+        $datas->map(function ($item) use ($id_approval) {
+            $nip = $item[1];
+            if ($nip != null) {
+                $karyawan = Karyawan::where('nip', $nip)->first();
+                GajiTemp::insert([
+                    'id_karyawan' => $karyawan->id,
+                    'id_approval' => $id_approval,
+                    'kehadiran' => $item[3],
+                    'hari_kerja' => $item[4],
+                    'nilai_ikk' => $item[5],
+                    'dana_ikk' => $item[6],
+                    'jam_lembur_weekdays' => $item[7],
+                    'jam_lembur_weekend' => $item[8],
+                    'penyesuaian_penambahan' => $item[9],
+                    'penyesuaian_pengurangan' => $item[10],
+                    'ppip_mandiri' => $item[11],
+                    'jam_hilang' => $item[12],
+                    'kopinka' => $item[13],
+                    'keuangan' => $item[14],
+                ]);
+            }
+        });
 
         dd($datas);
     }
