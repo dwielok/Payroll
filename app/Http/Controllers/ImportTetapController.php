@@ -8,6 +8,8 @@ use App\Exports\SiswaExport;
 use App\Imports\SiswaImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use App\Imports\KaryawanTetapImport;
+use App\Models\Approval;
 use App\Models\ImportTetap;
 use Illuminate\Support\Facades\Session;
 
@@ -47,4 +49,58 @@ class ImportTetapController extends Controller
     //     // alihkan halaman kembali
     //     return redirect('/importTetap');
     // }
+
+    public function import(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:xls,xlsx'
+        ]);
+
+        $file = $request->file('file');
+
+        $nama_file = rand() . $file->getClientOriginalName();
+
+        $file->move('importTetap', $nama_file);
+
+        // Excel::import(new KaryawanTetapImport, public_path('/importTetap/' . $nama_file));
+        $collection = Excel::toCollection(new KaryawanTetapImport, public_path('/importTetap/' . $nama_file));
+        // $collection = (new KaryawanTetapImport)->toCollection($file);
+
+        $collection = $collection[0];
+
+        $date = $collection[0][1];
+        //split by space
+        $explode = explode(" ", $date);
+        $bulan = $explode[0];
+        $tahun = $explode[1];
+        $type = $collection[1][1];
+        //lowercase type
+        $type = strtolower($type);
+
+        Approval::insert([
+            'bulan' => $bulan,
+            'year' => $tahun,
+            'tipe_karyawan' => $type,
+            'status' => '',
+            'keterangan' => '',
+        ]);
+
+        //remove the 3 index top
+        $datas = $collection->splice(3);
+
+        dd($datas);
+    }
+
+    public function test_upload(Request $request)
+    {
+        $approval = Approval::insert([
+            'bulan' => 'Desember',
+            'year' => '2023',
+            'tipe_karyawan' => 'tetap',
+            'status' => '',
+            'keterangan' => '',
+        ]);
+
+        dd($approval);
+    }
 }
