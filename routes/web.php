@@ -114,7 +114,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
 
     //Routing Import Tetap
-    Route::get('ImportTetap', [ImportTetapController::class, 'index'])->name('import_tetap');
+    Route::get('ImportTetaps', [ImportTetapController::class, 'index'])->name('import_tetap');
 
     //Routing Export Tetap
     Route::get('ExportTetap', [ExportTetapController::class, 'index'])->name('export_tetap');
@@ -191,7 +191,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Routing Halaman Slip Superuser
         Route::get('SlipSuper', [SlipSuperController::class, 'index'])->name('superuser.slip');
- 
+
         //Routing Halaman Template Superuser
         Route::get('TemplateSuper', [TemplateSuperController::class, 'index'])->name('superuser.template');
 
@@ -220,3 +220,6 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/siswa/export_excel', 'SiswaController@export_excel');
     // Route::post('importTetap/import_excell', [ImportTetapController::class, 'import_excel'])->name('importTetap');
 });
+
+Route::post('test_import', [ImportTetapController::class, 'import'])->name('importTetap');
+Route::get('test_upload', [ImportTetapController::class, 'test_upload'])->name('testUpload');

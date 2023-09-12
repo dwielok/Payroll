@@ -93,13 +93,32 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <th>Januari</th>
-                                        <th>2020</th>
-                                        <th>Disetujui</th>
-                                        <th>-</th>
-                                        <th><a href="{{ url('/viewInka') }}" class="btn btn-navy align-items-center ms-2">
-                                                View
-                                            </a></th>
+                                        @forelse ($approvals as $approval)
+                                            @php
+                                                if ($approval->status == '0') {
+                                                    $status = 'Disetujui';
+                                                } elseif ($approval->status == '1') {
+                                                    $status = 'Ditolak';
+                                                } else {
+                                                    $status = '';
+                                                }
+                                            @endphp
+                                            <tr>
+                                                <td>{{ __($approval->bulan) }}</td>
+                                                <td>{{ __($approval->year) }}</td>
+                                                <td class="text-{{ $approval->status == 0 ? 'success' : 'danger' }}">
+                                                    {{ $status }}</td>
+                                                <td>{{ __($approval->keterangan) }}</td>
+                                                <td>
+                                                    <a href="{{ url('/viewInka') }}" class="btn btn-navy align-items-center ms-2">
+                                                        View
+                                                    </a>
+
+
+                                                </td>
+                                            </tr>
+                                        @empty
+                                        @endforelse
                                     </tbody>
 
                                     {{-- <tfoot>
