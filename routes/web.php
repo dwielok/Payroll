@@ -3,6 +3,7 @@
 use App\Http\Controllers\AjukanInkaController;
 use App\Http\Controllers\AjukanPkwtController;
 use App\Http\Controllers\AjukanTetapController;
+use App\Http\Controllers\ApprovalSuperController;
 use App\Http\Controllers\cobaController;
 use App\Http\Controllers\KaryawanPerbantuanInkaController;
 use App\Http\Controllers\KaryawanTetapController;
@@ -10,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardSuperController;
+use App\Http\Controllers\EditInkaSuperController;
+use App\Http\Controllers\EditPkwtSuperController;
+use App\Http\Controllers\EditTetapSuperController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ExportInkaController;
 use App\Http\Controllers\ExportInkaSuperController;
@@ -58,6 +62,7 @@ use App\Http\Controllers\viewTetapController;
 // });
 
 Route::get('/test_pdf', [App\Http\Controllers\PdfController::class, 'test_pdf']);
+Route::get('/test_rar', [App\Http\Controllers\PdfController::class, 'test_rar']);
 
 //ROUTING UNTUK LOGIN
 Route::get('/', [LoginController::class, 'login'])->name('login');
@@ -186,9 +191,25 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Routing Halaman Slip Superuser
         Route::get('SlipSuper', [SlipSuperController::class, 'index'])->name('superuser.slip');
-
+ 
         //Routing Halaman Template Superuser
         Route::get('TemplateSuper', [TemplateSuperController::class, 'index'])->name('superuser.template');
+
+        //Routing Halaman Edit Tetap Superuser
+        Route::get('EditTetapSuper', [EditTetapSuperController::class, 'index'])->name('superuser.edit_tetap');
+
+        //Routing Halaman Edit Inka Superuser
+        Route::get('EditInkaSuper', [EditInkaSuperController::class, 'index'])->name('superuser.edit_inka');
+
+        //Routing Halaman Edit Pkwt Superuser
+        Route::get('EditPkwtSuper', [EditPkwtSuperController::class, 'index'])->name('superuser.edit_pkwt');
+
+        //Routing Halaman Approval Superusser
+        Route::get('ApprovalSuper', [ApprovalSuperController::class, 'index'])->name('superuser.approval');
+
+        //Routing decline approval superuser
+        Route::patch('ApprovalSuper/decline', [ApprovalSuperController::class, 'decline'])->name('superuser.approval.decline');
+        Route::patch('ApprovalSuper/approve', [ApprovalSuperController::class, 'approve'])->name('superuser.approval.approve');
     });
     // //Routing Success Logout
     // Route::get('seccesslogout', [SuccessLogoutController::class, 'index'])->name('successlogout');

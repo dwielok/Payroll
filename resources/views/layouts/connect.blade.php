@@ -276,7 +276,7 @@
 
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-                                aria-expanded="false" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                aria-expanded="false" data-bs-toggle="modal" data-bs-target="#modalLogout">
                                 <i data-feather="log-out"></i><span class="hide-menu">Logout</span>
                             </a>
                         </li>
@@ -360,11 +360,11 @@
 </body>
 <!-- Modal Logout -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Logout</h1>
+                <h1 class="modal-title fs-5" id="modalLogoutLabel">Logout</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
