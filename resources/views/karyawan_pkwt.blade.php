@@ -110,7 +110,8 @@
                                                     {{ $status }}</td>
                                                 <td>{{ __($approval->keterangan) }}</td>
                                                 <td>
-                                                    <a href="{{ url('/viewPkwt') }}" class="btn btn-navy align-items-center ms-2">
+                                                    <a href="{{ url('/viewPkwt?id=' . $approval->id) }}"
+                                                        class="btn btn-navy align-items-center ms-2">
                                                         View
                                                     </a>
 
