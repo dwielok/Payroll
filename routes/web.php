@@ -36,6 +36,7 @@ use App\Http\Controllers\KaryawanPKWTController;
 use App\Http\Controllers\KaryawanPkwtSuperController;
 use App\Http\Controllers\KaryawanTetapSuperController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\RekapController;
 use App\Http\Controllers\RekapSuperController;
 use App\Http\Controllers\SlipController;
@@ -45,6 +46,7 @@ use App\Http\Controllers\TemplateSuperController;
 use App\Http\Controllers\viewInkaController;
 use App\Http\Controllers\viewPkwtController;
 use App\Http\Controllers\viewTetapController;
+use App\Http\Controllers\viewTetapSuperController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,6 +100,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Routing Halaman Slip
     Route::get('slip', [SlipController::class, 'index'])->name('slip');
+
+    //Routing Halaman test pdf
+    // Route::get('test_pdf', [PdfController::class, 'test_pdf'])->name('test_pdf');
 
     //Route untuk Download Template
     Route::get('template', [TemplateController::class, 'index'])->name('template');
@@ -206,6 +211,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Routing Halaman Approval Superusser
         Route::get('ApprovalSuper', [ApprovalSuperController::class, 'index'])->name('superuser.approval');
+
+        //Routing Halaman View Tetap Superuser
+        Route::get('ViewTetapSuper', [viewTetapSuperController::class, 'index'])->name('superuser.view_tetap');
 
         //Routing decline approval superuser
         Route::patch('ApprovalSuper/decline', [ApprovalSuperController::class, 'decline'])->name('superuser.approval.decline');

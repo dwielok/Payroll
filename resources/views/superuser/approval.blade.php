@@ -51,7 +51,7 @@
                                         id="example-search-input">
                                 </div>
 
-                                <div class="btn-group" style="margin-left: 275px">
+                                <div class="btn-group">
                                     <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
                                         aria-expanded="false">
                                         Filter Periode
@@ -63,7 +63,7 @@
                                                 @foreach (['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'] as $bulan)
                                                     <div class="mb-3">
                                                         <input type="checkbox" id="md_checkbox_{{ $loop->iteration }}"
-                                                            class="material-inputs filled-in chk-col-red">
+                                                            class="material-inputs filled-in chk-col-red month-filter filter-checkbox">
                                                         <label
                                                             for="md_checkbox_{{ $loop->iteration }}">{{ $bulan }}</label>
                                                     </div>
@@ -73,7 +73,7 @@
                                                 @for ($tahun = 2017; $tahun <= 2023; $tahun++)
                                                     <div class="mb-3">
                                                         <input type="checkbox" id="md_checkbox_{{ $tahun }}"
-                                                            class="material-inputs filled-in chk-col-red">
+                                                            class="material-inputs filled-in chk-col-red year-filter filter-checkbox">
                                                         <label
                                                             for="md_checkbox_{{ $tahun }}">{{ $tahun }}</label>
                                                     </div>
@@ -86,19 +86,19 @@
                             </div>
                             <!-- <div class="d-flex align-items-center g-2">
 
-                                <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                    Import
-                                </a>
-                                {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
+                                        <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                            Import
+                                        </a>
+                                        {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a> --}}
-                                <a href="{{ url('/ExportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                    Export
-                                </a>
-                            </div> -->
+                                        <a href="{{ url('/ExportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                            Export
+                                        </a>
+                                    </div> -->
                         </div>
                         <div class="table-responsive">
-                            <table id="zero_config" class="table table-striped table-bordered text-center ">
+                            <table id="zero_config" class="table table-striped table-bordered text-center myTable">
                                 <thead>
                                     <tr>
                                         <th class="text-center">Bulan</th>
@@ -142,8 +142,8 @@
                                                 </div>
 
                                                 <!-- <a href="{{ url('/') }}" class="btn btn-navy align-items-center ms-2">
-                                        Approve
-                                    </a> -->
+                                                Approve
+                                            </a> -->
 
                                                 <form method="POST" action="{{ route('superuser.approval.approve') }}"
                                                     id="form-approve-{{ $approval->id }}">
@@ -203,7 +203,7 @@
                                                                 </form>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
+                                                                <button type="button" class="btn btn-merah"
                                                                     data-bs-dismiss="modal">Close</button>
                                                                 <button
                                                                     onclick="document.getElementById('form-decline-{{ $approval->id }}').submit();"

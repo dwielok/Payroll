@@ -42,7 +42,7 @@
 
                                 <div class="btn-group">
                                     <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        aria-expanded="false">
                                         Filter Periode
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width:300px">
@@ -52,7 +52,7 @@
                                                 @foreach (['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'] as $bulan)
                                                     <div class="mb-3">
                                                         <input type="checkbox" id="md_checkbox_{{ $loop->iteration }}"
-                                                            class="material-inputs filled-in chk-col-red">
+                                                            class="material-inputs filled-in chk-col-red month-filter filter-checkbox">
                                                         <label
                                                             for="md_checkbox_{{ $loop->iteration }}">{{ $bulan }}</label>
                                                     </div>
@@ -62,7 +62,7 @@
                                                 @for ($tahun = 2017; $tahun <= 2023; $tahun++)
                                                     <div class="mb-3">
                                                         <input type="checkbox" id="md_checkbox_{{ $tahun }}"
-                                                            class="material-inputs filled-in chk-col-red">
+                                                            class="material-inputs filled-in chk-col-red year-filter filter-checkbox">
                                                         <label
                                                             for="md_checkbox_{{ $tahun }}">{{ $tahun }}</label>
                                                     </div>
@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                <table id="zero_config" class="table table-striped table-bordered text-center ">
+                                <table id="zero_config" class="table table-striped table-bordered text-center myTable">
                                     <thead>
                                         <tr>
                                             <th class="text-center">Bulan</th>
@@ -107,8 +107,8 @@
                                                 }
                                             @endphp
                                             <tr>
-                                                <td>{{ __($approval->bulan) }}</td>
-                                                <td>{{ __($approval->year) }}</td>
+                                                <td class="month-column">{{ __($approval->bulan) }}</td>
+                                                <td class="year-column">{{ __($approval->year) }}</td>
                                                 <td class="text-{{ $approval->status == 0 ? 'success' : 'danger' }}">
                                                     {{ $status }}</td>
                                                 <td>{{ __($approval->keterangan) }}</td>

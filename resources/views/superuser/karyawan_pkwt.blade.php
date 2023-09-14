@@ -50,7 +50,7 @@
                                         id="example-search-input">
                                 </div>
 
-                                <div class="btn-group" style="margin-left: 275px">
+                                <div class="btn-group">
                                     <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
                                         aria-expanded="false">
                                         Filter Periode
@@ -62,7 +62,7 @@
                                                 @foreach (['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'] as $bulan)
                                                     <div class="mb-3">
                                                         <input type="checkbox" id="md_checkbox_{{ $loop->iteration }}"
-                                                            class="material-inputs filled-in chk-col-red">
+                                                            class="material-inputs filled-in chk-col-red month-filter filter-checkbox">
                                                         <label
                                                             for="md_checkbox_{{ $loop->iteration }}">{{ $bulan }}</label>
                                                     </div>
@@ -72,7 +72,7 @@
                                                 @for ($tahun = 2017; $tahun <= 2023; $tahun++)
                                                     <div class="mb-3">
                                                         <input type="checkbox" id="md_checkbox_{{ $tahun }}"
-                                                            class="material-inputs filled-in chk-col-red">
+                                                            class="material-inputs filled-in chk-col-red year-filter filter-checkbox">
                                                         <label
                                                             for="md_checkbox_{{ $tahun }}">{{ $tahun }}</label>
                                                     </div>
@@ -83,16 +83,18 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
-                                    <a href="{{ url('/ImportPkwtSuper') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ImportPkwtSuper') }}"
+                                        class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
                                     </a>
-                                    <a href="{{ url('/ExportPkwtSuper') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ExportPkwtSuper') }}"
+                                        class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
                                 </div>
                             </div>
                             <div class="table-responsive-" style="overflow-x:auto;">
-                                <table id="zero_config" class="table table-striped table-bordered text-nowrap">
+                                <table id="zero_config" class="table table-striped table-bordered text-nowrap myTable">
                                     <thead>
                                         <tr>
                                             <th class="text-center">Bulan</th>
@@ -149,7 +151,8 @@
                                         <th>-</th>
                                         <th>-</th>
                                         <th>-</th>
-                                        <th><a href="{{ url('/EditPkwtSuper') }}" class="btn btn-navy align-items-center ms-2">
+                                        <th><a href="{{ url('/EditPkwtSuper') }}"
+                                                class="btn btn-navy align-items-center ms-2">
                                                 Edit
                                             </a>
                                             <a href="{{ url('/#') }}" class="btn btn-merah align-items-center ms-2">
