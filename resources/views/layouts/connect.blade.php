@@ -236,8 +236,7 @@
                                                 Tetap </span></a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="KaryawanInkaSuper" class="sidebar-link"><span
-                                                class="hide-menu">
+                                        <a href="KaryawanInkaSuper" class="sidebar-link"><span class="hide-menu">
                                                 Karyawan Perbantuan INKA
                                             </span></a>
                                     </li>
@@ -267,7 +266,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/ApprovalSuper"
                                     aria-expanded="false">
                                     <i data-feather="check-circle"></i><span class="hide-menu">Aproval</span>
                                 </a>
@@ -339,6 +338,47 @@
 
     <script src="../../dist/js/pages/datatable/datatable-basic.init.js"></script>
 
+    @stack('customScripts')
+
+    <script>
+        $(document).ready(function() {
+            $('.month-filter, .year-filter').on('change', function() {
+                applyFilters();
+            });
+
+            function applyFilters() {
+                var selectedMonths = $('.month-filter:checked').map(function() {
+                    return $(this).next().text();
+                }).get();
+
+                var selectedYears = $('.year-filter:checked').map(function() {
+                    return $(this).next().text();
+                }).get();
+
+                $('.myTable tbody tr').each(function() {
+                    var showRow = true;
+
+                    var rowMonths = $(this).find('.month-column').text().trim();
+                    var rowYear = $(this).find('.year-column').text().trim();
+
+                    if (selectedMonths.length > 0 && !selectedMonths.includes(rowMonths)) {
+                        showRow = false;
+                    }
+
+                    if (selectedYears.length > 0 && !selectedYears.includes(rowYear)) {
+                        showRow = false;
+                    }
+
+                    if (showRow) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            }
+        });
+    </script>
+
     <script>
         //document ready
         $(document).ready(function() {
@@ -371,7 +411,7 @@
                 Do you want to Logout?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-merah" data-bs-dismiss="modal">No</button>
                 <form id="logout-form" action="{{ url('/actionlogout') }}">
 
                 </form>

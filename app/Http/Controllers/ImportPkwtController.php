@@ -72,7 +72,7 @@ class ImportPkwtController extends Controller
                     'penyesuaian_penambahan' => $item[9],
                     'penyesuaian_pengurangan' => $item[10],
                     'jam_hilang' => $item[11],
-                    'persentase_profesional' => $item[12],
+                    'tunjangan_profesional' => $item[12],
                 ]);
             }
         });

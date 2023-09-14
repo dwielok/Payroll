@@ -89,7 +89,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger"
+                                                            <button type="button" class="btn btn-merah"
                                                                 data-dismiss="modal">Close</button>
                                                             <button type="submit"
                                                                 class="btn btn-navy d-flex align-items-center ms-2">Save

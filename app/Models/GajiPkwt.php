@@ -23,7 +23,7 @@ class GajiPkwt extends Model
         'penyesuaian_penambahan',
         'penyesuaian_pengurangan',
         'jam_hilang',
-        'persentase_profesional',
+        'tunjangan_profesional',
     ];
 
     public function karyawan()

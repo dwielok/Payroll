@@ -12,7 +12,7 @@
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 <a href="/karyawanperbantuaninka" class="link">
-                                List Data Karyawan Perbantuan INKA </a>
+                                    List Data Karyawan Perbantuan INKA </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 View List Data

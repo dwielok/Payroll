@@ -57,7 +57,7 @@ class viewPkwtController extends Controller
             $item->penghasilan_tetap = $item->gaji_pokok;
 
             $item->tunjangan_transportasi = $this->hitungKehadiran($item->kehadiran);
-            $item->tunjangan_profesional = ($item->persentase_profesional / 100) * $item->gaji_pokok;
+            $item->tunjangan_profesional = $item->tunjangan_profesional;
             $item->tunjangan_karya =  $item->dana_ikk * ($item->kehadiran / $item->hari_kerja) * $item->nilai_ikk;
             $item->bpjs_kesehatan = 0.04 * ($item->gaji_pokok);
             $item->bpjs_ketenagakerjaan = 0.0727 * ($item->gaji_pokok);
