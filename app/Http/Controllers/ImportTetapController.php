@@ -115,19 +115,7 @@ class ImportTetapController extends Controller
             }
         });
 
-        dd($datas);
-    }
-
-    public function test_upload(Request $request)
-    {
-        $approval = Approval::insert([
-            'bulan' => 'Desember',
-            'year' => '2023',
-            'tipe_karyawan' => 'tetap',
-            'status' => '',
-            'keterangan' => '',
-        ]);
-
-        dd($approval);
+        // dd($datas);
+        return redirect('/KaryawanTetap');
     }
 }

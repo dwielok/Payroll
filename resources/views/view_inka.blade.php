@@ -91,6 +91,41 @@
                                             <th class="text-center">Penghasilan Netto</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        @foreach ($gajis as $gaji)
+                                            <tr>
+                                                <td>{{ $gaji->bulan }}</td>
+                                                <td>{{ $gaji->tahun }}</td>
+                                                <td>{{ $gaji->nip }}</td>
+                                                <td>{{ $gaji->nama_karyawan }}</td>
+                                                <td>{{ $gaji->tipe_jabatan }}</td>
+                                                <td>{{ $gaji->golongan }}</td>
+                                                <td>@rupiah($gaji->gaji_pokok)</td>
+                                                <td>@rupiah($gaji->tunjangan_tetap)</td>
+                                                <td>{{ $gaji->kehadiran }}</td>
+                                                <td>{{ $gaji->hari_kerja }}</td>
+                                                <td>{{ $gaji->nilai_ikk }}</td>
+                                                <td>@rupiah($gaji->dana_ikk)</td>
+                                                <td>@rupiah($gaji->tunjangan_transportasi)</td>
+                                                <td>@rupiah($gaji->tunjangan_jabatan)</td>
+                                                <td>@rupiah($gaji->tunjangan_karya)</td>
+                                                <td>@rupiah($gaji->bpjs_kesehatan)</td>
+                                                <td>@rupiah($gaji->bpjs_ketenagakerjaan)</td>
+                                                <td>@rupiah($gaji->ppip)</td>
+                                                <td>@rupiah($gaji->ppip_mandiri)</td>
+                                                <td>{{ $gaji->jam_hilang }}</td>
+                                                <td>@rupiah($gaji->kopinka)</td>
+                                                <td>@rupiah($gaji->keuangan)</td>
+                                                <td>@rupiah($gaji->penghasilan_tetap)</td>
+                                                <td>{{ $gaji->lembur_weekdays }}</td>
+                                                <td>{{ $gaji->lembur_weekend }}</td>
+                                                <td>{{ $gaji->penyesuaian_penambahan }}</td>
+                                                <td>{{ $gaji->penyesuaian_pengurangan }}</td>
+                                                <td>@rupiah($gaji->penghasilan_bruto)</td>
+                                                <td>@rupiah($gaji->penghasilan_netto)</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

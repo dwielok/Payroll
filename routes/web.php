@@ -114,7 +114,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
 
     //Routing Import Tetap
-    Route::get('ImportTetaps', [ImportTetapController::class, 'index'])->name('import_tetap');
+    Route::get('ImportTetap', [ImportTetapController::class, 'index'])->name('import_tetap');
 
     //Routing Export Tetap
     Route::get('ExportTetap', [ExportTetapController::class, 'index'])->name('export_tetap');
@@ -222,4 +222,6 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::post('test_import', [ImportTetapController::class, 'import'])->name('importTetap');
+Route::post('test_import_inka', [ImportInkaController::class, 'import'])->name('importInka');
+Route::post('test_import_pkwt', [ImportPkwtController::class, 'import'])->name('importPkwt');
 Route::get('test_upload', [ImportTetapController::class, 'test_upload'])->name('testUpload');
