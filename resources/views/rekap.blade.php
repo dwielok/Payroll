@@ -51,7 +51,7 @@
                                             id="example-search-input">
                                     </div>
 
-                                    <div class="btn-group">
+                                    <div class="btn-group" style="margin-left: 275px">
                                         <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
                                             aria-expanded="false">
                                             Filter Periode
@@ -94,16 +94,35 @@
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap myTable">
                                     <thead>
                                         <tr>
+                                            {{-- checkbox --}}
+                                            <th>
+                                                <input type="checkbox" id="md_checkbox_all"
+                                                    class="filled-in chk-col-red check-all" />
+                                            </th>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
                                             {{-- <th class="text-center">NIP</th>
                                             <th class="text-center">Nama</th> --}}
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        @forelse ($slips as $slip)
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" id="md_checkbox_{{ $loop->iteration }}"
+                                                        data-id="{{ json_encode($slip) }}"
+                                                        class="filled-in chk-col-red check-item" name="check-item" />
+                                                </td>
+                                                <td>{{ $slip->bulan }}</td>
+                                                <td>{{ $slip->tahun }}</td>
+                                            </tr>
+                                        @empty
+                                        @endforelse
+                                    </tbody>
                                 </table>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <a href="{{ url('/test_rar') }}" class="btn btn-navy d-flex align-items-center ms-2"
+                                <a id="print" class="btn btn-navy d-flex align-items-center ms-2"
                                     style="margin-top: 30px">
                                     Print
                                 </a>
@@ -123,3 +142,48 @@
 
     </div>
 @endsection
+
+@push('customScripts')
+    <script>
+        //create array to store selected rows
+        var selected = [];
+
+        //check all checkboxes when the one in a table head is checked
+        $('#md_checkbox_all').change(function(e) {
+            if ($(this).prop('checked')) {
+                $('.check-item').prop('checked', true);
+            } else {
+                $('.check-item').prop('checked', false);
+            }
+        });
+
+        //get the id of the checkbox that was clicked
+        $('.check-item').click(function(e) {
+            var id = $(this).data('id');
+            if ($(this).prop('checked')) {
+                selected.push(id);
+            } else {
+                selected.splice(selected.indexOf(id), 1);
+            }
+            console.log(selected);
+        });
+
+        //print clicked then ajax to test_rar
+        $('#print').click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "{{ url('test_rar') }}",
+                type: "POST",
+                data: JSON.stringify({
+                    _token: "{{ csrf_token() }}",
+                    data: selected
+                }),
+                contentType: "application/json; charset=utf-8",
+                success: function(response) {
+                    console.log(response);
+                    window.open(response, '_blank');
+                }
+            });
+        });
+    </script>
+@endpush

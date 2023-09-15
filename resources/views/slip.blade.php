@@ -51,7 +51,7 @@
                                             id="example-search-input">
                                     </div>
 
-                                    <div class="btn-group">
+                                    <div class="btn-group" style="margin-left: 275px">
                                         <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
                                             aria-expanded="false">
                                             Filter Periode
