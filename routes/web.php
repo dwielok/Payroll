@@ -44,7 +44,9 @@ use App\Http\Controllers\SlipSuperController;
 use App\Http\Controllers\SuccessLogoutController;
 use App\Http\Controllers\TemplateSuperController;
 use App\Http\Controllers\viewInkaController;
+use App\Http\Controllers\ViewInkaSuperController;
 use App\Http\Controllers\viewPkwtController;
+use App\Http\Controllers\ViewPkwtSuperController;
 use App\Http\Controllers\viewTetapController;
 use App\Http\Controllers\viewTetapSuperController;
 
@@ -65,6 +67,7 @@ use App\Http\Controllers\viewTetapSuperController;
 
 Route::get('/test_pdf', [App\Http\Controllers\PdfController::class, 'test_pdf']);
 Route::get('/test_rar', [App\Http\Controllers\PdfController::class, 'test_rar']);
+Route::post('/test_rar', [App\Http\Controllers\PdfController::class, 'test_rar_post']);
 
 //ROUTING UNTUK LOGIN
 Route::get('/', [LoginController::class, 'login'])->name('login');
@@ -214,6 +217,12 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Routing Halaman View Tetap Superuser
         Route::get('ViewTetapSuper', [viewTetapSuperController::class, 'index'])->name('superuser.view_tetap');
+
+        //Routing Halaman View Inka Superuser
+        Route::get('ViewInkaSuper', [ViewInkaSuperController::class, 'index'])->name('superuser.view_inka');
+
+        //Routing Halaman View Pkwt Superuser
+        Route::get('ViewPkwtSuper', [ViewPkwtSuperController::class, 'index'])->name('superuser.view_pkwt');
 
         //Routing decline approval superuser
         Route::patch('ApprovalSuper/decline', [ApprovalSuperController::class, 'decline'])->name('superuser.approval.decline');

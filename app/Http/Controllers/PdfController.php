@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Approval;
+use App\Models\GajiPkwt;
+use App\Models\GajiTemp;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Database\Eloquent\Collection;
@@ -167,6 +170,42 @@ class PdfController extends Controller
             //throw $th;
             dd($th);
         }
+    }
+
+    public function test_rar_post(Request $request)
+    {
+        $input = $request->all();
+        $data = $input['data'];
+
+        $result = [];
+        foreach ($data as $key => $value) {
+            $gaji = Approval::where('bulan', $value['bulan'])
+                ->select('approvals.*')
+                ->where('year', $value['tahun'])->where('tipe_karyawan', 'tetap')->where('status', 0)->get();
+            // $result[] = [
+            //     'nama' => $value['nama'],
+            //     'nip' => $value['nip'],
+            //     'jabatan' => $value['jabatan'],
+            //     'golongan' => $value['golongan'],
+            //     'gaji_pokok' => $value['gaji_pokok'],
+            //     'tunjangan_tetap' => $value['tunjangan_tetap'],
+            // ];
+            //push to $result
+            foreach ($gaji as $key => $value) {
+                if ($value->tipe_karyawan != 'pkwt') {
+                    $gaji = GajiTemp::leftJoin('karyawans', 'karyawans.id', '=', 'gaji_temp.id_karyawan')->where('gaji_temp.id_approval', $value->id)->first();
+                } else {
+                    $gaji = GajiPkwt::leftJoin('karyawans', 'karyawans.id', '=', 'gaji_pkwt.id_karyawan')->where('gaji_pkwt.id_approval', $value->id)->first();
+                }
+                $result[] = [
+                    'id_aproval' => $value->id,
+                    'type' => $value->tipe_karyawan,
+                    'nama' => $gaji->nama_karyawan ?? '',
+                ];
+            }
+        }
+
+        dd($result);
     }
 
     public function test_rar2()
