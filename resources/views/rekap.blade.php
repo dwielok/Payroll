@@ -122,10 +122,10 @@
                                 </table>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <a id="print" class="btn btn-navy d-flex align-items-center ms-2"
+                                <button id="print" class="btn btn-navy d-flex align-items-center ms-2"
                                     style="margin-top: 30px">
                                     Print
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -172,16 +172,35 @@
         $('#print').click(function(e) {
             e.preventDefault();
             $.ajax({
-                url: "{{ url('test_rar') }}",
+                url: "{{ url('generate_zip') }}",
                 type: "POST",
                 data: JSON.stringify({
                     _token: "{{ csrf_token() }}",
                     data: selected
                 }),
                 contentType: "application/json; charset=utf-8",
+                beforeSend: function() {
+                    $('#print').html(
+                        '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'
+                    );
+                    //disabled
+                    $('#print').attr('disabled', true);
+                },
                 success: function(response) {
                     console.log(response);
-                    window.open(response, '_blank');
+                    if (response.success) {
+                        //download file with response.link
+                        window.location.href = response.link;
+                    }
+                    $('#print').html('Print');
+                    //enabled
+                    $('#print').attr('disabled', false);
+                },
+                error: function(xhr) {
+                    console.log(xhr);
+                    $('#print').html('Print');
+                    //enabled
+                    $('#print').attr('disabled', false);
                 }
             });
         });
