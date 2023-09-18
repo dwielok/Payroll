@@ -68,6 +68,7 @@ use App\Http\Controllers\viewTetapSuperController;
 Route::get('/test_pdf', [App\Http\Controllers\PdfController::class, 'test_pdf']);
 Route::get('/test_rar', [App\Http\Controllers\PdfController::class, 'test_rar']);
 Route::post('/generate_zip', [App\Http\Controllers\PdfController::class, 'generate_zip']);
+Route::post('/generate_slip', [App\Http\Controllers\PdfController::class, 'generate_slip']);
 
 //ROUTING UNTUK LOGIN
 Route::get('/', [LoginController::class, 'login'])->name('login');

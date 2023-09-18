@@ -45,10 +45,10 @@
                                             <h2 class="text-left mb-3 mt-3">Download Template</h2>
                                             <p>Download Template
                                                 <a
-                                                    href="https://docs.google.com/spreadsheets/d/11DlVrfaviZOmylyN0U2NK92_lBO81itT/edit?usp=drive_link&ouid=114092274562304563324&rtpof=true&sd=true">Karyawan
+                                                    href="https://ungu.in/templateTetapInka">Karyawan
                                                     Tetap dan Perbantuan INKA, </a>
                                                 <a
-                                                    href="https://docs.google.com/spreadsheets/d/1UXV-pnnRzEPuVjgdevKalEQvZSv-_0Vm/edit?usp=drive_link&ouid=114092274562304563324&rtpof=true&sd=true">Karyawan
+                                                    href="https://ungu.in/templatePkwt">Karyawan
                                                     PKWT </a>
                                             </p>
                                             {{-- <a class="btn btn-success btn-sm" href="download.php?file=file-download.txt">Click Here</a> --}}
