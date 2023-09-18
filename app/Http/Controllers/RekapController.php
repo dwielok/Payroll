@@ -9,7 +9,7 @@ class RekapController extends Controller
 {
     public function index()
     {
-        $slips = Approval::where('tipe_karyawan', 'tetap')->where('status', 0)->get();
+        $slips = Approval::where('status', 0)->get();
         //kelompokkan berdasarkan tahun dan bulan pada kolom bulan dan year lalu return {bulan, tahun} pada array baru
         $arr = [];
         foreach ($slips as $slip) {

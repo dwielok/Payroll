@@ -469,6 +469,237 @@ class PdfController extends Controller
         }
     }
 
+    public function generate_slip(Request $request)
+    {
+        $input = $request->all();
+        $data = $input['data'];
+
+        $result = [];
+        foreach ($data as $key => $value) {
+
+            if ($value['tipe'] != 'pkwt') {
+                $gajis = GajiTemp::leftJoin('karyawans', 'karyawans.id', '=', 'gaji_temp.id_karyawan')
+                    ->leftJoin('jabatans', 'jabatans.id', '=', 'karyawans.id_jabatan')
+                    ->leftJoin('approvals', 'approvals.id', '=', 'gaji_temp.id_approval')
+                    ->where('gaji_temp.id', $value['id'])->get();
+                $gajis = $gajis->map(function ($item) {
+                    $item->kenaikan = $this->getKenaikan($item->masa_kerja);
+                    $item->gaji_pokok = $item->kenaikan[$item->masa_kerja - 1]['gaji'];
+                    $item->golongan = $item->kenaikan[$item->masa_kerja - 1]['abjad'];
+                    $item->tunjangan_tetap = 0.05 * $item->gaji_pokok;
+                    $item->penghasilan_tetap = $item->gaji_pokok + $item->tunjangan_tetap;
+
+                    $item->tunjangan_transportasi = $this->hitungJabatan($item->jabatan, $item->gaji_pokok) + $this->hitungKehadiran($item->kehadiran);
+                    $item->tunjangan_jabatan = $this->hitungJabatan($item->jabatan, $item->gaji_pokok);
+                    $item->tunjangan_karya = $item->dana_ikk * ($item->kehadiran / $item->hari_kerja) * $item->nilai_ikk;
+                    $item->bpjs_kesehatan = 0.04 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                    $item->bpjs_ketenagakerjaan = 0.0727 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                    $item->ppip = $item->gaji_pokok / 12;
+                    $item->jumlah_premi = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan + $item->ppip;
+                    $item->benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan + $item->ppip;
+                    $item->penghasilan_tunjangan_tidak_tetap = $item->tunjangan_transportasi + $item->tunjangan_jabatan + $item->tunjangan_karya + $item->benefit;
+                    $item->penghasilan_bruto = $item->gaji_pokok + $item->tunjangan_tetap + $item->penghasilan_tunjangan_tidak_tetap;
+
+                    $item->premi_bpjs_kesehatan = 0.01 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                    $item->premi_bpjs_ketenagakerjaan = 0.03 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                    $item->premi_ppip = $item->ppip_mandiri;
+                    $item->potongan_premi = $item->premi_bpjs_kesehatan + $item->premi_bpjs_ketenagakerjaan + $item->premi_ppip;
+                    $item->potongan_benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan + $item->ppip;
+                    $item->potongan_jam_hilang = ($item->jam_hilang / 173) * $item->gaji_pokok;
+                    $item->potongan_kopinka = $item->kopinka;
+                    $item->potongan_keuangan = $item->keuangan;
+                    $item->potongan = $item->potongan_premi + $item->potongan_benefit + $item->potongan_jam_hilang + $item->potongan_kopinka + $item->potongan_keuangan;
+                    $item->penghasilan_netto = ($item->penghasilan_bruto) - $item->potongan;
+                    $item->tunjangan_profesional = 0;
+                    return $item;
+                });
+                foreach ($gajis as $key => $gaji) {
+                    $obj = new stdClass();
+                    $obj->id_aproval = $gaji->id;
+                    $obj->tunjangan_profesional = $gaji->tunjangan_profesional ?? 0;
+                    $obj->type = $gaji->tipe_karyawan;
+                    $obj->nama = $gaji->nama_karyawan ?? '';
+                    $obj->nip = $gaji->nip ?? '';
+                    $obj->status = $gaji->status;
+                    $obj->golongan = $gaji->golongan ?? '';
+                    $obj->jabatan = $gaji->tipe_jabatan ?? '';
+                    $obj->bulan = $gaji->bulan;
+                    $obj->tahun = $gaji->year;
+                    $obj->gaji_pokok = $gaji->gaji_pokok ?? 0;
+                    $obj->tunjangan_tetap = $gaji->tunjangan_tetap ?? 0;
+                    $obj->penghasilan_tetap = $gaji->penghasilan_tetap ?? 0;
+                    $obj->tunjangan_transportasi = $gaji->tunjangan_transportasi ?? 0;
+                    $obj->tunjangan_jabatan = $gaji->tunjangan_jabatan ?? 0;
+                    $obj->tunjangan_karya = $gaji->tunjangan_karya ?? 0;
+                    $obj->bpjs_kesehatan = $gaji->bpjs_kesehatan ?? 0;
+                    $obj->bpjs_ketenagakerjaan = $gaji->bpjs_ketenagakerjaan ?? 0;
+                    $obj->ppip = $gaji->ppip ?? 0;
+                    $obj->jumlah_premi = $gaji->jumlah_premi ?? 0;
+                    $obj->benefit = $gaji->benefit ?? 0;
+                    $obj->penghasilan_tunjangan_tidak_tetap = $gaji->penghasilan_tunjangan_tidak_tetap ?? 0;
+                    $obj->penghasilan_bruto = $gaji->penghasilan_bruto ?? 0;
+                    $obj->premi_bpjs_kesehatan = $gaji->premi_bpjs_kesehatan ?? 0;
+                    $obj->premi_bpjs_ketenagakerjaan = $gaji->premi_bpjs_ketenagakerjaan ?? 0;
+                    $obj->premi_ppip = $gaji->premi_ppip ?? 0;
+                    $obj->potongan_premi = $gaji->potongan_premi ?? 0;
+                    $obj->potongan_benefit = $gaji->potongan_benefit ?? 0;
+                    $obj->potongan_jam_hilang = $gaji->potongan_jam_hilang ?? 0;
+                    $obj->potongan_kopinka = $gaji->potongan_kopinka ?? 0;
+                    $obj->potongan_keuangan = $gaji->potongan_keuangan ?? 0;
+                    $obj->potongan = $gaji->potongan ?? 0;
+                    $obj->penghasilan_netto = $gaji->penghasilan_netto ?? 0;
+                    $obj->nilai_ikk = $gaji->nilai_ikk ?? 0;
+
+                    $result[] = $obj;
+                }
+            } else {
+                $gajis = GajiPkwt::leftJoin('karyawans', 'karyawans.id', '=', 'gaji_pkwt.id_karyawan')
+                    ->leftJoin('jabatans', 'jabatans.id', '=', 'karyawans.id_jabatan')
+                    ->where('gaji_pkwt.id', $value['id'])->get();
+                $gajis = $gajis->map(function ($item) {
+                    $item->gaji_pokok = $this->levelPendidikan($item->pendidikan);
+                    $item->penghasilan_tetap = $item->gaji_pokok;
+                    $item->golongan = '-';
+                    $item->tunjangan_transportasi = $this->hitungKehadiran($item->kehadiran);
+                    $item->tunjangan_profesional = $item->tunjangan_profesional;
+                    $item->tunjangan_karya =  $item->dana_ikk * ($item->kehadiran / $item->hari_kerja) * $item->nilai_ikk;
+                    $item->bpjs_kesehatan = 0.04 * ($item->gaji_pokok);
+                    $item->bpjs_ketenagakerjaan = 0.0727 * ($item->gaji_pokok);
+                    $item->jumlah_premi = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan;
+                    $item->benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan;
+                    $item->penghasilan_tidak_tetap = $item->tunjangan_transportasi + $item->tunjangan_profesional + $item->tunjangan_karya + $item->benefit;
+
+                    $item->penghasilan_bruto = $item->penghasilan_tetap + $item->penghasilan_tidak_tetap;
+
+                    $item->bpjs_kesehatan_premi = 0.01 * ($item->gaji_pokok);
+                    $item->bpjs_ketenagakerjaan_premi = 0.03 * ($item->gaji_pokok);
+                    $item->premi = $item->bpjs_kesehatan_premi + $item->bpjs_ketenagakerjaan_premi;
+                    $item->potongan_premi = $item->bpjs_kesehatan_premi + $item->bpjs_ketenagakerjaan_premi;
+                    $item->benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan;
+                    $item->potongan_jam_hilang = ($item->jam_hilang / 173) * $item->gaji_pokok;
+                    $item->potongan = $item->premi + $item->benefit + $item->potongan_jam_hilang;
+
+                    $item->penghasilan_netto = ($item->penghasilan_bruto) - $item->potongan;
+                    return $item;
+                });
+                foreach ($gajis as $key => $gaji) {
+                    $obj = new stdClass();
+                    $obj->id_aproval = $gaji->id;
+                    $obj->type = $gaji->tipe_karyawan;
+                    $obj->nama = $gaji->nama_karyawan ?? '';
+                    $obj->nip = $gaji->nip ?? '';
+                    $obj->status = $gaji->status;
+                    $obj->jabatan = $gaji->jabatan ?? '';
+                    $obj->bulan = $gaji->bulan;
+                    $obj->tahun = $gaji->year;
+                    $obj->gaji_pokok = $gaji->gaji_pokok ?? 0;
+                    $obj->penghasilan_tetap = $gaji->penghasilan_tetap ?? 0;
+                    $obj->tunjangan_transportasi = $gaji->tunjangan_transportasi ?? 0;
+                    $obj->tunjangan_profesional = $gaji->tunjangan_profesional ?? 0;
+                    $obj->tunjangan_karya = $gaji->tunjangan_karya ?? 0;
+                    $obj->bpjs_kesehatan = $gaji->bpjs_kesehatan ?? 0;
+                    $obj->bpjs_ketenagakerjaan = $gaji->bpjs_ketenagakerjaan ?? 0;
+                    $obj->benefit = $gaji->benefit ?? 0;
+                    $obj->penghasilan_tunjangan_tidak_tetap = $gaji->penghasilan_tidak_tetap ?? 0;
+                    $obj->penghasilan_bruto = $gaji->penghasilan_bruto ?? 0;
+                    $obj->premi_bpjs_kesehatan = $gaji->bpjs_kesehatan_premi ?? 0;
+                    $obj->premi_bpjs_ketenagakerjaan = $gaji->bpjs_ketenagakerjaan_premi ?? 0;
+                    $obj->premi = $gaji->premi ?? 0;
+                    $obj->potongan_jam_hilang = $gaji->potongan_jam_hilang ?? 0;
+                    $obj->potongan = $gaji->potongan ?? 0;
+                    $obj->penghasilan_netto = $gaji->penghasilan_netto ?? 0;
+                    $obj->golongan = $gaji->golongan ?? '-';
+                    $obj->tunjangan_tetap = 0;
+                    $obj->premi_ppip = 0;
+                    $obj->potongan_keuangan = 0;
+                    $obj->potongan_kopinka = 0;
+                    $obj->nilai_ikk = $gaji->nilai_ikk ?? 0;
+                    $obj->jumlah_premi = $gaji->jumlah_premi ?? 0;
+                    $obj->ppip = $gaji->ppip ?? 0;
+                    $obj->potongan_premi = $gaji->potongan_premi ?? 0;
+
+                    $result[] = $obj;
+                }
+            }
+        }
+
+        //for testing
+        // $res0 = $result[0];
+
+        // $gaji = $res0;
+
+        // return view('view_slip', compact('gaji'));
+        //endfor testing
+
+        $pdfs = [];
+
+        foreach ($result as $master) {
+            $gaji = $master;
+            // if ($master->type == 'tetap' || $master->type == 'inka') {
+            $pdf = PDF::loadView('view_slip', compact('gaji'));
+            // }
+            $content = $pdf->download()->getOriginalContent();
+            $random_name = rand(0, 9999999999);
+            $random_name = $master->type . '_' . $master->bulan . '-' . $master->tahun . '-' . $master->nama . '-' . $random_name;
+            Storage::put('public/pdf/' . $random_name . '.pdf', $content);
+
+            //push to array pdfs random_name
+            array_push($pdfs, $random_name);
+        }
+        //length $data
+        if (count($data) < 2) {
+            $link = url('storage/pdf/' . $pdfs[0] . '.pdf');
+            return response()->json([
+                'success' => true,
+                'link' => $link,
+            ]);
+        } else {
+            try {
+                //code...
+                //create zip
+                $zip = new \ZipArchive();
+                $random_name = rand(0, 9999999999);
+                $zip_name = 'gaji-' . $random_name . '.zip';
+                //save to storages/app/public/zip
+                if ($zip->open(storage_path('app/public/zip/' . $zip_name), \ZipArchive::CREATE) === TRUE) {
+                    foreach ($pdfs as $key => $value) {
+                        $relativeNameInZipFile = basename($value);
+                        $relativeNameInZipFile = $value . '.pdf';
+                        $zip->addFile(storage_path('app/public/pdf/' . $value . '.pdf'), $relativeNameInZipFile);
+                    }
+                    $zip->close();
+                    //unlink the pdf
+                    foreach ($pdfs as $key => $value) {
+                        Storage::delete('public/pdf/' . $value . '.pdf');
+                    }
+                } else {
+                    //create folder zip
+                    Storage::makeDirectory('public/zip');
+                    $zip->open(storage_path('app/public/zip/' . $zip_name), \ZipArchive::CREATE);
+                    foreach ($pdfs as $key => $value) {
+                        $relativeNameInZipFile = basename($value);
+                        $relativeNameInZipFile = $value . '.pdf';
+                        $zip->addFile(storage_path('app/public/pdf/' . $value . '.pdf'), $relativeNameInZipFile);
+                    }
+                    $zip->close();
+                    //unlink the pdf
+                    foreach ($pdfs as $key => $value) {
+                        Storage::delete('public/pdf/' . $value . '.pdf');
+                    }
+                }
+                //create a download link
+                $link = url('storage/zip/' . $zip_name);
+                return response()->json([
+                    'success' => true,
+                    'link' => $link,
+                ]);
+            } catch (\Throwable $th) {
+                //throw $th;
+                dd($th);
+            }
+        }
+    }
+
     public function test_rar2()
     {
         $masters = [
