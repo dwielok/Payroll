@@ -376,6 +376,15 @@
                     }
                 });
             }
+
+            //find search #example-search-input then apply keyup function to .myTable
+            $('#example-search-input').on('keyup', function() {
+                var value = $(this).val().toLowerCase();
+                console.log(value);
+                $('#zero_config tbody tr').filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
         });
     </script>
 
