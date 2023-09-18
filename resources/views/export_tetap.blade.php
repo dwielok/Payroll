@@ -81,10 +81,25 @@
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap myTable">
                                     <thead>
                                         <tr>
+                                            <th>#</th>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        @forelse ($slips as $slip)
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" id="md_checkbox_{{ $loop->iteration }}"
+                                                        data-id="{{ json_encode($slip) }}"
+                                                        class="filled-in chk-col-red check-item" name="check-item" />
+                                                </td>
+                                                <td>{{ $slip->bulan }}</td>
+                                                <td>{{ $slip->tahun }}</td>
+                                            </tr>
+                                        @empty
+                                        @endforelse
+                                    </tbody>
 
                                     {{-- <tfoot>
                                         <tr>
@@ -102,9 +117,9 @@
                                 {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                     Import --}}
                                 </a>
-                                <a href="{{ url('test_pdf') }}" class="btn btn-navy d-flex align-items-center ms-2"
-                                    style="margin-top: 30px">
-                                    Print
+                                <a href="{{ route('export.export_tetap') }}"
+                                    class="btn btn-navy d-flex align-items-center ms-2" style="margin-top: 30px">
+                                    Export
                                 </a>
                             </div>
                         </div>
