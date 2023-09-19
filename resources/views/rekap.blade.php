@@ -40,7 +40,7 @@
             mb-4
           ">
                                 <div class="d-flex align-items-center g-2">
-                                    <div class="input-group" style="position: absolute; width:20%; margin:50px">
+                                    {{-- <div class="input-group" style="position: absolute; width:20%; margin:50px">
                                         <span class="input-group-prepend">
                                             <button class="btn btn-outline-secondary bg-white border-end-0  border ms-n5"
                                                 type="button">
@@ -49,9 +49,9 @@
                                         </span>
                                         <input class="form-control border-start-0 border" type="search" value="search"
                                             id="example-search-input">
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="btn-group" style="margin-left: 275px">
+                                    <div class="btn-group">
                                         <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
                                             aria-expanded="false">
                                             Filter Periode
@@ -113,8 +113,8 @@
                                                         data-id="{{ json_encode($slip) }}"
                                                         class="filled-in chk-col-red check-item" name="check-item" />
                                                 </td>
-                                                <td>{{ $slip->bulan }}</td>
-                                                <td>{{ $slip->tahun }}</td>
+                                                <td class="text-center month-column">{{ $slip->bulan }}</td>
+                                                <td class="text-center year-column">{{ $slip->tahun }}</td>
                                             </tr>
                                         @empty
                                         @endforelse

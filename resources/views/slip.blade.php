@@ -196,7 +196,8 @@
                     console.log(response);
                     if (response.success) {
                         //download file with response.link on new tab
-                        window.open(response.link, '_blank');
+                        // window.open(response.link, '_blank');
+                        window.location = response.link
                     }
                     $('#print').html('Print');
                     //enabled
