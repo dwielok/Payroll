@@ -124,7 +124,7 @@
                 </td>
                 <td></td>
                 <td></td>
-                <th>
+                <th style="text-align: left">
                     NIP
                 </th>
                 <td>
@@ -142,7 +142,7 @@
                 </td>
                 <td></td>
                 <td></td>
-                <th>
+                <th style="text-align: left">
                     Golongan
                 </th>
                 <td>
@@ -177,7 +177,7 @@
                     @rupiah($gaji->gaji_pokok)
                 </td>
                 <td colspan="2" style="text-align: left">
-                    1. POT. BPJS KETENAGA KERJAAN JHT
+                    1. POT. BPJS KETENAGAKERJAAN
                 </td>
                 <td></td>
 
@@ -195,12 +195,12 @@
                     @rupiah($gaji->tunjangan_tetap)
                 </td>
                 <td colspan="2" style="text-align: left">
-                    2. POT. BPJS KESEHATAN
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; JHT
                 </td>
                 <td></td>
 
                 <td class="myAlign">
-                    @rupiah($gaji->premi_bpjs_kesehatan)
+                    {{-- @rupiah($gaji->premi_bpjs_kesehatan) --}}
                 </td>
             </tr>
             <tr>
@@ -213,12 +213,12 @@
                     @rupiah($gaji->tunjangan_profesional)
                 </td>
                 <td colspan="2" style="text-align: left">
-                    3. POT. PPIP
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP
                 </td>
                 <td></td>
 
                 <td class="myAlign">
-                    @rupiah($gaji->premi_ppip)
+                    {{-- @rupiah($gaji->premi_ppip) --}}
                 </td>
             </tr>
             <tr>
@@ -230,11 +230,12 @@
                     @rupiah($gaji->tunjangan_transportasi)
                 </td>
                 <td colspan="2" style="text-align: left">
-                    4. POT. KEUANGAN
+                    2. POT. BPJS KESEHATAN
                 </td>
                 <td></td>
                 <td class="myAlign">
-                    @rupiah($gaji->potongan_keuangan)
+                    @rupiah($gaji->premi_bpjs_kesehatan)
+                    {{-- @rupiah($gaji->potongan_keuangan) --}}
                 </td>
             </tr>
             <tr>
@@ -247,12 +248,13 @@
                     @rupiah($gaji->tunjangan_karya)
                 </td>
                 <td colspan="2" style="text-align: left">
-                    5. POT. KOPINKA
+                    3. POT. PPIP
                 </td>
                 <td></td>
 
                 <td class="myAlign">
-                    @rupiah($gaji->potongan_kopinka)
+                    @rupiah($gaji->premi_ppip)
+                    {{-- @rupiah($gaji->potongan_kopinka) --}}
                 </td>
             </tr>
             <tr>
@@ -264,11 +266,12 @@
                     00.00
                 </td>
                 <td colspan="2" style="text-align: left">
-                    6. JAM HILANG/PENYESUAIAN
+                    4. POT. KEUANGAN
                 </td>
                 <td></td>
                 <td class="myAlign">
-                    @rupiah($gaji->potongan_jam_hilang)
+                    @rupiah($gaji->potongan_keuangan)
+                    {{-- @rupiah($gaji->potongan_jam_hilang) --}}
                 </td>
             </tr>
             <tr>
@@ -304,11 +307,12 @@
 
                 </td>
                 <td colspan="2"style="text-align: left;vertical-align:top;">
-                    7. BENEFIT
+                    5. POT. KOPINKA
                 </td>
                 <td></td>
                 <td class="myAlign" style="vertical-align:top;">
-                    @rupiah($gaji->potongan_premi)
+                    @rupiah($gaji->potongan_kopinka)
+                    {{-- @rupiah($gaji->potongan_premi) --}}
                 </td>
             </tr>
             <tr>
@@ -319,9 +323,12 @@
                 <td class="myAlign">
                     @rupiah($gaji->bpjs_ketenagakerjaan)
                 </td>
-                <th colspan="3" style="text-align: left">
-                </th>
-                <td class="myAlign">
+                <td colspan="2" style="text-align: left;">
+                    6. JAM HILANG
+                </td>
+                <td></td>
+                <td class="myAlign" style="vertical-align: top;">
+                    @rupiah($gaji->potongan_jam_hilang)
                 </td>
             </tr>
             <tr>
@@ -330,9 +337,10 @@
                 </td>
                 <td></td>
                 <td class="myAlign">
+                <td colspan="2" style="text-align: left;">
+                    7. PENYESUAIAN
                 </td>
-                <th colspan="3" style="text-align: left">
-                </th>
+                <td></td>
                 <td class="myAlign">
                 </td>
             </tr>
@@ -342,9 +350,10 @@
                 </td>
                 <td></td>
                 <td class="myAlign">
+                <td colspan="2" style="text-align: left;">
+                    8. BENEFIT
                 </td>
-                <th colspan="3" style="text-align: left">
-                </th>
+                <td></td>
                 <td class="myAlign">
                 </td>
             </tr>
@@ -355,8 +364,10 @@
                 <td></td>
                 <td class="myAlign">
                 </td>
-                <th colspan="3" style="text-align: left">
-                </th>
+                <td colspan="2" style="text-align: left">
+                    9. GAJI LEMBUR BULAN KEMARIN
+                </td>
+                <td></td>
                 <td class="myAlign">
                 </td>
             </tr>
@@ -454,7 +465,7 @@
                 <td class="table-border-right">
                     00.00
                 </td>
-                <td colspan="3" style="text-align: center;">
+                <td colspan="3" style="text-align: right">
                     Presiden Direktur
                 </td>
                 <td></td>

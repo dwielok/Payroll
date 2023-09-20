@@ -52,50 +52,9 @@
                                     <input class="form-control border-start-0 border" type="search" value="search"
                                         id="example-search-input">
                                 </div>
-
-                                <div class="btn-group">
-                                    <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        aria-expanded="false">
-                                        Filter Periode
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width:300px">
-                                        {{-- <li><a class="dropdown-item" href="#">Action</a></li> --}}
-                                        <div class="row mt-4 ps-4 pe-4 pt-4 pb-4">
-                                            <div class="col-6">
-                                                @foreach (['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'] as $bulan)
-                                                    <div class="mb-3">
-                                                        <input type="checkbox" id="md_checkbox_{{ $loop->iteration }}"
-                                                            class="material-inputs filled-in chk-col-red month-filter filter-checkbox">
-                                                        <label
-                                                            for="md_checkbox_{{ $loop->iteration }}">{{ $bulan }}</label>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                            <div class="col-6">
-                                                @for ($tahun = 2017; $tahun <= 2023; $tahun++)
-                                                    <div class="mb-3">
-                                                        <input type="checkbox" id="md_checkbox_{{ $tahun }}"
-                                                            class="material-inputs filled-in chk-col-red year-filter filter-checkbox">
-                                                        <label
-                                                            for="md_checkbox_{{ $tahun }}">{{ $tahun }}</label>
-                                                    </div>
-                                                @endfor
-                                            </div>
-                                        </div>
-                                    </ul>
-                                </div>
-                                <div class="d-flex align-items-center g-2">
-
-                                    <a href="{{ url('/ImportInkaSuper') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Import
-                                    </a>
-                                    <a href="{{ url('/ExportInkaSuper') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Export
-                                    </a>
-                                </div>
                             </div>
                             <div class="table-responsive-" style="overflow-x:auto;">
-                                <table id="zero_config" class="table table-striped table-bordered text-nowrap myTable">
+                                <table id="zero_config" class="table table-striped table-bordered text-nowrap ">
                                     <thead>
                                         <tr>
                                             <th class="text-center">Bulan</th>
@@ -113,18 +72,25 @@
                                             <th class="text-center">Tunjangan Transportasi</th>
                                             <th class="text-center">Tunjangan Jabatan</th>
                                             <th class="text-center">Tunjangan Karya</th>
-                                            <th class="text-center">BPJS Kesehatan</th>
-                                            <th class="text-center">BPJS Ketenagakerjaan</th>
+                                            <th class="text-center">BPJS Kesehatan Benefit</th>
+                                            <th class="text-center">BPJS Ketenagakerjaan Benefit</th>
                                             <th class="text-center">PPIP</th>
+                                            <th class="text-center">Total Benefit</th>
+                                            <th class="text-center">BPJS Kesehatan Premi</th>
+                                            <th class="text-center">BPJS Ketenagakerjaan Premi</th>
                                             <th class="text-center">PPIP Mandiri</th>
+                                            <th class="text-center">Total Premi</th>
+                                            <th class="text-center">Total Potongan Benefit</th>
                                             <th class="text-center">Jam Hilang</th>
                                             <th class="text-center">Kopinka</th>
                                             <th class="text-center">Keuangan</th>
-                                            <th class="text-center">Penghasilan Tetap</th>
                                             <th class="text-center">Lembur Weekdays</th>
                                             <th class="text-center">Lembur Weekend</th>
                                             <th class="text-center">Penyesuaian Penambahan</th>
                                             <th class="text-center">Penyesuaian Pengurangan</th>
+                                            <th class="text-center">Potongan</th>
+                                            <th class="text-center">Penghasilan Tetap</th>
+                                            <th class="text-center">Penghasilan Tidak Tetap</th>
                                             <th class="text-center">Penghasilan Bruto</th>
                                             <th class="text-center">Penghasilan Netto</th>
                                             <th class="text-center">Aksi</th>
@@ -133,36 +99,43 @@
                                     <tbody>
                                         @foreach ($gajis as $gaji)
                                             <tr>
-                                                <td class="month-column">{{ $gaji->bulan }}</td>
-                                                <td class="year-column">{{ $gaji->tahun }}</td>
-                                                <td>{{ $gaji->nip }}</td>
-                                                <td>{{ $gaji->nama_karyawan }}</td>
-                                                <td>{{ $gaji->tipe_jabatan }}</td>
-                                                <td>{{ $gaji->golongan }}</td>
-                                                <td>@rupiah($gaji->gaji_pokok)</td>
-                                                <td>@rupiah($gaji->tunjangan_tetap)</td>
-                                                <td>{{ $gaji->kehadiran }}</td>
-                                                <td>{{ $gaji->hari_kerja }}</td>
-                                                <td>{{ $gaji->nilai_ikk }}</td>
-                                                <td>@rupiah($gaji->dana_ikk)</td>
-                                                <td>@rupiah($gaji->tunjangan_transportasi)</td>
-                                                <td>@rupiah($gaji->tunjangan_jabatan)</td>
-                                                <td>@rupiah($gaji->tunjangan_karya)</td>
-                                                <td>@rupiah($gaji->bpjs_kesehatan)</td>
-                                                <td>@rupiah($gaji->bpjs_ketenagakerjaan)</td>
-                                                <td>@rupiah($gaji->ppip)</td>
-                                                <td>@rupiah($gaji->ppip_mandiri)</td>
-                                                <td>{{ $gaji->jam_hilang }}</td>
-                                                <td>@rupiah($gaji->kopinka)</td>
-                                                <td>@rupiah($gaji->keuangan)</td>
-                                                <td>@rupiah($gaji->penghasilan_tetap)</td>
-                                                <td>{{ $gaji->lembur_weekdays }}</td>
-                                                <td>{{ $gaji->lembur_weekend }}</td>
-                                                <td>{{ $gaji->penyesuaian_penambahan }}</td>
-                                                <td>{{ $gaji->penyesuaian_pengurangan }}</td>
-                                                <td>@rupiah($gaji->penghasilan_bruto)</td>
-                                                <td>@rupiah($gaji->penghasilan_netto)</td>
-                                                <td><a href="{{ url('/EditTetapInka') }}"
+                                                <td>{{ $gaji->bulan }}</td>
+                                            <td>{{ $gaji->tahun }}</td>
+                                            <td>{{ $gaji->nip }}</td>
+                                            <td>{{ $gaji->nama_karyawan }}</td>
+                                            <td>{{ $gaji->tipe_jabatan }}</td>
+                                            <td>{{ $gaji->golongan }}</td>
+                                            <td>@rupiah($gaji->gaji_pokok)</td>
+                                            <td>@rupiah($gaji->tunjangan_tetap)</td>
+                                            <td>{{ $gaji->kehadiran }}</td>
+                                            <td>{{ $gaji->hari_kerja }}</td>
+                                            <td>{{ $gaji->nilai_ikk }}</td>
+                                            <td>@rupiah($gaji->dana_ikk)</td>
+                                            <td>@rupiah($gaji->tunjangan_transportasi)</td>
+                                            <td>@rupiah($gaji->tunjangan_jabatan)</td>
+                                            <td>@rupiah($gaji->tunjangan_karya)</td>
+                                            <td>@rupiah($gaji->bpjs_kesehatan)</td>
+                                            <td>@rupiah($gaji->bpjs_ketenagakerjaan)</td>
+                                            <td>@rupiah($gaji->ppip)</td>
+                                            <td>@rupiah($gaji->benefit)</td>
+                                            <td>@rupiah($gaji->premi_bpjs_kesehatan)</td>
+                                            <td>@rupiah($gaji->premi_bpjs_ketenagakerjaan)</td>
+                                            <td>@rupiah($gaji->ppip_mandiri)</td>
+                                            <td>@rupiah($gaji->potongan_premi)</td>
+                                            <td>@rupiah($gaji->potongan_benefit)</td>
+                                            <td>{{ $gaji->jam_hilang }}</td>
+                                            <td>@rupiah($gaji->kopinka)</td>
+                                            <td>@rupiah($gaji->keuangan)</td>
+                                            <td>{{ $gaji->lembur_weekdays }}</td>
+                                            <td>{{ $gaji->lembur_weekend }}</td>
+                                            <td>{{ $gaji->penyesuaian_penambahan }}</td>
+                                            <td>{{ $gaji->penyesuaian_pengurangan }}</td>
+                                            <td>@rupiah($gaji->potongan)</td>
+                                            <td>@rupiah($gaji->penghasilan_tetap)</td>
+                                            <td>@rupiah($gaji->penghasilan_tunjangan_tidak_tetap)</td>
+                                            <td>@rupiah($gaji->penghasilan_bruto)</td>
+                                            <td>@rupiah($gaji->penghasilan_netto)</td>
+                                                <td><a href="{{ url('/EditInkaSuper') }}"
                                                         class="btn btn-navy align-items-center ms-2">
                                                         Edit
                                                     </a>

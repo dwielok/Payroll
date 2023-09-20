@@ -200,6 +200,29 @@
                                 </ul>
                             </li>
                             <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><i data-feather="file-text"></i><span class="hide-menu">Gaji
+                                        Lembur
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+                                        <a href="/GajiLemburTetap" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan
+                                                Tetap </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="#" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan Perbantuan INKA
+                                            </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="#" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan PKWT
+                                            </span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/rekap"
                                     aria-expanded="false">
                                     <i data-feather="book-open"></i><span class="hide-menu">Rekap Gaji</span>
@@ -248,6 +271,29 @@
                                 </ul>
                             </li>
                             <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><i data-feather="file-text"></i><span class="hide-menu">Gaji
+                                        Lembur
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+                                        <a href="/#" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan
+                                                Tetap </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="#" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan Perbantuan INKA
+                                            </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="#" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan PKWT
+                                            </span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/RekapSuper"
                                     aria-expanded="false">
                                     <i data-feather="book-open"></i><span class="hide-menu">Rekap Gaji</span>
@@ -268,7 +314,7 @@
                             <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/ApprovalSuper"
                                     aria-expanded="false">
-                                    <i data-feather="check-circle"></i><span class="hide-menu">Aproval</span>
+                                    <i data-feather="check-circle"></i><span class="hide-menu">Approval</span>
                                 </a>
                             </li>
                         @endif

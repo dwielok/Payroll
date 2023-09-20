@@ -100,14 +100,12 @@ class ImportInkaController extends Controller
                     'hari_kerja' => $item[4],
                     'nilai_ikk' => $item[5],
                     'dana_ikk' => $item[6],
-                    'jam_lembur_weekdays' => $item[7],
-                    'jam_lembur_weekend' => $item[8],
-                    'penyesuaian_penambahan' => $item[9],
-                    'penyesuaian_pengurangan' => $item[10],
-                    'ppip_mandiri' => $item[11],
-                    'jam_hilang' => $item[12],
-                    'kopinka' => $item[13],
-                    'keuangan' => $item[14],
+                    'penyesuaian_penambahan' => $item[7],
+                    'penyesuaian_pengurangan' => $item[8],
+                    'ppip_mandiri' => $item[9],
+                    'jam_hilang' => $item[10],
+                    'kopinka' => $item[11],
+                    'keuangan' => $item[12],
                 ]);
             }
         });

@@ -15,6 +15,10 @@
                                     List Data Karyawan Tetap </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
+                                <a href="{{ url('/ViewTetapSuper') }}" class="link">
+                                View List Data </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
                                 Edit Karyawan Tetap
                             </li>
                         </ol>

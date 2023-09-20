@@ -73,11 +73,11 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
-                                    <a href="{{ url('/ImportTetapSuper') }}"
+                                    <a href="{{ url('/ImportInkaSuper') }}"
                                         class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
                                     </a>
-                                    <a href="{{ url('/ExportTetapSuper') }}"
+                                    <a href="{{ url('/ExportInkaSuper') }}"
                                         class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
