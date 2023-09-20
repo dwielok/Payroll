@@ -95,7 +95,10 @@
                                     style="width:100%">
                                     <thead>
                                         <tr>
-                                            <td>#</td>
+                                            <th>
+                                                <input type="checkbox" id="md_checkbox_all"
+                                                    class="filled-in chk-col-red check-all" />
+                                            </th>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
                                             <th class="text-center">NIP</th>

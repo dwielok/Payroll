@@ -93,7 +93,7 @@
                                             <th class="text-center">Penyesuaian Pengurangan</th>
                                             <th class="text-center">Potongan</th>
                                             <th class="text-center">Penghasilan Tetap</th>
-                                            <th class="text-center">penghasilan_tidak_tetap</th>
+                                            <th class="text-center">Penghasilan Tidak Tetap</th>
                                             <th class="text-center">Penghasilan Bruto</th>
                                             <th class="text-center">Penghasilan Netto</th>
                                         </tr>

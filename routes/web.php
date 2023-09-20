@@ -21,6 +21,7 @@ use App\Http\Controllers\ExportPkwtController;
 use App\Http\Controllers\ExportPkwtSuperController;
 use App\Http\Controllers\ExportTetapController;
 use App\Http\Controllers\ExportTetapSuperController;
+use App\Http\Controllers\GajiLemburTetapController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ImportFileController;
 use App\Http\Controllers\ImportInkaController;
@@ -165,6 +166,9 @@ Route::group(['middleware' => 'auth'], function () {
     //Routing Ajukan Pkwt
     Route::get('AjukanPkwt', [AjukanPkwtController::class, 'index'])->name('ajukan_pkwt');
 
+    //Routing Gaji Lembur Tetap
+    Route::get('GajiLemburTetap', [GajiLemburTetapController::class, 'index'])->name('gaji_lembur_tetap');
+
     Route::group(['middleware' => ['superuser']], function () {
         Route::get('dashboardSuperuser', [DashboardSuperController::class, 'index'])->name('superuser.dashboard');
         //taroh rute superadmin ng kene
@@ -244,3 +248,7 @@ Route::post('test_import', [ImportTetapController::class, 'import'])->name('impo
 Route::post('test_import_inka', [ImportInkaController::class, 'import'])->name('importInka');
 Route::post('test_import_pkwt', [ImportPkwtController::class, 'import'])->name('importPkwt');
 Route::get('test_upload', [ImportTetapController::class, 'test_upload'])->name('testUpload');
+
+Route::post('test_import_tetap_super', [ImportTetapSuperController::class, 'import'])->name('importTetapSuper');
+Route::post('test_import_inka_super', [ImportInkaSuperController::class, 'import'])->name('importInkaSuper');
+Route::post('test_import_pkwt_super', [ImportPkwtSuperController::class, 'import'])->name('importPkwtSuper');

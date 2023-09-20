@@ -51,7 +51,7 @@
                                         id="example-search-input">
                                 </div>
 
-                                <div class="btn-group">
+                                <div class="btn-group" style="margin-left: 275px">
                                     <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
                                         aria-expanded="false">
                                         Filter Periode
@@ -86,16 +86,16 @@
                             </div>
                             <!-- <div class="d-flex align-items-center g-2">
 
-                                        <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                            Import
-                                        </a>
-                                        {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
+                                            <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                                Import
+                                            </a>
+                                            {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a> --}}
-                                        <a href="{{ url('/ExportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                            Export
-                                        </a>
-                                    </div> -->
+                                            <a href="{{ url('/ExportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                                Export
+                                            </a>
+                                        </div> -->
                         </div>
                         <div class="table-responsive">
                             <table id="zero_config" class="table table-striped table-bordered text-center myTable">
@@ -121,8 +121,8 @@
                                             }
                                         @endphp
                                         <tr>
-                                            <td>{{ __($approval->bulan) }}</td>
-                                            <td>{{ __($approval->year) }}</td>
+                                            <td class="mouth-column">{{ __($approval->bulan) }}</td>
+                                            <td class="year-column">{{ __($approval->year) }}</td>
                                             <td>{{ __($approval->tipe_karyawan) }}</td>
                                             <td class="text-{{ $approval->status == 0 ? 'success' : 'danger' }}">
                                                 {{ $status }}</td>
@@ -142,8 +142,8 @@
                                                 </div>
 
                                                 <!-- <a href="{{ url('/') }}" class="btn btn-navy align-items-center ms-2">
-                                                Approve
-                                            </a> -->
+                                                    Approve
+                                                </a> -->
 
                                                 <form method="POST" action="{{ route('superuser.approval.approve') }}"
                                                     id="form-approve-{{ $approval->id }}">

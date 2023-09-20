@@ -11,11 +11,11 @@
                                 <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                List Data Karyawan PKWT
+                                Gaji Lembur
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data Karyawan PKWT</h1>
+                    <h1 class="mb-0 fw-bold">Gaji Lembur Karyawan Tetap</h1>
                 </div>
             </div>
         </div>
@@ -73,13 +73,16 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
-                                    <a href="{{ url('/ImportPkwt') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
                                     </a>
-                                    <a href="{{ url('/ExportPkwt') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                     {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
+                                        Export
+                                    </a> --}}
+                                    <a hretf="{{ url('/ExportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
-                                </div>
+                                </div> 
                             </div>
                             <div class="table-responsive">
                                 <table id="zero_config" class="table table-striped table-bordered text-center myTable">
@@ -93,42 +96,38 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($approvals as $approval)
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        {{-- @forelse ($approvals as $approval)
                                             @php
                                                 if ($approval->status == '0') {
                                                     $status = 'Disetujui';
-                                                    $warna = 'success';
-                                                    $button = true;
                                                 } elseif ($approval->status == '1') {
                                                     $status = 'Ditolak';
-                                                    $warna = 'danger';
-                                                    $button = false;
                                                 } else {
-                                                    $status = 'Menunggu Persetujuan';
-                                                    $warna = 'warning';
-                                                    $button = false;
+                                                    $status = '';
                                                 }
                                             @endphp
                                             <tr>
                                                 <td class="month-column">{{ __($approval->bulan) }}</td>
                                                 <td class="year-column">{{ __($approval->year) }}</td>
-                                                <td class="text-{{ $warna }}">
+                                                <td class="text-{{ $approval->status == 0 ? 'success' : 'danger' }}">
                                                     {{ $status }}</td>
                                                 <td>{{ __($approval->keterangan) }}</td>
                                                 <td>
-                                                    <form action="{{ url('/viewPkwt') }}" method="get" id="form-view">
-                                                        @csrf
-                                                        <input type="hidden" name="id" value="{{ $approval->id }}">
-                                                    </form>
-                                                    <button type="button" class="btn btn-navy align-items-center ms-2"
-                                                        {{ !$button ? 'disabled' : '' }}
-                                                        onclick="document.getElementById('form-view').submit();">
+                                                    <a href="{{ url('/viewTetap?id=' . $approval->id) }}"
+                                                        class="btn btn-navy align-items-center ms-2">
                                                         View
-                                                    </button>
+                                                    </a>
+
+
                                                 </td>
                                             </tr>
                                         @empty
-                                        @endforelse
+                                        @endforelse --}}
                                     </tbody>
 
                                     {{-- <tfoot>

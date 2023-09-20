@@ -11,15 +11,15 @@
                                 <a href="/dashboardSuperuser" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/KaryawanInkaSuper" class="link">
-                                    List Data Karyawan Perbantuan INKA </a>
+                                <a href="/KaryawanPkwtSuper" class="link">
+                                    List Data Karyawan PKWT </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Edit Karyawan Perbantuan INKA
+                                Edit Karyawan PKWT
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">Edit Karyawan Perbantuan INKA</h1>
+                    <h1 class="mb-0 fw-bold">Edit Karyawan PKWT</h1>
                 </div>
             </div>
         </div>
