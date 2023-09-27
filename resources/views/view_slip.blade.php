@@ -195,12 +195,13 @@
                     @rupiah($gaji->tunjangan_tetap)
                 </td>
                 <td colspan="2" style="text-align: left">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; JHT
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JHT
                 </td>
                 <td></td>
 
                 <td class="myAlign">
                     {{-- @rupiah($gaji->premi_bpjs_kesehatan) --}}
+                    @rupiah($gaji->detail_premi_bpjs_tk->jht)
                 </td>
             </tr>
             <tr>
@@ -219,6 +220,7 @@
 
                 <td class="myAlign">
                     {{-- @rupiah($gaji->premi_ppip) --}}
+                    @rupiah($gaji->detail_premi_bpjs_tk->jp)
                 </td>
             </tr>
             <tr>
@@ -332,11 +334,13 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align: left">
+                <td colspan="2" style="text-align: left;vertical-align:top">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; JKK
                 </td>
                 <td></td>
                 <td class="myAlign">
+                    @rupiah($gaji->detail_bpjs_tk->jkk)
+                </td>
                 <td colspan="2" style="text-align: left;">
                     7. PENYESUAIAN
                 </td>
@@ -345,11 +349,13 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align: left">
+                <td colspan="2" style="text-align: left;vertical-align:top">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; JKM
                 </td>
                 <td></td>
                 <td class="myAlign">
+                    @rupiah($gaji->detail_bpjs_tk->jkm)
+                </td>
                 <td colspan="2" style="text-align: left;">
                     8. BENEFIT
                 </td>
@@ -358,27 +364,31 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align: left">
+                <td colspan="2" style="text-align: left;vertical-align:top">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; JHT
                 </td>
                 <td></td>
                 <td class="myAlign">
+                    @rupiah($gaji->detail_bpjs_tk->jht)
                 </td>
                 <td colspan="2" style="text-align: left">
                     9. GAJI LEMBUR BULAN KEMARIN
                 </td>
                 <td></td>
                 <td class="myAlign">
+                    @rupiah($gaji->lembur_kemarin)
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align: left">
+                <td colspan="2" style="text-align: left;vertical-align:top">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; JP
                 </td>
                 <td></td>
                 <td class="myAlign">
+                    @rupiah($gaji->detail_bpjs_tk->jp)
                 </td>
                 <th colspan="3" style="text-align: left">
+                    
                 </th>
                 <td class="myAlign">
                 </td>

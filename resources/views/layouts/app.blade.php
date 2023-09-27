@@ -278,17 +278,17 @@
                                     </span></a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
-                                        <a href="/#" class="sidebar-link"><span class="hide-menu">
+                                        <a href="/GajiLemburTetapSuper" class="sidebar-link"><span class="hide-menu">
                                                 Karyawan
                                                 Tetap </span></a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="#" class="sidebar-link"><span class="hide-menu">
+                                        <a href="/GajiLemburInkaSuper" class="sidebar-link"><span class="hide-menu">
                                                 Karyawan Perbantuan INKA
                                             </span></a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="#" class="sidebar-link"><span class="hide-menu">
+                                        <a href="/GajiLemburPkwtSuper" class="sidebar-link"><span class="hide-menu">
                                                 Karyawan PKWT
                                             </span></a>
                                     </li>
@@ -313,10 +313,20 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/ApprovalSuper"
-                                    aria-expanded="false">
-                                    <i data-feather="check-circle"></i><span class="hide-menu">Approval</span>
-                                </a>
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><i data-feather="file-text"></i><span class="hide-menu">Approval
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+                                        <a href="/ApprovalSuper" class="sidebar-link"><span class="hide-menu">
+                                                Gaji Karyawan</span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/ApprovalLemburSuper" class="sidebar-link"><span class="hide-menu">
+                                                Gaji Lembur
+                                            </span></a>
+                                    </li>
+                                </ul>
                             </li>
                         @endif
 
