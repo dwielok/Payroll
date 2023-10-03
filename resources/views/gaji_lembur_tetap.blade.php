@@ -73,13 +73,23 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
+<<<<<<< HEAD
                                     <a href="{{ url('/ImportLemburTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+=======
+                                    <a href="{{ url('/ImportLemburTetap') }}"
+                                        class="btn btn-navy d-flex align-items-center ms-2">
+>>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
                                         Import
                                     </a>
-                                     {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
+                                    {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a> --}}
+<<<<<<< HEAD
                                     <a hretf="{{ url('/ExportLemburTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+=======
+                                    <a hretf="{{ url('/ExportTetap') }}"
+                                        class="btn btn-navy d-flex align-items-center ms-2">
+>>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
                                         Export
                                     </a>
                                 </div>
@@ -96,12 +106,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        {{-- @forelse ($approvals as $approval)
+                                        @forelse ($approvals as $approval)
                                             @php
                                                 if ($approval->status == '0') {
                                                     $status = 'Disetujui';
@@ -118,7 +123,7 @@
                                                     {{ $status }}</td>
                                                 <td>{{ __($approval->keterangan) }}</td>
                                                 <td>
-                                                    <a href="{{ url('/viewTetap?id=' . $approval->id) }}"
+                                                    <a href="{{ url('/viewLemburTetap?id=' . $approval->id) }}"
                                                         class="btn btn-navy align-items-center ms-2">
                                                         View
                                                     </a>
@@ -127,7 +132,7 @@
                                                 </td>
                                             </tr>
                                         @empty
-                                        @endforelse --}}
+                                        @endforelse
                                     </tbody>
 
                                     {{-- <tfoot>

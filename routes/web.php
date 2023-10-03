@@ -3,6 +3,7 @@
 use App\Http\Controllers\AjukanInkaController;
 use App\Http\Controllers\AjukanPkwtController;
 use App\Http\Controllers\AjukanTetapController;
+use App\Http\Controllers\ApprovalLemburController;
 use App\Http\Controllers\ApprovalSuperController;
 use App\Http\Controllers\cobaController;
 use App\Http\Controllers\KaryawanPerbantuanInkaController;
@@ -23,7 +24,11 @@ use App\Http\Controllers\ExportTetapController;
 use App\Http\Controllers\ExportTetapSuperController;
 use App\Http\Controllers\GajiLemburInkaController;
 use App\Http\Controllers\GajiLemburPkwtController;
+use App\Http\Controllers\GajiLemburInkaSuperController;
+use App\Http\Controllers\GajiLemburPkwtController;
+use App\Http\Controllers\GajiLemburPkwtSuperController;
 use App\Http\Controllers\GajiLemburTetapController;
+use App\Http\Controllers\GajiLemburTetapSuperController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ImportFileController;
 use App\Http\Controllers\ImportInkaController;
@@ -189,6 +194,9 @@ Route::group(['middleware' => 'auth'], function () {
     //Routing Import Lembur Pkwt
     Route::get('ImportLemburInka', [ImportLemburPkwtController::class, 'index'])->name('import_lembur_pkwt');
 
+    //Routing Import Gaji Lembur Tetap
+    Route::get('ImportLemburTetap', [ImportTetapController::class, 'index_lembur'])->name('import_lembur_tetap');
+
 
     Route::group(['middleware' => ['superuser']], function () {
         Route::get('dashboardSuperuser', [DashboardSuperController::class, 'index'])->name('superuser.dashboard');
@@ -242,6 +250,9 @@ Route::group(['middleware' => 'auth'], function () {
         //Routing Halaman Approval Superusser
         Route::get('ApprovalSuper', [ApprovalSuperController::class, 'index'])->name('superuser.approval');
 
+        //Routing Halaman Approval Lembur Superuser
+        Route::get('ApprovalLemburSuper', [ApprovalLemburController::class, 'index'])->name('superuser.approval_lembur');
+
         //Routing Halaman View Tetap Superuser
         Route::get('ViewTetapSuper', [viewTetapSuperController::class, 'index'])->name('superuser.view_tetap');
 
@@ -251,9 +262,22 @@ Route::group(['middleware' => 'auth'], function () {
         //Routing Halaman View Pkwt Superuser
         Route::get('ViewPkwtSuper', [ViewPkwtSuperController::class, 'index'])->name('superuser.view_pkwt');
 
+        //Routing Halaman Gaji Lembur Tetap Superuser
+        Route::get('GajiLemburTetapSuper', [GajiLemburTetapSuperController::class, 'index'])->name('superuser.gaji_lembur_tetap');
+
+        //Routing Halaman Gaji Lembur Inka Superuser
+        Route::get('GajiLemburInkaSuper', [GajiLemburInkaSuperController::class, 'index'])->name('superuser.gaji_lembur_inka');
+
+        //Routing Halaman Gaji Lembur Pkwt Superuser
+        Route::get('GajiLemburPkwtSuper', [GajiLemburPkwtSuperController::class, 'index'])->name('superuser.gaji_lembur_pkwt');
+
         //Routing decline approval superuser
         Route::patch('ApprovalSuper/decline', [ApprovalSuperController::class, 'decline'])->name('superuser.approval.decline');
         Route::patch('ApprovalSuper/approve', [ApprovalSuperController::class, 'approve'])->name('superuser.approval.approve');
+
+        //Routing decline approval lembur superuser
+        Route::patch('ApprovalLemburSuper/decline', [ApprovalLemburController::class, 'decline'])->name('superuser.approval.lembur.decline');
+        Route::patch('ApprovalLemburSuper/approve', [ApprovalLemburController::class, 'approve'])->name('superuser.approval.lembur.approve');
     });
     // //Routing Success Logout
     // Route::get('seccesslogout', [SuccessLogoutController::class, 'index'])->name('successlogout');
@@ -266,6 +290,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::post('test_import', [ImportTetapController::class, 'import'])->name('importTetap');
+Route::post('import_lembur_tetap', [ImportTetapController::class, 'import_lembur'])->name('importLemburTetap');
 Route::post('test_import_inka', [ImportInkaController::class, 'import'])->name('importInka');
 Route::post('test_import_pkwt', [ImportPkwtController::class, 'import'])->name('importPkwt');
 Route::get('test_upload', [ImportTetapController::class, 'test_upload'])->name('testUpload');
