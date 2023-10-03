@@ -15,7 +15,7 @@
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">Approval Gaji Karyawan</h1>
+                    <h1 class="mb-0 fw-bold">Approval Gaji Lembur</h1>
                 </div>
             </div>
         </div>
@@ -86,16 +86,16 @@
                             </div>
                             <!-- <div class="d-flex align-items-center g-2">
 
-                                            <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                                Import
-                                            </a>
-                                            {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
+                                                <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                                    Import
+                                                </a>
+                                                {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a> --}}
-                                            <a href="{{ url('/ExportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                                Export
-                                            </a>
-                                        </div> -->
+                                                <a href="{{ url('/ExportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                                    Export
+                                                </a>
+                                            </div> -->
                         </div>
                         <div class="table-responsive">
                             <table id="zero_config" class="table table-striped table-bordered text-center myTable">
@@ -142,10 +142,11 @@
                                                 </div>
 
                                                 <!-- <a href="{{ url('/') }}" class="btn btn-navy align-items-center ms-2">
-                                                    Approve
-                                                </a> -->
+                                                        Approve
+                                                    </a> -->
 
-                                                <form method="POST" action="{{ route('superuser.approval.approve') }}"
+                                                <form method="POST"
+                                                    action="{{ route('superuser.approval.lembur.approve') }}"
                                                     id="form-approve-{{ $approval->id }}">
                                                     @csrf
                                                     @method('PATCH')
@@ -189,7 +190,7 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 <form method="POST"
-                                                                    action="{{ route('superuser.approval.decline') }}"
+                                                                    action="{{ route('superuser.approval.lembur.decline') }}"
                                                                     id="form-decline-{{ $approval->id }}">
                                                                     @csrf
                                                                     @method('PATCH')

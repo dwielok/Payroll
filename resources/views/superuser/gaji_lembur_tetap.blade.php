@@ -15,7 +15,7 @@
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">Gaji Lembur Karyawan PKWT</h1>
+                    <h1 class="mb-0 fw-bold">Gaji Lembur Karyawan Tetap</h1>
                 </div>
             </div>
         </div>
@@ -73,20 +73,6 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
-<<<<<<< HEAD
-                                    <a href="{{ url('/ImportLemburPkwt') }}"
-                                        class="btn btn-navy d-flex align-items-center ms-2">
-                                        Import
-                                    </a>
-                                    {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Export
-                                    </a> --}}
-                                    <a hretf="{{ url('/ExportLemburPkwt') }}"
-                                        class="btn btn-navy d-flex align-items-center ms-2">
-                                        Export
-                                    </a>
-                                </div>
-=======
                                     <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
                                     </a>
@@ -97,7 +83,6 @@
                                         Export
                                     </a>
                                 </div> 
->>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
                             </div>
                             <div class="table-responsive">
                                 <table id="zero_config" class="table table-striped table-bordered text-center myTable">
@@ -110,18 +95,8 @@
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
-<<<<<<< HEAD
-                                    <tbody>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        {{-- @forelse ($approvals as $approval)
-=======
                                     {{-- <tbody>
                                          @forelse ($approvals as $approval)
->>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
                                             @php
                                                 if ($approval->status == '0') {
                                                     $status = 'Disetujui';
@@ -147,13 +122,8 @@
                                                 </td>
                                             </tr>
                                         @empty
-<<<<<<< HEAD
-                                        @endforelse --}}
-                                    </tbody>
-=======
                                         @endforelse 
                                     </tbody> --}}
->>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
 
                                     {{-- <tfoot>
                                         <tr>

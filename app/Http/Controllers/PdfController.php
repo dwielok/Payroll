@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Approval;
+use App\Models\GajiLembur;
 use App\Models\GajiPkwt;
 use App\Models\GajiTemp;
 use Illuminate\Http\Request;
@@ -260,7 +261,7 @@ class PdfController extends Controller
             foreach ($approvals as $key => $value) {
                 if ($value->tipe_karyawan != 'pkwt') {
                     $gajis = GajiTemp::leftJoin('karyawans', 'karyawans.id', '=', 'gaji_temp.id_karyawan')->leftJoin('jabatans', 'jabatans.id', '=', 'karyawans.id_jabatan')->where('gaji_temp.id_approval', $value->id)->get();
-                    $gajis = $gajis->map(function ($item) {
+                    $gajis = $gajis->map(function ($item) use ($value) {
                         $item->kenaikan = $this->getKenaikan($item->masa_kerja);
                         $item->gaji_pokok = $item->kenaikan[$item->masa_kerja - 1]['gaji'];
                         $item->golongan = $item->kenaikan[$item->masa_kerja - 1]['abjad'];
@@ -272,6 +273,14 @@ class PdfController extends Controller
                         $item->tunjangan_karya = $item->dana_ikk * ($item->kehadiran / $item->hari_kerja) * $item->nilai_ikk;
                         $item->bpjs_kesehatan = 0.04 * ($item->gaji_pokok + $item->tunjangan_tetap);
                         $item->bpjs_ketenagakerjaan = 0.0727 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                        //detail
+                        $bpjstk = new \stdClass();
+                        $bpjstk->jht = 0.037 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                        $bpjstk->jkk = 0.0127 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                        $bpjstk->jkm = 0.003 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                        $bpjstk->jp = 0.02 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                        $item->detail_bpjs_tk = $bpjstk;
+
                         $item->ppip = $item->gaji_pokok / 12;
                         $item->jumlah_premi = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan + $item->ppip;
                         $item->benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan + $item->ppip;
@@ -280,6 +289,12 @@ class PdfController extends Controller
 
                         $item->premi_bpjs_kesehatan = 0.01 * ($item->gaji_pokok + $item->tunjangan_tetap);
                         $item->premi_bpjs_ketenagakerjaan = 0.03 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                        //detail
+                        $premi_bpjstk = new \stdClass();
+                        $premi_bpjstk->jht = 0.02 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                        $premi_bpjstk->jp = 0.01 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                        $item->detail_premi_bpjs_tk = $premi_bpjstk;
+
                         $item->premi_ppip = $item->ppip_mandiri;
                         $item->potongan_premi = $item->premi_bpjs_kesehatan + $item->premi_bpjs_ketenagakerjaan + $item->premi_ppip;
                         $item->potongan_benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan + $item->ppip;
@@ -289,6 +304,47 @@ class PdfController extends Controller
                         $item->potongan = $item->potongan_premi + $item->potongan_benefit + $item->potongan_jam_hilang + $item->potongan_kopinka + $item->potongan_keuangan;
                         $item->penghasilan_netto = ($item->penghasilan_bruto) - $item->potongan;
                         $item->tunjangan_profesional = 0;
+
+                        //cari lembur berdasarkan bulan kemarin dan tahun yang sama dengan $gaji->bulan dan $gaji->tahun
+                        //cari bulan kemarin
+
+                        $bulan = [
+                            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+                        ];
+
+                        $tahun = $value->year;
+                        //cari di index mana bulan sekarang pada $item->bulan
+                        $bulan_gaji = array_search($value->bulan, $bulan);
+                        //jika sudah ketemu indexnya maka kurangi 1 untuk mendapatkan bulan kemarin
+                        $index_bulan_kemarin = $bulan_gaji - 1;
+                        //jika index bulan kemarin -1 maka bulan kemarin adalah desember
+                        if ($index_bulan_kemarin == -1) {
+                            $index_bulan_kemarin = 11;
+                            $tahun_kemarin = $tahun - 1;
+                        } else {
+                            $tahun_kemarin = $tahun;
+                        }
+                        //cari bulan kemarin
+                        $bulan_kemarin = $bulan[$index_bulan_kemarin];
+
+                        $lembur_weekend = GajiLembur::leftJoin('approval_lembur', 'gaji_lembur.id_approval', '=', 'approval_lembur.id')
+                            ->where('id_karyawan', $item->id_karyawan)
+                            ->where('bulan', $bulan_kemarin)
+                            ->where('year', $tahun_kemarin)
+                            ->sum('lembur_weekend');
+                        $lembur_weekday = GajiLembur::leftJoin('approval_lembur', 'gaji_lembur.id_approval', '=', 'approval_lembur.id')
+                            ->where('id_karyawan', $item->id_karyawan)
+                            ->where('bulan', $bulan_kemarin)
+                            ->where('year', $tahun_kemarin)
+                            ->sum('lembur_weekday');
+
+                        //ganti disini
+                        $lembur_weekend = $lembur_weekend * 30000;
+                        $lembur_weekday = $lembur_weekday * 20000;
+
+                        $item->lembur_kemarin = $lembur_weekend + $lembur_weekday;
+
+
                         return $item;
                     });
                     foreach ($gajis as $key => $gaji) {
@@ -311,6 +367,7 @@ class PdfController extends Controller
                         $obj->tunjangan_karya = $gaji->tunjangan_karya ?? 0;
                         $obj->bpjs_kesehatan = $gaji->bpjs_kesehatan ?? 0;
                         $obj->bpjs_ketenagakerjaan = $gaji->bpjs_ketenagakerjaan ?? 0;
+                        $obj->detail_bpjs_tk = $gaji->detail_bpjs_tk;
                         $obj->ppip = $gaji->ppip ?? 0;
                         $obj->jumlah_premi = $gaji->jumlah_premi ?? 0;
                         $obj->benefit = $gaji->benefit ?? 0;
@@ -318,6 +375,7 @@ class PdfController extends Controller
                         $obj->penghasilan_bruto = $gaji->penghasilan_bruto ?? 0;
                         $obj->premi_bpjs_kesehatan = $gaji->premi_bpjs_kesehatan ?? 0;
                         $obj->premi_bpjs_ketenagakerjaan = $gaji->premi_bpjs_ketenagakerjaan ?? 0;
+                        $obj->detail_premi_bpjs_tk = $gaji->detail_premi_bpjs_tk;
                         $obj->premi_ppip = $gaji->premi_ppip ?? 0;
                         $obj->potongan_premi = $gaji->potongan_premi ?? 0;
                         $obj->potongan_benefit = $gaji->potongan_benefit ?? 0;
@@ -328,11 +386,13 @@ class PdfController extends Controller
                         $obj->penghasilan_netto = $gaji->penghasilan_netto ?? 0;
                         $obj->nilai_ikk = $gaji->nilai_ikk ?? 0;
 
+                        $obj->lembur_kemarin = $gaji->lembur_kemarin ?? 0;
+
                         $result[] = $obj;
                     }
                 } else {
                     $gajis = GajiPkwt::leftJoin('karyawans', 'karyawans.id', '=', 'gaji_pkwt.id_karyawan')->leftJoin('jabatans', 'jabatans.id', '=', 'karyawans.id_jabatan')->where('gaji_pkwt.id_approval', $value->id)->get();
-                    $gajis = $gajis->map(function ($item) {
+                    $gajis = $gajis->map(function ($item) use ($value) {
                         $item->gaji_pokok = $this->levelPendidikan($item->pendidikan);
                         $item->penghasilan_tetap = $item->gaji_pokok;
                         $item->golongan = '-';
@@ -341,6 +401,14 @@ class PdfController extends Controller
                         $item->tunjangan_karya =  $item->dana_ikk * ($item->kehadiran / $item->hari_kerja) * $item->nilai_ikk;
                         $item->bpjs_kesehatan = 0.04 * ($item->gaji_pokok);
                         $item->bpjs_ketenagakerjaan = 0.0727 * ($item->gaji_pokok);
+                        //detail
+                        $bpjstk = new \stdClass();
+                        $bpjstk->jht = 0.037 * ($item->gaji_pokok);
+                        $bpjstk->jkk = 0.0127 * ($item->gaji_pokok);
+                        $bpjstk->jkm = 0.003 * ($item->gaji_pokok);
+                        $bpjstk->jp = 0.02 * ($item->gaji_pokok);
+                        $item->detail_bpjs_tk = $bpjstk;
+
                         $item->jumlah_premi = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan;
                         $item->benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan;
                         $item->penghasilan_tidak_tetap = $item->tunjangan_transportasi + $item->tunjangan_profesional + $item->tunjangan_karya + $item->benefit;
@@ -349,6 +417,12 @@ class PdfController extends Controller
 
                         $item->bpjs_kesehatan_premi = 0.01 * ($item->gaji_pokok);
                         $item->bpjs_ketenagakerjaan_premi = 0.03 * ($item->gaji_pokok);
+                        //detail
+                        $premi_bpjstk = new \stdClass();
+                        $premi_bpjstk->jht = 0.02 * ($item->gaji_pokok);
+                        $premi_bpjstk->jp = 0.01 * ($item->gaji_pokok);
+                        $item->detail_premi_bpjs_tk = $premi_bpjstk;
+
                         $item->premi = $item->bpjs_kesehatan_premi + $item->bpjs_ketenagakerjaan_premi;
                         $item->potongan_premi = $item->bpjs_kesehatan_premi + $item->bpjs_ketenagakerjaan_premi;
                         $item->benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan;
@@ -356,6 +430,47 @@ class PdfController extends Controller
                         $item->potongan = $item->premi + $item->benefit + $item->potongan_jam_hilang;
 
                         $item->penghasilan_netto = ($item->penghasilan_bruto) - $item->potongan;
+
+                        //cari lembur berdasarkan bulan kemarin dan tahun yang sama dengan $gaji->bulan dan $gaji->tahun
+                        //cari bulan kemarin
+
+                        $bulan = [
+                            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+                        ];
+
+                        $tahun = $value->year;
+                        //cari di index mana bulan sekarang pada $item->bulan
+                        $bulan_gaji = array_search($value->bulan, $bulan);
+                        //jika sudah ketemu indexnya maka kurangi 1 untuk mendapatkan bulan kemarin
+                        $index_bulan_kemarin = $bulan_gaji - 1;
+                        //jika index bulan kemarin -1 maka bulan kemarin adalah desember
+                        if ($index_bulan_kemarin == -1) {
+                            $index_bulan_kemarin = 11;
+                            $tahun_kemarin = $tahun - 1;
+                        } else {
+                            $tahun_kemarin = $tahun;
+                        }
+                        //cari bulan kemarin
+                        $bulan_kemarin = $bulan[$index_bulan_kemarin];
+
+                        $lembur_weekend = GajiLembur::leftJoin('approval_lembur', 'gaji_lembur.id_approval', '=', 'approval_lembur.id')
+                            ->where('id_karyawan', $item->id_karyawan)
+                            ->where('bulan', $bulan_kemarin)
+                            ->where('year', $tahun_kemarin)
+                            ->sum('lembur_weekend');
+                        $lembur_weekday = GajiLembur::leftJoin('approval_lembur', 'gaji_lembur.id_approval', '=', 'approval_lembur.id')
+                            ->where('id_karyawan', $item->id_karyawan)
+                            ->where('bulan', $bulan_kemarin)
+                            ->where('year', $tahun_kemarin)
+                            ->sum('lembur_weekday');
+
+                        //ganti disini
+                        $lembur_weekend = $lembur_weekend * 30000;
+                        $lembur_weekday = $lembur_weekday * 20000;
+
+                        $item->lembur_kemarin = $lembur_weekend + $lembur_weekday;
+
+
                         return $item;
                     });
                     foreach ($gajis as $key => $gaji) {
@@ -375,11 +490,13 @@ class PdfController extends Controller
                         $obj->tunjangan_karya = $gaji->tunjangan_karya ?? 0;
                         $obj->bpjs_kesehatan = $gaji->bpjs_kesehatan ?? 0;
                         $obj->bpjs_ketenagakerjaan = $gaji->bpjs_ketenagakerjaan ?? 0;
+                        $obj->detail_bpjs_tk = $gaji->detail_bpjs_tk;
                         $obj->benefit = $gaji->benefit ?? 0;
                         $obj->penghasilan_tunjangan_tidak_tetap = $gaji->penghasilan_tidak_tetap ?? 0;
                         $obj->penghasilan_bruto = $gaji->penghasilan_bruto ?? 0;
                         $obj->premi_bpjs_kesehatan = $gaji->bpjs_kesehatan_premi ?? 0;
                         $obj->premi_bpjs_ketenagakerjaan = $gaji->bpjs_ketenagakerjaan_premi ?? 0;
+                        $obj->detail_premi_bpjs_tk = $gaji->detail_premi_bpjs_tk;
                         $obj->premi = $gaji->premi ?? 0;
                         $obj->potongan_jam_hilang = $gaji->potongan_jam_hilang ?? 0;
                         $obj->potongan = $gaji->potongan ?? 0;
@@ -393,6 +510,8 @@ class PdfController extends Controller
                         $obj->jumlah_premi = $gaji->jumlah_premi ?? 0;
                         $obj->ppip = $gaji->ppip ?? 0;
                         $obj->potongan_premi = $gaji->potongan_premi ?? 0;
+
+                        $obj->lembur_kemarin = $gaji->lembur_kemarin ?? 0;
 
                         $result[] = $obj;
                     }
@@ -494,6 +613,14 @@ class PdfController extends Controller
                     $item->tunjangan_karya = $item->dana_ikk * ($item->kehadiran / $item->hari_kerja) * $item->nilai_ikk;
                     $item->bpjs_kesehatan = 0.04 * ($item->gaji_pokok + $item->tunjangan_tetap);
                     $item->bpjs_ketenagakerjaan = 0.0727 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                    //detail
+                    $bpjstk = new \stdClass();
+                    $bpjstk->jht = 0.037 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                    $bpjstk->jkk = 0.0127 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                    $bpjstk->jkm = 0.003 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                    $bpjstk->jp = 0.02 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                    $item->detail_bpjs_tk = $bpjstk;
+
                     $item->ppip = $item->gaji_pokok / 12;
                     $item->jumlah_premi = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan + $item->ppip;
                     $item->benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan + $item->ppip;
@@ -502,6 +629,13 @@ class PdfController extends Controller
 
                     $item->premi_bpjs_kesehatan = 0.01 * ($item->gaji_pokok + $item->tunjangan_tetap);
                     $item->premi_bpjs_ketenagakerjaan = 0.03 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                    //detail
+                    $premi_bpjstk = new \stdClass();
+                    $premi_bpjstk->jht = 0.02 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                    $premi_bpjstk->jp = 0.01 * ($item->gaji_pokok + $item->tunjangan_tetap);
+                    $item->detail_premi_bpjs_tk = $premi_bpjstk;
+
+
                     $item->premi_ppip = $item->ppip_mandiri;
                     $item->potongan_premi = $item->premi_bpjs_kesehatan + $item->premi_bpjs_ketenagakerjaan + $item->premi_ppip;
                     $item->potongan_benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan + $item->ppip;
@@ -511,6 +645,46 @@ class PdfController extends Controller
                     $item->potongan = $item->potongan_premi + $item->potongan_benefit + $item->potongan_jam_hilang + $item->potongan_kopinka + $item->potongan_keuangan;
                     $item->penghasilan_netto = ($item->penghasilan_bruto) - $item->potongan;
                     $item->tunjangan_profesional = 0;
+
+                    //cari lembur berdasarkan bulan kemarin dan tahun yang sama dengan $gaji->bulan dan $gaji->tahun
+                    //cari bulan kemarin
+
+                    $bulan = [
+                        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+                    ];
+
+                    $tahun = $item->year;
+                    //cari di index mana bulan sekarang pada $item->bulan
+                    $bulan_gaji = array_search($item->bulan, $bulan);
+                    //jika sudah ketemu indexnya maka kurangi 1 untuk mendapatkan bulan kemarin
+                    $index_bulan_kemarin = $bulan_gaji - 1;
+                    //jika index bulan kemarin -1 maka bulan kemarin adalah desember
+                    if ($index_bulan_kemarin == -1) {
+                        $index_bulan_kemarin = 11;
+                        $tahun_kemarin = $tahun - 1;
+                    } else {
+                        $tahun_kemarin = $tahun;
+                    }
+                    //cari bulan kemarin
+                    $bulan_kemarin = $bulan[$index_bulan_kemarin];
+
+                    $lembur_weekend = GajiLembur::leftJoin('approval_lembur', 'gaji_lembur.id_approval', '=', 'approval_lembur.id')
+                        ->where('id_karyawan', $item->id_karyawan)
+                        ->where('bulan', $bulan_kemarin)
+                        ->where('year', $tahun_kemarin)
+                        ->sum('lembur_weekend');
+                    $lembur_weekday = GajiLembur::leftJoin('approval_lembur', 'gaji_lembur.id_approval', '=', 'approval_lembur.id')
+                        ->where('id_karyawan', $item->id_karyawan)
+                        ->where('bulan', $bulan_kemarin)
+                        ->where('year', $tahun_kemarin)
+                        ->sum('lembur_weekday');
+
+                    //ganti disini
+                    $lembur_weekend = $lembur_weekend * 30000;
+                    $lembur_weekday = $lembur_weekday * 20000;
+
+                    $item->lembur_kemarin = $lembur_weekend + $lembur_weekday;
+
                     return $item;
                 });
                 foreach ($gajis as $key => $gaji) {
@@ -533,6 +707,7 @@ class PdfController extends Controller
                     $obj->tunjangan_karya = $gaji->tunjangan_karya ?? 0;
                     $obj->bpjs_kesehatan = $gaji->bpjs_kesehatan ?? 0;
                     $obj->bpjs_ketenagakerjaan = $gaji->bpjs_ketenagakerjaan ?? 0;
+                    $obj->detail_bpjs_tk = $gaji->detail_bpjs_tk;
                     $obj->ppip = $gaji->ppip ?? 0;
                     $obj->jumlah_premi = $gaji->jumlah_premi ?? 0;
                     $obj->benefit = $gaji->benefit ?? 0;
@@ -540,6 +715,7 @@ class PdfController extends Controller
                     $obj->penghasilan_bruto = $gaji->penghasilan_bruto ?? 0;
                     $obj->premi_bpjs_kesehatan = $gaji->premi_bpjs_kesehatan ?? 0;
                     $obj->premi_bpjs_ketenagakerjaan = $gaji->premi_bpjs_ketenagakerjaan ?? 0;
+                    $obj->detail_premi_bpjs_tk = $gaji->detail_premi_bpjs_tk;
                     $obj->premi_ppip = $gaji->premi_ppip ?? 0;
                     $obj->potongan_premi = $gaji->potongan_premi ?? 0;
                     $obj->potongan_benefit = $gaji->potongan_benefit ?? 0;
@@ -549,6 +725,8 @@ class PdfController extends Controller
                     $obj->potongan = $gaji->potongan ?? 0;
                     $obj->penghasilan_netto = $gaji->penghasilan_netto ?? 0;
                     $obj->nilai_ikk = $gaji->nilai_ikk ?? 0;
+
+                    $obj->lembur_kemarin = $gaji->lembur_kemarin ?? 0;
 
                     $result[] = $obj;
                 }
@@ -565,6 +743,14 @@ class PdfController extends Controller
                     $item->tunjangan_karya =  $item->dana_ikk * ($item->kehadiran / $item->hari_kerja) * $item->nilai_ikk;
                     $item->bpjs_kesehatan = 0.04 * ($item->gaji_pokok);
                     $item->bpjs_ketenagakerjaan = 0.0727 * ($item->gaji_pokok);
+                    //detail
+                    $bpjstk = new \stdClass();
+                    $bpjstk->jht = 0.037 * ($item->gaji_pokok);
+                    $bpjstk->jkk = 0.0127 * ($item->gaji_pokok);
+                    $bpjstk->jkm = 0.003 * ($item->gaji_pokok);
+                    $bpjstk->jp = 0.02 * ($item->gaji_pokok);
+                    $item->detail_bpjs_tk = $bpjstk;
+
                     $item->jumlah_premi = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan;
                     $item->benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan;
                     $item->penghasilan_tidak_tetap = $item->tunjangan_transportasi + $item->tunjangan_profesional + $item->tunjangan_karya + $item->benefit;
@@ -573,13 +759,60 @@ class PdfController extends Controller
 
                     $item->bpjs_kesehatan_premi = 0.01 * ($item->gaji_pokok);
                     $item->bpjs_ketenagakerjaan_premi = 0.03 * ($item->gaji_pokok);
+                    //detail
+                    $premi_bpjstk = new \stdClass();
+                    $premi_bpjstk->jht = 0.02 * ($item->gaji_pokok);
+                    $premi_bpjstk->jp = 0.01 * ($item->gaji_pokok);
+                    $item->detail_premi_bpjs_tk = $premi_bpjstk;
+
                     $item->premi = $item->bpjs_kesehatan_premi + $item->bpjs_ketenagakerjaan_premi;
                     $item->potongan_premi = $item->bpjs_kesehatan_premi + $item->bpjs_ketenagakerjaan_premi;
+
                     $item->benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan;
                     $item->potongan_jam_hilang = ($item->jam_hilang / 173) * $item->gaji_pokok;
                     $item->potongan = $item->premi + $item->benefit + $item->potongan_jam_hilang;
 
                     $item->penghasilan_netto = ($item->penghasilan_bruto) - $item->potongan;
+
+                    //cari lembur berdasarkan bulan kemarin dan tahun yang sama dengan $gaji->bulan dan $gaji->tahun
+                    //cari bulan kemarin
+
+                    $bulan = [
+                        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+                    ];
+
+                    $tahun = $item->year;
+                    //cari di index mana bulan sekarang pada $item->bulan
+                    $bulan_gaji = array_search($item->bulan, $bulan);
+                    //jika sudah ketemu indexnya maka kurangi 1 untuk mendapatkan bulan kemarin
+                    $index_bulan_kemarin = $bulan_gaji - 1;
+                    //jika index bulan kemarin -1 maka bulan kemarin adalah desember
+                    if ($index_bulan_kemarin == -1) {
+                        $index_bulan_kemarin = 11;
+                        $tahun_kemarin = $tahun - 1;
+                    } else {
+                        $tahun_kemarin = $tahun;
+                    }
+                    //cari bulan kemarin
+                    $bulan_kemarin = $bulan[$index_bulan_kemarin];
+
+                    $lembur_weekend = GajiLembur::leftJoin('approval_lembur', 'gaji_lembur.id_approval', '=', 'approval_lembur.id')
+                        ->where('id_karyawan', $item->id_karyawan)
+                        ->where('bulan', $bulan_kemarin)
+                        ->where('year', $tahun_kemarin)
+                        ->sum('lembur_weekend');
+                    $lembur_weekday = GajiLembur::leftJoin('approval_lembur', 'gaji_lembur.id_approval', '=', 'approval_lembur.id')
+                        ->where('id_karyawan', $item->id_karyawan)
+                        ->where('bulan', $bulan_kemarin)
+                        ->where('year', $tahun_kemarin)
+                        ->sum('lembur_weekday');
+
+                    //ganti disini
+                    $lembur_weekend = $lembur_weekend * 30000;
+                    $lembur_weekday = $lembur_weekday * 20000;
+
+                    $item->lembur_kemarin = $lembur_weekend + $lembur_weekday;
+
                     return $item;
                 });
                 foreach ($gajis as $key => $gaji) {
@@ -599,11 +832,13 @@ class PdfController extends Controller
                     $obj->tunjangan_karya = $gaji->tunjangan_karya ?? 0;
                     $obj->bpjs_kesehatan = $gaji->bpjs_kesehatan ?? 0;
                     $obj->bpjs_ketenagakerjaan = $gaji->bpjs_ketenagakerjaan ?? 0;
+                    $obj->detail_bpjs_tk = $gaji->detail_bpjs_tk;
                     $obj->benefit = $gaji->benefit ?? 0;
                     $obj->penghasilan_tunjangan_tidak_tetap = $gaji->penghasilan_tidak_tetap ?? 0;
                     $obj->penghasilan_bruto = $gaji->penghasilan_bruto ?? 0;
                     $obj->premi_bpjs_kesehatan = $gaji->bpjs_kesehatan_premi ?? 0;
                     $obj->premi_bpjs_ketenagakerjaan = $gaji->bpjs_ketenagakerjaan_premi ?? 0;
+                    $obj->detail_premi_bpjs_tk = $gaji->detail_premi_bpjs_tk;
                     $obj->premi = $gaji->premi ?? 0;
                     $obj->potongan_jam_hilang = $gaji->potongan_jam_hilang ?? 0;
                     $obj->potongan = $gaji->potongan ?? 0;
@@ -618,17 +853,19 @@ class PdfController extends Controller
                     $obj->ppip = $gaji->ppip ?? 0;
                     $obj->potongan_premi = $gaji->potongan_premi ?? 0;
 
+                    $obj->lembur_kemarin = $gaji->lembur_kemarin ?? 0;
+
                     $result[] = $obj;
                 }
             }
         }
 
         //for testing
-        // $res0 = $result[0];
+        $res0 = $result[0];
 
-        // $gaji = $res0;
+        $gaji = $res0;
 
-        // return view('view_slip', compact('gaji'));
+        return view('view_slip', compact('gaji'));
         //endfor testing
 
         $pdfs = [];
