@@ -11,8 +11,8 @@
                                 <a href="/dashboardSuperuser" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/KaryawanTetapSuper" class="link">
-                                    List Data Karyawan Tetap </a>
+                                <a href="/ApprovalSuper" class="link">
+                                    List Approval </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 View List Data
@@ -43,7 +43,7 @@
             justify-content-between
             mb-4
           ">
-                                <div class="input-group" style="position: absolute; width:20%; margin:50px">
+                                <div class="input-group" style="width:20%; margin-left:50px">
                                     <span class="input-group-prepend">
                                         <button class="btn btn-outline-secondary bg-white border-end-0  border ms-n5"
                                             type="button">
@@ -65,6 +65,94 @@
                                         Export
                                     </a>
                                 </div> --}}
+
+                                @php
+                                    if ($approval->status == '0') {
+                                        $status = 'Disetujui';
+                                    } elseif ($approval->status == '1') {
+                                        $status = 'Ditolak';
+                                    } else {
+                                        $status = '';
+                                    }
+                                @endphp
+
+                                <div class="d-flex align-items-center justify-content-center" style="margin-left: 55%">
+                                    <button onclick="document.getElementById('form-approve-{{ $approval->id }}').submit();"
+                                        type="button" @if ($approval->status != null) disabled='disabled' @endif
+                                        class="btn btn-navy align-items-center ms-2">Approve</button>
+                                    <button type="button" @if ($approval->status != null) disabled='disabled' @endif
+                                        class="btn btn-merah align-items-center ms-2" data-bs-toggle="modal"
+                                        data-bs-target="#modalDecline" data-bs-whatever="@fat">Decline</button>
+                                </div>
+
+                                <!-- <a href="{{ url('/') }}" class="btn btn-navy align-items-center ms-2">
+                                                            Approve
+                                                        </a> -->
+
+                                <form method="POST" action="{{ route('superuser.approval.approve') }}"
+                                    id="form-approve-{{ $approval->id }}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="id" value="{{ $approval->id }}">
+                                </form>
+
+                                <!-- <button onclick="document.getElementById('form-approv-{{ $approval->id }}').submit();" type="button" @if ($approval->status != null) disabled='disabled' @endif class="btn btn-navy align-items-center ms-2" data-bs-toggle="modal" data-bs-target="#ModalApprove" data-bs-whatever="@fat">Approve</button> -->
+                                <!-- Modal -->
+                                <div class="modal fade" id="ModalApprove" tabindex="-1" aria-labelledby="ModalApproveLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h2 class="fw-bold">Succesfully Approve!</h2>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-navy"
+                                                    data-bs-dismiss="modal">Close</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- tiap modal harus beda id gaoleh podo id ne ojo pakek exampleModal terus, sesuaiin sama nama fungsi misal modalApprove dll -->
+
+                                <div class="modal fade" id="modalDecline" tabindex="-1" aria-labelledby="modalDeclineLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="modalDeclineLabel">
+                                                    Keterangan Ditolak</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST" action="{{ route('superuser.approval.decline') }}"
+                                                    id="form-decline-{{ $approval->id }}">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <input type="hidden" name="id" value="{{ $approval->id }}">
+                                                    <div class="mb-3">
+                                                        <label for="message-text" class="col-form-label">Keterangan</label>
+                                                        <textarea class="form-control" id="message-text" name="keterangan"></textarea>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-merah"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button
+                                                    onclick="document.getElementById('form-decline-{{ $approval->id }}').submit();"
+                                                    type="button" class="btn btn-navy">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="table-responsive-" style="overflow-x:auto;">
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap">
@@ -97,6 +185,8 @@
                                             <th class="text-center">Jam Hilang</th>
                                             <th class="text-center">Kopinka</th>
                                             <th class="text-center">Keuangan</th>
+                                            <th class="text-center">Lembur Weekdays</th>
+                                            <th class="text-center">Lembur Weekend</th>
                                             <th class="text-center">Penyesuaian Penambahan</th>
                                             <th class="text-center">Penyesuaian Pengurangan</th>
                                             <th class="text-center">Potongan</th>
@@ -137,6 +227,8 @@
                                                 <td>{{ $gaji->jam_hilang }}</td>
                                                 <td>@rupiah($gaji->kopinka)</td>
                                                 <td>@rupiah($gaji->keuangan)</td>
+                                                <td>{{ $gaji->lembur_weekdays }}</td>
+                                                <td>{{ $gaji->lembur_weekend }}</td>
                                                 <td>{{ $gaji->penyesuaian_penambahan }}</td>
                                                 <td>{{ $gaji->penyesuaian_pengurangan }}</td>
                                                 <td>@rupiah($gaji->potongan)</td>
@@ -144,19 +236,14 @@
                                                 <td>@rupiah($gaji->penghasilan_tunjangan_tidak_tetap)</td>
                                                 <td>@rupiah($gaji->penghasilan_bruto)</td>
                                                 <td>@rupiah($gaji->penghasilan_netto)</td>
-                                                <td><a href="{{ url('/EditTetapSuper?id=' . $gaji->id_gaji) }}"
+                                                <td><a href="{{ url('/EditTetapSuper') }}"
                                                         class="btn btn-navy align-items-center ms-2">
                                                         Edit
                                                     </a>
-                                                    <form action="{{ url('/DeleteTetapSuper') }}" method="post"
-                                                        id="form-view">
-                                                        @csrf
-                                                        <input type="hidden" name="id" value="{{ $gaji->id_gaji }}">
-                                                        <button type="submit"
-                                                            class="btn btn-merah align-items-center ms-2">
-                                                            Delete
-                                                        </button>
-                                                    </form>
+                                                    <a href="{{ url('/#') }}"
+                                                        class="btn btn-merah align-items-center ms-2">
+                                                        Delete
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach

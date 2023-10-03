@@ -181,8 +181,23 @@ Route::group(['middleware' => 'auth'], function () {
     //Routing Gaji Lembur Pkwt
     Route::get('GajiLemburPkwt', [GajiLemburPkwtController::class, 'index'])->name('gaji_lembur_pkwt');
 
+    //Routing View Lembur Tetap
+    Route::get('viewLemburTetapUser', [GajiLemburTetapController::class, 'detail'])->name('view_lembur_tetap');
+
+    //Routing View Lembur Inka
+    Route::get('viewLemburInkaUser', [GajiLemburInkaController::class, 'detail'])->name('view_lembur_inka');
+
+    //Routing View Lembur Pkwt
+    Route::get('viewLemburPkwtUser', [GajiLemburPkwtController::class, 'detail'])->name('view_lembur_pkwt');
+
     //Routing Import Gaji Lembur Tetap
     Route::get('ImportLemburTetap', [ImportTetapController::class, 'index_lembur'])->name('import_lembur_tetap');
+
+    //Routing Import Gaji Lembur Inka
+    Route::get('ImportLemburInka', [ImportInkaController::class, 'index_lembur'])->name('import_lembur_inka');
+
+    //Routing Import Gaji Lembur Pkwt
+    Route::get('ImportLemburPkwt', [ImportPkwtController::class, 'index_lembur'])->name('import_lembur_pkwt');
 
     Route::group(['middleware' => ['superuser']], function () {
         Route::get('dashboardSuperuser', [DashboardSuperController::class, 'index'])->name('superuser.dashboard');
@@ -242,6 +257,21 @@ Route::group(['middleware' => 'auth'], function () {
         //Routing Halaman View Tetap Superuser
         Route::get('ViewTetapSuper', [viewTetapSuperController::class, 'index'])->name('superuser.view_tetap');
 
+        //Routing Halaman View Lembur Tetap
+        Route::get('viewLemburTetap', [GajiLemburTetapSuperController::class, 'detail'])->name('superuser.view_lembur_tetap');
+
+        //Routing Halaman View Lembur Inka
+        Route::get('viewLemburInka', [GajiLemburInkaSuperController::class, 'detail'])->name('superuser.view_lembur_inka');
+
+        //Routing Halaman View Lembur Pkwt
+        Route::get('viewLemburPkwt', [GajiLemburPkwtSuperController::class, 'detail'])->name('superuser.view_lembur_pkwt');
+
+        //Routeing Halaman View Approval Lembur Super
+        Route::get('ViewApprovalLemburSuper', [ApprovalLemburController::class, 'detail'])->name('superuser.view_approval_lembur');
+
+        //Routing Halaman View Approval Superuser
+        Route::get('ViewApprovalSuper', [ApprovalSuperController::class, 'detail'])->name('superuser.view_approval');
+
         //Routing Halaman View Inka Superuser
         Route::get('ViewInkaSuper', [ViewInkaSuperController::class, 'index'])->name('superuser.view_inka');
 
@@ -277,6 +307,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::post('test_import', [ImportTetapController::class, 'import'])->name('importTetap');
 Route::post('import_lembur_tetap', [ImportTetapController::class, 'import_lembur'])->name('importLemburTetap');
+Route::post('import_lembur_inka', [ImportInkaController::class, 'import_lembur'])->name('importLemburInka');
+Route::post('import_lembur_pkwt', [ImportPkwtController::class, 'import_lembur'])->name('importLemburPkwt');
 Route::post('test_import_inka', [ImportInkaController::class, 'import'])->name('importInka');
 Route::post('test_import_pkwt', [ImportPkwtController::class, 'import'])->name('importPkwt');
 Route::get('test_upload', [ImportTetapController::class, 'test_upload'])->name('testUpload');

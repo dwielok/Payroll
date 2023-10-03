@@ -67,7 +67,7 @@ class ViewTetapSuperController extends Controller
         $gajis = GajiTemp::leftJoin('karyawans', 'karyawans.id', '=', 'gaji_temp.id_karyawan')
             ->leftJoin('jabatans', 'jabatans.id', '=', 'karyawans.id_jabatan')
             ->leftJoin('golongans', 'golongans.id', '=', 'karyawans.id_golongan')
-            ->select('gaji_temp.*', 'karyawans.*', 'jabatans.*', 'golongans.*')
+            ->select('gaji_temp.*', 'karyawans.*', 'jabatans.*', 'golongans.*', 'gaji_temp.id as id_gaji')
             ->where('gaji_temp.id_approval', '=', $id)
             ->get();
         $gajis = $gajis->map(function ($item) {

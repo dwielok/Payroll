@@ -331,11 +331,13 @@ class PdfController extends Controller
                             ->where('id_karyawan', $item->id_karyawan)
                             ->where('bulan', $bulan_kemarin)
                             ->where('year', $tahun_kemarin)
+                            ->where('status', '0')
                             ->sum('lembur_weekend');
                         $lembur_weekday = GajiLembur::leftJoin('approval_lembur', 'gaji_lembur.id_approval', '=', 'approval_lembur.id')
                             ->where('id_karyawan', $item->id_karyawan)
                             ->where('bulan', $bulan_kemarin)
                             ->where('year', $tahun_kemarin)
+                            ->where('status', '0')
                             ->sum('lembur_weekday');
 
                         //ganti disini
@@ -457,11 +459,13 @@ class PdfController extends Controller
                             ->where('id_karyawan', $item->id_karyawan)
                             ->where('bulan', $bulan_kemarin)
                             ->where('year', $tahun_kemarin)
+                            ->where('status', '0')
                             ->sum('lembur_weekend');
                         $lembur_weekday = GajiLembur::leftJoin('approval_lembur', 'gaji_lembur.id_approval', '=', 'approval_lembur.id')
                             ->where('id_karyawan', $item->id_karyawan)
                             ->where('bulan', $bulan_kemarin)
                             ->where('year', $tahun_kemarin)
+                            ->where('status', '0')
                             ->sum('lembur_weekday');
 
                         //ganti disini
@@ -672,11 +676,13 @@ class PdfController extends Controller
                         ->where('id_karyawan', $item->id_karyawan)
                         ->where('bulan', $bulan_kemarin)
                         ->where('year', $tahun_kemarin)
+                        ->where('status', '0')
                         ->sum('lembur_weekend');
                     $lembur_weekday = GajiLembur::leftJoin('approval_lembur', 'gaji_lembur.id_approval', '=', 'approval_lembur.id')
                         ->where('id_karyawan', $item->id_karyawan)
                         ->where('bulan', $bulan_kemarin)
                         ->where('year', $tahun_kemarin)
+                        ->where('status', '0')
                         ->sum('lembur_weekday');
 
                     //ganti disini
@@ -800,11 +806,13 @@ class PdfController extends Controller
                         ->where('id_karyawan', $item->id_karyawan)
                         ->where('bulan', $bulan_kemarin)
                         ->where('year', $tahun_kemarin)
+                        ->where('status', '0')
                         ->sum('lembur_weekend');
                     $lembur_weekday = GajiLembur::leftJoin('approval_lembur', 'gaji_lembur.id_approval', '=', 'approval_lembur.id')
                         ->where('id_karyawan', $item->id_karyawan)
                         ->where('bulan', $bulan_kemarin)
                         ->where('year', $tahun_kemarin)
+                        ->where('status', '0')
                         ->sum('lembur_weekday');
 
                     //ganti disini
@@ -861,11 +869,11 @@ class PdfController extends Controller
         }
 
         //for testing
-        $res0 = $result[0];
+        // $res0 = $result[0];
 
-        $gaji = $res0;
+        // $gaji = $res0;
 
-        return view('view_slip', compact('gaji'));
+        // return view('view_slip', compact('gaji'));
         //endfor testing
 
         $pdfs = [];
