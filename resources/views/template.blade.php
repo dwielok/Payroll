@@ -43,13 +43,18 @@
 
                                         <div class="col-md-8">
                                             <h2 class="text-left mb-3 mt-3">Download Template</h2>
-                                            <p>Download Template
+                                            <p>Download Template Gaji Karyawan
                                                 <a
-                                                    href="https://ungu.in/templateTetapInka">Karyawan
+                                                    href="https://ungu.in/TemplateKaryawanTetapInka">Karyawan
                                                     Tetap dan Perbantuan INKA, </a>
                                                 <a
-                                                    href="https://ungu.in/templatePkwt">Karyawan
+                                                    href="https://ungu.in/TemplateKaryawanPkwt">Karyawan
                                                     PKWT </a>
+                                            </p>
+                                            <p>Download Template Gaji Lembur
+                                                <a
+                                                    href="https://ungu.in/TemplateGajiLembur">Karyawan
+                                                    Tetap, Perbantuan INKA, dan PKWT </a>
                                             </p>
                                             {{-- <a class="btn btn-success btn-sm" href="download.php?file=file-download.txt">Click Here</a> --}}
                                         </div>

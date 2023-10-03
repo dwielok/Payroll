@@ -388,7 +388,7 @@
                     @rupiah($gaji->detail_bpjs_tk->jp)
                 </td>
                 <th colspan="3" style="text-align: left">
-                    
+
                 </th>
                 <td class="myAlign">
                 </td>
