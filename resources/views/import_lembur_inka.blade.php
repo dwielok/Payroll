@@ -12,7 +12,7 @@
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 <a href="/GajiLemburInka" class="link">
-                                    Gaji Lembur Perbantuan INKA</a>
+                                    Gaji Lembur Karyawan Perbantuan INKA</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Import Data
@@ -71,7 +71,7 @@
 
                                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <form method="post" action="{{ route('importLemburTetap') }}"
+                                            <form method="post" action="{{ route('importLemburInka') }}"
                                                 enctype="multipart/form-data">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">

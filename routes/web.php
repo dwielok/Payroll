@@ -23,6 +23,7 @@ use App\Http\Controllers\ExportPkwtSuperController;
 use App\Http\Controllers\ExportTetapController;
 use App\Http\Controllers\ExportTetapSuperController;
 use App\Http\Controllers\GajiLemburInkaController;
+use App\Http\Controllers\GajiLemburPkwtController;
 use App\Http\Controllers\GajiLemburInkaSuperController;
 use App\Http\Controllers\GajiLemburPkwtController;
 use App\Http\Controllers\GajiLemburPkwtSuperController;
@@ -32,6 +33,9 @@ use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ImportFileController;
 use App\Http\Controllers\ImportInkaController;
 use App\Http\Controllers\ImportInkaSuperController;
+use App\Http\Controllers\ImportLemburInkaController;
+use App\Http\Controllers\ImportLemburPkwtController;
+use App\Http\Controllers\ImportLemburTetapController;
 use App\Http\Controllers\ImportPkwtController;
 use App\Http\Controllers\ImportPkwtSuperController;
 use App\Http\Controllers\ImportTetapController;
@@ -189,6 +193,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Routing View Lembur Pkwt
     Route::get('viewLemburPkwtUser', [GajiLemburPkwtController::class, 'detail'])->name('view_lembur_pkwt');
+    //Routing Import Lembur Tetap
+    Route::get('ImportLemburTetap', [ImportLemburTetapController::class, 'index'])->name('import_lembur_tetap');
+
+    //Routing Import Lembur Inka
+    Route::get('ImportLemburInka', [ImportLemburInkaController::class, 'index'])->name('import_lembur_inka');
+
+    //Routing Import Lembur Pkwt
+    Route::get('ImportLemburInka', [ImportLemburPkwtController::class, 'index'])->name('import_lembur_pkwt');
 
     //Routing Import Gaji Lembur Tetap
     Route::get('ImportLemburTetap', [ImportTetapController::class, 'index_lembur'])->name('import_lembur_tetap');
@@ -201,7 +213,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => ['superuser']], function () {
         Route::get('dashboardSuperuser', [DashboardSuperController::class, 'index'])->name('superuser.dashboard');
-        //taroh rute superadmin ng kene
+        //taroh rute superuser ng kene
 
         //Routing Halaman Karyawan Tetap
         Route::get('KaryawanTetapSuper', [KaryawanTetapSuperController::class, 'index'])->name('superuser.karyawan_tetap');

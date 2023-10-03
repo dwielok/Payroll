@@ -12,7 +12,7 @@
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 <a href="/GajiLemburPkwt" class="link">
-                                    Gaji Lembur Pkwt</a>
+                                    Gaji Lembur Karyawan PKWT</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Import Data
