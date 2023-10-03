@@ -15,7 +15,7 @@
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">Gaji Lembur Karyawan Tetap</h1>
+                    <h1 class="mb-0 fw-bold">Gaji Lembur Karyawan PKWT</h1>
                 </div>
             </div>
         </div>
@@ -73,13 +73,15 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
-                                    <a href="{{ url('/ImportLemburTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ImportLemburPkwt') }}"
+                                        class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
                                     </a>
-                                     {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
+                                    {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a> --}}
-                                    <a hretf="{{ url('/ExportLemburTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a hretf="{{ url('/ExportLemburPkwt') }}"
+                                        class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
                                 </div>
