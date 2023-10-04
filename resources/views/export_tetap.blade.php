@@ -94,8 +94,8 @@
                                                         data-id="{{ json_encode($slip) }}"
                                                         class="filled-in chk-col-red check-item" name="check-item" />
                                                 </td>
-                                                <td>{{ $slip->bulan }}</td>
-                                                <td>{{ $slip->tahun }}</td>
+                                                <td class="text-center month-column">{{ $slip->bulan }}</td>
+                                                <td class="text-center year-column">{{ $slip->tahun }}</td>
                                             </tr>
                                         @empty
                                         @endforelse

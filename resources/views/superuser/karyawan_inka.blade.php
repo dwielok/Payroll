@@ -73,11 +73,11 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
-                                    <a href="{{ url('/ImportTetapSuper') }}"
+                                    <a href="{{ url('/ImportInkaSuper') }}"
                                         class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
                                     </a>
-                                    <a href="{{ url('/ExportTetapSuper') }}"
+                                    <a href="{{ url('/ExportInkaSuper') }}"
                                         class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
@@ -89,18 +89,33 @@
                                         <tr>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
-                                            
+                                            <th class="text-center">Status</th>
                                             <th class="text-center">Keterangan</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse ($approvals as $approval)
-                                            
+                                            @php
+                                                if ($approval->status == '0') {
+                                                    $status = 'Disetujui';
+                                                    $warna = 'success';
+                                                    $button = true;
+                                                } elseif ($approval->status == '1') {
+                                                    $status = 'Ditolak';
+                                                    $warna = 'danger';
+                                                    $button = false;
+                                                } else {
+                                                    $status = 'Menunggu Persetujuan';
+                                                    $warna = 'warning';
+                                                    $button = false;
+                                                }
+                                            @endphp
                                             <tr>
                                                 <td class="month-column">{{ __($approval->bulan) }}</td>
                                                 <td class="year-column">{{ __($approval->year) }}</td>
-                                                
+                                                <td class="text-{{ $warna }}">
+                                                    {{ $status }}</td>
                                                 <td>{{ __($approval->keterangan) }}</td>
                                                 <td>
                                                     <a href="{{ url('/ViewTetapSuper?id=' . $approval->id) }}"

@@ -95,7 +95,10 @@
                                     style="width:100%">
                                     <thead>
                                         <tr>
-                                            <td>#</td>
+                                            <th>
+                                                <input type="checkbox" id="md_checkbox_all"
+                                                    class="filled-in chk-col-red check-all" />
+                                            </th>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
                                             <th class="text-center">NIP</th>
@@ -196,7 +199,8 @@
                     console.log(response);
                     if (response.success) {
                         //download file with response.link on new tab
-                        window.open(response.link, '_blank');
+                        // window.open(response.link, '_blank');
+                        window.location = response.link
                     }
                     $('#print').html('Print');
                     //enabled

@@ -65,14 +65,15 @@
                                         <div class="d-flex justify-content-center w-100">
 
                                             <button type="button" class="btn btn-navy d-flex align-items-center ms-2"
-                                                data-toggle="modal" data-target="#modalImport">
+                                                data-toggle="modal" data-target="#importTetap">
                                                 Upload File
                                             </button>
                                         </div>
 
-                                        <div class="modal fade" id="modalImport" tabindex="-1" role="dialog"
-                                            aria-labelledby="modalImportLabel" aria-hidden="true">
-                                            <form method="post" action="/siswa/import_excel" enctype="multipart/form-data">
+                                        <div class="modal fade" id="importTetap" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <form method="post" action="{{ route('importTetapSuper') }}"
+                                                enctype="multipart/form-data">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -109,7 +110,7 @@
         </div>
 
 
-        {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -117,5 +118,5 @@
         </script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script> --}}
+        </script>
     @endsection

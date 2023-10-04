@@ -71,7 +71,7 @@
 
                                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <form method="post" action="/siswa/import_excel" enctype="multipart/form-data">
+                                            <form method="post" action="{{route('importPkwtSuper')}}" enctype="multipart/form-data">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">

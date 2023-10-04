@@ -200,6 +200,30 @@
                                 </ul>
                             </li>
                             <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><i data-feather="file-text"></i><span
+                                        class="hide-menu">Gaji
+                                        Lembur
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+                                        <a href="/GajiLemburTetap" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan
+                                                Tetap </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/GajiLemburInka" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan Perbantuan INKA
+                                            </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/GajiLemburPkwt" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan PKWT
+                                            </span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/rekap"
                                     aria-expanded="false">
                                     <i data-feather="book-open"></i><span class="hide-menu">Rekap Gaji</span>
@@ -248,6 +272,43 @@
                                 </ul>
                             </li>
                             <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                     aria-expanded="false"><i data-feather="file-text"></i><span
+                                        class="hide-menu">Gaji
+                                        Lembur
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+<<<<<<< HEAD
+                                        <a href="/GajiLemburTetap" class="sidebar-link"><span class="hide-menu">
+=======
+                                        <a href="/GajiLemburTetapSuper" class="sidebar-link"><span class="hide-menu">
+>>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
+                                                Karyawan
+                                                Tetap </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+<<<<<<< HEAD
+                                        <a href="/GajiLemburInka" class="sidebar-link"><span class="hide-menu">
+=======
+                                        <a href="/GajiLemburInkaSuper" class="sidebar-link"><span class="hide-menu">
+>>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
+                                                Karyawan Perbantuan INKA
+                                            </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+<<<<<<< HEAD
+                                        <a href="/GajiLemburPkwt
+                                        " class="sidebar-link"><span class="hide-menu">
+=======
+                                        <a href="/GajiLemburPkwtSuper" class="sidebar-link"><span class="hide-menu">
+>>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
+                                                Karyawan PKWT
+                                            </span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/RekapSuper"
                                     aria-expanded="false">
                                     <i data-feather="book-open"></i><span class="hide-menu">Rekap Gaji</span>
@@ -266,10 +327,20 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/ApprovalSuper"
-                                    aria-expanded="false">
-                                    <i data-feather="check-circle"></i><span class="hide-menu">Aproval</span>
-                                </a>
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><i data-feather="file-text"></i><span class="hide-menu">Approval
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+                                        <a href="/ApprovalSuper" class="sidebar-link"><span class="hide-menu">
+                                                Gaji Karyawan</span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/ApprovalLemburSuper" class="sidebar-link"><span class="hide-menu">
+                                                Gaji Lembur
+                                            </span></a>
+                                    </li>
+                                </ul>
                             </li>
                         @endif
 

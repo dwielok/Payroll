@@ -87,13 +87,11 @@
                                             <th class="text-center">Jam Hilang</th>
                                             <th class="text-center">Kopinka</th>
                                             <th class="text-center">Keuangan</th>
-                                            <th class="text-center">Lembur Weekdays</th>
-                                            <th class="text-center">Lembur Weekend</th>
                                             <th class="text-center">Penyesuaian Penambahan</th>
                                             <th class="text-center">Penyesuaian Pengurangan</th>
                                             <th class="text-center">Potongan</th>
                                             <th class="text-center">Penghasilan Tetap</th>
-                                            <th class="text-center">penghasilan_tidak_tetap</th>
+                                            <th class="text-center">Penghasilan Tidak Tetap</th>
                                             <th class="text-center">Penghasilan Bruto</th>
                                             <th class="text-center">Penghasilan Netto</th>
                                         </tr>
@@ -128,8 +126,6 @@
                                                 <td>{{ $gaji->jam_hilang }}</td>
                                                 <td>@rupiah($gaji->kopinka)</td>
                                                 <td>@rupiah($gaji->keuangan)</td>
-                                                <td>{{ $gaji->lembur_weekdays }}</td>
-                                                <td>{{ $gaji->lembur_weekend }}</td>
                                                 <td>{{ $gaji->penyesuaian_penambahan }}</td>
                                                 <td>{{ $gaji->penyesuaian_pengurangan }}</td>
                                                 <td>@rupiah($gaji->potongan)</td>
