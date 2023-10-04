@@ -97,25 +97,34 @@
                                             @php
                                                 if ($approval->status == '0') {
                                                     $status = 'Disetujui';
+                                                    $warna = 'success';
+                                                    $button = true;
                                                 } elseif ($approval->status == '1') {
                                                     $status = 'Ditolak';
+                                                    $warna = 'danger';
+                                                    $button = false;
                                                 } else {
-                                                    $status = '';
+                                                    $status = 'Menunggu Persetujuan';
+                                                    $warna = 'warning';
+                                                    $button = false;
                                                 }
                                             @endphp
                                             <tr>
                                                 <td class="month-column">{{ __($approval->bulan) }}</td>
                                                 <td class="year-column">{{ __($approval->year) }}</td>
-                                                <td class="text-{{ $approval->status == 0 ? 'success' : 'danger' }}">
+                                                <td class="text-{{ $warna }}">
                                                     {{ $status }}</td>
                                                 <td>{{ __($approval->keterangan) }}</td>
                                                 <td>
-                                                    <a href="{{ url('/viewPkwt?id=' . $approval->id) }}"
-                                                        class="btn btn-navy align-items-center ms-2">
+                                                    <form action="{{ url('/viewPkwt') }}" method="get" id="form-view">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $approval->id }}">
+                                                    </form>
+                                                    <button type="button" class="btn btn-navy align-items-center ms-2"
+                                                        {{ !$button ? 'disabled' : '' }}
+                                                        onclick="document.getElementById('form-view').submit();">
                                                         View
-                                                    </a>
-
-
+                                                    </button>
                                                 </td>
                                             </tr>
                                         @empty

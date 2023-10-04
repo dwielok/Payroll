@@ -44,12 +44,15 @@
                                         <div class="col-md-8">
                                             <h2 class="text-left mb-3 mt-3">Download Template</h2>
                                             <p>Download Template
-                                                <a
-                                                    href="https://ungu.in/templateTetapInka">Karyawan
+                                                <a href="https://ungu.in/templateTetapInka">Karyawan
                                                     Tetap dan Perbantuan INKA, </a>
-                                                <a
-                                                    href="https://ungu.in/templatePkwt">Karyawan
+                                                <a href="https://ungu.in/templatePkwt">Karyawan
                                                     PKWT </a>
+                                            </p>
+
+                                            <p> Download Template Lembur
+                                                <a href="https://ungu.in/TemplateLembur">Template Lembur
+                                                </a>
                                             </p>
                                             {{-- <a class="btn btn-success btn-sm" href="download.php?file=file-download.txt">Click Here</a> --}}
                                         </div>

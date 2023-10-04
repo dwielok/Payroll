@@ -82,8 +82,6 @@
                                             <th class="text-center">Total Premi</th>
                                             <th class="text-center">Total Potongan Benefit</th>
                                             <th class="text-center">Jam Hilang</th>
-                                            <th class="text-center">Lembur Weekdays</th>
-                                            <th class="text-center">Lembur Weekend</th>
                                             <th class="text-center">Penyesuaian Penambahan</th>
                                             <th class="text-center">Penyesuaian Pengurangan</th>
                                             <th class="text-enter">Potongan</th>
@@ -118,8 +116,6 @@
                                                 <td>@rupiah($gaji->premi)</td>
                                                 <td>@rupiah($gaji->benefit)</td>
                                                 <td>{{ $gaji->jam_hilang }}</td>
-                                                <td>{{ $gaji->lembur_weekdays }}</td>
-                                                <td>{{ $gaji->lembur_weekend }}</td>
                                                 <td>{{ $gaji->penyesuaian_penambahan }}</td>
                                                 <td>{{ $gaji->penyesuaian_pengurangan }}</td>
                                                 <td>@rupiah($gaji->potongan)</td>
