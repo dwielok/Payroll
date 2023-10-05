@@ -86,8 +86,8 @@
                                 </div>
 
                                 <!-- <a href="{{ url('/') }}" class="btn btn-navy align-items-center ms-2">
-                                                            Approve
-                                                        </a> -->
+                                                                Approve
+                                                            </a> -->
 
                                 <form method="POST" action="{{ route('superuser.approval.approve') }}"
                                     id="form-approve-{{ $approval->id }}">
@@ -185,8 +185,6 @@
                                             <th class="text-center">Jam Hilang</th>
                                             <th class="text-center">Kopinka</th>
                                             <th class="text-center">Keuangan</th>
-                                            <th class="text-center">Lembur Weekdays</th>
-                                            <th class="text-center">Lembur Weekend</th>
                                             <th class="text-center">Penyesuaian Penambahan</th>
                                             <th class="text-center">Penyesuaian Pengurangan</th>
                                             <th class="text-center">Potongan</th>
@@ -203,8 +201,8 @@
                                                 <td>{{ $gaji->bulan }}</td>
                                                 <td>{{ $gaji->tahun }}</td>
                                                 <td>{{ $gaji->nip }}</td>
-                                                <td>{{ $gaji->nama_karyawan }}</td>
-                                                <td>{{ $gaji->tipe_jabatan }}</td>
+                                                <td>{{ $gaji->nama }}</td>
+                                                <td>{{ $gaji->nama_jabatan }}</td>
                                                 <td>{{ $gaji->golongan }}</td>
                                                 <td>@rupiah($gaji->gaji_pokok)</td>
                                                 <td>@rupiah($gaji->tunjangan_tetap)</td>
@@ -227,8 +225,6 @@
                                                 <td>{{ $gaji->jam_hilang }}</td>
                                                 <td>@rupiah($gaji->kopinka)</td>
                                                 <td>@rupiah($gaji->keuangan)</td>
-                                                <td>{{ $gaji->lembur_weekdays }}</td>
-                                                <td>{{ $gaji->lembur_weekend }}</td>
                                                 <td>{{ $gaji->penyesuaian_penambahan }}</td>
                                                 <td>{{ $gaji->penyesuaian_pengurangan }}</td>
                                                 <td>@rupiah($gaji->potongan)</td>

@@ -102,8 +102,8 @@
                                                 <td>{{ $gaji->bulan }}</td>
                                                 <td>{{ $gaji->tahun }}</td>
                                                 <td>{{ $gaji->nip }}</td>
-                                                <td>{{ $gaji->nama_karyawan }}</td>
-                                                <td>{{ $gaji->tipe_jabatan }}</td>
+                                                <td>{{ $gaji->nama }}</td>
+                                                <td>{{ $gaji->nama_jabatan }}</td>
                                                 <td>{{ $gaji->golongan }}</td>
                                                 <td>@rupiah($gaji->gaji_pokok)</td>
                                                 <td>@rupiah($gaji->tunjangan_tetap)</td>
