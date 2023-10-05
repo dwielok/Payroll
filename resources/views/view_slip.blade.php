@@ -138,7 +138,7 @@
                     Jabatan
                 </th>
                 <td>
-                    {{ $gaji->jabatan }}
+                    {{ $gaji->nama_jabatan ?? '-' }}
                 </td>
                 <td></td>
                 <td></td>
@@ -146,7 +146,7 @@
                     Golongan
                 </th>
                 <td>
-                    {{ $gaji->golongan }}
+                    {{ $gaji->golongan ?? '-' }}
                 </td>
                 <td></td>
                 <td class="table-border-left"></td>
@@ -469,7 +469,7 @@
             </tr> --}}
             <tr>
                 <td colspan="2" style="text-align: left">
-                    Saldo PPIP (PKWT)
+                    Saldo PPIP (PKWTT)
                 </td>
                 <td></td>
                 <td class="table-border-right">

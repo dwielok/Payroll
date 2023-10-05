@@ -25,7 +25,9 @@ class GajiTemp extends Model
         'ppip_mandiri',
         'jam_hilang',
         'kopinka',
-        'keuangan'
+        'keuangan',
+        'golongan',
+        'kredit_poin'
     ];
 
     public function karyawan()

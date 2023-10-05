@@ -136,7 +136,7 @@
                                 <div class="d-none d-md-flex">
                                     <span class="ms-2">
                                         <span
-                                            class="text-dark fw-bold">{{ Auth::user()->role == 1 ? 'Superuser' : 'User' }}</span></span>
+                                            class="text-dark fw-bold">{{ Auth::user()->tipe_user == 'superadmin' ? 'Superuser' : 'User' }}</span></span>
                                     {{-- <span>
                                         <i data-feather="chevron-down" class="feather-sm"></i>
                                     </span> --}}
@@ -168,7 +168,7 @@
                             <i class="nav-small-line"></i>
                             <span class="hide-menu">Dashboards</span>
                         </li> --}}
-                        @if (Auth::user()->role == 0)
+                        @if (Auth::user()->tipe_user == 'admin')
                             <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                     href="{{ url('/dashboard') }}" aria-expanded="false">
@@ -279,30 +279,17 @@
                                     </span></a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
-<<<<<<< HEAD
-                                        <a href="/GajiLemburTetap" class="sidebar-link"><span class="hide-menu">
-=======
                                         <a href="/GajiLemburTetapSuper" class="sidebar-link"><span class="hide-menu">
->>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
                                                 Karyawan
                                                 Tetap </span></a>
                                     </li>
                                     <li class="sidebar-item">
-<<<<<<< HEAD
-                                        <a href="/GajiLemburInka" class="sidebar-link"><span class="hide-menu">
-=======
                                         <a href="/GajiLemburInkaSuper" class="sidebar-link"><span class="hide-menu">
->>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
                                                 Karyawan Perbantuan INKA
                                             </span></a>
                                     </li>
                                     <li class="sidebar-item">
-<<<<<<< HEAD
-                                        <a href="/GajiLemburPkwt
-                                        " class="sidebar-link"><span class="hide-menu">
-=======
                                         <a href="/GajiLemburPkwtSuper" class="sidebar-link"><span class="hide-menu">
->>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
                                                 Karyawan PKWT
                                             </span></a>
                                     </li>

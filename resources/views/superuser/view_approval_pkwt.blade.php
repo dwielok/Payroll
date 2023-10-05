@@ -8,11 +8,11 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 d-flex align-items-center">
                             <li class="breadcrumb-item">
-                                <a href="/dashboardSuperuser" class="link"><i data-feather="grid"></i></a>
+                                <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/GajiLemburTetapSuper" class="link">
-                                    List Lembur Karyawan </a>
+                                <a href="/karyawanPKWT" class="link">
+                                    List Data Karyawan PKWT </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 View List Data
@@ -85,7 +85,11 @@
                                         data-bs-target="#modalDecline" data-bs-whatever="@fat">Decline</button>
                                 </div>
 
-                                <form method="POST" action="{{ route('superuser.approval.lembur.approve') }}"
+                                <!-- <a href="{{ url('/') }}" class="btn btn-navy align-items-center ms-2">
+                                                                    Approve
+                                                                </a> -->
+
+                                <form method="POST" action="{{ route('superuser.approval.approve') }}"
                                     id="form-approve-{{ $approval->id }}">
                                     @csrf
                                     @method('PATCH')
@@ -128,8 +132,7 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST"
-                                                    action="{{ route('superuser.approval.lembur.decline') }}"
+                                                <form method="POST" action="{{ route('superuser.approval.decline') }}"
                                                     id="form-decline-{{ $approval->id }}">
                                                     @csrf
                                                     @method('PATCH')
@@ -159,11 +162,30 @@
                                             <th class="text-center">Tahun</th>
                                             <th class="text-center">NIP</th>
                                             <th class="text-center">Nama</th>
-                                            <th class="text-center">Lembur Weekend</th>
-                                            <th class="text-center">Lembur Weekdays</th>
-                                            <th class="text-center">Nominal Lembur Weekend</th>
-                                            <th class="text-center">Nominal Lembur Weekdays</th>
-                                            <th class="text-center">Aksi</th>
+                                            <th class="text-center">Pendidikan</th>
+                                            <th class="text-center">Gaji Pokok</th>
+                                            <th class="text-center">Kehadiran</th>
+                                            <th class="text-center">Hari Kerja</th>
+                                            <th class="text-center">Nilai IKK</th>
+                                            <th class="text-center">Dana IKK</th>
+                                            <th class="text-center">Tunjangan Transportasi</th>
+                                            <th class="text-center">Tunjangan Profesional</th>
+                                            <th class="text-center">Tunjangan Karya</th>
+                                            <th class="text-center">BPJS Kesehatan Benefit</th>
+                                            <th class="text-center">BPJS Ketenagakerjaan Benefit</th>
+                                            <th class="text-center">Total Benefit</th>
+                                            <th class="text-center">BPJS Kesehatan Premi</th>
+                                            <th class="text-center">BPJS Ketenagakerjaan Premi</th>
+                                            <th class="text-center">Total Premi</th>
+                                            <th class="text-center">Total Potongan Benefit</th>
+                                            <th class="text-center">Jam Hilang</th>
+                                            <th class="text-center">Penyesuaian Penambahan</th>
+                                            <th class="text-center">Penyesuaian Pengurangan</th>
+                                            <th class="text-enter">Potongan</th>
+                                            <th class="text-center">Penghasilan Tetap</th>
+                                            <th class="text-enter">Penghasilan Tidak Tetap</th>
+                                            <th class="text-center">Penghasilan Bruto</th>
+                                            <th class="text-center">Penghasilan Netto</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -173,22 +195,32 @@
                                                 <td>{{ $gaji->tahun }}</td>
                                                 <td>{{ $gaji->nip }}</td>
                                                 <td>{{ $gaji->nama }}</td>
-                                                <td>{{ $gaji->lembur_weekend }}</td>
-                                                <td>{{ $gaji->lembur_weekday }}</td>
-                                                <td>@rupiah($gaji->nominal_lembur_weekend)</td>
-                                                <td>@rupiah($gaji->nominal_lembur_weekday)</td>
-                                                <td><a href="{{ url('/EditTetapSuper') }}"
-                                                        class="btn btn-navy align-items-center ms-2">
-                                                        Edit
-                                                    </a>
-                                                    <a href="{{ url('/#') }}"
-                                                        class="btn btn-merah align-items-center ms-2">
-                                                        Delete
-                                                    </a>
-                                                </td>
+                                                <td>{{ $gaji->pendidikan }}</td>
+                                                <td>@rupiah($gaji->gaji_pokok)</td>
+                                                <td>{{ $gaji->kehadiran }}</td>
+                                                <td>{{ $gaji->hari_kerja }}</td>
+                                                <td>{{ $gaji->nilai_ikk }}</td>
+                                                <td>@rupiah($gaji->dana_ikk)</td>
+                                                <td>@rupiah($gaji->tunjangan_transportasi)</td>
+                                                <td>@rupiah($gaji->tunjangan_profesional)</td>
+                                                <td>@rupiah($gaji->tunjangan_karya)</td>
+                                                <td>@rupiah($gaji->bpjs_kesehatan)</td>
+                                                <td>@rupiah($gaji->bpjs_ketenagakerjaan)</td>
+                                                <td>@rupiah($gaji->benefit)</td>
+                                                <td>@rupiah($gaji->premi_bpjs_kesehatan)</td>
+                                                <td>@rupiah($gaji->premi_bpjs_ketenagakerjaan)</td>
+                                                <td>@rupiah($gaji->premi)</td>
+                                                <td>@rupiah($gaji->benefit)</td>
+                                                <td>{{ $gaji->jam_hilang }}</td>
+                                                <td>{{ $gaji->penyesuaian_penambahan }}</td>
+                                                <td>{{ $gaji->penyesuaian_pengurangan }}</td>
+                                                <td>@rupiah($gaji->potongan)</td>
+                                                <td>@rupiah($gaji->penghasilan_tetap)</td>
+                                                <td>@rupiah($gaji->penghasilan_tidak_tetap)</td>
+                                                <td>@rupiah($gaji->penghasilan_bruto)</td>
+                                                <td>@rupiah($gaji->penghasilan_netto)</td>
                                             </tr>
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>

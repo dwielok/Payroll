@@ -203,32 +203,34 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <h5 class="card-title mt-3 pb-3 border-bottom">Lembur</h5>
-                            </div>
-                            <div class="col-md-6">
+                            </div> --}}
+                            <div></div>
+                            <div class="md-3">
                                 <h5 class="card-title mt-3 pb-3 border-bottom">Penyesuaian</h5>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2">
+                            {{-- <div class="col-md-2">
                                 <label for="disabledTextInput">Lembur Weekend</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
                                     placeholder="Jam Lembur" />
-                            </div>
-                            <div class="col-md-4">
+                            </div> --}}
+                            <div></div>
+                            {{-- <div class="col-md-4">
                                 <fieldset disabled>
                                     <label for="disabledTextInput">Nominal</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
                                         placeholder="Nominal" />
                                 </fieldset>
-                            </div>
-                            <div class="col-md-6">
+                            </div> --}}
+                            <div class="md-3">
                                 <label for="disabledTextInput">Penyesuain Penambahan</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
                                     placeholder="Penambahan">
                             </div>
-                            <div class="col-md-2">
+                            {{-- <div class="col-md-2">
                                 <label for="disabledTextInput">Lembur Weekdays</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
                                     placeholder="Jam Lembur" />
@@ -239,14 +241,16 @@
                                     <input type="text" id="disabledTextInput" class="form-control"
                                         placeholder="Nominal" />
                                 </fieldset>
-                            </div>
-                            <div class="col-md-6">
+                            </div> --}}
+                            <div></div>
+                            <div class="md-3">
                                 <label for="disabledTextInput">Penyesuain Pengurangan</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
                                     placeholder="Pengurangan">
                             </div>
 
-                            <div class="col-md-6">
+                            <div></div>
+                            <div class="md-3">
                                 <h5 class="card-title mt-3 pb-3 border-bottom">Gaji Akhir</h5>
                             </div>
                             <div class="mb-3">

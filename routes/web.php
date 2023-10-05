@@ -159,7 +159,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('viewTetap', [viewTetapController::class, 'index'])->name('viewTetap');
 
     //Routing View INKA
-    Route::get('viewInka', [viewInkaController::class, 'index'])->name('viewInka');
+    Route::get('viewInka', [viewTetapController::class, 'index'])->name('viewInka');
 
     //Routing View PKWT
     Route::get('viewPkwt', [viewPkwtController::class, 'index'])->name('viewPkwt');
@@ -321,11 +321,11 @@ Route::post('test_import', [ImportTetapController::class, 'import'])->name('impo
 Route::post('import_lembur_tetap', [ImportTetapController::class, 'import_lembur'])->name('importLemburTetap');
 Route::post('import_lembur_inka', [ImportInkaController::class, 'import_lembur'])->name('importLemburInka');
 Route::post('import_lembur_pkwt', [ImportPkwtController::class, 'import_lembur'])->name('importLemburPkwt');
-Route::post('test_import_inka', [ImportInkaController::class, 'import'])->name('importInka');
+Route::post('test_import_inka', [ImportTetapController::class, 'import'])->name('importInka');
 Route::post('test_import_pkwt', [ImportPkwtController::class, 'import'])->name('importPkwt');
 Route::get('test_upload', [ImportTetapController::class, 'test_upload'])->name('testUpload');
 
-Route::post('test_import_tetap_super', [ImportTetapSuperController::class, 'import'])->name('importTetapSuper');
+Route::post('test_import_tetap_super', [ImportTetapController::class, 'import'])->name('importTetapSuper');
 Route::post('test_import_inka_super', [ImportInkaSuperController::class, 'import'])->name('importInkaSuper');
 Route::post('test_import_pkwt_super', [ImportPkwtSuperController::class, 'import'])->name('importPkwtSuper');
 

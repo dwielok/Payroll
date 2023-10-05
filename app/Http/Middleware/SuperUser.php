@@ -17,7 +17,7 @@ class SuperUser
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->role === 1) {
+        if (Auth::user() &&  Auth::user()->tipe_user === 'superadmin') {
             return $next($request);
         }
 
