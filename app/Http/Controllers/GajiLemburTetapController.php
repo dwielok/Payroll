@@ -26,8 +26,8 @@ class GajiLemburTetapController extends Controller
         $gajis = $gajis->map(function ($item) {
             $item->bulan = ApprovalLembur::where('id', $item->id_approval)->value('bulan');
             $item->tahun = ApprovalLembur::where('id', $item->id_approval)->value('year');
-            $item->nominal_lembur_weekend = $item->lembur_weekend * 20000;
-            $item->nominal_lembur_weekday = $item->lembur_weekday * 30000;
+            $item->nominal_lembur_weekend = $item->lembur_weekend * 15000;
+            $item->nominal_lembur_weekday = $item->lembur_weekday * 11000;
             return $item;
         });
 

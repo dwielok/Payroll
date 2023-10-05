@@ -46,6 +46,7 @@ use App\Http\Controllers\KaryawanPKWTController;
 use App\Http\Controllers\KaryawanPkwtSuperController;
 use App\Http\Controllers\KaryawanTetapSuperController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\MasterGajiPokokController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\RekapController;
 use App\Http\Controllers\RekapSuperController;
@@ -327,3 +328,5 @@ Route::get('test_upload', [ImportTetapController::class, 'test_upload'])->name('
 Route::post('test_import_tetap_super', [ImportTetapSuperController::class, 'import'])->name('importTetapSuper');
 Route::post('test_import_inka_super', [ImportInkaSuperController::class, 'import'])->name('importInkaSuper');
 Route::post('test_import_pkwt_super', [ImportPkwtSuperController::class, 'import'])->name('importPkwtSuper');
+
+Route::get('gaji_pokok', [MasterGajiPokokController::class, 'index']);
