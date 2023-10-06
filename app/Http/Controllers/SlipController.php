@@ -14,16 +14,16 @@ class SlipController extends Controller
         $results = [];
         $slip_tetap = Approval::where('approvals.status', 0)
             ->leftJoin('gaji_temp', 'gaji_temp.id_approval', '=', 'approvals.id')
-            ->leftJoin('karyawans', 'karyawans.id', '=', 'gaji_temp.id_karyawan')
-            ->select('approvals.bulan', 'approvals.year', 'gaji_temp.id', 'approvals.tipe_karyawan', 'karyawans.nip', 'karyawans.nama_karyawan')
+            ->leftJoin('pegawai', 'pegawai.id', '=', 'gaji_temp.id_karyawan')
+            ->select('approvals.bulan', 'approvals.year', 'gaji_temp.id', 'approvals.tipe_karyawan', 'pegawai.nip', 'pegawai.nama as nama_karyawan')
             ->where('approvals.tipe_karyawan', 'tetap')
             ->orWhere('approvals.tipe_karyawan', 'inka')
             ->get();
 
         $slip_pkwt = Approval::where('approvals.status', 0)
             ->leftJoin('gaji_pkwt', 'gaji_pkwt.id_approval', '=', 'approvals.id')
-            ->leftJoin('karyawans', 'karyawans.id', '=', 'gaji_pkwt.id_karyawan')
-            ->select('approvals.bulan', 'approvals.year', 'gaji_pkwt.id', 'approvals.tipe_karyawan', 'karyawans.nip', 'karyawans.nama_karyawan')
+            ->leftJoin('pegawai', 'pegawai.id', '=', 'gaji_pkwt.id_karyawan')
+            ->select('approvals.bulan', 'approvals.year', 'gaji_pkwt.id', 'approvals.tipe_karyawan', 'pegawai.nip', 'pegawai.nama as nama_karyawan')
             ->where('approvals.tipe_karyawan', 'pkwt')
             ->get();
 

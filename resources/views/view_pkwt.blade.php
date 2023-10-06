@@ -12,7 +12,7 @@
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 <a href="/karyawanPKWT" class="link">
-                                List Data Karyawan PKWT </a>
+                                    List Data Karyawan PKWT </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 View List Data
@@ -66,7 +66,6 @@
                                             <th class="text-center">Nama</th>
                                             <th class="text-center">Pendidikan</th>
                                             <th class="text-center">Gaji Pokok</th>
-                                            <th class="text-center">Tunjangan Tetap</th>
                                             <th class="text-center">Kehadiran</th>
                                             <th class="text-center">Hari Kerja</th>
                                             <th class="text-center">Nilai IKK</th>
@@ -82,8 +81,6 @@
                                             <th class="text-center">Total Premi</th>
                                             <th class="text-center">Total Potongan Benefit</th>
                                             <th class="text-center">Jam Hilang</th>
-                                            <th class="text-center">Lembur Weekdays</th>
-                                            <th class="text-center">Lembur Weekend</th>
                                             <th class="text-center">Penyesuaian Penambahan</th>
                                             <th class="text-center">Penyesuaian Pengurangan</th>
                                             <th class="text-enter">Potongan</th>
@@ -99,10 +96,9 @@
                                                 <td>{{ $gaji->bulan }}</td>
                                                 <td>{{ $gaji->tahun }}</td>
                                                 <td>{{ $gaji->nip }}</td>
-                                                <td>{{ $gaji->nama_karyawan }}</td>
+                                                <td>{{ $gaji->nama }}</td>
                                                 <td>{{ $gaji->pendidikan }}</td>
                                                 <td>@rupiah($gaji->gaji_pokok)</td>
-                                                <td>@rupiah($gaji->tunjangan_tetap)</td>
                                                 <td>{{ $gaji->kehadiran }}</td>
                                                 <td>{{ $gaji->hari_kerja }}</td>
                                                 <td>{{ $gaji->nilai_ikk }}</td>
@@ -113,13 +109,11 @@
                                                 <td>@rupiah($gaji->bpjs_kesehatan)</td>
                                                 <td>@rupiah($gaji->bpjs_ketenagakerjaan)</td>
                                                 <td>@rupiah($gaji->benefit)</td>
-                                                <td>@rupiah($gaji->bpjs_kesehatan_premi)</td>
-                                                <td>@rupiah($gaji->bpjs_ketenagakerjaan_premi)</td>
+                                                <td>@rupiah($gaji->premi_bpjs_kesehatan)</td>
+                                                <td>@rupiah($gaji->premi_bpjs_ketenagakerjaan)</td>
                                                 <td>@rupiah($gaji->premi)</td>
                                                 <td>@rupiah($gaji->benefit)</td>
                                                 <td>{{ $gaji->jam_hilang }}</td>
-                                                <td>{{ $gaji->lembur_weekdays }}</td>
-                                                <td>{{ $gaji->lembur_weekend }}</td>
                                                 <td>{{ $gaji->penyesuaian_penambahan }}</td>
                                                 <td>{{ $gaji->penyesuaian_pengurangan }}</td>
                                                 <td>@rupiah($gaji->potongan)</td>

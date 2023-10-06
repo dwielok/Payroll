@@ -138,7 +138,7 @@
                     Jabatan
                 </th>
                 <td>
-                    {{ $gaji->jabatan }}
+                    {{ $gaji->nama_jabatan ?? '-' }}
                 </td>
                 <td></td>
                 <td></td>
@@ -146,7 +146,7 @@
                     Golongan
                 </th>
                 <td>
-                    {{ $gaji->golongan }}
+                    {{ $gaji->golongan ?? '-' }}
                 </td>
                 <td></td>
                 <td class="table-border-left"></td>
@@ -388,7 +388,7 @@
                     @rupiah($gaji->detail_bpjs_tk->jp)
                 </td>
                 <th colspan="3" style="text-align: left">
-                    
+
                 </th>
                 <td class="myAlign">
                 </td>
@@ -469,7 +469,7 @@
             </tr> --}}
             <tr>
                 <td colspan="2" style="text-align: left">
-                    Saldo PPIP (PKWT)
+                    Saldo PPIP (PKWTT)
                 </td>
                 <td></td>
                 <td class="table-border-right">

@@ -40,7 +40,7 @@
             mb-4
           ">
 
-                                <div class="input-group" style="position: absolute; width:20%; margin:50px">
+                                {{-- <div class="input-group" style="position: absolute; width:20%; margin:50px">
                                     <span class="input-group-prepend">
                                         <button class="btn btn-outline-secondary bg-white border-end-0  border ms-n5"
                                             type="button">
@@ -49,9 +49,9 @@
                                     </span>
                                     <input class="form-control border-start-0 border" type="search" value="search"
                                         id="example-search-input">
-                                </div>
+                                </div> --}}
 
-                                <div class="btn-group" style="margin-left: 275px">
+                                <div class="btn-group">
                                     <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
                                         aria-expanded="false">
                                         Filter Periode
@@ -82,20 +82,8 @@
                                         </div>
                                     </ul>
                                 </div>
-                                </ul>
-                            </div>
-                            <!-- <div class="d-flex align-items-center g-2">
-
-                                            <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                                Import
-                                            </a>
-                                            {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Export
-                                    </a> --}}
-                                            <a href="{{ url('/ExportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                                Export
-                                            </a>
-                                        </div> -->
+                            
+                            
                         </div>
                         <div class="table-responsive">
                             <table id="zero_config" class="table table-striped table-bordered text-center myTable">
@@ -111,23 +99,35 @@
                                 </thead>
                                 <tbody>
                                     @forelse ($approvals as $approval)
-                                        @php
-                                            if ($approval->status == '0') {
-                                                $status = 'Disetujui';
-                                            } elseif ($approval->status == '1') {
-                                                $status = 'Ditolak';
-                                            } else {
-                                                $status = '';
-                                            }
-                                        @endphp
+                                    @php
+                                    if ($approval->status == '0') {
+                                        $status = 'Disetujui';
+                                        $warna = 'success';
+                                        $button = true;
+                                    } elseif ($approval->status == '1') {
+                                        $status = 'Ditolak';
+                                        $warna = 'danger';
+                                        $button = false;
+                                    } else {
+                                        $status = 'Menunggu Persetujuan';
+                                        $warna = 'warning';
+                                        $button = false;
+                                    }
+                                    @endphp
                                         <tr>
                                             <td class="mouth-column">{{ __($approval->bulan) }}</td>
                                             <td class="year-column">{{ __($approval->year) }}</td>
                                             <td>{{ __($approval->tipe_karyawan) }}</td>
-                                            <td class="text-{{ $approval->status == 0 ? 'success' : 'danger' }}">
+                                            <td class="text-{{ $warna }}">
                                                 {{ $status }}</td>
                                             <td>{{ __($approval->keterangan) }}</td>
                                             <td>
+                                                <a href="{{ url('/ViewApprovalSuper?id=' . $approval->id) }}"
+                                                    class="btn btn-navy align-items-center ms-2">
+                                                    View
+                                                </a>
+                                            </td>
+                                            {{-- <td>
                                                 <div class="d-flex align-items-center justify-content-center">
                                                     <button
                                                         onclick="document.getElementById('form-approve-{{ $approval->id }}').submit();"
@@ -142,8 +142,8 @@
                                                 </div>
 
                                                 <!-- <a href="{{ url('/') }}" class="btn btn-navy align-items-center ms-2">
-                                                    Approve
-                                                </a> -->
+                                                        Approve
+                                                    </a> -->
 
                                                 <form method="POST" action="{{ route('superuser.approval.approve') }}"
                                                     id="form-approve-{{ $approval->id }}">
@@ -214,7 +214,7 @@
                                                 </div>
 
 
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @empty
                                     @endforelse
