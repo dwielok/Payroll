@@ -25,7 +25,7 @@ use App\Http\Controllers\ExportTetapSuperController;
 use App\Http\Controllers\GajiLemburInkaController;
 use App\Http\Controllers\GajiLemburPkwtController;
 use App\Http\Controllers\GajiLemburInkaSuperController;
-use App\Http\Controllers\GajiLemburPkwtController;
+// use App\Http\Controllers\GajiLemburPkwtController;
 use App\Http\Controllers\GajiLemburPkwtSuperController;
 use App\Http\Controllers\GajiLemburTetapController;
 use App\Http\Controllers\GajiLemburTetapSuperController;
