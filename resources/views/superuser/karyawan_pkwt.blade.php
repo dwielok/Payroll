@@ -89,25 +89,34 @@
                                         <tr>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
+                                            <th class="text-center">status</th>
+                                            <th class="text-center">Keterangan</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse ($approvals as $approval)
-                                            @php
-                                                if ($approval->status == '0') {
-                                                    $status = 'Disetujui';
-                                                } elseif ($approval->status == '1') {
-                                                    $status = 'Ditolak';
-                                                } else {
-                                                    $status = '';
-                                                }
-                                            @endphp
+                                        @php
+                                        if ($approval->status == '0') {
+                                            $status = 'Disetujui';
+                                            $warna = 'success';
+                                            $button = true;
+                                        } elseif ($approval->status == '1') {
+                                            $status = 'Ditolak';
+                                            $warna = 'danger';
+                                            $button = false;
+                                        } else {
+                                            $status = 'Menunggu Persetujuan';
+                                            $warna = 'warning';
+                                            $button = false;
+                                        }
+                                    @endphp
                                             <tr>
                                                 <td class="month-column">{{ __($approval->bulan) }}</td>
                                                 <td class="year-column">{{ __($approval->year) }}</td>
-
-
+                                                <td class="text-{{ $warna }}">
+                                                    {{ $status }}</td>
+                                                <td>{{ __($approval->keterangan) }}</td>
                                                 <td>
                                                     <a href="{{ url('/ViewPkwtSuper?id=' . $approval->id) }}"
                                                         class="btn btn-navy align-items-center ms-2">

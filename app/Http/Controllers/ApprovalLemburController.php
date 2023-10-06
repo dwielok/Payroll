@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ApprovalLembur;
+use App\Models\GajiLembur;
 use Illuminate\Http\Request;
 
 class ApprovalLemburController extends Controller
@@ -13,6 +14,28 @@ class ApprovalLemburController extends Controller
         return view('superuser.approval_lembur', compact('approvals'));
     }
 
+    public function detail(Request $request)
+    {
+        $id = $request->get('id');
+        $gajis = GajiLembur::leftJoin('pegawai', 'pegawai.id', '=', 'gaji_lembur.id_karyawan')
+            ->leftJoin('jabatan', 'jabatan.id', '=', 'pegawai.kode_jabatan')
+            ->select('gaji_lembur.*', 'pegawai.*', 'jabatan.*')
+            ->where('gaji_lembur.id_approval', '=', $id)
+            ->get();
+
+        $gajis = $gajis->map(function ($item) {
+            $item->bulan = ApprovalLembur::where('id', $item->id_approval)->value('bulan');
+            $item->tahun = ApprovalLembur::where('id', $item->id_approval)->value('year');
+            $item->nominal_lembur_weekend = $item->lembur_weekend * 20000;
+            $item->nominal_lembur_weekday = $item->lembur_weekday * 30000;
+            return $item;
+        });
+
+        $approval = ApprovalLembur::where('id', $id)->first();
+
+        return view('superuser.view_approval_lembur', compact('gajis', 'approval'));
+    }
+
     public function decline(Request $request)
     {
         $approval = ApprovalLembur::where('id', $request->id)->update([
@@ -20,7 +43,7 @@ class ApprovalLemburController extends Controller
             'keterangan' => $request->keterangan //ini berdasarkan "name" ng blade mau
         ]);
 
-        return redirect('/ApprovalLemburSuper');
+        return redirect('/ViewApprovalLemburSuper?id=' . $request->id);
     }
 
     public function approve(Request $request)
@@ -30,6 +53,6 @@ class ApprovalLemburController extends Controller
             'keterangan' => '-' //ini berdasarkan "name" ng blade mau
         ]);
 
-        return redirect('/ApprovalLemburSuper');
+        return redirect('/ViewApprovalLemburSuper?id=' . $request->id);
     }
 }

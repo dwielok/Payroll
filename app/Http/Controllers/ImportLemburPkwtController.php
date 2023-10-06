@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use App\Imports\KaryawanTetapImport;
 use App\Models\Approval;
+use App\Models\GajiLembur;
 use App\Models\GajiTemp;
 use App\Models\ImportTetap;
 use App\Models\Karyawan;
@@ -96,7 +97,7 @@ class ImportLemburPkwtController extends Controller
             $nip = $item[1];
             if ($nip != null) {
                 $karyawan = Karyawan::where('nip', $nip)->first();
-                GajiTemp::insert([
+                GajiLembur::insert([
                     'id_karyawan' => $karyawan->id,
                     'id_approval' => $id_approval,
                     'lembur_weekend' => $item[3],

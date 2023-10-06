@@ -53,7 +53,7 @@
                                     <input class="form-control border-start-0 border" type="search" value="search"
                                         id="example-search-input">
                                 </div>
-                                
+
                                 {{-- <div class="d-flex align-items-center g-2">
 
                                     <a href="{{ url('/ImportTetapSuper') }}"
@@ -97,8 +97,6 @@
                                             <th class="text-center">Jam Hilang</th>
                                             <th class="text-center">Kopinka</th>
                                             <th class="text-center">Keuangan</th>
-                                            <th class="text-center">Lembur Weekdays</th>
-                                            <th class="text-center">Lembur Weekend</th>
                                             <th class="text-center">Penyesuaian Penambahan</th>
                                             <th class="text-center">Penyesuaian Pengurangan</th>
                                             <th class="text-center">Potongan</th>
@@ -139,8 +137,6 @@
                                                 <td>{{ $gaji->jam_hilang }}</td>
                                                 <td>@rupiah($gaji->kopinka)</td>
                                                 <td>@rupiah($gaji->keuangan)</td>
-                                                <td>{{ $gaji->lembur_weekdays }}</td>
-                                                <td>{{ $gaji->lembur_weekend }}</td>
                                                 <td>{{ $gaji->penyesuaian_penambahan }}</td>
                                                 <td>{{ $gaji->penyesuaian_pengurangan }}</td>
                                                 <td>@rupiah($gaji->potongan)</td>
@@ -148,14 +144,19 @@
                                                 <td>@rupiah($gaji->penghasilan_tunjangan_tidak_tetap)</td>
                                                 <td>@rupiah($gaji->penghasilan_bruto)</td>
                                                 <td>@rupiah($gaji->penghasilan_netto)</td>
-                                                <td><a href="{{ url('/EditTetapSuper') }}"
+                                                <td><a href="{{ url('/EditTetapSuper?id=' . $gaji->id_gaji) }}"
                                                         class="btn btn-navy align-items-center ms-2">
                                                         Edit
                                                     </a>
-                                                    <a href="{{ url('/#') }}"
-                                                        class="btn btn-merah align-items-center ms-2">
-                                                        Delete
-                                                    </a>
+                                                    <form action="{{ url('/DeleteTetapSuper') }}" method="post"
+                                                        id="form-view">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $gaji->id_gaji }}">
+                                                        <button type="submit"
+                                                            class="btn btn-merah align-items-center ms-2">
+                                                            Delete
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach

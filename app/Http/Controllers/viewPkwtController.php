@@ -46,36 +46,19 @@ class viewPkwtController extends Controller
     public function index(Request $request)
     {
         $id = $request->get('id');
-        $gajis = GajiPkwt::leftJoin('karyawans', 'karyawans.id', '=', 'gaji_pkwt.id_karyawan')
-            ->select('gaji_pkwt.*', 'karyawans.*', 'karyawans.pendidikan')
+        $gajis = GajiPkwt::leftJoin('pegawai', 'pegawai.id', '=', 'gaji_pkwt.id_karyawan')
+            ->select('gaji_pkwt.*', 'pegawai.*', 'pegawai.pendidikan_terakhir as pendidikan')
             ->where('gaji_pkwt.id_approval', '=', $id)
             ->get();
         $gajis = $gajis->map(function ($item) {
             $item->bulan = Approval::where('id', $item->id_approval)->value('bulan');
-            $item->tahun = Approval::where('id', $item->id_approval)->value('year');
-            $item->gaji_pokok = $this->levelPendidikan($item->pendidikan);
-            $item->penghasilan_tetap = $item->gaji_pokok;
+            $item->year = Approval::where('id', $item->id_approval)->value('year');
 
-            $item->tunjangan_transportasi = $this->hitungKehadiran($item->kehadiran);
-            $item->tunjangan_profesional = $item->tunjangan_profesional;
-            $item->tunjangan_karya =  $item->dana_ikk * ($item->kehadiran / $item->hari_kerja) * $item->nilai_ikk;
-            $item->bpjs_kesehatan = 0.04 * ($item->gaji_pokok);
-            $item->bpjs_ketenagakerjaan = 0.0727 * ($item->gaji_pokok);
-            $item->benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan;
-            $item->penghasilan_tidak_tetap = $item->tunjangan_transportasi + $item->tunjangan_profesional + $item->tunjangan_karya + $item->benefit;
-
-            $item->penghasilan_bruto = $item->penghasilan_tetap + $item->penghasilan_tidak_tetap;
-
-            $item->bpjs_kesehatan_premi = 0.01 * ($item->gaji_pokok);
-            $item->bpjs_ketenagakerjaan_premi = 0.03 * ($item->gaji_pokok);
-            $item->premi = $item->bpjs_kesehatan_premi + $item->bpjs_ketenagakerjaan_premi;
-            $item->benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan;
-            $item->potongan_jam_hilang = ($item->jam_hilang / 173) * $item->gaji_pokok;
-            $item->potongan = $item->premi + $item->benefit + $item->potongan_jam_hilang;
-
-            $item->penghasilan_netto = ($item->penghasilan_bruto) - $item->potongan;
             return $item;
         });
+
+        $gajis = PdfController::rumusPkwt($gajis);
+
         return view('view_pkwt', compact('gajis'));
     }
 }

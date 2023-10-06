@@ -73,7 +73,6 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
-<<<<<<< HEAD
                                     <a href="{{ url('/ImportLemburPkwt') }}"
                                         class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
@@ -86,76 +85,68 @@
                                         Export
                                     </a>
                                 </div>
-=======
-                                    <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Import
-                                    </a>
-                                     {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
+
+                                {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a> --}}
-                                    <a hretf="{{ url('/ExportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Export
-                                    </a>
-                                </div> 
->>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
+                                <a hretf="{{ url('/ExportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    Export
+                                </a>
                             </div>
-                            <div class="table-responsive">
-                                <table id="zero_config" class="table table-striped table-bordered text-center myTable">
-                                    <thead>
+                            >>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
+                        </div>
+                        <div class="table-responsive">
+                            <table id="zero_config" class="table table-striped table-bordered text-center myTable">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Bulan</th>
+                                        <th class="text-center">Tahun</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Keterangan</th>
+                                        <th class="text-center">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($approvals as $approval)
+                                        @php
+                                            if ($approval->status == '0') {
+                                                $status = 'Disetujui';
+                                                $warna = 'success';
+                                                $button = true;
+                                            } elseif ($approval->status == '1') {
+                                                $status = 'Ditolak';
+                                                $warna = 'danger';
+                                                $button = false;
+                                            } else {
+                                                $status = 'Menunggu Persetujuan';
+                                                $warna = 'warning';
+                                                $button = false;
+                                            }
+                                        @endphp
                                         <tr>
-                                            <th class="text-center">Bulan</th>
-                                            <th class="text-center">Tahun</th>
-                                            <th class="text-center">Status</th>
-                                            <th class="text-center">Keterangan</th>
-                                            <th class="text-center">Aksi</th>
+                                            <td class="month-column">{{ __($approval->bulan) }}</td>
+                                            <td class="year-column">{{ __($approval->year) }}</td>
+                                            <td class="text-{{ $warna }}">
+                                                {{ $status }}</td>
+                                            <td>{{ __($approval->keterangan) }}</td>
+                                            <td>
+                                                <form action="{{ url('/viewLemburPkwtUser') }}" method="get"
+                                                    id="form-view">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $approval->id }}">
+                                                </form>
+                                                <button type="button" class="btn btn-navy align-items-center ms-2"
+                                                    {{ !$button ? 'disabled' : '' }}
+                                                    onclick="document.getElementById('form-view').submit();">
+                                                    View
+                                                </button>
+                                            </td>
                                         </tr>
-                                    </thead>
-<<<<<<< HEAD
-                                    <tbody>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        {{-- @forelse ($approvals as $approval)
-=======
-                                    {{-- <tbody>
-                                         @forelse ($approvals as $approval)
->>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
-                                            @php
-                                                if ($approval->status == '0') {
-                                                    $status = 'Disetujui';
-                                                } elseif ($approval->status == '1') {
-                                                    $status = 'Ditolak';
-                                                } else {
-                                                    $status = '';
-                                                }
-                                            @endphp
-                                            <tr>
-                                                <td class="month-column">{{ __($approval->bulan) }}</td>
-                                                <td class="year-column">{{ __($approval->year) }}</td>
-                                                <td class="text-{{ $approval->status == 0 ? 'success' : 'danger' }}">
-                                                    {{ $status }}</td>
-                                                <td>{{ __($approval->keterangan) }}</td>
-                                                <td>
-                                                    <a href="{{ url('/viewTetap?id=' . $approval->id) }}"
-                                                        class="btn btn-navy align-items-center ms-2">
-                                                        View
-                                                    </a>
+                                    @empty
+                                    @endforelse
+                                </tbody>
 
-
-                                                </td>
-                                            </tr>
-                                        @empty
-<<<<<<< HEAD
-                                        @endforelse --}}
-                                    </tbody>
-=======
-                                        @endforelse 
-                                    </tbody> --}}
->>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
-
-                                    {{-- <tfoot>
+                                {{-- <tfoot>
                                         <tr>
                                             <th>Bulan</th>
                                             <th>Tahun</th>
@@ -164,20 +155,20 @@
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot> --}}
-                                </table>
-                            </div>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- ============================================================= -->
-            <!-- End PAge Content -->
-            <!-- ============================================================= -->
         </div>
         <!-- ============================================================= -->
-        <!-- End Container fluid  -->
+        <!-- End PAge Content -->
         <!-- ============================================================= -->
-        <!-- ============================================================= -->
+    </div>
+    <!-- ============================================================= -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================= -->
+    <!-- ============================================================= -->
 
     </div>
 @endsection

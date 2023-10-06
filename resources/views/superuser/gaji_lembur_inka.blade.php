@@ -76,13 +76,14 @@
                                     <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
                                     </a>
-                                     {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
+                                    {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a> --}}
-                                    <a hretf="{{ url('/ExportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a hretf="{{ url('/ExportTetap') }}"
+                                        class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
-                                </div> 
+                                </div>
                             </div>
                             <div class="table-responsive">
                                 <table id="zero_config" class="table table-striped table-bordered text-center myTable">
@@ -95,35 +96,45 @@
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
-                                    {{-- <tbody>
-                                         @forelse ($approvals as $approval)
+                                    <tbody>
+                                        @forelse ($approvals as $approval)
                                             @php
                                                 if ($approval->status == '0') {
                                                     $status = 'Disetujui';
+                                                    $warna = 'success';
+                                                    $button = true;
                                                 } elseif ($approval->status == '1') {
                                                     $status = 'Ditolak';
+                                                    $warna = 'danger';
+                                                    $button = true;
                                                 } else {
-                                                    $status = '';
+                                                    $status = 'Menunggu Persetujuan';
+                                                    $warna = 'warning';
+                                                    $button = true;
                                                 }
                                             @endphp
                                             <tr>
                                                 <td class="month-column">{{ __($approval->bulan) }}</td>
                                                 <td class="year-column">{{ __($approval->year) }}</td>
-                                                <td class="text-{{ $approval->status == 0 ? 'success' : 'danger' }}">
+                                                <td class="text-{{ $warna }}">
                                                     {{ $status }}</td>
                                                 <td>{{ __($approval->keterangan) }}</td>
                                                 <td>
-                                                    <a href="{{ url('/viewTetap?id=' . $approval->id) }}"
-                                                        class="btn btn-navy align-items-center ms-2">
+                                                    <form action="{{ url('/viewLemburInka') }}" method="get"
+                                                        id="form-view">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $approval->id }}">
+                                                    </form>
+                                                    <button type="button" class="btn btn-navy align-items-center ms-2"
+                                                        {{ !$button ? 'disabled' : '' }}
+                                                        onclick="document.getElementById('form-view').submit();">
                                                         View
-                                                    </a>
-
-
+                                                    </button>
                                                 </td>
                                             </tr>
                                         @empty
-                                        @endforelse 
-                                    </tbody> --}}
+                                        @endforelse
+                                    </tbody>
 
                                     {{-- <tfoot>
                                         <tr>

@@ -136,7 +136,7 @@
                                 <div class="d-none d-md-flex">
                                     <span class="ms-2">
                                         <span
-                                            class="text-dark fw-bold">{{ Auth::user()->role == 1 ? 'Superuser' : 'User' }}</span></span>
+                                            class="text-dark fw-bold">{{ Auth::user()->tipe_user == 'superadmin' ? 'Superuser' : 'User' }}</span></span>
                                     {{-- <span>
                                         <i data-feather="chevron-down" class="feather-sm"></i>
                                     </span> --}}
@@ -168,7 +168,7 @@
                             <i class="nav-small-line"></i>
                             <span class="hide-menu">Dashboards</span>
                         </li> --}}
-                        @if (Auth::user()->role == 0)
+                        @if (Auth::user()->tipe_user == 'admin')
                             <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                     href="{{ url('/dashboard') }}" aria-expanded="false">
@@ -201,7 +201,8 @@
                             </li>
                             <li class="sidebar-item">
                                 <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                    aria-expanded="false"><i data-feather="file-text"></i><span class="hide-menu">Gaji
+                                    aria-expanded="false"><i data-feather="file-text"></i><span
+                                        class="hide-menu">Gaji
                                         Lembur
                                     </span></a>
                                 <ul aria-expanded="false" class="collapse first-level">
@@ -272,7 +273,8 @@
                             </li>
                             <li class="sidebar-item">
                                 <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                    aria-expanded="false"><i data-feather="file-text"></i><span class="hide-menu">Gaji
+                                    aria-expanded="false"><i data-feather="file-text"></i><span
+                                        class="hide-menu">Gaji
                                         Lembur
                                     </span></a>
                                 <ul aria-expanded="false" class="collapse first-level">
@@ -313,7 +315,8 @@
                             </li>
                             <li class="sidebar-item">
                                 <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                    aria-expanded="false"><i data-feather="file-text"></i><span class="hide-menu">Approval
+                                    aria-expanded="false"><i data-feather="file-text"></i><span
+                                        class="hide-menu">Approval
                                     </span></a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">

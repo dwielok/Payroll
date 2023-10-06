@@ -28,7 +28,7 @@ class LoginController extends Controller
 
         if (Auth::Attempt($data)) {
             $user = User::where('email', $request->input('email'))->first();
-            if ($user->role === 0) {
+            if ($user->tipe_user === 'admin') {
                 return redirect('dashboard');
             } else {
                 return redirect('dashboardSuperuser');

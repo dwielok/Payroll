@@ -136,7 +136,7 @@
                                 <div class="d-none d-md-flex">
                                     <span class="ms-2">
                                         <span
-                                            class="text-dark fw-bold">{{ Auth::user()->role == 1 ? 'Superuser' : 'User' }}</span></span>
+                                            class="text-dark fw-bold">{{ Auth::user()->tipe_user == 'superadmin' ? 'Superuser' : 'User' }}</span></span>
                                     {{-- <span>
                                         <i data-feather="chevron-down" class="feather-sm"></i>
                                     </span> --}}
@@ -168,7 +168,7 @@
                             <i class="nav-small-line"></i>
                             <span class="hide-menu">Dashboards</span>
                         </li> --}}
-                        @if (Auth::user()->role == 0)
+                        @if (Auth::user()->tipe_user == 'admin')
                             <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                     href="{{ url('/dashboard') }}" aria-expanded="false">
@@ -279,6 +279,7 @@
                                     </span></a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
+<<<<<<< HEAD
                                         <a href="/GajiLemburTetap" class="sidebar-link"><span class="hide-menu">
                                                 <a href="/GajiLemburTetapSuper" class="sidebar-link"><span
                                                         class="hide-menu">
@@ -300,6 +301,21 @@
                                                         class="hide-menu">
                                                         Karyawan PKWT
                                                     </span></a>
+=======
+                                        <a href="/GajiLemburTetapSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan
+                                                Tetap </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/GajiLemburInkaSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan Perbantuan INKA
+                                            </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/GajiLemburPkwtSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan PKWT
+                                            </span></a>
+>>>>>>> 0a7f0bad7c4ddb6638b9cea987c8b3ac2dfc290a
                                     </li>
                                 </ul>
                             </li>
