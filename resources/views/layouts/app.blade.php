@@ -273,12 +273,35 @@
                             </li>
                             <li class="sidebar-item">
                                 <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                     aria-expanded="false"><i data-feather="file-text"></i><span
+                                    aria-expanded="false"><i data-feather="file-text"></i><span
                                         class="hide-menu">Gaji
                                         Lembur
                                     </span></a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
+<<<<<<< HEAD
+                                        <a href="/GajiLemburTetap" class="sidebar-link"><span class="hide-menu">
+                                                <a href="/GajiLemburTetapSuper" class="sidebar-link"><span
+                                                        class="hide-menu">
+                                                        Karyawan
+                                                        Tetap </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/GajiLemburInka" class="sidebar-link"><span class="hide-menu">
+                                                <a href="/GajiLemburInkaSuper" class="sidebar-link"><span
+                                                        class="hide-menu">
+                                                        Karyawan Perbantuan INKA
+                                                    </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/GajiLemburPkwt
+                                        "
+                                            class="sidebar-link"><span class="hide-menu">
+                                                <a href="/GajiLemburPkwtSuper" class="sidebar-link"><span
+                                                        class="hide-menu">
+                                                        Karyawan PKWT
+                                                    </span></a>
+=======
                                         <a href="/GajiLemburTetapSuper" class="sidebar-link"><span class="hide-menu">
                                                 Karyawan
                                                 Tetap </span></a>
@@ -292,6 +315,7 @@
                                         <a href="/GajiLemburPkwtSuper" class="sidebar-link"><span class="hide-menu">
                                                 Karyawan PKWT
                                             </span></a>
+>>>>>>> 0a7f0bad7c4ddb6638b9cea987c8b3ac2dfc290a
                                     </li>
                                 </ul>
                             </li>
@@ -315,7 +339,8 @@
                             </li>
                             <li class="sidebar-item">
                                 <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                    aria-expanded="false"><i data-feather="file-text"></i><span class="hide-menu">Approval
+                                    aria-expanded="false"><i data-feather="file-text"></i><span
+                                        class="hide-menu">Approval
                                     </span></a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
