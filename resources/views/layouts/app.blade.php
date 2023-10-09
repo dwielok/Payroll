@@ -279,7 +279,6 @@
                                     </span></a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
-<<<<<<< HEAD
                                         <a href="/GajiLemburTetap" class="sidebar-link"><span class="hide-menu">
                                                 <a href="/GajiLemburTetapSuper" class="sidebar-link"><span
                                                         class="hide-menu">
@@ -301,7 +300,6 @@
                                                         class="hide-menu">
                                                         Karyawan PKWT
                                                     </span></a>
-=======
                                         <a href="/GajiLemburTetapSuper" class="sidebar-link"><span class="hide-menu">
                                                 Karyawan
                                                 Tetap </span></a>
@@ -315,7 +313,6 @@
                                         <a href="/GajiLemburPkwtSuper" class="sidebar-link"><span class="hide-menu">
                                                 Karyawan PKWT
                                             </span></a>
->>>>>>> 0a7f0bad7c4ddb6638b9cea987c8b3ac2dfc290a
                                     </li>
                                 </ul>
                             </li>
