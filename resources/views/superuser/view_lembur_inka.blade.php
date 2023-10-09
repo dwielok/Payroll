@@ -77,7 +77,7 @@
                                             <th class="text-center">Lembur Weekend</th>
                                             <th class="text-center">Lembur Weekdays</th>
                                             <th class="text-center">Nominal Lembur Weekend</th>
-                                            <th class="text-center">Nominal Lembur Weekdays</th>
+                                            <th class="text-center">Nominal Lembur Weekday</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
@@ -91,8 +91,8 @@
                                                 <td>{{ $gaji->lembur_weekend }}</td>
                                                 <td>{{ $gaji->lembur_weekday }}</td>
                                                 <td>@rupiah($gaji->nominal_lembur_weekend)</td>
-                                                <td>@rupiah($gaji->nominal_lembur_weekdays)</td>
-                                                <td><a href="{{ url('/EditInkaSuper') }}"
+                                                <td>@rupiah($gaji->nominal_lembur_weekday)</td>
+                                                <td><a href="{{ url('/EditLemburInkaSuper?id=' . $gaji->id_gaji) }}"
                                                         class="btn btn-navy align-items-center ms-2">
                                                         Edit
                                                     </a>

@@ -13,6 +13,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardSuperController;
 use App\Http\Controllers\EditInkaSuperController;
+use App\Http\Controllers\EditLemburTetapInkaController;
 use App\Http\Controllers\EditPkwtSuperController;
 use App\Http\Controllers\EditTetapSuperController;
 use App\Http\Controllers\ExportController;
@@ -159,7 +160,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('viewTetap', [viewTetapController::class, 'index'])->name('viewTetap');
 
     //Routing View INKA
-    Route::get('viewInka', [viewTetapController::class, 'index'])->name('viewInka');
+    Route::get('viewInka', [viewInkaController::class, 'index'])->name('viewInka');
 
     //Routing View PKWT
     Route::get('viewPkwt', [viewPkwtController::class, 'index'])->name('viewPkwt');
@@ -198,15 +199,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Routing Import Lembur Inka
     Route::get('ImportLemburInka', [ImportLemburInkaController::class, 'index'])->name('import_lembur_inka');
-
-    //Routing Import Lembur Pkwt
-    Route::get('ImportLemburInka', [ImportLemburPkwtController::class, 'index'])->name('import_lembur_pkwt');
-
-    //Routing Import Gaji Lembur Tetap
-    Route::get('ImportLemburTetap', [ImportTetapController::class, 'index_lembur'])->name('import_lembur_tetap');
-
-    //Routing Import Gaji Lembur Inka
-    Route::get('ImportLemburInka', [ImportInkaController::class, 'index_lembur'])->name('import_lembur_inka');
 
     //Routing Import Gaji Lembur Pkwt
     Route::get('ImportLemburPkwt', [ImportPkwtController::class, 'index_lembur'])->name('import_lembur_pkwt');
@@ -260,6 +252,15 @@ Route::group(['middleware' => 'auth'], function () {
         //Routing Halaman Edit Pkwt Superuser
         Route::get('EditPkwtSuper', [EditPkwtSuperController::class, 'index'])->name('superuser.edit_pkwt');
 
+        //Routing Halaman Edit Lembur Tetap
+        Route::get('EditLemburTetapSuper', [EditLemburTetapInkaController::class, 'index'])->name('superuser.edit_lembur_tetap');
+
+        //Routing Halaman Edit Lembur Inka
+        Route::get('EditLemburInkaSuper', [EditLemburTetapInkaController::class, 'index'])->name('superuser.edit_lembur_inka');
+
+        //Routing Halaman Edit Lembur Pkwt
+        Route::get('EditLemburPkwtSuper', [EditLemburTetapInkaController::class, 'index'])->name('superuser.edit_lembur_pkwt');
+
         //Routing Halaman Approval Superusser
         Route::get('ApprovalSuper', [ApprovalSuperController::class, 'index'])->name('superuser.approval');
 
@@ -273,10 +274,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('viewLemburTetap', [GajiLemburTetapSuperController::class, 'detail'])->name('superuser.view_lembur_tetap');
 
         //Routing Halaman View Lembur Inka
-        Route::get('viewLemburInka', [GajiLemburInkaSuperController::class, 'detail'])->name('superuser.view_lembur_inka');
+        Route::get('viewLemburInka', [GajiLemburTetapSuperController::class, 'detail'])->name('superuser.view_lembur_inka');
 
         //Routing Halaman View Lembur Pkwt
-        Route::get('viewLemburPkwt', [GajiLemburPkwtSuperController::class, 'detail'])->name('superuser.view_lembur_pkwt');
+        Route::get('viewLemburPkwt', [GajiLemburTetapSuperController::class, 'detail'])->name('superuser.view_lembur_pkwt');
 
         //Routeing Halaman View Approval Lembur Super
         Route::get('ViewApprovalLemburSuper', [ApprovalLemburController::class, 'detail'])->name('superuser.view_approval_lembur');
@@ -319,7 +320,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::post('test_import', [ImportTetapController::class, 'import'])->name('importTetap');
 Route::post('import_lembur_tetap', [ImportTetapController::class, 'import_lembur'])->name('importLemburTetap');
-Route::post('import_lembur_inka', [ImportInkaController::class, 'import_lembur'])->name('importLemburInka');
+Route::post('import_lembur_inka', [ImportTetapController::class, 'import_lembur'])->name('importLemburInka');
 Route::post('import_lembur_pkwt', [ImportPkwtController::class, 'import_lembur'])->name('importLemburPkwt');
 Route::post('test_import_inka', [ImportTetapController::class, 'import'])->name('importInka');
 Route::post('test_import_pkwt', [ImportPkwtController::class, 'import'])->name('importPkwt');

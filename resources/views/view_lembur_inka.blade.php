@@ -12,7 +12,7 @@
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 <a href="/GajiLemburInka" class="link">
-                                    List Lembur Karyawan Tetap </a>
+                                    List Lembur Karyawan Perbantuan INKA </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 View List Data
@@ -75,9 +75,9 @@
                                             <th class="text-center">NIP</th>
                                             <th class="text-center">Nama</th>
                                             <th class="text-center">Lembur Weekend</th>
-                                            <th class="text-center">Lembur Weekdays</th>
+                                            <th class="text-center">Lembur Weekday</th>
                                             <th class="text-center">Nominal Lembur Weekend</th>
-                                            <th class="text-center">Nominal Lembur Weekdays</th>
+                                            <th class="text-center">Nominal Lembur Weekday</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -121,13 +121,13 @@
                                                 <td>{{ __($approval->keterangan) }}</td>
                                                 <td>
                                                     <form action="{{ url('/viewLemburTetap') }}" method="get"
-                                                        id="form-view">
+                                                        id="form-view-{{ $approval->id }}">
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{ $approval->id }}">
                                                     </form>
                                                     <button type="button" class="btn btn-navy align-items-center ms-2"
                                                         {{ !$button ? 'disabled' : '' }}
-                                                        onclick="document.getElementById('form-view').submit();">
+                                                        onclick="document.getElementById('form-view-{{ $approval->id }}').submit()">
                                                         View
                                                     </button>
                                                 </td>

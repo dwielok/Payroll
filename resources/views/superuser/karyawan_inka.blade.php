@@ -118,7 +118,7 @@
                                                     {{ $status }}</td>
                                                 <td>{{ __($approval->keterangan) }}</td>
                                                 <td>
-                                                    <a href="{{ url('/ViewTetapSuper?id=' . $approval->id) }}"
+                                                    <a href="{{ url('/ViewInkaSuper?id=' . $approval->id) }}"
                                                         class="btn btn-navy align-items-center ms-2">
                                                         View
                                                     </a>

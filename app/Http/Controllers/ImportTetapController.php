@@ -190,6 +190,10 @@ class ImportTetapController extends Controller
         });
 
         // dd($datas);
-        return redirect('/GajiLemburTetap');
+        if ($type == 'tetap') {
+            return redirect('/GajiLemburTetap');
+        } else {
+            return redirect('/GajiLemburInka');
+        }
     }
 }

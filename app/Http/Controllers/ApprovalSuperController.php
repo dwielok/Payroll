@@ -70,6 +70,23 @@ class ApprovalSuperController extends Controller
     public function detail(Request $request)
     {
         $id = $request->get('id');
+        $tipe = $request->get('tipe');
+
+        switch ($tipe) {
+            case 'tetap':
+                $tipe = 'Tetap';
+                break;
+            case 'inka':
+                $tipe = 'Perbantuan INKA';
+                break;
+            case 'pkwt':
+                $tipe = 'PKWT';
+                break;
+
+            default:
+                # code...
+                break;
+        }
 
         $approval = Approval::where('id', $id)->first();
 
@@ -85,7 +102,7 @@ class ApprovalSuperController extends Controller
                 return $item;
             });
             $gajis = PdfController::rumusTetap($gajis);
-            return view('superuser.view_approval', compact('gajis', 'approval'));
+            return view('superuser.view_approval', compact('gajis', 'approval', 'tipe'));
         } else {
             $gajis = GajiPkwt::leftJoin('pegawai', 'pegawai.id', '=', 'gaji_pkwt.id_karyawan')
                 ->select('gaji_pkwt.*', 'pegawai.*', 'pegawai.pendidikan_terakhir as pendidikan')
@@ -97,7 +114,7 @@ class ApprovalSuperController extends Controller
                 return $item;
             });
             $gajis = PdfController::rumusPkwt($gajis);
-            return view('superuser.view_approval_pkwt', compact('gajis', 'approval'));
+            return view('superuser.view_approval_pkwt', compact('gajis', 'approval', 'tipe'));
         }
         // dd($gajis);
 

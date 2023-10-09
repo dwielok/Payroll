@@ -12,14 +12,14 @@
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 <a href="/ApprovalSuper" class="link">
-                                    List Approval </a>
+                                     Approval </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 View List Data
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data</h1>
+                    <h1 class="mb-0 fw-bold">List Data Karyawan {{$tipe}}</h1>
                 </div>
             </div>
         </div>
@@ -192,7 +192,6 @@
                                             <th class="text-center">Penghasilan Tidak Tetap</th>
                                             <th class="text-center">Penghasilan Bruto</th>
                                             <th class="text-center">Penghasilan Netto</th>
-                                            <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -232,15 +231,6 @@
                                                 <td>@rupiah($gaji->penghasilan_tunjangan_tidak_tetap)</td>
                                                 <td>@rupiah($gaji->penghasilan_bruto)</td>
                                                 <td>@rupiah($gaji->penghasilan_netto)</td>
-                                                <td><a href="{{ url('/EditTetapSuper') }}"
-                                                        class="btn btn-navy align-items-center ms-2">
-                                                        Edit
-                                                    </a>
-                                                    <a href="{{ url('/#') }}"
-                                                        class="btn btn-merah align-items-center ms-2">
-                                                        Delete
-                                                    </a>
-                                                </td>
                                             </tr>
                                         @endforeach
 

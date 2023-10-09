@@ -161,7 +161,9 @@
         });
 
         //get the id of the checkbox that was clicked
-        $('.check-item').click(function(e) {
+        //fix ketika page 2 dan seterusnya gabisa di klik checkboxnya
+        //class check-item harus dibungkus dengan delegate agar bisa di klik
+        $('#zero_config').delegate('.check-item', 'change', function(e) {
             var id = $(this).data('id');
             var tipe = $(this).data('tipe');
             if ($(this).prop('checked')) {
