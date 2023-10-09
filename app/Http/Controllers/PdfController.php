@@ -149,7 +149,7 @@ class PdfController extends Controller
 
         try {
             //code...
-            //create zip 
+            //create zip
             $zip = new \ZipArchive();
             $random_name = rand(0, 9999999999);
             $zip_name = 'gaji-' . $random_name . '.zip';
@@ -212,7 +212,7 @@ class PdfController extends Controller
         return $gajis;
     }
 
-    private function hitungJabatan($jabatan, $gaji_pokok)
+    public static function hitungJabatan($jabatan, $gaji_pokok)
     {
         //jabatan ada 2 Staff dan Manager
         if ($jabatan == 'Staff') {
@@ -222,12 +222,12 @@ class PdfController extends Controller
         }
     }
 
-    private function hitungKehadiran($kehadiran)
+    public static function hitungKehadiran($kehadiran)
     {
         return $kehadiran * 10000;
     }
 
-    private function levelPendidikan($pendidikan)
+    public static function levelPendidikan($pendidikan)
     {
         $umk = 2190216;
         if ($pendidikan == 'SMK') {
@@ -390,7 +390,7 @@ class PdfController extends Controller
         return $masters;
     }
 
-    public function getGajiPokok($prefix)
+    public static function getGajiPokok($prefix)
     {
         $awal = explode('-', $prefix)[0]; //I
         $salaries = self::generateKenaikan();
@@ -418,7 +418,7 @@ class PdfController extends Controller
         return $result_gaji;
     }
 
-    public function rumusTetap($gajis)
+    public static function rumusTetap($gajis)
     {
         $result = [];
 
@@ -518,6 +518,7 @@ class PdfController extends Controller
             $obj->nama_jabatan = $gaji->nama_jabatan ?? '';
             $obj->kehadiran = $gaji->kehadiran ?? 0;
             $obj->hari_kerja = $gaji->hari_kerja ?? 0;
+            $obj->id_gaji = $gaji->id_gaji ?? 0;
             $obj->dana_ikk = $gaji->dana_ikk ?? 0;
             $obj->ppip_mandiri = $gaji->ppip_mandiri ?? 0;
             $obj->jam_hilang = $gaji->jam_hilang ?? 0;
@@ -657,6 +658,7 @@ class PdfController extends Controller
             $obj->id_aproval = $gaji->id;
             $obj->type = $gaji->tipe_karyawan;
             $obj->nama = $gaji->nama ?? '';
+            $obj->id_gaji = $gaji->id_gaji ?? 0;
             $obj->pendidikan = $gaji->pendidikan ?? '';
             $obj->kehadiran = $gaji->kehadiran ?? 0;
             $obj->hari_kerja = $gaji->hari_kerja ?? 0;
@@ -730,7 +732,7 @@ class PdfController extends Controller
                     ->leftJoin('jabatan', 'jabatan.id', '=', 'pegawai.kode_jabatan')
                     ->leftJoin('approvals', 'approvals.id', '=', 'gaji_pkwt.id_approval')
                     ->select('gaji_pkwt.*', 'pegawai.*', 'approvals.*', 'jabatan.*', 'pegawai.pendidikan_terakhir as pendidikan')
-                    ->where('gaji_pkwt.id_approval', $value['id'])->get();
+                    ->where('gaji_pkwt.id', $value['id'])->get();
                 $res = $this->rumusPkwt($gajis);
 
                 //append to $result[]
@@ -938,7 +940,7 @@ class PdfController extends Controller
 
         try {
             //code...
-            //create zip 
+            //create zip
             $zip = new \ZipArchive();
             $random_name = rand(0, 9999999999);
             $zip_name = 'gaji-' . $random_name . '.zip';

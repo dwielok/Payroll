@@ -50,21 +50,21 @@
                             <fieldset disabled>
                                 <label for="disabledTextInput">Nama</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder="{{ $gaji->nama_karyawan }}" value="{{ $gaji->nama_karyawan }}" />
+                                    placeholder="{{ $gaji->nama }}" value="{{ $gaji->nama }}" />
                             </fieldset>
                         </div>
                         <div class="mb-3">
                             <fieldset disabled>
                                 <label for="disabledTextInput">Jabatan</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder="{{ $gaji->tipe_jabatan }}" value="{{ $gaji->tipe_jabatan }}" />
+                                    placeholder="{{ $gaji->nama_jabatan }}" value="{{ $gaji->nama_jabatan }}" />
                             </fieldset>
                         </div>
                         <div class="mb-3">
                             <fieldset disabled>
                                 <label for="disabledTextInput">Golongan</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder="{{ $gaji->golongan }}" value="{{ $gaji->golongan }}" />
+                                    placeholkode_jabatander="{{ $gaji->golongan }}" value="{{ $gaji->golongan }}" />
                             </fieldset>
                         </div>
                         <div class="row">
@@ -81,35 +81,38 @@
                                 <fieldset disabled>
                                     <label for="disabledTextInput">Gaji Pokok</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
-                                        placeholder={{ $gaji->gaji_pokok }} value="@rupiah($gaji->gaji_pokok)" />
+                                        placeholder={{ $gaji->gaji_pokok }} value="@rupiah($gaji->gaji_pokok)" name="gaji_pokok" />
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset disabled>
                                     <label for="disabledTextInput">BPJS Kesehatan</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
-                                        placeholder={{ $gaji->bpjs_kesehatan }} value="@rupiah($gaji->bpjs_kesehatan)" />
+                                        placeholder={{ $gaji->bpjs_kesehatan }} value="@rupiah($gaji->bpjs_kesehatan)"
+                                        name="bpjs_kesehatan" />
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset disabled>
                                     <label for="disabledTextInput">Tunjangan Tetap</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
-                                        placeholder={{ $gaji->tunjangan_tetap }} value="@rupiah($gaji->tunjangan_tetap)" />
+                                        placeholder={{ $gaji->tunjangan_tetap }} value="@rupiah($gaji->tunjangan_tetap)"
+                                        name="tunjangan_tetap" />
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset disabled>
                                     <label for="disabledTextInput">BPJS Ketenagakerjaan</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
-                                        placeholder={{ $gaji->bpjs_ketenagakerjaan }} value="@rupiah($gaji->bpjs_ketenagakerjaan)" />
+                                        placeholder={{ $gaji->bpjs_ketenagakerjaan }} value="@rupiah($gaji->bpjs_ketenagakerjaan)"
+                                        name="bpjs_ketenagakerjaan" />
                             </div>
                             <div class="col-md-6"></div>
                             <div class="col-md-6">
                                 <fieldset disabled>
                                     <label for="disabledTextInput">PPIP</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
-                                        placeholder={{ $gaji->ppip }} value="@rupiah($gaji->ppip)" />
+                                        placeholder={{ $gaji->ppip }} value="@rupiah($gaji->ppip)" name="ppip" />
                                 </fieldset>
                             </div>
                         </div>
@@ -126,41 +129,44 @@
                             <div class="col-md-6">
                                 <label for="disabledTextInput">Kehadiran</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder={{ $gaji->kehadiran }} value={{ $gaji->kehadiran }} />
+                                    placeholder={{ $gaji->kehadiran }} value={{ $gaji->kehadiran }} name="kehadiran" />
                             </div>
                             <div class="col-md-6">
                                 <fieldset disabled>
                                     <label for="disabledTextInput">BPJS Kesehatan</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
-                                        placeholder="BPJS Kesehatan" value="@rupiah($gaji->premi_bpjs_kesehatan)" />
+                                        placeholder="BPJS Kesehatan" value="@rupiah($gaji->premi_bpjs_kesehatan)"
+                                        name="premi_bpjs_kesehatan" />
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <label for="disabledTextInput">Hari Kerja</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder="Hari Kerja" value="{{ $gaji->hari_kerja }}" />
+                                    placeholder="Hari Kerja" value="{{ $gaji->hari_kerja }}" name="hari_kerja"
+                                    name="hari_kerja" />
                             </div>
                             <div class="col-md-6">
                                 <fieldset disabled>
                                     <label for="disabledTextInput">BPJS Ketenagakerjaan</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
-                                        placeholder="BPJS Ketenagakerjaan" value="@rupiah($gaji->premi_bpjs_ketenagakerjaan)" />
+                                        placeholder="BPJS Ketenagakerjaan" value="@rupiah($gaji->premi_bpjs_ketenagakerjaan)"
+                                        name="premi_bpjs_ketenagakerjaan" />
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <label for="disabledTextInput">Nilai IKK</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder="Nilai IKK" value="{{ $gaji->nilai_ikk }}" />
+                                    placeholder="Nilai IKK" value="{{ $gaji->nilai_ikk }}" name="nilai_ikk" />
                             </div>
                             <div class="col-md-6">
                                 <label for="disabledTextInput">PPIP Mandiri</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder="PPIP Mandiri" value="{{ $gaji->ppip_mandiri }}" />
+                                    placeholder="PPIP Mandiri" value="{{ $gaji->ppip_mandiri }}" name="ppip_mandiri" />
                             </div>
                             <div class="col-md-6">
                                 <label for="disabledTextInput">Dana IKK</label>
                                 <input type="text" id="disabledTextInput" class="form-control" placeholder="Dana IKK"
-                                    value="{{ $gaji->dana_ikk }}" />
+                                    value="{{ $gaji->dana_ikk }}" name="dana_ikk" />
                             </div>
                             <div class="col-md-6">
                                 <h5 class="card-title mt-3 pb-3 border-bottom">Potongan</h5>
@@ -169,37 +175,41 @@
                                 <fieldset disabled>
                                     <label for="disabledTextInput">Tunjangan Transportasi</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
-                                        placeholder="Tunjangan Transportasi" value="@rupiah($gaji->tunjangan_transportasi)" />
+                                        placeholder="Tunjangan Transportasi" value="@rupiah($gaji->tunjangan_transportasi)"
+                                        name="tunjangan_transportasi" />
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <label for="disabledTextInput">Jam Hilang</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder="Jam Hilang" value="{{ $gaji->jam_hilang }}" />
+                                    placeholder="Jam Hilang" value="{{ $gaji->jam_hilang }}" name="jam_hilang"
+                                    name="jam_hilang" />
                             </div>
                             <div class="col-md-6">
                                 <fieldset disabled>
                                     <label for="disabledTextInput">Tunjangan Jabatan</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
-                                        placeholder="Tunjangan Jabatan" value="@rupiah($gaji->tunjangan_jabatan)" />
+                                        placeholder="Tunjangan Jabatan" value="@rupiah($gaji->tunjangan_jabatan)"
+                                        name="tunjangan_jabatan" />
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <label for="disabledTextInput">Kopinka</label>
                                 <input type="text" id="disabledTextInput" class="form-control" placeholder="Kopinka"
-                                    value="{{ $gaji->kopinka }}" />
+                                    value="{{ $gaji->kopinka }}" name="kopinka" />
                             </div>
                             <div class="col-md-6">
                                 <fieldset disabled>
                                     <label for="disabledTextInput">Tunjangan Karya</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
-                                        placeholder="Tunjangan Karya" value="@rupiah($gaji->tunjangan_karya)" />
+                                        placeholder="Tunjangan Karya" value="@rupiah($gaji->tunjangan_karya)"
+                                        name="tunjangan_karya" />
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <label for="disabledTextInput">Keuangan</label>
                                 <input type="text" id="disabledTextInput" class="form-control" placeholder="Keuangan"
-                                    value="{{ $gaji->keuangan }}" />
+                                    value="{{ $gaji->keuangan }}" name="keuangan" />
                             </div>
                         </div>
                         <div class="row">
@@ -226,9 +236,10 @@
                                 </fieldset>
                             </div> --}}
                             <div class="md-3">
-                                <label for="disabledTextInput">Penyesuain Penambahan</label>
+                                <label for="disabledTextInput">Penyesuaian Penambahan</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder="Penambahan">
+                                    placeholder="Penambahan" value="{{ $gaji->penyesuaian_penambahan }}"
+                                    name="penyesuaian_penambahan" />
                             </div>
                             {{-- <div class="col-md-2">
                                 <label for="disabledTextInput">Lembur Weekdays</label>
@@ -244,9 +255,10 @@
                             </div> --}}
                             <div></div>
                             <div class="md-3">
-                                <label for="disabledTextInput">Penyesuain Pengurangan</label>
+                                <label for="disabledTextInput">Penyesuaian Pengurangan</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder="Pengurangan">
+                                    placeholder="Pengurangan" value="{{ $gaji->penyesuaian_pengurangan }}"
+                                    name="penyesuaian_pengurangan" />
                             </div>
 
                             <div></div>
@@ -257,21 +269,24 @@
                                 <fieldset disabled>
                                     <label for="disabledTextInput">Penghasilan Tetap</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
-                                        placeholder="penghasilan tetap" value="@rupiah($gaji->penghasilan_tetap)" />
+                                        placeholder="penghasilan tetap" value="@rupiah($gaji->penghasilan_tetap)"
+                                        name="penghasilan_tetap" />
                                 </fieldset>
                             </div>
                             <div class="mb-3">
                                 <fieldset disabled>
                                     <label for="disabledTextInput">Penghasilan Bruto</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
-                                        placeholder="penghasilan bruto" value="@rupiah($gaji->penghasilan_bruto)" />
+                                        placeholder="penghasilan bruto" value="@rupiah($gaji->penghasilan_bruto)"
+                                        name="penghasilan_bruto" />
                                 </fieldset>
                             </div>
                             <div class="mb-3">
                                 <fieldset disabled>
                                     <label for="disabledTextInput">Penghasilan Netto</label>
                                     <input type="text" id="disabledTextInput" class="form-control"
-                                        placeholder="penghasilan netto" value="@rupiah($gaji->penghasilan_netto)" />
+                                        placeholder="penghasilan netto" value="@rupiah($gaji->penghasilan_netto)"
+                                        name="penghasilan_netto" />
                                 </fieldset>
                             </div>
                             <div class="mb-6 d-flex justify-content-end">
@@ -283,6 +298,7 @@
                                 </a>
                             </div>
                         </div>
+                    </form>
                 </div>
             </div>
             <!-- ============================================================= -->
@@ -296,3 +312,28 @@
 
     </div>
 @endsection
+
+@push('customScripts')
+    <script>
+        $(document).ready(function() {
+            //onchange all input
+            $('input').on('input', function() {
+                //get value from input
+                var input = $(this).val();
+                //remove dot
+                var input = input.replace(/\./g, '');
+                //convert string to number
+                var input = parseInt(input);
+                //convert number to rupiah
+                var input = input.toLocaleString('id-ID');
+                //set value input
+                $(this).val(input);
+
+                //get name
+                var name = $(this).attr('name');
+
+                console.log(name, input);
+            });
+        });
+    </script>
+@endpush

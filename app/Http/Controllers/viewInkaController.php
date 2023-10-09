@@ -63,10 +63,9 @@ class viewInkaController extends Controller
     public function index(Request $request)
     {
         $id = $request->get('id');
-        $gajis = GajiTemp::leftJoin('karyawans', 'karyawans.id', '=', 'gaji_temp.id_karyawan')
-            ->leftJoin('jabatans', 'jabatans.id', '=', 'karyawans.id_jabatan')
-            ->leftJoin('golongans', 'golongans.id', '=', 'karyawans.id_golongan')
-            ->select('gaji_temp.*', 'karyawans.*', 'jabatans.*', 'golongans.*')
+        $gajis = GajiTemp::leftJoin('pegawai', 'pegawai.id', '=', 'gaji_temp.id_karyawan')
+            ->leftJoin('jabatan', 'jabatan.id', '=', 'pegawai.kode_jabatan')
+            ->select('gaji_temp.*', 'pegawai.*', 'jabatan.*')
             ->where('gaji_temp.id_approval', '=', $id)
             ->get();
         $gajis = $gajis->map(function ($item) {

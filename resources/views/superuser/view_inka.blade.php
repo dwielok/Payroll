@@ -100,8 +100,8 @@
                                                 <td>{{ $gaji->bulan }}</td>
                                             <td>{{ $gaji->tahun }}</td>
                                             <td>{{ $gaji->nip }}</td>
-                                            <td>{{ $gaji->nama_karyawan }}</td>
-                                            <td>{{ $gaji->tipe_jabatan }}</td>
+                                            <td>{{ $gaji->nama }}</td>
+                                            <td>{{ $gaji->nama_jabatan }}</td>
                                             <td>{{ $gaji->golongan }}</td>
                                             <td>@rupiah($gaji->gaji_pokok)</td>
                                             <td>@rupiah($gaji->tunjangan_tetap)</td>
@@ -131,7 +131,7 @@
                                             <td>@rupiah($gaji->penghasilan_tunjangan_tidak_tetap)</td>
                                             <td>@rupiah($gaji->penghasilan_bruto)</td>
                                             <td>@rupiah($gaji->penghasilan_netto)</td>
-                                                <td><a href="{{ url('/EditInkaSuper') }}"
+                                                <td><a href="{{ url('/EditInkaSuper?id=' . $gaji->id_gaji) }}"
                                                         class="btn btn-navy align-items-center ms-2">
                                                         Edit
                                                     </a>

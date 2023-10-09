@@ -133,7 +133,7 @@ class ImportPkwtController extends Controller
         $datas->map(function ($item) use ($id_approval) {
             $nip = $item[0];
             if ($nip != null) {
-                $karyawan = Karyawan::where('nip', $nip)->first();
+                $karyawan = Pegawai::where('nip', $nip)->first();
                 GajiLembur::insert([
                     'id_karyawan' => $karyawan->id,
                     'id_approval' => $id_approval,

@@ -11,15 +11,15 @@
                                 <a href="/dashboardSuperuser" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/GajiLemburTetapSuper" class="link">
-                                    List Lembur Karyawan </a>
+                                <a href="{{ route('superuser.approval_lembur') }}" class="link">
+                                    Approval </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 View List Data
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data</h1>
+                    <h1 class="mb-0 fw-bold">List Data Karyawan {{ $tipe }}</h1>
                 </div>
             </div>
         </div>
@@ -163,7 +163,6 @@
                                             <th class="text-center">Lembur Weekdays</th>
                                             <th class="text-center">Nominal Lembur Weekend</th>
                                             <th class="text-center">Nominal Lembur Weekdays</th>
-                                            <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -177,15 +176,6 @@
                                                 <td>{{ $gaji->lembur_weekday }}</td>
                                                 <td>@rupiah($gaji->nominal_lembur_weekend)</td>
                                                 <td>@rupiah($gaji->nominal_lembur_weekday)</td>
-                                                <td><a href="{{ url('/EditTetapSuper') }}"
-                                                        class="btn btn-navy align-items-center ms-2">
-                                                        Edit
-                                                    </a>
-                                                    <a href="{{ url('/#') }}"
-                                                        class="btn btn-merah align-items-center ms-2">
-                                                        Delete
-                                                    </a>
-                                                </td>
                                             </tr>
                                         @endforeach
 

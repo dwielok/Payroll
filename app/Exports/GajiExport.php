@@ -2,26 +2,30 @@
 
 namespace App\Exports;
 
-use App\Models\Approval;
-use App\Models\GajiTemp;
-use Illuminate\Contracts\View\View;
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\FromView;
+use App\Exports\Sheets\GajiPerBulanSheet;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
+use Maatwebsite\Excel\Concerns\WithStyles;
 
-class GajiExport implements FromView
+class GajiExport implements WithMultipleSheets
 {
-    //retrieve params
-    public $year;
-    public function __construct($year)
+    use Exportable;
+
+    protected $approvals;
+    public function __construct($approvals)
     {
-        $this->year = $year;
+        $this->approvals = $approvals;
     }
 
-    public function view(): View
+    public function sheets(): array
     {
-        return view('gaji', [
-            'tahun' => $this->year,
-            'gajis' => Approval::all()
-        ]);
+        $sheets = [];
+
+        for ($i = 0; $i < count($this->approvals); $i++) {
+            $last_index = count($this->approvals[$i]->gajis) + 1;
+            $sheets[] = new GajiPerBulanSheet($this->approvals[$i]->gajis, $this->approvals[$i], $last_index);
+        }
+
+        return $sheets;
     }
 }

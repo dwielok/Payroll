@@ -158,7 +158,7 @@
         });
 
         //get the id of the checkbox that was clicked
-        $('.check-item').click(function(e) {
+        $('#zero_config').delegate('.check-item', 'click', function(e) {
             var id = $(this).data('id');
             if ($(this).prop('checked')) {
                 selected.push(id);

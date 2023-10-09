@@ -11,15 +11,15 @@
                                 <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/karyawanPKWT" class="link">
-                                    List Data Karyawan PKWT </a>
+                                <a href="/ApprovalSuper" class="link">
+                                    Approval </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                View List Data
+                                View List Data 
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data</h1>
+                    <h1 class="mb-0 fw-bold">List Data Karyawan PKWT</h1>
                 </div>
             </div>
         </div>
