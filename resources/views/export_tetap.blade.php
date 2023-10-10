@@ -91,11 +91,11 @@
                                             <tr>
                                                 <td>
                                                     <input type="checkbox" id="md_checkbox_{{ $loop->iteration }}"
-                                                        data-id="{{ json_encode($slip) }}"
+                                                        data-id="{{ $slip->id }}"
                                                         class="filled-in chk-col-red check-item" name="check-item" />
                                                 </td>
                                                 <td class="text-center month-column">{{ $slip->bulan }}</td>
-                                                <td class="text-center year-column">{{ $slip->tahun }}</td>
+                                                <td class="text-center year-column">{{ $slip->year }}</td>
                                             </tr>
                                         @empty
                                         @endforelse
@@ -117,10 +117,10 @@
                                 {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                     Import --}}
                                 </a>
-                                <a href="{{ route('export.export_tetap') }}"
-                                    class="btn btn-navy d-flex align-items-center ms-2" style="margin-top: 30px">
+                                <button id="export-button" class="btn btn-navy d-flex align-items-center ms-2"
+                                    style="margin-top: 30px">
                                     Export
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -137,3 +137,43 @@
 
     </div>
 @endsection
+
+@push('customScripts')
+    <script>
+        var selected = [];
+        //get the id of the checkbox that was clicked
+        $('#zero_config').delegate('.check-item', 'click', function(e) {
+            var id = $(this).data('id');
+            if ($(this).prop('checked')) {
+                selected.push(id);
+            } else {
+                selected.splice(selected.indexOf(id), 1);
+            }
+            console.log(selected);
+        });
+
+        $('#export-button').click(function() {
+            if (selected.length > 0) {
+                var url = "{{ route('export.export_tetap') }}";
+                $.ajax({
+                    url: url,
+                    type: 'post',
+                    data: JSON.stringify({
+                        selected: selected,
+                        _token: '{{ csrf_token() }}'
+                    }),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        if (response.success) {
+                            //download file with response.link on new tab
+                            // window.open(response.link, '_blank');
+                            window.location = response.file
+                        }
+                    }
+                });
+            } else {
+                alert('Please select at least one item.');
+            }
+        });
+    </script>
+@endpush
