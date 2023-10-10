@@ -333,6 +333,25 @@
                 var name = $(this).attr('name');
 
                 console.log(name, input);
+
+                //delay 2 second to hit ajax
+                //change name to {name:input}
+                var data = {};
+                data[name] = input;
+                setTimeout(function() {
+                    $.ajax({
+                        url: "{{ url('/update_gaji/') }}" + "/" + "{{ $gaji->id_gaji }}",
+                        type: "POST",
+                        data: JSON.stringify({
+                            "_token": "{{ csrf_token() }}",
+                            ...data
+                        }),
+                        contentType: "application/json",
+                        success: function(data) {
+                            console.log(data);
+                        }
+                    });
+                }, 2000);
             });
         });
     </script>

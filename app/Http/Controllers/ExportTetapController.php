@@ -14,30 +14,15 @@ class ExportTetapController extends Controller
     public function index()
     {
         $slips = Approval::where('status', 0)->where('tipe_karyawan', 'tetap')->get();
-        //kelompokkan berdasarkan tahun dan bulan pada kolom bulan dan year lalu return {bulan, tahun} pada array baru
-        $arr = [];
-        foreach ($slips as $slip) {
-            $arr[] = [
-                'bulan' => $slip->bulan,
-                'tahun' => $slip->year
-            ];
-        }
-        //hapus duplikat pada array
-        $arr = array_unique($arr, SORT_REGULAR);
-        //push data ke newStd
-        foreach ($arr as $key => $value) {
-            $newStd = new \stdClass();
-            $newStd->bulan = $value['bulan'];
-            $newStd->tahun = $value['tahun'];
-            $arr[$key] = $newStd;
-        }
-        $slips = $arr;
+
         return view('export_tetap', compact('slips'));
     }
 
-    public function export()
+    public function export(Request $request)
     {
-        $approvals = Approval::all();
+        $ids = $request->selected;
+        //where id in array with input [1,2,3]
+        $approvals = Approval::whereIn('id', $ids)->get();
 
         $approvals = $approvals->map(function ($approval) {
             if ($approval->tipe_karyawan != 'pkwt') {
@@ -71,7 +56,16 @@ class ExportTetapController extends Controller
         });
 
         // dd($approvals);
+        $random_name = rand(1000, 9999);
+        //save to public/excel
+        Excel::store(new GajiExport($approvals), 'public/excel/' . $random_name . '.xlsx');
 
-        return Excel::download(new GajiExport($approvals), 'gaji_cuy.xlsx');
+        //redirect to excel file
+        $data = [
+            'file' => url('storage/excel/' . $random_name . '.xlsx'),
+            'success' => TRUE,
+        ];
+
+        return response()->json($data);
     }
 }

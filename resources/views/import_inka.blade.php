@@ -92,8 +92,7 @@
                                                             <button type="button" class="btn btn-merah"
                                                                 data-dismiss="modal">Close</button>
                                                             <button type="submit"
-                                                                class="btn btn-navy d-flex align-items-center ms-2">Save
-                                                                Change</button>
+                                                                class="btn btn-navy d-flex align-items-center ms-2">Upload</button>
                                                         </div>
                                                     </div>
                                                 </div>
