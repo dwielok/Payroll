@@ -290,7 +290,7 @@
                                 </fieldset>
                             </div>
                             <div class="mb-6 d-flex justify-content-end">
-                                <a href="{{ url('/#') }}" class="btn btn-navy align-items-center ms-2">
+                                <a id="save-gaji" class="btn btn-navy align-items-center ms-2">
                                     Save
                                 </a>
                                 <a href="{{ url('/#') }}" class="btn btn-merah align-items-center ms-2">
@@ -316,16 +316,28 @@
 @push('customScripts')
     <script>
         $(document).ready(function() {
+            //format rupiah
+            function formatRupiah(angka) {
+                // Menggunakan metode toLocaleString dengan konfigurasi sesuai kebutuhan
+                return "Rp. " + angka.toLocaleString("id-ID", {
+                    minimumFractionDigits: 0, // Menampilkan 0 desimal
+                    maximumFractionDigits: 0, // Maksimum 0 desimal
+                });
+            }
+
+            console.log(formatRupiah(10000000));
+
             //onchange all input
             $('input').on('input', function() {
+                clearTimeout($(this).data('timer'));
                 //get value from input
                 var input = $(this).val();
                 //remove dot
                 var input = input.replace(/\./g, '');
                 //convert string to number
-                var input = parseInt(input);
+                // var input = parseInt(input);
                 //convert number to rupiah
-                var input = input.toLocaleString('id-ID');
+                // var input = input.toLocaleString('id-ID');
                 //set value input
                 $(this).val(input);
 
@@ -334,13 +346,16 @@
 
                 console.log(name, input);
 
+                //remove dot in input
+                // var input = input.replace(/\./g, '');
+
                 //delay 2 second to hit ajax
                 //change name to {name:input}
                 var data = {};
                 data[name] = input;
-                setTimeout(function() {
+                var timer = setTimeout(function() {
                     $.ajax({
-                        url: "{{ url('/update_gaji/') }}" + "/" + "{{ $gaji->id_gaji }}",
+                        url: "{{ url('/preview_gaji/') }}" + "/" + "{{ $gaji->id_gaji }}",
                         type: "POST",
                         data: JSON.stringify({
                             "_token": "{{ csrf_token() }}",
@@ -349,9 +364,60 @@
                         contentType: "application/json",
                         success: function(data) {
                             console.log(data);
+                            //set value input
+                            $('input[name="penghasilan_tetap"]').val(formatRupiah(
+                                data.penghasilan_tetap));
+                            $('input[name="penghasilan_bruto"]').val(formatRupiah(
+                                data.penghasilan_bruto));
+                            $('input[name="penghasilan_netto"]').val(formatRupiah(
+                                data.penghasilan_netto));
+                            //tunjangan transportasi,tunjangan jabatan,tunjangan karya
+                            $('input[name="tunjangan_transportasi"]').val(formatRupiah(
+                                data
+                                .tunjangan_transportasi));
+                            $('input[name="tunjangan_jabatan"]').val(formatRupiah(data
+                                .tunjangan_jabatan));
+                            $('input[name="tunjangan_karya"]').val(formatRupiah(data
+                                .tunjangan_karya));
                         }
                     });
                 }, 2000);
+
+                $(this).data('timer', timer);
+            });
+
+            $('#save-gaji').on('click', function() {
+                var data = {};
+                data['kehadiran'] = $('input[name="kehadiran"]').val();
+                data['hari_kerja'] = $('input[name="hari_kerja"]').val();
+                data['nilai_ikk'] = $('input[name="nilai_ikk"]').val();
+                data['ppip_mandiri'] = $('input[name="ppip_mandiri"]').val();
+                data['dana_ikk'] = $('input[name="dana_ikk"]').val();
+                data['jam_hilang'] = $('input[name="jam_hilang"]').val();
+                data['kopinka'] = $('input[name="kopinka"]').val();
+                data['keuangan'] = $('input[name="keuangan"]').val();
+                data['penyesuaian_penambahan'] = $('input[name="penyesuaian_penambahan"]').val();
+                data['penyesuaian_pengurangan'] = $('input[name="penyesuaian_pengurangan"]').val();
+                console.log(data);
+                $.ajax({
+                    url: "{{ url('/edit_gaji_tetap/') }}" + "/" + "{{ $gaji->id_gaji }}",
+                    type: "POST",
+                    data: JSON.stringify({
+                        "_token": "{{ csrf_token() }}",
+                        ...data
+                    }),
+                    contentType: "application/json",
+                    success: function(data) {
+                        console.log(data);
+                        if (data.success) {
+                            window.location.href = "{{ url('/ViewTetapSuper?id=') }}" + data
+                                .data.id_approval
+                            // window.history.back();
+                        } else {
+                            alert(data.message)
+                        }
+                    }
+                });
             });
         });
     </script>

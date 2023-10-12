@@ -85,6 +85,9 @@ Route::post('/export_tetap', [App\Http\Controllers\ExportTetapController::class,
 Route::post('/export_inka', [App\Http\Controllers\ExportTetapController::class, 'export'])->name('export.export_inka');
 Route::post('/export_pkwt', [App\Http\Controllers\ExportTetapController::class, 'export'])->name('export.export_pkwt');
 
+Route::post('/preview_gaji/{id}', [App\Http\Controllers\EditTetapSuperController::class, 'preview_gaji'])->name('preview_gaji');
+Route::post('/edit_gaji_tetap/{id}', [App\Http\Controllers\EditTetapSuperController::class, 'edit_gaji_tetap'])->name('edit_gaji_tetap');
+
 //ROUTING UNTUK LOGIN
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
