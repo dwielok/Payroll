@@ -98,15 +98,16 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="disabledTextInput">Kehadiran</label>
-                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Kehadiran" value="{{ $gaji->kehadiran }}" />
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Kehadiran"
+                                    value="{{ $gaji->kehadiran }}" />
                             </div>
                             <div class="col-md-6">
                                 <h5 class="card-title mt-3 pb-3 border-bottom">Premi</h5>
                             </div>
                             <div class="col-md-6">
                                 <label for="disabledTextInput">Hari Kerja</label>
-                                <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder="Hari Kerja" value="{{ $gaji->hari_kerja }}" />
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Hari Kerja"
+                                    value="{{ $gaji->hari_kerja }}" />
                             </div>
                             <div class="col-md-6">
                                 <fieldset disabled>
@@ -117,7 +118,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="disabledTextInput">Nilai IKK</label>
-                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Nilai IKK" value="{{ $gaji->nilai_ikk }}" />
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Nilai IKK"
+                                    value="{{ $gaji->nilai_ikk }}" />
                             </div>
                             <div class="col-md-6">
                                 <fieldset disabled>
@@ -128,7 +130,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="disabledTextInput">Dana IKK</label>
-                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Dana IKK" value="{{ $gaji->dana_ikk }}" />
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Dana IKK"
+                                    value="{{ $gaji->dana_ikk }}" />
                             </div>
                             <div class="col-md-6">
                                 <h5 class="card-title mt-3 pb-3 border-bottom">Potongan</h5>
