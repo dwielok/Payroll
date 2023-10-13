@@ -418,6 +418,8 @@
 
     <script src="../../dist/js/pages/datatable/datatable-basic.init.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @stack('customScripts')
 
     <script>

@@ -410,8 +410,20 @@
                     success: function(data) {
                         console.log(data);
                         if (data.success) {
-                            window.location.href = "{{ url('/ViewTetapSuper?id=') }}" + data
-                                .data.id_approval
+                            Swal.fire(
+                                'Success',
+                                data.message,
+                                'success'
+                            ).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href =
+                                        "{{ url('/ViewTetapSuper?id=') }}" +
+                                        data
+                                        .data.id_approval
+                                }
+                            })
+                            // window.location.href = "{{ url('/ViewTetapSuper?id=') }}" + data
+                            //     .data.id_approval
                             // window.history.back();
                         } else {
                             alert(data.message)

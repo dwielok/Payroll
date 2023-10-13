@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Approval;
+use App\Models\GajiPkwt;
 use App\Models\GajiTemp;
 use Illuminate\Http\Request;
 
@@ -115,6 +116,36 @@ class EditTetapSuperController extends Controller
 
         return response()->json($gaji);
     }
+    public function preview_gaji_pkwt($id, Request $request)
+    {
+        $input = $request;
+        $gajis = GajiPkwt::leftJoin('pegawai', 'pegawai.id', '=', 'gaji_pkwt.id_karyawan')
+            ->select('gaji_pkwt.*', 'pegawai.*', 'pegawai.pendidikan_terakhir as pendidikan', 'gaji_pkwt.id as id_gaji')
+            ->where('gaji_pkwt.id', '=', $id)
+            ->get();
+
+        $gajis = $gajis->map(function ($item) use ($input) {
+            $item->bulan = Approval::where('id', $item->id_approval)->value('bulan');
+            $item->year = Approval::where('id', $item->id_approval)->value('year');
+
+            $item->kehadiran = $input->kehadiran ?? $item->kehadiran;
+            $item->hari_kerja = $input->hari_kerja ?? $item->hari_kerja;
+            $item->nilai_ikk = $input->nilai_ikk ?? $item->nilai_ikk;
+            $item->dana_ikk = $input->dana_ikk ?? $item->dana_ikk;
+            $item->jam_hilang = $input->jam_hilang ?? $item->jam_hilang;
+
+            $item->penyesuaian_penambahan = $input->penyesuaian_penambahan ?? $item->penyesuaian_penambahan;
+            $item->penyesuaian_pengurangan = $input->penyesuaian_pengurangan ?? $item->penyesuaian_pengurangan;
+
+            return $item;
+        });
+
+        $gajis = PdfController::rumusPkwt($gajis);
+
+        $gaji = $gajis[0];
+
+        return response()->json($gaji);
+    }
 
     public function edit_gaji_tetap($id, Request $request)
     {
@@ -136,13 +167,13 @@ class EditTetapSuperController extends Controller
         if ($edit) {
             return response()->json([
                 'success' => true,
-                'message' => 'Berhasil mengedit gaji tetap',
+                'message' => 'Berhasil mengedit gaji',
                 'data' => $gaji_temp
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Gagal mengedit gaji tetap'
+                'message' => 'Gagal mengedit gaji'
             ]);
         }
     }

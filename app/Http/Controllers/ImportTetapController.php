@@ -193,7 +193,7 @@ class ImportTetapController extends Controller
         if ($type == 'tetap') {
             return redirect('/GajiLemburTetap');
         } else {
-            return redirect('/GajiLemburInka');
+            return redirect('/GajiLemburInkaten');
         }
     }
 }

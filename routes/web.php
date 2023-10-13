@@ -86,7 +86,11 @@ Route::post('/export_inka', [App\Http\Controllers\ExportTetapController::class, 
 Route::post('/export_pkwt', [App\Http\Controllers\ExportTetapController::class, 'export'])->name('export.export_pkwt');
 
 Route::post('/preview_gaji/{id}', [App\Http\Controllers\EditTetapSuperController::class, 'preview_gaji'])->name('preview_gaji');
+Route::post('/preview_gaji_pkwt/{id}', [App\Http\Controllers\EditTetapSuperController::class, 'preview_gaji_pkwt'])->name('preview_gaji');
+Route::post('/preview_gaji_lembur/{id}', [App\Http\Controllers\EditLemburTetapInkaController::class, 'preview_gaji'])->name('preview_gaji');
 Route::post('/edit_gaji_tetap/{id}', [App\Http\Controllers\EditTetapSuperController::class, 'edit_gaji_tetap'])->name('edit_gaji_tetap');
+Route::post('/edit_gaji_pkwt/{id}', [App\Http\Controllers\EditPkwtSuperController::class, 'edit_gaji_pkwt'])->name('edit_gaji_tetap');
+Route::post('/edit_gaji_lembur/{id}', [App\Http\Controllers\EditLemburTetapInkaController::class, 'edit_gaji_lembur'])->name('edit_gaji_lembur');
 
 //ROUTING UNTUK LOGIN
 Route::get('/', [LoginController::class, 'login'])->name('login');
@@ -147,7 +151,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('ExportTetap', [ExportTetapController::class, 'index'])->name('export_tetap');
 
     //Routing Import Inka
-    Route::get('ImportInka', [ImportInkaController::class, 'index'])->name('import_inka');
+    Route::get('ImportInka', [ImportTetapController::class, 'index'])->name('import_inka');
 
     //Routing Export Inka
     Route::get('ExportInka', [ExportInkaController::class, 'index'])->name('export_inka');
