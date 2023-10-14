@@ -19,6 +19,7 @@ use App\Http\Controllers\EditTetapSuperController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ExportInkaController;
 use App\Http\Controllers\ExportInkaSuperController;
+use App\Http\Controllers\ExportLemburController;
 use App\Http\Controllers\ExportPkwtController;
 use App\Http\Controllers\ExportPkwtSuperController;
 use App\Http\Controllers\ExportTetapController;
@@ -84,6 +85,7 @@ Route::post('/generate_slip', [App\Http\Controllers\PdfController::class, 'gener
 Route::post('/export_tetap', [App\Http\Controllers\ExportTetapController::class, 'export'])->name('export.export_tetap');
 Route::post('/export_inka', [App\Http\Controllers\ExportTetapController::class, 'export'])->name('export.export_inka');
 Route::post('/export_pkwt', [App\Http\Controllers\ExportTetapController::class, 'export'])->name('export.export_pkwt');
+Route::post('/export_lembur_action', [App\Http\Controllers\ExportLemburController::class, 'export'])->name('export.export_lembur');
 
 Route::post('/preview_gaji/{id}', [App\Http\Controllers\EditTetapSuperController::class, 'preview_gaji'])->name('preview_gaji');
 Route::post('/preview_gaji_pkwt/{id}', [App\Http\Controllers\EditTetapSuperController::class, 'preview_gaji_pkwt'])->name('preview_gaji');
@@ -233,6 +235,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Rotuing Halaman Export Pkwt
         Route::get('ExportPkwtSuper', [ExportPkwtSuperController::class, 'index'])->name('superuser.export_pkwt');
+
+        //Routing Halaman Export Lembur
+        Route::get('ExportLembur', [ExportLemburController::class, 'index'])->name('superuser.export_lembur');
 
         //Routing Halaman Import Tetap
         Route::get('ImportTetapSuper', [ImportTetapSuperController::class, 'index'])->name('superuser.import_tetap');

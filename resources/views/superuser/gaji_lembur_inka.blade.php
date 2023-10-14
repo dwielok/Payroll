@@ -79,7 +79,7 @@
                                     {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a> --}}
-                                    <a hretf="{{ url('/ExportTetap') }}"
+                                    <a href="{{ url('/ExportLembur?type=inka') }}"
                                         class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
@@ -121,7 +121,7 @@
                                                 <td>{{ __($approval->keterangan) }}</td>
                                                 <td>
                                                     <form action="{{ url('/viewLemburInka') }}" method="get"
-                                                    id="form-view-{{ $approval->id }}">
+                                                        id="form-view-{{ $approval->id }}">
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{ $approval->id }}">
                                                     </form>
