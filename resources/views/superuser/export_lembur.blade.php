@@ -11,11 +11,15 @@
                                 <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Gaji Lembur
+                                <a href="/" class="link">
+                                    List Data Karyawan </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Export Data
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">Gaji Lembur Karyawan Tetap</h1>
+                    <h1 class="mb-0 fw-bold">Export Data</h1>
                 </div>
             </div>
         </div>
@@ -71,66 +75,27 @@
                                         </div>
                                     </ul>
                                 </div>
-                                <div class="d-flex align-items-center g-2">
 
-                                    <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Import
-                                    </a>
-                                    {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
-                                        Export
-                                    </a> --}}
-                                    <a href="{{ url('/ExportLembur?type=tetap') }}"
-                                        class="btn btn-navy d-flex align-items-center ms-2">
-                                        Export
-                                    </a>
-                                </div>
                             </div>
                             <div class="table-responsive">
-                                <table id="zero_config" class="table table-striped table-bordered text-center myTable">
+                                <table id="zero_config" class="table table-striped table-bordered text-nowrap myTable">
                                     <thead>
                                         <tr>
+                                            <th>#</th>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
-                                            <th class="text-center">Status</th>
-                                            <th class="text-center">Keterangan</th>
-                                            <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($approvals as $approval)
-                                            @php
-                                                if ($approval->status == '0') {
-                                                    $status = 'Disetujui';
-                                                    $warna = 'success';
-                                                    $button = true;
-                                                } elseif ($approval->status == '1') {
-                                                    $status = 'Ditolak';
-                                                    $warna = 'danger';
-                                                    $button = true;
-                                                } else {
-                                                    $status = 'Menunggu Persetujuan';
-                                                    $warna = 'warning';
-                                                    $button = true;
-                                                }
-                                            @endphp
+                                        @forelse ($slips as $slip)
                                             <tr>
-                                                <td class="month-column">{{ __($approval->bulan) }}</td>
-                                                <td class="year-column">{{ __($approval->year) }}</td>
-                                                <td class="text-{{ $warna }}">
-                                                    {{ $status }}</td>
-                                                <td>{{ __($approval->keterangan) }}</td>
                                                 <td>
-                                                    <form action="{{ url('/viewLemburTetap') }}" method="get"
-                                                        id="form-view-{{ $approval->id }}">
-                                                        @csrf
-                                                        <input type="hidden" name="id" value="{{ $approval->id }}">
-                                                    </form>
-                                                    <button type="button" class="btn btn-navy align-items-center ms-2"
-                                                        {{ !$button ? 'disabled' : '' }}
-                                                        onclick="document.getElementById('form-view-{{ $approval->id }}').submit()">
-                                                        View
-                                                    </button>
+                                                    <input type="checkbox" id="md_checkbox_{{ $loop->iteration }}"
+                                                        data-id="{{ $slip->id }}"
+                                                        class="filled-in chk-col-red check-item" name="check-item" />
                                                 </td>
+                                                <td class="text-center month-column">{{ $slip->bulan }}</td>
+                                                <td class="text-center year-column">{{ $slip->year }}</td>
                                             </tr>
                                         @empty
                                         @endforelse
@@ -147,6 +112,16 @@
                                     </tfoot> --}}
                                 </table>
                             </div>
+                            <div class="d-flex justify-content-end">
+
+                                {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
+                                    Import --}}
+                                </a>
+                                <button id="export-button" class="btn btn-navy d-flex align-items-center ms-2"
+                                    style="margin-top: 30px">
+                                    Export
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -162,3 +137,43 @@
 
     </div>
 @endsection
+
+@push('customScripts')
+    <script>
+        var selected = [];
+        //get the id of the checkbox that was clicked
+        $('#zero_config').delegate('.check-item', 'click', function(e) {
+            var id = $(this).data('id');
+            if ($(this).prop('checked')) {
+                selected.push(id);
+            } else {
+                selected.splice(selected.indexOf(id), 1);
+            }
+            console.log(selected);
+        });
+
+        $('#export-button').click(function() {
+            if (selected.length > 0) {
+                var url = "{{ route('export.export_lembur') }}";
+                $.ajax({
+                    url: url,
+                    type: 'post',
+                    data: JSON.stringify({
+                        selected: selected,
+                        _token: '{{ csrf_token() }}'
+                    }),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        if (response.success) {
+                            //download file with response.link on new tab
+                            // window.open(response.link, '_blank');
+                            window.location = response.file
+                        }
+                    }
+                });
+            } else {
+                alert('Please select at least one item.');
+            }
+        });
+    </script>
+@endpush

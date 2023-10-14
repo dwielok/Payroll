@@ -279,40 +279,22 @@
                                     </span></a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
-                                        <a href="/GajiLemburTetap" class="sidebar-link"><span class="hide-menu">
                                                 <a href="/GajiLemburTetapSuper" class="sidebar-link"><span
                                                         class="hide-menu">
                                                         Karyawan
                                                         Tetap </span></a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="/GajiLemburInka" class="sidebar-link"><span class="hide-menu">
                                                 <a href="/GajiLemburInkaSuper" class="sidebar-link"><span
                                                         class="hide-menu">
                                                         Karyawan Perbantuan INKA
                                                     </span></a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="/GajiLemburPkwt
-                                        "
-                                            class="sidebar-link"><span class="hide-menu">
                                                 <a href="/GajiLemburPkwtSuper" class="sidebar-link"><span
                                                         class="hide-menu">
                                                         Karyawan PKWT
                                                     </span></a>
-                                        <a href="/GajiLemburTetapSuper" class="sidebar-link"><span class="hide-menu">
-                                                Karyawan
-                                                Tetap </span></a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="/GajiLemburInkaSuper" class="sidebar-link"><span class="hide-menu">
-                                                Karyawan Perbantuan INKA
-                                            </span></a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="/GajiLemburPkwtSuper" class="sidebar-link"><span class="hide-menu">
-                                                Karyawan PKWT
-                                            </span></a>
                                     </li>
                                 </ul>
                             </li>
