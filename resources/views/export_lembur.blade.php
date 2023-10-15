@@ -11,8 +11,11 @@
                                 <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/KaryawanPkwtSuper" class="link">
-                                    List Data Karyawan PKWT </a>
+                                <a href="/{{ request()->get('type') == 'tetap' ? 'GajiLemburTetap' : (request()->get('type') == 'inka' ? 'GajiLemburInka' : 'GajiLemburPkwt') }}"
+                                    class="link">
+                                    List Data Karyawan
+                                    {{ request()->get('type') == 'tetap' ? 'Tetap' : (request()->get('type') == 'inka' ? 'Perbantuan INKA' : 'PKWT') }}
+                                </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Export Data
@@ -144,23 +147,20 @@
 @push('customScripts')
     <script>
         var selected = [];
-        $('#md_checkbox_all').change(function(e) {
-            if ($(this).prop('checked')) {
-                $('.check-item').prop('checked', true);
 
-                //push all checked checkboxes to 'selected' array
+        //check all checkboxes
+        $('#md_checkbox_all').change(function() {
+            var checked = $(this).is(':checked');
+            if (checked) {
+                $('.check-item').prop('checked', true);
                 $('.check-item').each(function() {
-                    selected.push({
-                        id: $(this).data('id'),
-                        tipe: $(this).data('tipe')
-                    });
+                    selected.push($(this).data('id'));
                 });
             } else {
                 $('.check-item').prop('checked', false);
-
-                //remove all unchecked checkboxes from 'selected' array
                 selected = [];
             }
+            console.log(selected);
         });
 
         //get the id of the checkbox that was clicked
@@ -176,7 +176,7 @@
 
         $('#export-button').click(function() {
             if (selected.length > 0) {
-                var url = "{{ route('export.export_pkwt') }}";
+                var url = "{{ route('export.export_lembur') }}";
                 $.ajax({
                     url: url,
                     type: 'post',
@@ -185,16 +185,30 @@
                         _token: '{{ csrf_token() }}'
                     }),
                     contentType: 'application/json',
+                    beforeSend: function() {
+                        $('#export-button').html(
+                            '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'
+                        );
+                        //disable
+                        $('#export-button').attr('disabled', true);
+                    },
                     success: function(response) {
                         if (response.success) {
                             //download file with response.link on new tab
                             // window.open(response.link, '_blank');
                             window.location = response.file
                         }
+                        $('#export-button').html('Export');
+                        //enable
+                        $('#export-button').attr('disabled', false);
                     }
                 });
             } else {
-                alert('Please select at least one item.');
+                return Swal.fire(
+                    'Gagal',
+                    'Pilih data yang akan diexport',
+                    'error'
+                )
             }
         });
     </script>

@@ -11,8 +11,10 @@
                                 <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/" class="link">
-                                    List Data Karyawan </a>
+                                <a href="/{{ request()->get('type') == 'tetap' ? 'GajiLemburTetapSuper' : (request()->get('type') == 'inka' ? 'GajiLemburInkaSuper' : 'GajiLemburPkwtSuper') }}""
+                                    class="link">
+                                    List Data Karyawan
+                                    {{ request()->get('type') == 'tetap' ? 'Tetap' : (request()->get('type') == 'inka' ? 'Perbantuan INKA' : 'PKWT') }}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Export Data
@@ -81,7 +83,10 @@
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap myTable">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>
+                                                <input type="checkbox" id="md_checkbox_all"
+                                                    class="filled-in chk-col-red check-all" />
+                                            </th>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
                                         </tr>
@@ -141,6 +146,19 @@
 @push('customScripts')
     <script>
         var selected = [];
+
+        //check all checkboxes
+        $('#md_checkbox_all').change(function() {
+            var status = $(this).prop('checked');
+            $('.check-item').prop('checked', status);
+            selected = [];
+            if (status) {
+                $('.check-item').each(function() {
+                    selected.push($(this).data('id'));
+                });
+            }
+            console.log(selected);
+        });
         //get the id of the checkbox that was clicked
         $('#zero_config').delegate('.check-item', 'click', function(e) {
             var id = $(this).data('id');
@@ -163,16 +181,30 @@
                         _token: '{{ csrf_token() }}'
                     }),
                     contentType: 'application/json',
+                    beforeSend: function() {
+                        $('#export-button').html(
+                            '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'
+                        );
+                        //disable
+                        $('#export-button').attr('disabled', true);
+                    },
                     success: function(response) {
                         if (response.success) {
                             //download file with response.link on new tab
                             // window.open(response.link, '_blank');
                             window.location = response.file
                         }
+                        $('#export-button').html('Export');
+                        //enable
+                        $('#export-button').attr('disabled', false);
                     }
                 });
             } else {
-                alert('Please select at least one item.');
+                return Swal.fire(
+                    'Gagal',
+                    'Pilih data yang akan diexport',
+                    'error'
+                )
             }
         });
     </script>

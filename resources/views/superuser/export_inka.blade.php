@@ -81,7 +81,10 @@
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap myTable">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>
+                                                <input type="checkbox" id="md_checkbox_all"
+                                                    class="filled-in chk-col-red check-all" />
+                                            </th>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
                                         </tr>
@@ -141,6 +144,24 @@
 @push('customScripts')
     <script>
         var selected = [];
+        $('#md_checkbox_all').change(function(e) {
+            if ($(this).prop('checked')) {
+                $('.check-item').prop('checked', true);
+
+                //push all checked checkboxes to 'selected' array
+                $('.check-item').each(function() {
+                    selected.push({
+                        id: $(this).data('id'),
+                        tipe: $(this).data('tipe')
+                    });
+                });
+            } else {
+                $('.check-item').prop('checked', false);
+
+                //remove all unchecked checkboxes from 'selected' array
+                selected = [];
+            }
+        });
         //get the id of the checkbox that was clicked
         $('#zero_config').delegate('.check-item', 'click', function(e) {
             var id = $(this).data('id');

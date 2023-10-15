@@ -13,7 +13,7 @@ class ExportTetapController extends Controller
 {
     public function index()
     {
-        $slips = Approval::where('status', 0)->where('tipe_karyawan', 'tetap')->get();
+        $slips = Approval::where('status', '0')->where('tipe_karyawan', 'tetap')->get();
 
         return view('export_tetap', compact('slips'));
     }

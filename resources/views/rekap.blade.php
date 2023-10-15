@@ -152,8 +152,14 @@
         $('#md_checkbox_all').change(function(e) {
             if ($(this).prop('checked')) {
                 $('.check-item').prop('checked', true);
+                //push all data to selected array
+                $('.check-item').each(function() {
+                    selected.push($(this).data('id'));
+                });
             } else {
                 $('.check-item').prop('checked', false);
+                //clear selected array
+                selected = [];
             }
         });
 

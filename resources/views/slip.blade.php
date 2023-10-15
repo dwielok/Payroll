@@ -155,8 +155,16 @@
         $('#md_checkbox_all').change(function(e) {
             if ($(this).prop('checked')) {
                 $('.check-item').prop('checked', true);
+                //loop through all checkboxes with class "check-item" and add them to array
+                $('.check-item').each(function(index, element) {
+                    selected.push({
+                        id: $(this).data('id'),
+                        tipe: $(this).data('tipe')
+                    });
+                });
             } else {
                 $('.check-item').prop('checked', false);
+                selected = [];
             }
         });
 

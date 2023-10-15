@@ -279,22 +279,19 @@
                                     </span></a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
-                                                <a href="/GajiLemburTetapSuper" class="sidebar-link"><span
-                                                        class="hide-menu">
-                                                        Karyawan
-                                                        Tetap </span></a>
+                                        <a href="/GajiLemburTetapSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan
+                                                Tetap </span></a>
                                     </li>
                                     <li class="sidebar-item">
-                                                <a href="/GajiLemburInkaSuper" class="sidebar-link"><span
-                                                        class="hide-menu">
-                                                        Karyawan Perbantuan INKA
-                                                    </span></a>
+                                        <a href="/GajiLemburInkaSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan Perbantuan INKA
+                                            </span></a>
                                     </li>
                                     <li class="sidebar-item">
-                                                <a href="/GajiLemburPkwtSuper" class="sidebar-link"><span
-                                                        class="hide-menu">
-                                                        Karyawan PKWT
-                                                    </span></a>
+                                        <a href="/GajiLemburPkwtSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan PKWT
+                                            </span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -478,13 +475,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalLogoutLabel">Logout</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 Do you want to Logout?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-merah" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-merah" data-dismiss="modal">No</button>
                 <form id="logout-form" action="{{ url('/actionlogout') }}">
 
                 </form>
