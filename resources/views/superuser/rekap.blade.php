@@ -40,7 +40,7 @@
             mb-4
           ">
                                 <div class="d-flex align-items-center g-2">
-                                    
+
 
                                     <div class="btn-group">
                                         <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -141,8 +141,16 @@
         $('#md_checkbox_all').change(function(e) {
             if ($(this).prop('checked')) {
                 $('.check-item').prop('checked', true);
+
+                //push all data to selected array
+                $('.check-item').each(function() {
+                    selected.push($(this).data('id'));
+                });
             } else {
                 $('.check-item').prop('checked', false);
+
+                //clear selected array
+                selected = [];
             }
         });
 

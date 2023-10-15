@@ -100,7 +100,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                <button type="button" class="btn-close" data-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
@@ -108,7 +108,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-navy"
-                                                    data-bs-dismiss="modal">Close</button>
+                                                    data-dismiss="modal">Close</button>
 
                                             </div>
                                         </div>
@@ -124,7 +124,7 @@
                                             <div class="modal-header">
                                                 <h1 class="modal-title fs-5" id="modalDeclineLabel">
                                                     Keterangan Ditolak</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                <button type="button" class="btn-close" data-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
@@ -142,7 +142,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-merah"
-                                                    data-bs-dismiss="modal">Close</button>
+                                                    data-dismiss="modal">Close</button>
                                                 <button
                                                     onclick="document.getElementById('form-decline-{{ $approval->id }}').submit();"
                                                     type="button" class="btn btn-navy">Save</button>

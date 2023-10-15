@@ -153,8 +153,19 @@
         $('#md_checkbox_all').change(function(e) {
             if ($(this).prop('checked')) {
                 $('.check-item').prop('checked', true);
+
+                //push all checked checkboxes to 'selected' array
+                $('.check-item').each(function() {
+                    selected.push({
+                        id: $(this).data('id'),
+                        tipe: $(this).data('tipe')
+                    });
+                });
             } else {
                 $('.check-item').prop('checked', false);
+
+                //remove all unchecked checkboxes from 'selected' array
+                selected = [];
             }
         });
 

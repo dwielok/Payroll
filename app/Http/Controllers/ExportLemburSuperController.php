@@ -8,13 +8,13 @@ use App\Models\GajiLembur;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ExportLemburController extends Controller
+class ExportLemburSuperController extends Controller
 {
     public function index(Request $request)
     {
         $type = $request->type;
-        $slips = ApprovalLembur::where('tipe_karyawan', $type)->where('status', '0')->get();
-        return view('export_lembur', compact('slips'));
+        $slips = ApprovalLembur::where('tipe_karyawan', $type)->get();
+        return view('superuser.export_lembur', compact('slips'));
     }
 
     public function export(Request $request)

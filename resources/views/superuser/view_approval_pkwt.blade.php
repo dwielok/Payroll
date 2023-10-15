@@ -15,7 +15,7 @@
                                     Approval </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                View List Data 
+                                View List Data
                             </li>
                         </ol>
                     </nav>
@@ -86,8 +86,8 @@
                                 </div>
 
                                 <!-- <a href="{{ url('/') }}" class="btn btn-navy align-items-center ms-2">
-                                                                    Approve
-                                                                </a> -->
+                                                                        Approve
+                                                                    </a> -->
 
                                 <form method="POST" action="{{ route('superuser.approval.approve') }}"
                                     id="form-approve-{{ $approval->id }}">
@@ -104,7 +104,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                <button type="button" class="btn-close" data-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
@@ -112,7 +112,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-navy"
-                                                    data-bs-dismiss="modal">Close</button>
+                                                    data-dismiss="modal">Close</button>
 
                                             </div>
                                         </div>
@@ -128,7 +128,7 @@
                                             <div class="modal-header">
                                                 <h1 class="modal-title fs-5" id="modalDeclineLabel">
                                                     Keterangan Ditolak</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                <button type="button" class="btn-close" data-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
@@ -145,7 +145,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-merah"
-                                                    data-bs-dismiss="modal">Close</button>
+                                                    data-dismiss="modal">Close</button>
                                                 <button
                                                     onclick="document.getElementById('form-decline-{{ $approval->id }}').submit();"
                                                     type="button" class="btn btn-navy">Save</button>

@@ -80,7 +80,7 @@
                                     {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a> --}}
-                                    <a hretf="{{ url('/ExportLemburPkwt') }}"
+                                    <a href="{{ url('/ExportLemburUser?type=pkwt') }}"
                                         class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
