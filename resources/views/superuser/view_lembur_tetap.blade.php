@@ -11,15 +11,15 @@
                                 <a href="/dashboardSuperuser" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/GajiLemburTetapSuper" class="link">
-                                    List Lembur Karyawan Tetap </a>
+                                <a href="/{{ $urlBreadcumb }}" class="link">
+                                    Gaji Lembur</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 View List Data
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data</h1>
+                    <h1 class="mb-0 fw-bold">List Data Karyawan {{ $textBreadcumb }}</h1>
                 </div>
             </div>
         </div>
@@ -87,12 +87,12 @@
                                                 <td>{{ $gaji->bulan }}</td>
                                                 <td>{{ $gaji->tahun }}</td>
                                                 <td>{{ $gaji->nip }}</td>
-                                                <td>{{ $gaji->nama_karyawan }}</td>
+                                                <td>{{ $gaji->nama }}</td>
                                                 <td>{{ $gaji->lembur_weekend }}</td>
                                                 <td>{{ $gaji->lembur_weekday }}</td>
                                                 <td>@rupiah($gaji->nominal_lembur_weekend)</td>
-                                                <td>@rupiah($gaji->nominal_lembur_weekdays)</td>
-                                                <td><a href="{{ url('/EditTetapSuper') }}"
+                                                <td>@rupiah($gaji->nominal_lembur_weekday)</td>
+                                                <td><a href="{{ url('/' . $urlBreadcumb2 . '?id=' . $gaji->id_gaji) }}"
                                                         class="btn btn-navy align-items-center ms-2">
                                                         Edit
                                                     </a>

@@ -10,6 +10,7 @@ use App\Models\GajiPkwt;
 use App\Models\GajiTemp;
 use App\Models\GajiTemps;
 use App\Models\Karyawan;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -68,22 +69,20 @@ class ImportPkwtController extends Controller
 
         //search NIP in karyawan by looping $datas
         $datas->map(function ($item) use ($id_approval) {
-            $nip = $item[1];
+            $nip = $item[0];
             if ($nip != null) {
-                $karyawan = Karyawan::where('nip', $nip)->first();
+                $karyawan = Pegawai::where('nip', $nip)->first();
                 GajiPkwt::insert([
                     'id_karyawan' => $karyawan->id,
                     'id_approval' => $id_approval,
-                    'kehadiran' => $item[3],
-                    'hari_kerja' => $item[4],
-                    'nilai_ikk' => $item[5],
-                    'dana_ikk' => $item[6],
-                    'jam_lembur_weekdays' => $item[7],
-                    'jam_lembur_weekend' => $item[8],
-                    'penyesuaian_penambahan' => $item[9],
-                    'penyesuaian_pengurangan' => $item[10],
-                    'jam_hilang' => $item[11],
-                    'tunjangan_profesional' => $item[12],
+                    'kehadiran' => $item[2],
+                    'hari_kerja' => $item[3],
+                    'nilai_ikk' => $item[4],
+                    'dana_ikk' => $item[5],
+                    'penyesuaian_penambahan' => $item[6],
+                    'penyesuaian_pengurangan' => $item[7],
+                    'jam_hilang' => $item[8],
+                    'tunjangan_profesional' => $item[9],
                 ]);
             }
         });
@@ -134,7 +133,7 @@ class ImportPkwtController extends Controller
         $datas->map(function ($item) use ($id_approval) {
             $nip = $item[0];
             if ($nip != null) {
-                $karyawan = Karyawan::where('nip', $nip)->first();
+                $karyawan = Pegawai::where('nip', $nip)->first();
                 GajiLembur::insert([
                     'id_karyawan' => $karyawan->id,
                     'id_approval' => $id_approval,

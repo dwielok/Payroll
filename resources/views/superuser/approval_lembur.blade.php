@@ -51,7 +51,7 @@
                                         id="example-search-input">
                                 </div> --}}
 
-                                <div class="btn-group" >
+                                <div class="btn-group">
                                     <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
                                         aria-expanded="false">
                                         Filter Periode
@@ -82,51 +82,51 @@
                                         </div>
                                     </ul>
                                 </div>
-                            
-                        </div>
-                        <div class="table-responsive">
-                            <table id="zero_config" class="table table-striped table-bordered text-center myTable">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">Bulan</th>
-                                        <th class="text-center">Tahun</th>
-                                        <th class="text-center">Tipe Karyawan</th>
-                                        <th class="text-center">Status</th>
-                                        <th class="text-center">Keterangan</th>
-                                        <th class="text-center">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($approvals as $approval)
-                                    @php
-                                    if ($approval->status == '0') {
-                                        $status = 'Disetujui';
-                                        $warna = 'success';
-                                        $button = true;
-                                    } elseif ($approval->status == '1') {
-                                        $status = 'Ditolak';
-                                        $warna = 'danger';
-                                        $button = false;
-                                    } else {
-                                        $status = 'Menunggu Persetujuan';
-                                        $warna = 'warning';
-                                        $button = false;
-                                    }
-                                    @endphp
+
+                            </div>
+                            <div class="table-responsive">
+                                <table id="zero_config" class="table table-striped table-bordered text-center myTable">
+                                    <thead>
                                         <tr>
-                                            <td class="mouth-column">{{ __($approval->bulan) }}</td>
-                                            <td class="year-column">{{ __($approval->year) }}</td>
-                                            <td>{{ __($approval->tipe_karyawan) }}</td>
-                                            <td class="text-{{ $warna }}">
-                                                {{ $status }}</td>
-                                            <td>{{ __($approval->keterangan) }}</td>
-                                            <td>
-                                                <a href="{{ url('/ViewApprovalLemburSuper?id=' . $approval->id) }}"
-                                                    class="btn btn-navy align-items-center ms-2">
-                                                    View
-                                                </a>
-                                            </td>
-                                            {{-- <td>
+                                            <th class="text-center">Bulan</th>
+                                            <th class="text-center">Tahun</th>
+                                            <th class="text-center">Tipe Karyawan</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Keterangan</th>
+                                            <th class="text-center">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($approvals as $approval)
+                                            @php
+                                                if ($approval->status == '0') {
+                                                    $status = 'Disetujui';
+                                                    $warna = 'success';
+                                                    $button = true;
+                                                } elseif ($approval->status == '1') {
+                                                    $status = 'Ditolak';
+                                                    $warna = 'danger';
+                                                    $button = false;
+                                                } else {
+                                                    $status = 'Menunggu Persetujuan';
+                                                    $warna = 'warning';
+                                                    $button = false;
+                                                }
+                                            @endphp
+                                            <tr>
+                                                <td class="mouth-column">{{ __($approval->bulan) }}</td>
+                                                <td class="year-column">{{ __($approval->year) }}</td>
+                                                <td>{{ __($approval->tipe_karyawan) }}</td>
+                                                <td class="text-{{ $warna }}">
+                                                    {{ $status }}</td>
+                                                <td>{{ __($approval->keterangan) }}</td>
+                                                <td>
+                                                    <a href="{{ url('/ViewApprovalLemburSuper?id=' . $approval->id . '&tipe=' . $approval->tipe_karyawan) }}"
+                                                        class="btn btn-navy align-items-center ms-2">
+                                                        View
+                                                    </a>
+                                                </td>
+                                                {{-- <td>
                                                 <div class="d-flex align-items-center justify-content-center">
                                                     <button
                                                         onclick="document.getElementById('form-approve-{{ $approval->id }}').submit();"
@@ -161,14 +161,14 @@
                                                             <div class="modal-header">
                                                                 <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
                                                                 <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    data-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <h2 class="fw-bold">Succesfully Approve!</h2>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-navy"
-                                                                    data-bs-dismiss="modal">Close</button>
+                                                                    data-dismiss="modal">Close</button>
 
                                                             </div>
                                                         </div>
@@ -185,7 +185,7 @@
                                                                 <h1 class="modal-title fs-5" id="modalDeclineLabel">
                                                                     Keterangan Ditolak</h1>
                                                                 <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    data-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <form method="POST"
@@ -204,7 +204,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-merah"
-                                                                    data-bs-dismiss="modal">Close</button>
+                                                                    data-dismiss="modal">Close</button>
                                                                 <button
                                                                     onclick="document.getElementById('form-decline-{{ $approval->id }}').submit();"
                                                                     type="button" class="btn btn-navy">Save</button>
@@ -215,13 +215,13 @@
 
 
                                             </td> --}}
-                                        </tr>
-                                    @empty
-                                    @endforelse
+                                            </tr>
+                                        @empty
+                                        @endforelse
 
-                                </tbody>
+                                    </tbody>
 
-                                {{-- <tfoot>
+                                    {{-- <tfoot>
                                         <tr>
                                             <th>Bulan</th>
                                             <th>Tahun</th>
@@ -231,20 +231,20 @@
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot> --}}
-                            </table>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- ============================================================= -->
+            <!-- End PAge Content -->
+            <!-- ============================================================= -->
         </div>
         <!-- ============================================================= -->
-        <!-- End PAge Content -->
+        <!-- End Container fluid  -->
         <!-- ============================================================= -->
-    </div>
-    <!-- ============================================================= -->
-    <!-- End Container fluid  -->
-    <!-- ============================================================= -->
-    <!-- ============================================================= -->
+        <!-- ============================================================= -->
 
     </div>
 @endsection

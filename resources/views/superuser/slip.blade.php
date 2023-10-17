@@ -153,26 +153,39 @@
         $('#md_checkbox_all').change(function(e) {
             if ($(this).prop('checked')) {
                 $('.check-item').prop('checked', true);
+
+                //push all checked checkboxes to 'selected' array
+                $('.check-item').each(function() {
+                    selected.push({
+                        id: $(this).data('id'),
+                        tipe: $(this).data('tipe')
+                    });
+                });
             } else {
                 $('.check-item').prop('checked', false);
+
+                //remove all unchecked checkboxes from 'selected' array
+                selected = [];
             }
         });
 
         //get the id of the checkbox that was clicked
-        $('.check-item').click(function(e) {
-            var id = $(this).data('id');
-            var tipe = $(this).data('tipe');
-            if ($(this).prop('checked')) {
-                selected.push({
-                    id: id,
-                    tipe: tipe
-                });
-            } else {
-                selected = selected.filter(function(item) {
-                    return item.id !== id;
-                });
-            }
-            console.log(selected);
+        $('#zero_config').delegate('.check-item', 'click', function(e) {
+            $('.check-item').click(function(e) {
+                var id = $(this).data('id');
+                var tipe = $(this).data('tipe');
+                if ($(this).prop('checked')) {
+                    selected.push({
+                        id: id,
+                        tipe: tipe
+                    });
+                } else {
+                    selected = selected.filter(function(item) {
+                        return item.id !== id;
+                    });
+                }
+                console.log(selected);
+            });
         });
 
         //print clicked then ajax to test_rar

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Approval;
+use App\Models\GajiPkwt;
 use App\Models\GajiTemp;
 use Illuminate\Http\Request;
 
@@ -69,47 +70,54 @@ class ApprovalSuperController extends Controller
     public function detail(Request $request)
     {
         $id = $request->get('id');
-        $gajis = GajiTemp::leftJoin('karyawans', 'karyawans.id', '=', 'gaji_temp.id_karyawan')
-            ->leftJoin('jabatans', 'jabatans.id', '=', 'karyawans.id_jabatan')
-            ->leftJoin('golongans', 'golongans.id', '=', 'karyawans.id_golongan')
-            ->select('gaji_temp.*', 'karyawans.*', 'jabatans.*', 'golongans.*')
-            ->where('gaji_temp.id_approval', '=', $id)
-            ->get();
-        $gajis = $gajis->map(function ($item) {
-            $item->bulan = Approval::where('id', $item->id_approval)->value('bulan');
-            $item->tahun = Approval::where('id', $item->id_approval)->value('year');
-            $item->kenaikan = $this->getKenaikan($item->masa_kerja);
-            $item->gaji_pokok = $item->kenaikan[$item->masa_kerja - 1]['gaji'];
-            $item->golongan = $item->kenaikan[$item->masa_kerja - 1]['abjad'];
-            $item->tunjangan_tetap = 0.05 * $item->gaji_pokok;
-            $item->penghasilan_tetap = $item->gaji_pokok + $item->tunjangan_tetap;
+        $tipe = $request->get('tipe');
 
-            $item->tunjangan_transportasi = $this->hitungJabatan($item->jabatan, $item->gaji_pokok) + $this->hitungKehadiran($item->kehadiran);
-            $item->tunjangan_jabatan = $this->hitungJabatan($item->jabatan, $item->gaji_pokok);
-            $item->tunjangan_karya = $item->dana_ikk * ($item->kehadiran / $item->hari_kerja) * $item->nilai_ikk;
-            $item->bpjs_kesehatan = 0.04 * ($item->gaji_pokok + $item->tunjangan_tetap);
-            $item->bpjs_ketenagakerjaan = 0.0727 * ($item->gaji_pokok + $item->tunjangan_tetap);
-            $item->ppip = $item->gaji_pokok / 12;
-            $item->benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan + $item->ppip;
-            $item->penghasilan_tunjangan_tidak_tetap = $item->tunjangan_transportasi + $item->tunjangan_jabatan + $item->tunjangan_karya + $item->benefit;
-            $item->penghasilan_bruto = $item->gaji_pokok + $item->tunjangan_tetap + $item->penghasilan_tunjangan_tidak_tetap;
+        switch ($tipe) {
+            case 'tetap':
+                $tipe = 'Tetap';
+                break;
+            case 'inka':
+                $tipe = 'Perbantuan INKA';
+                break;
+            case 'pkwt':
+                $tipe = 'PKWT';
+                break;
 
-            $item->premi_bpjs_kesehatan = 0.01 * ($item->gaji_pokok + $item->tunjangan_tetap);
-            $item->premi_bpjs_ketenagakerjaan = 0.03 * ($item->gaji_pokok + $item->tunjangan_tetap);
-            $item->premi_ppip = $item->ppip_mandiri;
-            $item->potongan_premi = $item->premi_bpjs_kesehatan + $item->premi_bpjs_ketenagakerjaan + $item->premi_ppip;
-            $item->potongan_benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan + $item->ppip;
-            $item->potongan_jam_hilang = ($item->jam_hilang / 173) * $item->gaji_pokok;
-            $item->potongan_kopinka = $item->kopinka;
-            $item->potongan_keuangan = $item->keuangan;
-            $item->potongan = $item->potongan_premi + $item->potongan_benefit + $item->potongan_jam_hilang + $item->potongan_kopinka + $item->potongan_keuangan;
-            $item->penghasilan_netto = ($item->penghasilan_bruto) - $item->potongan;
-            return $item;
-        });
-        // dd($gajis);
+            default:
+                # code...
+                break;
+        }
 
         $approval = Approval::where('id', $id)->first();
-        return view('superuser.view_approval', compact('gajis', 'approval'));
+
+        if ($approval->tipe_karyawan != 'pkwt') {
+            $gajis = GajiTemp::leftJoin('pegawai', 'pegawai.id', '=', 'gaji_temp.id_karyawan')
+                ->leftJoin('jabatan', 'jabatan.id', '=', 'pegawai.kode_jabatan')
+                ->select('gaji_temp.*', 'pegawai.*', 'jabatan.*')
+                ->where('gaji_temp.id_approval', '=', $id)
+                ->get();
+            $gajis = $gajis->map(function ($item) {
+                $item->bulan = Approval::where('id', $item->id_approval)->value('bulan');
+                $item->year = Approval::where('id', $item->id_approval)->value('year');
+                return $item;
+            });
+            $gajis = PdfController::rumusTetap($gajis);
+            return view('superuser.view_approval', compact('gajis', 'approval', 'tipe'));
+        } else {
+            $gajis = GajiPkwt::leftJoin('pegawai', 'pegawai.id', '=', 'gaji_pkwt.id_karyawan')
+                ->select('gaji_pkwt.*', 'pegawai.*', 'pegawai.pendidikan_terakhir as pendidikan')
+                ->where('gaji_pkwt.id_approval', '=', $id)
+                ->get();
+            $gajis = $gajis->map(function ($item) {
+                $item->bulan = Approval::where('id', $item->id_approval)->value('bulan');
+                $item->year = Approval::where('id', $item->id_approval)->value('year');
+                return $item;
+            });
+            $gajis = PdfController::rumusPkwt($gajis);
+            return view('superuser.view_approval_pkwt', compact('gajis', 'approval', 'tipe'));
+        }
+        // dd($gajis);
+
     }
 
     public function decline(Request $request)

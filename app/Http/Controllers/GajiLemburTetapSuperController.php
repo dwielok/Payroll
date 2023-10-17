@@ -16,21 +16,48 @@ class GajiLemburTetapSuperController extends Controller
 
     public function detail(Request $request)
     {
+        //get url
+        $url = $request->url();
+        $url = explode('/', $url);
+        $url = end($url);
+        //lowercase url
+        $url = strtolower($url);
+
+        //if url includes tetap
+        if (str_contains($url, 'tetap')) {
+            $urlBreadcumb = 'GajiLemburTetapSuper';
+            $urlBreadcumb2 = 'EditLemburTetapSuper';
+            $textBreadcumb = 'Tetap';
+        } elseif (str_contains($url, 'inka')) {
+            $urlBreadcumb = 'GajiLemburInkaSuper';
+            $urlBreadcumb2 = 'EditLemburInkaSuper';
+            $textBreadcumb = 'Perbantuan INKA';
+        } elseif (str_contains($url, 'pkwt')) {
+            $urlBreadcumb = 'GajiLemburPkwtSuper';
+            $urlBreadcumb2 = 'EditLemburPkwtSuper';
+            $textBreadcumb = 'PKWT';
+        }
+
         $id = $request->get('id');
-        $gajis = GajiLembur::leftJoin('karyawans', 'karyawans.id', '=', 'gaji_lembur.id_karyawan')
-            ->leftJoin('jabatans', 'jabatans.id', '=', 'karyawans.id_jabatan')
-            ->select('gaji_lembur.*', 'karyawans.*', 'jabatans.*')
+        $gajis = GajiLembur::leftJoin('pegawai', 'pegawai.id', '=', 'gaji_lembur.id_karyawan')
+            ->leftJoin('jabatan', 'jabatan.id', '=', 'pegawai.kode_jabatan')
+            ->select('gaji_lembur.*', 'pegawai.*', 'jabatan.*', 'gaji_lembur.id as id_gaji')
             ->where('gaji_lembur.id_approval', '=', $id)
             ->get();
 
         $gajis = $gajis->map(function ($item) {
             $item->bulan = ApprovalLembur::where('id', $item->id_approval)->value('bulan');
             $item->tahun = ApprovalLembur::where('id', $item->id_approval)->value('year');
-            $item->nominal_lembur_weekend = $item->lembur_weekend * 20000;
-            $item->nominal_lembur_weekday = $item->lembur_weekday * 30000;
+            $item->nominal_lembur_weekend = $item->lembur_weekend * 15000;
+            $item->nominal_lembur_weekday = $item->lembur_weekday * 11000;
             return $item;
         });
 
-        return view('superuser.view_lembur_tetap', compact('gajis'));
+        return view('superuser.view_lembur_tetap', compact(
+            'gajis',
+            'urlBreadcumb',
+            'textBreadcumb',
+            'urlBreadcumb2'
+        ));
     }
 }

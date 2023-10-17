@@ -155,13 +155,23 @@
         $('#md_checkbox_all').change(function(e) {
             if ($(this).prop('checked')) {
                 $('.check-item').prop('checked', true);
+                //loop through all checkboxes with class "check-item" and add them to array
+                $('.check-item').each(function(index, element) {
+                    selected.push({
+                        id: $(this).data('id'),
+                        tipe: $(this).data('tipe')
+                    });
+                });
             } else {
                 $('.check-item').prop('checked', false);
+                selected = [];
             }
         });
 
         //get the id of the checkbox that was clicked
-        $('.check-item').click(function(e) {
+        //fix ketika page 2 dan seterusnya gabisa di klik checkboxnya
+        //class check-item harus dibungkus dengan delegate agar bisa di klik
+        $('#zero_config').delegate('.check-item', 'change', function(e) {
             var id = $(this).data('id');
             var tipe = $(this).data('tipe');
             if ($(this).prop('checked')) {

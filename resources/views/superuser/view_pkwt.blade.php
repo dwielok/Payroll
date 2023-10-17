@@ -96,7 +96,7 @@
                                                 <td>{{ $gaji->bulan }}</td>
                                                 <td>{{ $gaji->tahun }}</td>
                                                 <td>{{ $gaji->nip }}</td>
-                                                <td>{{ $gaji->nama_karyawan }}</td>
+                                                <td>{{ $gaji->nama }}</td>
                                                 <td>{{ $gaji->pendidikan }}</td>
                                                 <td>@rupiah($gaji->gaji_pokok)</td>
                                                 <td>@rupiah($gaji->tunjangan_tetap)</td>
@@ -110,8 +110,8 @@
                                                 <td>@rupiah($gaji->bpjs_kesehatan)</td>
                                                 <td>@rupiah($gaji->bpjs_ketenagakerjaan)</td>
                                                 <td>@rupiah($gaji->benefit)</td>
-                                                <td>@rupiah($gaji->bpjs_kesehatan_premi)</td>
-                                                <td>@rupiah($gaji->bpjs_ketenagakerjaan_premi)</td>
+                                                <td>@rupiah($gaji->premi_bpjs_kesehatan)</td>
+                                                <td>@rupiah($gaji->premi_bpjs_ketenagakerjaan)</td>
                                                 <td>@rupiah($gaji->premi)</td>
                                                 <td>@rupiah($gaji->benefit)</td>
                                                 <td>{{ $gaji->jam_hilang }}</td>
@@ -122,7 +122,7 @@
                                                 <td>@rupiah($gaji->penghasilan_tidak_tetap)</td>
                                                 <td>@rupiah($gaji->penghasilan_bruto)</td>
                                                 <td>@rupiah($gaji->penghasilan_netto)</td>
-                                                <td><a href="{{ url('/EditPkwtSuper') }}"
+                                                <td><a href="{{ url('/EditPkwtSuper?id=' . $gaji->id_gaji) }}"
                                                     class="btn btn-navy align-items-center ms-2">
                                                     Edit
                                                 </a>
