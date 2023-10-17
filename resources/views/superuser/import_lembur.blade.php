@@ -11,8 +11,10 @@
                                 <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/KaryawanTetap" class="link">
-                                    List Data Karyawan {{ $type }}</a>
+                                <a href="/{{ request()->get('type') == 'tetap' ? 'GajiLemburTetapSuper' : (request()->get('type') == 'inka' ? 'GajiLemburInkaSuper' : 'GajiLemburPkwtSuper') }}""
+                                    class="link">
+                                    Gaji Lembur Karyawan
+                                    {{ request()->get('type') == 'tetap' ? 'Tetap' : (request()->get('type') == 'inka' ? 'Perbantuan INKA' : 'PKWT') }}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Import Data
@@ -71,7 +73,7 @@
 
                                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <form method="post" action="{{ route('importTetap') }}"
+                                            <form method="post" action="{{ route('importLemburTetap') }}"
                                                 enctype="multipart/form-data">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">

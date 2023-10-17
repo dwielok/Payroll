@@ -275,7 +275,8 @@
                                 <a id="save-gaji" class="btn btn-navy align-items-center ms-2">
                                     Save
                                 </a>
-                                <a href="{{ url('/#') }}" class="btn btn-merah align-items-center ms-2">
+                                <a href="{{ url('/ViewPkwtSuper?id=') . $gaji->id_ap }}"
+                                    class="btn btn-merah align-items-center ms-2">
                                     Cancel
                                 </a>
                             </div>

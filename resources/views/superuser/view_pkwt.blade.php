@@ -15,7 +15,7 @@
                                     List Data Karyawan PKWT </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                View List Data 
+                                View List Data
                             </li>
                         </ol>
                     </nav>
@@ -64,7 +64,6 @@
                                             <th class="text-center">Nama</th>
                                             <th class="text-center">Pendidikan</th>
                                             <th class="text-center">Gaji Pokok</th>
-                                            <th class="text-center">Tunjangan Tetap</th>
                                             <th class="text-center">Kehadiran</th>
                                             <th class="text-center">Hari Kerja</th>
                                             <th class="text-center">Nilai IKK</th>
@@ -99,7 +98,6 @@
                                                 <td>{{ $gaji->nama }}</td>
                                                 <td>{{ $gaji->pendidikan }}</td>
                                                 <td>@rupiah($gaji->gaji_pokok)</td>
-                                                <td>@rupiah($gaji->tunjangan_tetap)</td>
                                                 <td>{{ $gaji->kehadiran }}</td>
                                                 <td>{{ $gaji->hari_kerja }}</td>
                                                 <td>{{ $gaji->nilai_ikk }}</td>
@@ -123,14 +121,19 @@
                                                 <td>@rupiah($gaji->penghasilan_bruto)</td>
                                                 <td>@rupiah($gaji->penghasilan_netto)</td>
                                                 <td><a href="{{ url('/EditPkwtSuper?id=' . $gaji->id_gaji) }}"
-                                                    class="btn btn-navy align-items-center ms-2">
-                                                    Edit
-                                                </a>
-                                                <a href="{{ url('/#') }}"
-                                                    class="btn btn-merah align-items-center ms-2">
-                                                    Delete
-                                                </a>
-                                            </td>
+                                                        class="btn btn-navy align-items-center ms-2">
+                                                        Edit
+                                                    </a>
+                                                    <form action="{{ url('/DeletePkwtSuper') }}" method="post"
+                                                        id="form-view">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $gaji->id_gaji }}">
+                                                        <button type="submit"
+                                                            class="btn btn-merah align-items-center ms-2">
+                                                            Delete
+                                                        </button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

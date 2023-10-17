@@ -13,7 +13,7 @@
                             <li class="breadcrumb-item active" aria-current="page">
                                 <a href="/{{ request()->get('type') == 'tetap' ? 'GajiLemburTetapSuper' : (request()->get('type') == 'inka' ? 'GajiLemburInkaSuper' : 'GajiLemburPkwtSuper') }}""
                                     class="link">
-                                    List Data Karyawan
+                                    Gaji Lembur Karyawan
                                     {{ request()->get('type') == 'tetap' ? 'Tetap' : (request()->get('type') == 'inka' ? 'Perbantuan INKA' : 'PKWT') }}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
