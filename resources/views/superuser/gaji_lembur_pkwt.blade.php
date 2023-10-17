@@ -11,7 +11,7 @@
                                 <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Gaji Lembur
+                                Gaji Lembur Karyawan PKWT
                             </li>
                         </ol>
                     </nav>
@@ -73,7 +73,8 @@
                                 </div>
                                 <div class="d-flex align-items-center g-2">
 
-                                    <a href="{{ url('/ImportTetap') }}" class="btn btn-navy d-flex align-items-center ms-2">
+                                    <a href="{{ url('/ImportLemburPkwtSuper?type=pkwt') }}"
+                                        class="btn btn-navy d-flex align-items-center ms-2">
                                         Import
                                     </a>
                                     {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">

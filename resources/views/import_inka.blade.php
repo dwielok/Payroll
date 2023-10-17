@@ -11,7 +11,7 @@
                                 <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="/KaryawanTetap" class="link">
+                                <a href="/karyawanperbantuaninka" class="link">
                                     List Data Karyawan Perbantuan INKA </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">

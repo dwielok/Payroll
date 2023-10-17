@@ -60,4 +60,12 @@ class GajiLemburTetapSuperController extends Controller
             'urlBreadcumb2'
         ));
     }
+
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+        $approval = GajiLembur::where('id', $id)->first();
+        $approval->delete();
+        return redirect()->back();
+    }
 }
