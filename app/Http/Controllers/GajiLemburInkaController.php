@@ -17,17 +17,17 @@ class GajiLemburInkaController extends Controller
     public function detail(Request $request)
     {
         $id = $request->get('id');
-        $gajis = GajiLembur::leftJoin('karyawans', 'karyawans.id', '=', 'gaji_lembur.id_karyawan')
-            ->leftJoin('jabatans', 'jabatans.id', '=', 'karyawans.id_jabatan')
-            ->select('gaji_lembur.*', 'karyawans.*', 'jabatans.*')
+        $gajis = GajiLembur::leftJoin('pegawai', 'pegawai.id', '=', 'gaji_lembur.id_karyawan')
+            ->leftJoin('jabatan', 'jabatan.id', '=', 'pegawai.kode_jabatan')
+            ->select('gaji_lembur.*', 'pegawai.*', 'jabatan.*')
             ->where('gaji_lembur.id_approval', '=', $id)
             ->get();
 
         $gajis = $gajis->map(function ($item) {
             $item->bulan = ApprovalLembur::where('id', $item->id_approval)->value('bulan');
             $item->tahun = ApprovalLembur::where('id', $item->id_approval)->value('year');
-            $item->nominal_lembur_weekend = $item->lembur_weekend * 20000;
-            $item->nominal_lembur_weekday = $item->lembur_weekday * 30000;
+            $item->nominal_lembur_weekend = $item->lembur_weekend * 15000;
+            $item->nominal_lembur_weekday = $item->lembur_weekday * 11000;
             return $item;
         });
 

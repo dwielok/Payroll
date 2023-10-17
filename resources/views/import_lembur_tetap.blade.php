@@ -12,11 +12,7 @@
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 <a href="/GajiLemburTetap" class="link">
-<<<<<<< HEAD
                                     Gaji Lembur Karyawan Tetap</a>
-=======
-                                    Gaji Lembur Tetap</a>
->>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Import Data
@@ -75,17 +71,13 @@
 
                                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-<<<<<<< HEAD
-                                            <form method="post" action="{{ route('import_lembur_tetap') }}"
-=======
                                             <form method="post" action="{{ route('importLemburTetap') }}"
->>>>>>> c38a7e4a50fee6179d4ad9b062b8a753c27ad228
                                                 enctype="multipart/form-data">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title">Import File</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            <button type="button" class="btn-close" data-dismiss="modal"
                                                                 aria-label="Cancel"></button>
                                                         </div>
                                                         <div class="modal-body">
@@ -101,8 +93,7 @@
                                                             <button type="button" class="btn btn-merah"
                                                                 data-dismiss="modal">Close</button>
                                                             <button type="submit"
-                                                                class="btn btn-navy d-flex align-items-center ms-2">Save
-                                                                Change</button>
+                                                                class="btn btn-navy d-flex align-items-center ms-2">Upload</button>
                                                         </div>
                                                     </div>
                                                 </div>

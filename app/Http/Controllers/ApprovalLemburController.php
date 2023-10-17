@@ -17,9 +17,26 @@ class ApprovalLemburController extends Controller
     public function detail(Request $request)
     {
         $id = $request->get('id');
-        $gajis = GajiLembur::leftJoin('karyawans', 'karyawans.id', '=', 'gaji_lembur.id_karyawan')
-            ->leftJoin('jabatans', 'jabatans.id', '=', 'karyawans.id_jabatan')
-            ->select('gaji_lembur.*', 'karyawans.*', 'jabatans.*')
+        $tipe = $request->get('tipe');
+
+        switch ($tipe) {
+            case 'tetap':
+                $tipe = 'Tetap';
+                break;
+            case 'inka':
+                $tipe = 'Perbantuan INKA';
+                break;
+            case 'pkwt':
+                $tipe = 'PKWT';
+                break;
+
+            default:
+                # code...
+                break;
+        }
+        $gajis = GajiLembur::leftJoin('pegawai', 'pegawai.id', '=', 'gaji_lembur.id_karyawan')
+            ->leftJoin('jabatan', 'jabatan.id', '=', 'pegawai.kode_jabatan')
+            ->select('gaji_lembur.*', 'pegawai.*', 'jabatan.*')
             ->where('gaji_lembur.id_approval', '=', $id)
             ->get();
 
@@ -33,7 +50,7 @@ class ApprovalLemburController extends Controller
 
         $approval = ApprovalLembur::where('id', $id)->first();
 
-        return view('superuser.view_approval_lembur', compact('gajis', 'approval'));
+        return view('superuser.view_approval_lembur', compact('gajis', 'approval', 'tipe'));
     }
 
     public function decline(Request $request)

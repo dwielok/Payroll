@@ -76,7 +76,7 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title">Import File</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            <button type="button" class="btn-close" data-dismiss="modal"
                                                                 aria-label="Cancel"></button>
                                                         </div>
                                                         <div class="modal-body">
@@ -92,8 +92,7 @@
                                                             <button type="button" class="btn btn-merah"
                                                                 data-dismiss="modal">Close</button>
                                                             <button type="submit"
-                                                                class="btn btn-navy d-flex align-items-center ms-2">Save
-                                                                Change</button>
+                                                                class="btn btn-navy d-flex align-items-center ms-2">Upload</button>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -15,6 +15,7 @@ use App\Models\GajiLembur;
 use App\Models\GajiTemp;
 use App\Models\ImportTetap;
 use App\Models\Karyawan;
+use App\Models\Pegawai;
 use Illuminate\Support\Facades\Session;
 
 class ImportTetapController extends Controller
@@ -104,12 +105,14 @@ class ImportTetapController extends Controller
 
         //search NIP in karyawan by looping $datas
         $datas->map(function ($item) use ($id_approval) {
-            $nip = $item[1];
+            $nip = $item[0];
             if ($nip != null) {
-                $karyawan = Karyawan::where('nip', $nip)->first();
+                $karyawan = Pegawai::where('nip', $nip)->first();
+
                 GajiTemp::insert([
                     'id_karyawan' => $karyawan->id,
                     'id_approval' => $id_approval,
+                    'golongan' => $item[2],
                     'kehadiran' => $item[3],
                     'hari_kerja' => $item[4],
                     'nilai_ikk' => $item[5],
@@ -120,12 +123,17 @@ class ImportTetapController extends Controller
                     'jam_hilang' => $item[10],
                     'kopinka' => $item[11],
                     'keuangan' => $item[12],
+                    'kredit_poin' => $item[13],
                 ]);
             }
         });
 
         // dd($datas);
-        return redirect('/KaryawanTetap');
+        if ($type == 'tetap') {
+            return redirect('/KaryawanTetap');
+        } else {
+            return redirect('/karyawanperbantuaninka');
+        }
     }
 
     public function import_lembur(Request $request)
@@ -171,7 +179,7 @@ class ImportTetapController extends Controller
         $datas->map(function ($item) use ($id_approval) {
             $nip = $item[0];
             if ($nip != null) {
-                $karyawan = Karyawan::where('nip', $nip)->first();
+                $karyawan = Pegawai::where('nip', $nip)->first();
                 GajiLembur::insert([
                     'id_karyawan' => $karyawan->id,
                     'id_approval' => $id_approval,
@@ -182,6 +190,10 @@ class ImportTetapController extends Controller
         });
 
         // dd($datas);
-        return redirect('/GajiLemburTetap');
+        if ($type == 'tetap') {
+            return redirect('/GajiLemburTetap');
+        } else {
+            return redirect('/GajiLemburInkaten');
+        }
     }
 }

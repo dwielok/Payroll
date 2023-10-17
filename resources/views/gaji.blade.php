@@ -1,19 +1,82 @@
 <table>
     <thead>
         <tr>
-            <th>#</th>
+            <th>No</th>
             <th class="text-center">Bulan</th>
             <th class="text-center">Tahun</th>
+            <th class="text-center">NIP</th>
+            <th class="text-center">Nama</th>
+            <th class="text-center">Jabatan</th>
+            <th class="text-center">Golongan</th>
+            <th class="text-center">Gaji Pokok</th>
+            <th class="text-center">Tunjangan Tetap</th>
+            <th class="text-center">Kehadiran</th>
+            <th class="text-center">Hari Kerja</th>
+            <th class="text-center">Nilai IKK</th>
+            <th class="text-center">Dana IKK</th>
+            <th class="text-center">Tunjangan Transportasi</th>
+            <th class="text-center">Tunjangan Jabatan</th>
+            <th class="text-center">Tunjangan Karya</th>
+            <th class="text-center">BPJS Kesehatan Benefit</th>
+            <th class="text-center">BPJS Ketenagakerjaan Benefit</th>
+            <th class="text-center">PPIP</th>
+            <th class="text-center">Total Benefit</th>
+            <th class="text-center">BPJS Kesehatan Premi</th>
+            <th class="text-center">BPJS Ketenagakerjaan Premi</th>
+            <th class="text-center">PPIP Mandiri</th>
+            <th class="text-center">Total Premi</th>
+            <th class="text-center">Total Potongan Benefit</th>
+            <th class="text-center">Jam Hilang</th>
+            <th class="text-center">Kopinka</th>
+            <th class="text-center">Keuangan</th>
+            <th class="text-center">Penyesuaian Penambahan</th>
+            <th class="text-center">Penyesuaian Pengurangan</th>
+            <th class="text-center">Potongan</th>
+            <th class="text-center">Penghasilan Tetap</th>
+            <th class="text-center">Penghasilan Tidak Tetap</th>
+            <th class="text-center">Penghasilan Bruto</th>
+            <th class="text-center">Penghasilan Netto</th>
         </tr>
     </thead>
     <tbody>
-        @forelse ($gajis as $gaji)
+        @foreach ($gajis as $gaji)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $gaji->bulan }}</td>
-                <td>2020</td>
+                <td>{{ $gaji->tahun }}</td>
+                <td>{{ $gaji->nip }}</td>
+                <td>{{ $gaji->nama }}</td>
+                <td>{{ $gaji->nama_jabatan }}</td>
+                <td>{{ $gaji->golongan }}</td>
+                <td>@rupiah($gaji->gaji_pokok)</td>
+                <td>@rupiah($gaji->tunjangan_tetap)</td>
+                <td>{{ $gaji->kehadiran }}</td>
+                <td>{{ $gaji->hari_kerja }}</td>
+                <td>{{ $gaji->nilai_ikk }}</td>
+                <td>@rupiah($gaji->dana_ikk)</td>
+                <td>@rupiah($gaji->tunjangan_transportasi)</td>
+                <td>@rupiah($gaji->tunjangan_jabatan)</td>
+                <td>@rupiah($gaji->tunjangan_karya)</td>
+                <td>@rupiah($gaji->bpjs_kesehatan)</td>
+                <td>@rupiah($gaji->bpjs_ketenagakerjaan)</td>
+                <td>@rupiah($gaji->ppip)</td>
+                <td>@rupiah($gaji->benefit)</td>
+                <td>@rupiah($gaji->premi_bpjs_kesehatan)</td>
+                <td>@rupiah($gaji->premi_bpjs_ketenagakerjaan)</td>
+                <td>@rupiah($gaji->ppip_mandiri)</td>
+                <td>@rupiah($gaji->potongan_premi)</td>
+                <td>@rupiah($gaji->potongan_benefit)</td>
+                <td>{{ $gaji->jam_hilang }}</td>
+                <td>@rupiah($gaji->kopinka)</td>
+                <td>@rupiah($gaji->keuangan)</td>
+                <td>{{ $gaji->penyesuaian_penambahan }}</td>
+                <td>{{ $gaji->penyesuaian_pengurangan }}</td>
+                <td>@rupiah($gaji->potongan)</td>
+                <td>@rupiah($gaji->penghasilan_tetap)</td>
+                <td>@rupiah($gaji->penghasilan_tunjangan_tidak_tetap)</td>
+                <td>@rupiah($gaji->penghasilan_bruto)</td>
+                <td>@rupiah($gaji->penghasilan_netto)</td>
             </tr>
-        @empty
-        @endforelse
+        @endforeach
     </tbody>
 </table>
