@@ -37,6 +37,7 @@ use App\Http\Controllers\ImportInkaController;
 use App\Http\Controllers\ImportInkaSuperController;
 use App\Http\Controllers\ImportLemburInkaController;
 use App\Http\Controllers\ImportLemburPkwtController;
+use App\Http\Controllers\ImportLemburSuperController;
 use App\Http\Controllers\ImportLemburTetapController;
 use App\Http\Controllers\ImportPkwtController;
 use App\Http\Controllers\ImportPkwtSuperController;
@@ -63,6 +64,7 @@ use App\Http\Controllers\viewPkwtController;
 use App\Http\Controllers\ViewPkwtSuperController;
 use App\Http\Controllers\viewTetapController;
 use App\Http\Controllers\viewTetapSuperController;
+use App\Models\GajiLembur;
 
 /*
 |--------------------------------------------------------------------------
@@ -217,6 +219,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('ExportLemburUser', [ExportLemburController::class, 'index'])->name('superuser.export_lembur');
 
+    //Delete Tetap & Inka
+    Route::post('DeleteTetapSuper', [KaryawanTetapController::class, 'deleteTetap'])->name('deleteTetap');
+    Route::post('DeleteInkaSuper', [KaryawanTetapController::class, 'deleteTetap'])->name('deleteTetap');
+    Route::post('DeletePkwtSuper', [KaryawanPkwtController::class, 'deleteTetap'])->name('deleteTetap');
+    Route::post('DeleteLemburSuper', [GajiLemburTetapSuperController::class, 'delete'])->name('deleteTetap');
+
     Route::group(['middleware' => ['superuser']], function () {
         Route::get('dashboardSuperuser', [DashboardSuperController::class, 'index'])->name('superuser.dashboard');
         //taroh rute superuser ng kene
@@ -250,6 +258,15 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Routing Halaman Import Pkwt
         Route::get('ImportPkwtSuper', [ImportPkwtSuperController::class, 'index'])->name('superuser.import_pkwt');
+
+        //Routing Import Lembur 
+        Route::get('ImportLemburTetapSuper', [ImportLemburSuperController::class, 'index'])->name('superuser.import_lembur');
+
+        //Routing Import Lembur INKA
+        Route::get('ImportLemburInkaSuper', [ImportLemburSuperController::class, 'index'])->name('superuser.import_lembur');
+
+        //Routing Import Lembur PKWT
+        Route::get('ImportLemburPkwtSuper', [ImportLemburSuperController::class, 'index'])->name('superuser.import_lembur');
 
         //Routing Halaman Rekap Superuser
         Route::get('RekapSuper', [RekapSuperController::class, 'index'])->name('superuser.rekap');
