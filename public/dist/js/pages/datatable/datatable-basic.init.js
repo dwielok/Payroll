@@ -17,10 +17,10 @@ $(function () {
 /****************************************
  *       Basic Table                   *
  ****************************************/
-$("#zero_config").DataTable({
+var oTable = $("#zero_config").DataTable({
   //remove show entries and search
   lengthChange: false,
-  searching: false,
+  searching: true,
 });
 
 /****************************************

@@ -512,6 +512,7 @@ class PdfController extends Controller
         foreach ($gajis as $key => $gaji) {
             $obj = new stdClass();
             $obj->id_aproval = $gaji->id;
+            $obj->id_ap = $gaji->id_approval;
             $obj->tunjangan_profesional = $gaji->tunjangan_profesional ?? 0;
             $obj->type = $gaji->tipe_karyawan;
             $obj->nama = $gaji->nama ?? '';
@@ -656,6 +657,7 @@ class PdfController extends Controller
         foreach ($gajis as $key => $gaji) {
             $obj = new stdClass();
             $obj->id_aproval = $gaji->id;
+            $obj->id_ap = $gaji->id_approval ?? 0;
             $obj->type = $gaji->tipe_karyawan;
             $obj->nama = $gaji->nama ?? '';
             $obj->id_gaji = $gaji->id_gaji ?? 0;

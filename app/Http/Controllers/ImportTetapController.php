@@ -16,13 +16,23 @@ use App\Models\GajiTemp;
 use App\Models\ImportTetap;
 use App\Models\Karyawan;
 use App\Models\Pegawai;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class ImportTetapController extends Controller
 {
     public function index()
     {
-        return view('import_tetap');
+        $url = url()->current();
+        //lowercase
+        $url = strtolower($url);
+        //if $url contain inka
+        if (str_contains($url, 'tetap')) {
+            $type = 'Tetap';
+        } else {
+            $type = 'Perbantuan Inka';
+        }
+        return view('import_tetap', compact('type'));
         //     $importTetap = ImportTetap::all();
         //     return view('ImportTetap', compact('importTetap'));
         //     return view('ImportTetap',['importTetap'=>$importTetap]);
@@ -190,10 +200,23 @@ class ImportTetapController extends Controller
         });
 
         // dd($datas);
-        if ($type == 'tetap') {
-            return redirect('/GajiLemburTetap');
+        $auth = Auth::user()->tipe_user;
+        if ($auth == 'admin') {
+            if ($type == 'tetap') {
+                return redirect('/GajiLemburTetap');
+            } else if ($type == 'inka') {
+                return redirect('/GajiLemburInka');
+            } else {
+                return redirect('/GajiLemburPkwt');
+            }
         } else {
-            return redirect('/GajiLemburInkaten');
+            if ($type == 'tetap') {
+                return redirect('/GajiLemburTetapSuper');
+            } else if ($type == 'inka') {
+                return redirect('/GajiLemburInkaSuper');
+            } else {
+                return redirect('/GajiLemburPkwtSuper');
+            }
         }
     }
 }

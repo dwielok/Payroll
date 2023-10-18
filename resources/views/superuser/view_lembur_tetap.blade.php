@@ -96,10 +96,15 @@
                                                         class="btn btn-navy align-items-center ms-2">
                                                         Edit
                                                     </a>
-                                                    <a href="{{ url('/#') }}"
-                                                        class="btn btn-merah align-items-center ms-2">
-                                                        Delete
-                                                    </a>
+                                                    <form action="{{ url('/DeleteLemburSuper') }}" method="post"
+                                                        id="form-view">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $gaji->id_gaji }}">
+                                                        <button type="submit"
+                                                            class="btn btn-merah align-items-center ms-2">
+                                                            Delete
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
