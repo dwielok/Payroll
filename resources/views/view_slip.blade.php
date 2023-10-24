@@ -265,7 +265,7 @@
                 </td>
                 <td></td>
                 <td class="myAlign">
-                    00.00
+                    @rupiah($gaji->penyesuaian_penambahan)
                 </td>
                 <td colspan="2" style="text-align: left">
                     4. POT. KEUANGAN
@@ -346,6 +346,7 @@
                 </td>
                 <td></td>
                 <td class="myAlign">
+                    @rupiah($gaji->penyesuaian_pengurangan)
                 </td>
             </tr>
             <tr>
@@ -361,6 +362,7 @@
                 </td>
                 <td></td>
                 <td class="myAlign">
+                    @rupiah($gaji->potongan_benefit)
                 </td>
             </tr>
             <tr>
@@ -455,7 +457,7 @@
                     <b>@rupiah($gaji->penghasilan_netto)</b>
                 </td>
                 <td colspan="3" style="text-align: right">
-                    Madiun, 21 September 2023
+                    Madiun, {{ date('d F Y') }}
                 </td>
                 <td></td>
             </tr>
@@ -473,7 +475,7 @@
                 </td>
                 <td></td>
                 <td class="table-border-right">
-                    00.00
+                    @rupiah($gaji->ppip_mandiri)
                 </td>
                 <td colspan="3" style="text-align: right">
                     Presiden Direktur
@@ -486,7 +488,7 @@
                 </td>
                 <td></td>
                 <td class="myAlign" style="vertical-align: top">
-                    00.00
+                    {{ $gaji->kredit_poin }}
                 </td>
                 <td colspan="4"></td>
             </tr>
