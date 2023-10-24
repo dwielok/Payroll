@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-responsive-" style="overflow-x:auto;">
+                            <div class="table-responsive" style="overflow-x:auto;">
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap">
                                     <thead>
                                         <tr>
@@ -98,42 +98,42 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($gajis as $gaji)
-                                        <tr>
-                                            <td>{{ $gaji->bulan }}</td>
-                                            <td>{{ $gaji->year }}</td>
-                                            <td>{{ $gaji->nip }}</td>
-                                            <td>{{ $gaji->nama }}</td>
-                                            <td>{{ $gaji->nama_jabatan }}</td>
-                                            <td>{{ $gaji->golongan }}</td>
-                                            <td>@rupiah($gaji->gaji_pokok)</td>
-                                            <td>@rupiah($gaji->tunjangan_tetap)</td>
-                                            <td>{{ $gaji->kehadiran }}</td>
-                                            <td>{{ $gaji->hari_kerja }}</td>
-                                            <td>{{ $gaji->nilai_ikk }}</td>
-                                            <td>@rupiah($gaji->dana_ikk)</td>
-                                            <td>@rupiah($gaji->tunjangan_transportasi)</td>
-                                            <td>@rupiah($gaji->tunjangan_jabatan)</td>
-                                            <td>@rupiah($gaji->tunjangan_karya)</td>
-                                            <td>@rupiah($gaji->bpjs_kesehatan)</td>
-                                            <td>@rupiah($gaji->bpjs_ketenagakerjaan)</td>
-                                            <td>@rupiah($gaji->ppip)</td>
-                                            <td>@rupiah($gaji->benefit)</td>
-                                            <td>@rupiah($gaji->premi_bpjs_kesehatan)</td>
-                                            <td>@rupiah($gaji->premi_bpjs_ketenagakerjaan)</td>
-                                            <td>@rupiah($gaji->ppip_mandiri)</td>
-                                            <td>@rupiah($gaji->potongan_premi)</td>
-                                            <td>@rupiah($gaji->potongan_benefit)</td>
-                                            <td>{{ $gaji->jam_hilang }}</td>
-                                            <td>@rupiah($gaji->kopinka)</td>
-                                            <td>@rupiah($gaji->keuangan)</td>
-                                            <td>{{ $gaji->penyesuaian_penambahan }}</td>
-                                            <td>{{ $gaji->penyesuaian_pengurangan }}</td>
-                                            <td>@rupiah($gaji->potongan)</td>
-                                            <td>@rupiah($gaji->penghasilan_tetap)</td>
-                                            <td>@rupiah($gaji->penghasilan_tunjangan_tidak_tetap)</td>
-                                            <td>@rupiah($gaji->penghasilan_bruto)</td>
-                                            <td>@rupiah($gaji->penghasilan_netto)</td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ $gaji->bulan }}</td>
+                                                <td>{{ $gaji->year }}</td>
+                                                <td>{{ $gaji->nip }}</td>
+                                                <td>{{ $gaji->nama }}</td>
+                                                <td>{{ $gaji->nama_jabatan }}</td>
+                                                <td>{{ $gaji->golongan }}</td>
+                                                <td>@rupiah($gaji->gaji_pokok)</td>
+                                                <td>@rupiah($gaji->tunjangan_tetap)</td>
+                                                <td>{{ $gaji->kehadiran }}</td>
+                                                <td>{{ $gaji->hari_kerja }}</td>
+                                                <td>{{ $gaji->nilai_ikk }}</td>
+                                                <td>@rupiah($gaji->dana_ikk)</td>
+                                                <td>@rupiah($gaji->tunjangan_transportasi)</td>
+                                                <td>@rupiah($gaji->tunjangan_jabatan)</td>
+                                                <td>@rupiah($gaji->tunjangan_karya)</td>
+                                                <td>@rupiah($gaji->bpjs_kesehatan)</td>
+                                                <td>@rupiah($gaji->bpjs_ketenagakerjaan)</td>
+                                                <td>@rupiah($gaji->ppip)</td>
+                                                <td>@rupiah($gaji->benefit)</td>
+                                                <td>@rupiah($gaji->premi_bpjs_kesehatan)</td>
+                                                <td>@rupiah($gaji->premi_bpjs_ketenagakerjaan)</td>
+                                                <td>@rupiah($gaji->ppip_mandiri)</td>
+                                                <td>@rupiah($gaji->potongan_premi)</td>
+                                                <td>@rupiah($gaji->potongan_benefit)</td>
+                                                <td>{{ $gaji->jam_hilang }}</td>
+                                                <td>@rupiah($gaji->kopinka)</td>
+                                                <td>@rupiah($gaji->keuangan)</td>
+                                                <td>{{ $gaji->penyesuaian_penambahan }}</td>
+                                                <td>{{ $gaji->penyesuaian_pengurangan }}</td>
+                                                <td>@rupiah($gaji->potongan)</td>
+                                                <td>@rupiah($gaji->penghasilan_tetap)</td>
+                                                <td>@rupiah($gaji->penghasilan_tunjangan_tidak_tetap)</td>
+                                                <td>@rupiah($gaji->penghasilan_bruto)</td>
+                                                <td>@rupiah($gaji->penghasilan_netto)</td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
