@@ -54,7 +54,7 @@
                                         id="example-search-input">
                                 </div>
                             </div>
-                            <div class="table-responsive-" style="overflow-x:auto;">
+                            <div class="table-responsive" style="overflow-x:auto;">
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap">
                                     <thead>
                                         <tr>

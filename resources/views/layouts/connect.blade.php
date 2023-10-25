@@ -76,7 +76,7 @@
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="{{ asset('img/logo.png') }}" alt="homepage" style="right: 5px; width:100%">
+                            <img src="{{ asset('img/logo_baru.png') }}" alt="homepage" style="right: 5px; width:100%">
                             <!-- Light Logo icon -->
                             <img src="../../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                         </b>
@@ -360,6 +360,35 @@
         <!-- Page wrapper  -->
         <!-- ============================================================= -->
         @yield('content')
+
+        <!-- Modal Logout -->
+
+        <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalLogoutLabel">Logout</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Do you want to Logout?
+                        <form id="logout-form" action="{{ url('/actionlogout') }}">
+                            @csrf
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-merah" data-bs-dismiss="modal">No</button>
+
+                        <button class="btn btn-navy"
+                            onclick="document.getElementById(
+                                        'logout-form').submit();">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- footer -->
         <!-- ============================================================= -->
         <footer class="footer text-center">
@@ -474,30 +503,9 @@
         })
     </script>
 
+
+
 </body>
-<!-- Modal Logout -->
 
-<div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="modalLogoutLabel">Logout</h1>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Do you want to Logout?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-merah" data-dismiss="modal">No</button>
-                <form id="logout-form" action="{{ url('/actionlogout') }}">
-
-                </form>
-                <button class="btn btn-navy"
-                    onclick="document.getElementById(
-                                        'logout-form').submit();">Yes</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 </html>

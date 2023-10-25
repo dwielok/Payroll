@@ -441,6 +441,8 @@ class PdfController extends Controller
             $bpjstk->jp = 0.02 * ($item->gaji_pokok + $item->tunjangan_tetap);
             $item->detail_bpjs_tk = $bpjstk;
 
+            $item->kredit_poin = $item->kredit_poin;
+
             $item->ppip = $item->gaji_pokok / 12;
             $item->jumlah_premi = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan + $item->ppip;
             $item->benefit = $item->bpjs_kesehatan + $item->bpjs_ketenagakerjaan + $item->ppip;
@@ -513,6 +515,7 @@ class PdfController extends Controller
             $obj = new stdClass();
             $obj->id_aproval = $gaji->id;
             $obj->id_ap = $gaji->id_approval;
+            $obj->kredit_poin = $gaji->kredit_poin ?? 0;
             $obj->tunjangan_profesional = $gaji->tunjangan_profesional ?? 0;
             $obj->type = $gaji->tipe_karyawan;
             $obj->nama = $gaji->nama ?? '';
@@ -657,6 +660,7 @@ class PdfController extends Controller
         foreach ($gajis as $key => $gaji) {
             $obj = new stdClass();
             $obj->id_aproval = $gaji->id;
+            $obj->kredit_poin = $gaji->kredit_poin ?? 0;
             $obj->id_ap = $gaji->id_approval ?? 0;
             $obj->type = $gaji->tipe_karyawan;
             $obj->nama = $gaji->nama ?? '';
