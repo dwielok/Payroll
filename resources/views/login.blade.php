@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-4 d-flex align-items-center ">
                 <div class="w-100">
-                    <img src="{{ asset('img/logo.png') }}" alt="logo">
+                    <img src="{{ asset('img/logo_baru.png') }}" alt="logo">
                     <h2 class="text-center mb-1 mt-3">PAYROLL</h2>
                     <h5 class="text-center mb-3"> PT. REKAINDO GLOBAL JASA</h5>
                     @if (session('error'))

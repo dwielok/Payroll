@@ -76,7 +76,7 @@
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="{{ asset('img/logo.png') }}" alt="homepage" style="right: 5px; width:100%">
+                            <img src="{{ asset('img/logo_baru.png') }}" alt="homepage" style="right: 5px; width:100%">
                             <!-- Light Logo icon -->
                             <img src="../../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                         </b>

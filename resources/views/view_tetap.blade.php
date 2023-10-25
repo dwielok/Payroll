@@ -12,14 +12,14 @@
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 <a href="/KaryawanTetap" class="link">
-                                    List Data Karyawan Tetap </a>
+                                    List Gaji Karyawan Tetap</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                View List Data
+                                View Detail Gaji Karyawan Tetap
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data</h1>
+                    <h1 class="mb-0 fw-bold">List Detail Gaji</h1>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-responsive-" style="overflow-x:auto;">
+                            <div class="table-responsive" style="overflow-x:auto;">
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap">
                                     <thead>
                                         <tr>

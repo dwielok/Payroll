@@ -86,8 +86,8 @@
                                 </div>
 
                                 <!-- <a href="{{ url('/') }}" class="btn btn-navy align-items-center ms-2">
-                                                                    Approve
-                                                                </a> -->
+                                                                            Approve
+                                                                        </a> -->
 
                                 <form method="POST" action="{{ route('superuser.approval.approve') }}"
                                     id="form-approve-{{ $approval->id }}">
@@ -154,7 +154,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-responsive-" style="overflow-x:auto;">
+                            <div class="table-responsive" style="overflow-x:auto;">
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap">
                                     <thead>
                                         <tr>
