@@ -11,11 +11,11 @@
                                 <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                List Data Karyawan PKWT
+                                List Gaji Karyawan PKWT
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data Karyawan PKWT</h1>
+                    <h1 class="mb-0 fw-bold">List Gaji Karyawan PKWT</h1>
                 </div>
             </div>
         </div>
