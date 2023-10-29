@@ -12,7 +12,7 @@
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 <a href="/KaryawanPkwtSuper" class="link">
-                                    List Data Karyawan PKWT </a>
+                                    List Gaji Karyawan PKWT </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 View List Data

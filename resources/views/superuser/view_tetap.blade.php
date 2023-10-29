@@ -12,7 +12,7 @@
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 <a href="/KaryawanTetapSuper" class="link">
-                                    List Data Karyawan Tetap </a>
+                                    List Gaji Karyawan Tetap </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 View List Data
