@@ -11,11 +11,11 @@
                                 <a href="/dashboard" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                List Data Karyawan Tetap
+                                List Gaji Karyawan Tetap
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data Karyawan Tetap</h1>
+                    <h1 class="mb-0 fw-bold">List Gaji Karyawan Tetap</h1>
                 </div>
             </div>
         </div>

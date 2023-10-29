@@ -120,7 +120,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown profile-dropdown">
                             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="../../assets/images/users/user.jpg" alt="user" width="30" class="profile-pic rounded-circle" />
+                                <img src="../../assets/images/users/account.jpg" alt="user" width="30" class="profile-pic rounded-circle" />
                                 <div class="d-none d-md-flex">
                                     <span class="ms-2">
                                         <span class="text-dark fw-bold">{{ Auth::user()->tipe_user == 'superadmin' ? 'Superuser' : 'User' }}</span></span>

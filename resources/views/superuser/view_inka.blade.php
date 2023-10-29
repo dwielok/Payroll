@@ -11,7 +11,7 @@
                                 <a href="/dashboardSuperuser" class="link"><i data-feather="grid"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="/KaryawanInkaSuper" class="link">List Data Karyawan Perbantuan INKA</a>
+                                <a href="/KaryawanInkaSuper" class="link">List Gaji Karyawan Perbantuan INKA</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 View List Data

@@ -141,7 +141,7 @@
                                 }
                                 @endphp
                                 <tr>
-                                    <td class="mouth-column">{{ __($approval->bulan) }}</td>
+                                    <td class="month-column">{{ __($approval->bulan) }}</td>
                                     <td class="year-column">{{ __($approval->year) }}</td>
                                     <td>{{ __($approval->tipe_karyawan) }}</td>
                                     <td class="text-{{ $warna }}">
