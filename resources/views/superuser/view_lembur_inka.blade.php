@@ -92,19 +92,23 @@
                                                 <td>{{ $gaji->lembur_weekday }}</td>
                                                 <td>@rupiah($gaji->nominal_lembur_weekend)</td>
                                                 <td>@rupiah($gaji->nominal_lembur_weekday)</td>
-                                                <td><a href="{{ url('/EditLemburInkaSuper?id=' . $gaji->id_gaji) }}"
-                                                        class="btn btn-navy align-items-center ms-2">
-                                                        Edit
-                                                    </a>
-                                                    <form action="{{ url('/DeleteLemburSuper') }}" method="post"
-                                                        id="form-view">
-                                                        @csrf
-                                                        <input type="hidden" name="id" value="{{ $gaji->id_gaji }}">
-                                                        <button type="submit"
-                                                            class="btn btn-merah align-items-center ms-2">
-                                                            Delete
-                                                        </button>
-                                                    </form>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <a href="{{ url('/EditLemburInkaSuper?id=' . $gaji->id_gaji) }}"
+                                                            class="btn btn-navy align-items-center ms-2">
+                                                            Edit
+                                                        </a>
+                                                        <form action="{{ url('/DeleteLemburSuper') }}" method="post"
+                                                            id="form-view">
+                                                            @csrf
+                                                            <input type="hidden" name="id"
+                                                                value="{{ $gaji->id_gaji }}">
+                                                            <button type="submit"
+                                                                class="btn btn-merah align-items-center ms-2">
+                                                                Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
