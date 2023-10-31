@@ -40,7 +40,7 @@
             mb-4
           ">
                                 <div class="d-flex align-items-center g-2">
-                                    {{-- <div class="input-group" style="position: absolute; width:20%; margin:50px">
+                                    <div class="input-group" style="position: absolute; width:20%; margin:50px">
                                         <span class="input-group-prepend">
                                             <button class="btn btn-outline-secondary bg-white border-end-0  border ms-n5"
                                                 type="button">
@@ -49,9 +49,9 @@
                                         </span>
                                         <input class="form-control border-start-0 border" type="search" value="search"
                                             id="example-search-input">
-                                    </div> --}}
+                                    </div>
 
-                                    <div class="btn-group">
+                                    <div class="btn-group" style="margin-left: 275px">
                                         <button class="btn btn-navy dropdown-toggle" type="button" id="dropdownMenuButton"
                                             aria-expanded="false">
                                             Filter Periode
@@ -91,7 +91,8 @@
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                <table id="zero_config" class="table table-striped table-bordered text-nowrap myTable">
+                                <table id="zero_config" class="table table-striped table-bordered text-nowrap myTable"
+                                style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>
@@ -124,10 +125,10 @@
                                 </table>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <a id="print" class="btn btn-navy d-flex align-items-center ms-2"
+                                <button id="print" class="btn btn-navy d-flex align-items-center ms-2"
                                     style="margin-top: 30px">
                                     Print
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
