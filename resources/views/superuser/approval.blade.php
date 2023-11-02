@@ -190,6 +190,7 @@
                                     <h2 class="fw-bold">Succesfully Approve!</h2>
                                 </div>
                                 <div class="modal-footer">
+
                                     <button type="button" class="btn btn-navy" data-dismiss="modal">Close</button>
 
                                 </div>
@@ -205,6 +206,7 @@
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="modalDeclineLabel">
                                         Keterangan Ditolak</h1>
+
                                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
