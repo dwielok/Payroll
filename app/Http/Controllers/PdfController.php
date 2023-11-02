@@ -688,7 +688,7 @@ class PdfController extends Controller
             $obj->detail_bpjs_tk = $gaji->detail_bpjs_tk;
             $obj->benefit = $gaji->benefit ?? 0;
             $obj->potongan_benefit = $gaji->benefit ?? 0;
-            $obj->ppip_mandiri = $gaji->ppip_mandiri ?? 0;g
+            $obj->ppip_mandiri = $gaji->ppip_mandiri ?? 0;
             $obj->penghasilan_tunjangan_tidak_tetap = $gaji->penghasilan_tidak_tetap ?? 0;
             $obj->penghasilan_bruto = $gaji->penghasilan_bruto ?? 0;
             $obj->premi_bpjs_kesehatan = $gaji->bpjs_kesehatan_premi ?? 0;
