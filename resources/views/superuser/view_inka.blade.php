@@ -14,11 +14,11 @@
                                 <a href="/KaryawanInkaSuper" class="link">List Gaji Karyawan Perbantuan INKA</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                View List Data
+                                View Detail Gaji Karyawan Perbantuan INKA
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data</h1>
+                    <h1 class="mb-0 fw-bold">List Detail Gaji</h1>
                 </div>
             </div>
         </div>
