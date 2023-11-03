@@ -412,26 +412,29 @@
                     return $(this).next().text();
                 }).get();
 
-                $('.myTable tbody tr').each(function() {
-                    var showRow = true;
+                // $('.myTable tbody tr').each(function() {
+                //     var showRow = true;
 
-                    var rowMonths = $(this).find('.month-column').text().trim();
-                    var rowYear = $(this).find('.year-column').text().trim();
+                //     var rowMonths = $(this).find('.month-column').text().trim();
+                //     var rowYear = $(this).find('.year-column').text().trim();
 
-                    if (selectedMonths.length > 0 && !selectedMonths.includes(rowMonths)) {
-                        showRow = false;
-                    }
+                //     if (selectedMonths.length > 0 && !selectedMonths.includes(rowMonths)) {
+                //         showRow = false;
+                //     }
 
-                    if (selectedYears.length > 0 && !selectedYears.includes(rowYear)) {
-                        showRow = false;
-                    }
+                //     if (selectedYears.length > 0 && !selectedYears.includes(rowYear)) {
+                //         showRow = false;
+                //     }
 
-                    if (showRow) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
+                //     if (showRow) {
+                //         $(this).show();
+                //     } else {
+                //         $(this).hide();
+                //     }
+                // });
+
+                oTable.columns(1).search(selectedMonths.join('|'), true, false).draw();
+                oTable.columns(2).search(selectedYears.join('|'), true, false).draw();
             }
 
             //find search #example-search-input then apply keyup function to .myTable
