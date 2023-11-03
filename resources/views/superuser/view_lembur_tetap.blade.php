@@ -15,11 +15,11 @@
                                     Gaji Lembur</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                View List Data
+                                View Detail Gaji Karyawan Tetap
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data Karyawan {{ $textBreadcumb }}</h1>
+                    <h1 class="mb-0 fw-bold">List Detail Gaji Lembur {{ $textBreadcumb }}</h1>
                 </div>
             </div>
         </div>

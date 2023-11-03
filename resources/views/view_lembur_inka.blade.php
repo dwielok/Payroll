@@ -15,11 +15,11 @@
                                     List Lembur Karyawan Perbantuan INKA </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                View List Data
+                                View Detail Gaji Lembur Karyawan Perbantuan INKA
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data</h1>
+                    <h1 class="mb-0 fw-bold">List Detail Gaji Lembur</h1>
                 </div>
             </div>
         </div>

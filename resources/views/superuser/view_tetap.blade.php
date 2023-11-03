@@ -15,11 +15,11 @@
                                     List Gaji Karyawan Tetap </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                View List Data
+                                View Detail Gaji Karyawan Perbantuan INKA
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">List Data</h1>
+                    <h1 class="mb-0 fw-bold">List Detail Gaji</h1>
                 </div>
             </div>
         </div>
@@ -154,7 +154,8 @@
                                                         <form action="{{ url('/DeleteTetapSuper') }}" method="post"
                                                             id="form-view">
                                                             @csrf
-                                                            <input type="hidden" name="id" value="{{ $gaji->id_gaji }}">
+                                                            <input type="hidden" name="id"
+                                                                value="{{ $gaji->id_gaji }}">
                                                             <button type="submit"
                                                                 class="btn btn-merah align-items-center ms-2">
                                                                 Delete
