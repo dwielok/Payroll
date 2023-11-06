@@ -87,6 +87,7 @@
                                 <table id="zero_config" class="table table-striped table-bordered text-center myTable">
                                     <thead>
                                         <tr>
+                                            <th class="text-center">#</th>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
                                             <th class="text-center">status</th>
@@ -96,22 +97,23 @@
                                     </thead>
                                     <tbody>
                                         @forelse ($approvals as $approval)
-                                        @php
-                                        if ($approval->status == '0') {
-                                            $status = 'Disetujui';
-                                            $warna = 'success';
-                                            $button = true;
-                                        } elseif ($approval->status == '1') {
-                                            $status = 'Ditolak';
-                                            $warna = 'danger';
-                                            $button = false;
-                                        } else {
-                                            $status = 'Menunggu Persetujuan';
-                                            $warna = 'warning';
-                                            $button = false;
-                                        }
-                                    @endphp
+                                            @php
+                                                if ($approval->status == '0') {
+                                                    $status = 'Disetujui';
+                                                    $warna = 'success';
+                                                    $button = true;
+                                                } elseif ($approval->status == '1') {
+                                                    $status = 'Ditolak';
+                                                    $warna = 'danger';
+                                                    $button = false;
+                                                } else {
+                                                    $status = 'Menunggu Persetujuan';
+                                                    $warna = 'warning';
+                                                    $button = false;
+                                                }
+                                            @endphp
                                             <tr>
+                                                <td class="id-column">{{ $loop->iteration }}</td>
                                                 <td class="month-column">{{ __($approval->bulan) }}</td>
                                                 <td class="year-column">{{ __($approval->year) }}</td>
                                                 <td class="text-{{ $warna }}">

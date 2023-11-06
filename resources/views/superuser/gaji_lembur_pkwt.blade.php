@@ -90,6 +90,7 @@
                                 <table id="zero_config" class="table table-striped table-bordered text-center myTable">
                                     <thead>
                                         <tr>
+                                            <th class="text-center">#</th>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
                                             <th class="text-center">Status</th>
@@ -115,6 +116,7 @@
                                                 }
                                             @endphp
                                             <tr>
+                                                <td class="id-column">{{ $loop->iteration }}</td>
                                                 <td class="month-column">{{ __($approval->bulan) }}</td>
                                                 <td class="year-column">{{ __($approval->year) }}</td>
                                                 <td class="text-{{ $warna }}">

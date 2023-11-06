@@ -82,7 +82,7 @@
                                     {{-- <a href="javascript:void(0)" class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a> --}}
-                                <a href="{{ url('/ExportLemburUser?type=tetap') }}"
+                                    <a href="{{ url('/ExportLemburUser?type=tetap') }}"
                                         class="btn btn-navy d-flex align-items-center ms-2">
                                         Export
                                     </a>
@@ -92,6 +92,7 @@
                                 <table id="zero_config" class="table table-striped table-bordered text-center myTable">
                                     <thead>
                                         <tr>
+                                            <th class="text-center">#</th>
                                             <th class="text-center">Bulan</th>
                                             <th class="text-center">Tahun</th>
                                             <th class="text-center">Status</th>
@@ -117,6 +118,7 @@
                                                 }
                                             @endphp
                                             <tr>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td class="month-column">{{ __($approval->bulan) }}</td>
                                                 <td class="year-column">{{ __($approval->year) }}</td>
                                                 <td class="text-{{ $warna }}">
