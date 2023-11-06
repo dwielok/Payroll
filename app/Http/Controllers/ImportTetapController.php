@@ -138,8 +138,6 @@ class ImportTetapController extends Controller
             }
         });
 
-        //test komen
-
         // dd($datas);
         if ($type == 'tetap') {
             return redirect('/KaryawanTetap');
