@@ -258,6 +258,60 @@ class ImportTetapController extends Controller
         //lowercase type
         $type = strtolower($type);
 
+        $datas = $collection->splice(3);
+
+        $msgArr = [];
+
+        $datas->map(function ($item, $key) use ($type, &$msgArr) { // Pass $msgArr by reference
+            $nip = $item[0];
+
+            if ($nip != null) {
+                $pattern = '/^[IVXLCDM]+-\d+-\d+/';
+                $golongan = $item[2];
+                $error_in_row = $key + 1;
+
+                if (!preg_match($pattern, $golongan)) {
+                    array_push($msgArr, 'Golongan tidak sesuai format pada baris ' . $error_in_row);
+                }
+
+                $mapping = [
+                    2 => 'Lembur Weekend',
+                    3 => 'Lembur Weekday',
+                ];
+
+                //must be zero or more than zero,
+                // nilai ikk can decimal
+
+                foreach ($mapping as $index => $value) {
+                    if ($item[$index] == '') {
+                        array_push($msgArr, $value . ' tidak boleh kosong pada baris ' . $error_in_row);
+                    } else if (!is_numeric($item[$index])) {
+                        array_push($msgArr, $value . ' harus berupa angka pada baris ' . $error_in_row);
+                    } else if ($item[$index] < 0) {
+                        array_push($msgArr, $value . ' tidak boleh kurang dari nol pada baris ' . $error_in_row);
+                    }
+                }
+            }
+        });
+
+        if (count($msgArr) > 0) {
+            $auth = Auth::user()->tipe_user;
+            if ($auth == 'admin') {
+                if ($type == 'tetap') {
+                    $url = '/ImportLemburTetap?type=tetap';
+                } else {
+                    $url = '/ImportLemburTetap?type=pkwt';
+                }
+            } else {
+                if ($type == 'tetap') {
+                    $url = '/ImportLemburTetapSuper?type=tetap';
+                } else {
+                    $url = '/ImportLemburTetapSuper?type=pkwt';
+                }
+            }
+            return redirect($url)->with('error', $msgArr);
+        }
+
         $approval = ApprovalLembur::create([
             'bulan' => $bulan,
             'year' => $tahun,
@@ -267,7 +321,6 @@ class ImportTetapController extends Controller
         ]);
 
         //remove the 3 index top
-        $datas = $collection->splice(3);
         $id_approval = $approval->id;
 
         //search NIP in karyawan by looping $datas
