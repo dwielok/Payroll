@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ImportInkaSuperController extends Controller
 {
-    
+
     public function index()
     {
         return view('superuser.import_inka');
@@ -42,6 +42,60 @@ class ImportInkaSuperController extends Controller
         //lowercase type
         $type = strtolower($type);
 
+        $datas = $collection->splice(3);
+
+        $msgArr = [];
+
+        $datas->map(function ($item, $key) use ($type, &$msgArr) { // Pass $msgArr by reference
+            $nip = $item[0];
+
+            if ($nip != null) {
+                $pattern = '/^[IVXLCDM]+-\d+-\d+/';
+                $golongan = $item[2];
+                $error_in_row = $key + 1;
+
+                if (!preg_match($pattern, $golongan)) {
+                    array_push($msgArr, 'Golongan tidak sesuai format pada baris ' . $error_in_row);
+                }
+
+                $mapping = [
+                    3 => 'Kehadiran',
+                    4 => 'Hari Kerja',
+                    5 => 'Nilai IKK',
+                    6 => 'Dana IKK',
+                    7 => 'Penyesuaian Penambahan',
+                    8 => 'Penyesuaian Pengurangan',
+                    9 => 'PPIP Mandiri',
+                    10 => 'Jam Hilang',
+                    11 => 'Kopinka',
+                    12 => 'Keuangan',
+                    13 => 'Kredit Poin',
+                ];
+
+                //must be zero or more than zero,
+                // nilai ikk can decimal
+
+                foreach ($mapping as $index => $value) {
+                    if ($item[$index] == '') {
+                        array_push($msgArr, $value . ' tidak boleh kosong pada baris ' . $error_in_row);
+                    } else if (!is_numeric($item[$index])) {
+                        array_push($msgArr, $value . ' harus berupa angka pada baris ' . $error_in_row);
+                    } else if ($item[$index] < 0) {
+                        array_push($msgArr, $value . ' tidak boleh kurang dari nol pada baris ' . $error_in_row);
+                    }
+                }
+            }
+        });
+
+        if (count($msgArr) > 0) {
+            if ($type == 'tetap') {
+                $url = '/ImportTetap';
+            } else {
+                $url = '/ImportInkaSuper';
+            }
+            return redirect($url)->with('error', $msgArr);
+        }
+
         $approval = Approval::create([
             'bulan' => $bulan,
             'year' => $tahun,
@@ -51,7 +105,6 @@ class ImportInkaSuperController extends Controller
         ]);
 
         //remove the 3 index top
-        $datas = $collection->splice(3);
         $id_approval = $approval->id;
 
         //search NIP in karyawan by looping $datas
@@ -73,7 +126,7 @@ class ImportInkaSuperController extends Controller
                     'jam_hilang' => $item[11],
                     'kopinka' => $item[12],
                     'keuangan' => $item[13],
-                    'kredit_poin' => $item[14], 
+                    'kredit_poin' => $item[14],
                 ]);
             }
         });

@@ -1,3 +1,7 @@
+@php
+    const DIREKTUR = 'Heru Sulistiyo';
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -501,7 +505,7 @@
                     {{ $gaji->nilai_ikk }}
                 </td>
                 <td colspan="3" style="text-align: right; height: 100px;">
-                    <b><u> A. Wishnudartha Pagehgiri </u></b>
+                    <b><u> {{ DIREKTUR }} </u></b>
                 </td>
                 <td></td>
             </tr>

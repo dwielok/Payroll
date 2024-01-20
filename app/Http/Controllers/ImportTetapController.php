@@ -18,6 +18,7 @@ use App\Models\Karyawan;
 use App\Models\Pegawai;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class ImportTetapController extends Controller
 {
@@ -101,6 +102,78 @@ class ImportTetapController extends Controller
         //lowercase type
         $type = strtolower($type);
 
+        $datas = $collection->splice(3);
+
+        $msgArr = [];
+
+        $datas->map(function ($item, $key) use ($type, &$msgArr) { // Pass $msgArr by reference
+            $nip = $item[0];
+
+            if ($nip != null) {
+                $pattern = '/^[IVXLCDM]+-\d+-\d+/';
+                $golongan = $item[2];
+                $error_in_row = $key + 1;
+
+                if (!preg_match($pattern, $golongan)) {
+                    array_push($msgArr, 'Golongan tidak sesuai format pada baris ' . $error_in_row);
+                }
+
+                $mapping = [
+                    3 => 'Kehadiran',
+                    4 => 'Hari Kerja',
+                    5 => 'Nilai IKK',
+                    6 => 'Dana IKK',
+                    7 => 'Penyesuaian Penambahan',
+                    8 => 'Penyesuaian Pengurangan',
+                    9 => 'PPIP Mandiri',
+                    10 => 'Jam Hilang',
+                    11 => 'Kopinka',
+                    12 => 'Keuangan',
+                    13 => 'Kredit Poin',
+                ];
+
+                //must be zero or more than zero,
+                // nilai ikk can decimal
+
+                foreach ($mapping as $index => $value) {
+                    if ($item[$index] == '') {
+                        array_push($msgArr, $value . ' tidak boleh kosong pada baris ' . $error_in_row);
+                    } else if (!is_numeric($item[$index])) {
+                        array_push($msgArr, $value . ' harus berupa angka pada baris ' . $error_in_row);
+                    } else if ($item[$index] < 0) {
+                        array_push($msgArr, $value . ' tidak boleh kurang dari nol pada baris ' . $error_in_row);
+                    }
+                }
+            }
+        });
+
+        // dd($msgArr);
+
+        if (count($msgArr) > 0) {
+            if ($type == 'tetap') {
+                $url = '/ImportTetap';
+            } else {
+                $url = '/ImportInka';
+            }
+            return redirect($url)->with('error', $msgArr);
+        }
+
+        // $golongan = $datas->pluck(2);
+
+        // $pattern = '/^[IVXLCDM]+-\d+-\d+$/';
+        // foreach ($golongan as $value) {
+        //     $index = $golongan->search($value) + 4;
+        //     // dd($index);
+        //     if (!preg_match($pattern, $value)) {
+        //         if ($type == 'tetap') {
+        //             $url = '/ImportTetap';
+        //         } else {
+        //             $url = '/ImportInkaSuper';
+        //         }
+        //         return redirect($url)->with('error', 'Golongan tidak sesuai format pada baris ' . $index);
+        //     }
+        // }
+
         $approval = Approval::create([
             'bulan' => $bulan,
             'year' => $tahun,
@@ -110,13 +183,25 @@ class ImportTetapController extends Controller
         ]);
 
         //remove the 3 index top
-        $datas = $collection->splice(3);
         $id_approval = $approval->id;
 
         //search NIP in karyawan by looping $datas
-        $datas->map(function ($item) use ($id_approval) {
+        $datas->map(function ($item, $key) use ($id_approval) {
             $nip = $item[0];
             if ($nip != null) {
+
+                // $pattern = '/^[IVXLCDM]+-\d+-\d+$/';
+                // $golongan = $item[2];
+                // $error_in_row = $key + 4;
+                // if (!preg_match($pattern, $golongan)) {
+                //     //get the number of row of collection
+                //     //redirect with error message
+                //     // dd('Golongan tidak sesuai format pada baris ' . $error_in_row);
+                //     return redirect('/importTetapSuper')->with('error', 'Golongan tidak sesuai format pada baris ' . $error_in_row);
+                //     // Remove the unnecessary break statement
+                //     // break;
+                // }
+
                 $karyawan = Pegawai::where('nip', $nip)->first();
 
                 GajiTemp::insert([

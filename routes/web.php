@@ -259,7 +259,7 @@ Route::group(['middleware' => 'auth'], function () {
         //Routing Halaman Import Pkwt
         Route::get('ImportPkwtSuper', [ImportPkwtSuperController::class, 'index'])->name('superuser.import_pkwt');
 
-        //Routing Import Lembur 
+        //Routing Import Lembur
         Route::get('ImportLemburTetapSuper', [ImportLemburSuperController::class, 'index'])->name('superuser.import_lembur');
 
         //Routing Import Lembur INKA
@@ -360,7 +360,7 @@ Route::post('test_import_inka', [ImportTetapController::class, 'import'])->name(
 Route::post('test_import_pkwt', [ImportPkwtController::class, 'import'])->name('importPkwt');
 Route::get('test_upload', [ImportTetapController::class, 'test_upload'])->name('testUpload');
 
-Route::post('test_import_tetap_super', [ImportTetapController::class, 'import'])->name('importTetapSuper');
+Route::post('test_import_tetap_super', [ImportTetapSuperController::class, 'import'])->name('importTetapSuper');
 Route::post('test_import_inka_super', [ImportInkaSuperController::class, 'import'])->name('importInkaSuper');
 Route::post('test_import_pkwt_super', [ImportPkwtSuperController::class, 'import'])->name('importPkwtSuper');
 
