@@ -22,19 +22,19 @@ class LoginController extends Controller
     public function actionlogin(Request $request)
     {
         $data = [
-            'email' => $request->input('email'),
+            'username' => $request->input('username'),
             'password' => $request->input('password'),
         ];
 
         if (Auth::Attempt($data)) {
-            $user = User::where('email', $request->input('email'))->first();
+            $user = User::where('username', $request->input('username'))->first();
             if ($user->tipe_user === 'admin') {
                 return redirect('dashboard');
             } else {
                 return redirect('dashboardSuperuser');
             }
         } else {
-            Session::flash('error', 'Email atau Password Salah');
+            Session::flash('error', 'Username atau Password Salah');
             return redirect('/');
         }
     }

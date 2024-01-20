@@ -31,8 +31,8 @@
                     <form action="{{ route('actionlogin') }}" method="post">
                         @csrf
                         <div class="form-group mb-2">
-                            <label>Email</label>
-                            <input type="email" name="email" class="form-control input" placeholder="Email"
+                            <label>Username</label>
+                            <input type="text" name="username" class="form-control input" placeholder="Username"
                                 required="">
                         </div>
                         <div class="form-group mb-2">
