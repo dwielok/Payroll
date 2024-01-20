@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Flexy bootstrap dashboard admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, material design, Flexy bootstrap 5 dashboard template" />
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Flexy bootstrap dashboard admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, material design, Flexy bootstrap 5 dashboard template" />
     <meta name="description" content="Flexy is powerful and clean admin dashboard template" />
     <meta name="robots" content="noindex,nofollow" />
     <title>Payroll</title>
@@ -37,13 +38,21 @@
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================= -->
     <div class="preloader">
-        <svg class="tea lds-ripple" width="37" height="48" viewbox="0 0 37 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M27.0819 17H3.02508C1.91076 17 1.01376 17.9059 1.0485 19.0197C1.15761 22.5177 1.49703 29.7374 2.5 34C4.07125 40.6778 7.18553 44.8868 8.44856 46.3845C8.79051 46.79 9.29799 47 9.82843 47H20.0218C20.639 47 21.2193 46.7159 21.5659 46.2052C22.6765 44.5687 25.2312 40.4282 27.5 34C28.9757 29.8188 29.084 22.4043 29.0441 18.9156C29.0319 17.8436 28.1539 17 27.0819 17Z" stroke="#fec80e" stroke-width="2"></path>
-            <path d="M29 23.5C29 23.5 34.5 20.5 35.5 25.4999C36.0986 28.4926 34.2033 31.5383 32 32.8713C29.4555 34.4108 28 34 28 34" stroke="#fec80e" stroke-width="2"></path>
-            <path id="teabag" fill="#fec80e" fill-rule="evenodd" clip-rule="evenodd" d="M16 25V17H14V25H12C10.3431 25 9 26.3431 9 28V34C9 35.6569 10.3431 37 12 37H18C19.6569 37 21 35.6569 21 34V28C21 26.3431 19.6569 25 18 25H16ZM11 28C11 27.4477 11.4477 27 12 27H18C18.5523 27 19 27.4477 19 28V34C19 34.5523 18.5523 35 18 35H12C11.4477 35 11 34.5523 11 34V28Z">
+        <svg class="tea lds-ripple" width="37" height="48" viewbox="0 0 37 48" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M27.0819 17H3.02508C1.91076 17 1.01376 17.9059 1.0485 19.0197C1.15761 22.5177 1.49703 29.7374 2.5 34C4.07125 40.6778 7.18553 44.8868 8.44856 46.3845C8.79051 46.79 9.29799 47 9.82843 47H20.0218C20.639 47 21.2193 46.7159 21.5659 46.2052C22.6765 44.5687 25.2312 40.4282 27.5 34C28.9757 29.8188 29.084 22.4043 29.0441 18.9156C29.0319 17.8436 28.1539 17 27.0819 17Z"
+                stroke="#fec80e" stroke-width="2"></path>
+            <path
+                d="M29 23.5C29 23.5 34.5 20.5 35.5 25.4999C36.0986 28.4926 34.2033 31.5383 32 32.8713C29.4555 34.4108 28 34 28 34"
+                stroke="#fec80e" stroke-width="2"></path>
+            <path id="teabag" fill="#fec80e" fill-rule="evenodd" clip-rule="evenodd"
+                d="M16 25V17H14V25H12C10.3431 25 9 26.3431 9 28V34C9 35.6569 10.3431 37 12 37H18C19.6569 37 21 35.6569 21 34V28C21 26.3431 19.6569 25 18 25H16ZM11 28C11 27.4477 11.4477 27 12 27H18C18.5523 27 19 27.4477 19 28V34C19 34.5523 18.5523 35 18 35H12C11.4477 35 11 34.5523 11 34V28Z">
             </path>
-            <path id="steamL" d="M17 1C17 1 17 4.5 14 6.5C11 8.5 11 12 11 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#fec80e"></path>
-            <path id="steamR" d="M21 6C21 6 21 8.22727 19 9.5C17 10.7727 17 13 17 13" stroke="#fec80e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path id="steamL" d="M17 1C17 1 17 4.5 14 6.5C11 8.5 11 12 11 12" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" stroke="#fec80e"></path>
+            <path id="steamR" d="M21 6C21 6 21 8.22727 19 9.5C17 10.7727 17 13 17 13" stroke="#fec80e"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
     </div>
     <!-- ============================================================= -->
@@ -57,7 +66,8 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <div class="navbar-header">
                     <!-- This is for the sidebar toggle which is visible on mobile only -->
-                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ri-close-line ri-menu-2-line fs-6"></i></a>
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                            class="ri-close-line ri-menu-2-line fs-6"></i></a>
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
@@ -85,7 +95,10 @@
                     <!-- ============================================================== -->
                     <!-- Toggle which is visible on mobile only -->
                     <!-- ============================================================== -->
-                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="ri-more-line fs-6"></i></a>
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+                        data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
+                            class="ri-more-line fs-6"></i></a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -97,7 +110,8 @@
                     <ul class="navbar-nav me-auto">
                         <!-- This is  -->
                         <li class="nav-item">
-                            <a class="nav-link sidebartoggler d-none d-md-block" href="javascript:void(0)"><i data-feather="menu"></i></a>
+                            <a class="nav-link sidebartoggler d-none d-md-block" href="javascript:void(0)"><i
+                                    data-feather="menu"></i></a>
                         </li>
                         {{-- <!-- search -->
                         <li class="nav-item" style="margin-left: 50px">
@@ -121,11 +135,14 @@
                         <!-- Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown profile-dropdown">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="../../assets/images/users/account.jpg" alt="user" width="30" class="profile-pic rounded-circle" />
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="../../assets/images/users/account.jpg" alt="user" width="30"
+                                    class="profile-pic rounded-circle" />
                                 <div class="d-none d-md-flex">
                                     <span class="ms-2">
-                                        <span class="text-dark fw-bold">{{ Auth::user()->tipe_user == 'superadmin' ? 'Superuser' : 'User' }}</span></span>
+                                        <span
+                                            class="text-dark fw-bold">{{ Auth::user()->tipe_user == 'superadmin' ? 'Superuser' : 'User' }}</span></span>
                                     {{-- <span>
                                         <i data-feather="chevron-down" class="feather-sm"></i>
                                     </span> --}}
@@ -146,7 +163,8 @@
 
         <aside class="left-sidebar">
             <!-- Sidebar scroll-->
-            <img src="{{ asset('img/Bolder 2.png') }}" alt="border" class="position-absolute" style="bottom: 0px;height:150px; width:100%">
+            <img src="{{ asset('img/Bolder 2.png') }}" alt="border" class="position-absolute"
+                style="bottom: 0px;height:150px; width:100%">
             <div class="scroll-sidebar h-100">
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
@@ -157,154 +175,172 @@
                             <span class="hide-menu">Dashboards</span>
                         </li> --}}
                         @if (Auth::user()->tipe_user == 'admin')
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard') }}" aria-expanded="false">
-                                <i data-feather="grid"></i><span class="hide-menu">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="inbox"></i><span class="hide-menu">Gaji
-                                    Karyawan
-                                </span></a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item">
-                                    <a href="/KaryawanTetap" class="sidebar-link"><span class="hide-menu">
-                                            Karyawan
-                                            Tetap </span></a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/karyawanperbantuaninka" class="sidebar-link"><span class="hide-menu">
-                                            Karyawan Perbantuan INKA
-                                        </span></a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/karyawanPKWT" class="sidebar-link"><span class="hide-menu">
-                                            Karyawan PKWT
-                                        </span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="file-text"></i><span class="hide-menu">Gaji
-                                    Lembur
-                                </span></a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item">
-                                    <a href="/GajiLemburTetap" class="sidebar-link"><span class="hide-menu">
-                                            Karyawan
-                                            Tetap </span></a>
-                                </li>
-                                <li class="sidebar-item">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                    href="{{ url('/dashboard') }}" aria-expanded="false">
+                                    <i data-feather="grid"></i><span class="hide-menu">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><i data-feather="inbox"></i><span class="hide-menu">Gaji
+                                        Karyawan
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+                                        <a href="/KaryawanTetap" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan
+                                                Tetap </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/karyawanperbantuaninka" class="sidebar-link"><span
+                                                class="hide-menu">
+                                                Karyawan Perbantuan INKA
+                                            </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/karyawanPKWT" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan PKWT
+                                            </span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><i data-feather="file-text"></i><span
+                                        class="hide-menu">Gaji
+                                        Lembur
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+                                        <a href="/GajiLemburTetap" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan
+                                                Tetap </span></a>
+                                    </li>
+                                    {{-- <li class="sidebar-item">
                                     <a href="/GajiLemburInka" class="sidebar-link"><span class="hide-menu">
                                             Karyawan Perbantuan INKA
                                         </span></a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/GajiLemburPkwt" class="sidebar-link"><span class="hide-menu">
-                                            Karyawan PKWT
-                                        </span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/rekap" aria-expanded="false">
-                                <i data-feather="book-open"></i><span class="hide-menu">Rekap Gaji</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/slip" aria-expanded="false">
-                                <i data-feather="archive"></i><span class="hide-menu">Slip Gaji</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/template" aria-expanded="false">
-                                <i data-feather="download"></i><span class="hide-menu">Download Template</span>
-                            </a>
-                        </li>
+                                </li> --}}
+                                    <li class="sidebar-item">
+                                        <a href="/GajiLemburPkwt" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan PKWT
+                                            </span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/rekap"
+                                    aria-expanded="false">
+                                    <i data-feather="book-open"></i><span class="hide-menu">Rekap Gaji</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/slip"
+                                    aria-expanded="false">
+                                    <i data-feather="archive"></i><span class="hide-menu">Slip Gaji</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/template"
+                                    aria-expanded="false">
+                                    <i data-feather="download"></i><span class="hide-menu">Download Template</span>
+                                </a>
+                            </li>
                         @else
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboardSuperuser') }}" aria-expanded="false">
-                                <i data-feather="grid"></i><span class="hide-menu">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="inbox"></i><span class="hide-menu">Gaji
-                                    Karyawan
-                                </span></a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item">
-                                    <a href="/KaryawanTetapSuper" class="sidebar-link"><span class="hide-menu">
-                                            Karyawan
-                                            Tetap </span></a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="KaryawanInkaSuper" class="sidebar-link"><span class="hide-menu">
-                                            Karyawan Perbantuan INKA
-                                        </span></a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="KaryawanPkwtSuper" class="sidebar-link"><span class="hide-menu">
-                                            Karyawan PKWT
-                                        </span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="file-text"></i><span class="hide-menu">Gaji
-                                    Lembur
-                                </span></a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item">
-                                    <a href="/GajiLemburTetapSuper" class="sidebar-link"><span class="hide-menu">
-                                            Karyawan
-                                            Tetap </span></a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/GajiLemburInkaSuper" class="sidebar-link"><span class="hide-menu">
-                                            Karyawan Perbantuan INKA
-                                        </span></a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/GajiLemburPkwtSuper" class="sidebar-link"><span class="hide-menu">
-                                            Karyawan PKWT
-                                        </span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/RekapSuper" aria-expanded="false">
-                                <i data-feather="book-open"></i><span class="hide-menu">Rekap Gaji</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/SlipSuper" aria-expanded="false">
-                                <i data-feather="archive"></i><span class="hide-menu">Slip Gaji</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/TemplateSuper" aria-expanded="false">
-                                <i data-feather="download"></i><span class="hide-menu">Download Template</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="file-text"></i><span class="hide-menu">Approval
-                                </span></a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item">
-                                    <a href="/ApprovalSuper" class="sidebar-link"><span class="hide-menu">
-                                            Gaji Karyawan</span></a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/ApprovalLemburSuper" class="sidebar-link"><span class="hide-menu">
-                                            Gaji Lembur
-                                        </span></a>
-                                </li>
-                            </ul>
-                        </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                    href="{{ url('/dashboardSuperuser') }}" aria-expanded="false">
+                                    <i data-feather="grid"></i><span class="hide-menu">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><i data-feather="inbox"></i><span class="hide-menu">Gaji
+                                        Karyawan
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+                                        <a href="/KaryawanTetapSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan
+                                                Tetap </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="KaryawanInkaSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan Perbantuan INKA
+                                            </span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="KaryawanPkwtSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan PKWT
+                                            </span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><i data-feather="file-text"></i><span
+                                        class="hide-menu">Gaji
+                                        Lembur
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+                                        <a href="/GajiLemburTetapSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan
+                                                Tetap </span></a>
+                                    </li>
+                                    {{-- <li class="sidebar-item">
+                                        <a href="/GajiLemburInkaSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan Perbantuan INKA
+                                            </span></a>
+                                    </li> --}}
+                                    <li class="sidebar-item">
+                                        <a href="/GajiLemburPkwtSuper" class="sidebar-link"><span class="hide-menu">
+                                                Karyawan PKWT
+                                            </span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/RekapSuper"
+                                    aria-expanded="false">
+                                    <i data-feather="book-open"></i><span class="hide-menu">Rekap Gaji</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/SlipSuper"
+                                    aria-expanded="false">
+                                    <i data-feather="archive"></i><span class="hide-menu">Slip Gaji</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/TemplateSuper"
+                                    aria-expanded="false">
+                                    <i data-feather="download"></i><span class="hide-menu">Download Template</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><i data-feather="file-text"></i><span
+                                        class="hide-menu">Approval
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+                                        <a href="/ApprovalSuper" class="sidebar-link"><span class="hide-menu">
+                                                Gaji Karyawan</span></a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/ApprovalLemburSuper" class="sidebar-link"><span class="hide-menu">
+                                                Gaji Lembur
+                                            </span></a>
+                                    </li>
+                                </ul>
+                            </li>
                         @endif
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#modalLogout">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                aria-expanded="false" data-bs-toggle="modal" data-bs-target="#modalLogout">
                                 <i data-feather="log-out"></i><span class="hide-menu">Logout</span>
                             </a>
                         </li>
@@ -327,12 +363,14 @@
 
         <!-- Modal Logout -->
 
-        <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel" aria-hidden="true">
+        <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="modalLogoutLabel">Logout</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         Do you want to Logout?
@@ -343,7 +381,8 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-merah" data-bs-dismiss="modal">No</button>
 
-                        <button class="btn btn-navy" onclick="document.getElementById(
+                        <button class="btn btn-navy"
+                            onclick="document.getElementById(
                                         'logout-form').submit();">Yes</button>
                     </div>
                 </div>
