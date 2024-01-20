@@ -44,6 +44,45 @@ class ImportPkwtSuperController extends Controller
         //lowercase type
         $type = strtolower($type);
 
+        $datas = $collection->splice(3);
+
+        $msgArr = [];
+
+        $datas->map(function ($item, $key) use ($type, &$msgArr) { // Pass $msgArr by reference
+            $nip = $item[0];
+
+            if ($nip != null) {
+                $error_in_row = $key + 1;
+
+                $mapping = [
+                    3 => 'Kehadiran',
+                    4 => 'Hari Kerja',
+                    5 => 'Nilai IKK',
+                    6 => 'Dana IKK',
+                    7 => 'Penyesuaian Penambahan',
+                    8 => 'Penyesuaian Pengurangan',
+                    10 => 'Tunjangan Profesional',
+                ];
+
+                //must be zero or more than zero,
+                // nilai ikk can decimal
+
+                foreach ($mapping as $index => $value) {
+                    if ($item[$index] == '') {
+                        array_push($msgArr, $value . ' tidak boleh kosong pada baris ' . $error_in_row);
+                    } else if (!is_numeric($item[$index])) {
+                        array_push($msgArr, $value . ' harus berupa angka pada baris ' . $error_in_row);
+                    } else if ($item[$index] < 0) {
+                        array_push($msgArr, $value . ' tidak boleh kurang dari nol pada baris ' . $error_in_row);
+                    }
+                }
+            }
+        });
+
+        if (count($msgArr) > 0) {
+            return redirect('/ImportPkwtSuper')->with('error', $msgArr);
+        }
+
         $approval = Approval::create([
             'bulan' => $bulan,
             'year' => $tahun,
@@ -53,7 +92,6 @@ class ImportPkwtSuperController extends Controller
         ]);
 
         //remove the 3 index top
-        $datas = $collection->splice(3);
         $id_approval = $approval->id;
 
         //search NIP in karyawan by looping $datas
