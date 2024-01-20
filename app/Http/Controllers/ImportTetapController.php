@@ -266,13 +266,7 @@ class ImportTetapController extends Controller
             $nip = $item[0];
 
             if ($nip != null) {
-                $pattern = '/^[IVXLCDM]+-\d+-\d+/';
-                $golongan = $item[2];
                 $error_in_row = $key + 1;
-
-                if (!preg_match($pattern, $golongan)) {
-                    array_push($msgArr, 'Golongan tidak sesuai format pada baris ' . $error_in_row);
-                }
 
                 $mapping = [
                     2 => 'Lembur Weekend',
