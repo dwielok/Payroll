@@ -294,13 +294,13 @@ class ImportTetapController extends Controller
                 if ($type == 'tetap') {
                     $url = '/ImportLemburTetap?type=tetap';
                 } else {
-                    $url = '/ImportLemburTetap?type=pkwt';
+                    $url = '/ImportLemburPkwt?type=pkwt';
                 }
             } else {
                 if ($type == 'tetap') {
                     $url = '/ImportLemburTetapSuper?type=tetap';
                 } else {
-                    $url = '/ImportLemburTetapSuper?type=pkwt';
+                    $url = '/ImportLemburPkwtSuper?type=pkwt';
                 }
             }
             return redirect($url)->with('error', $msgArr);
