@@ -1,5 +1,5 @@
 @php
-    const DIREKTUR = 'Heru Sulistiyo';
+    $direktur = 'Heru Sulistiyo';
 @endphp
 
 <!DOCTYPE html>
@@ -505,7 +505,7 @@
                     {{ $gaji->nilai_ikk }}
                 </td>
                 <td colspan="3" style="text-align: right; height: 100px;">
-                    <b><u> {{ DIREKTUR }} </u></b>
+                    <b><u> {{ $direktur }} </u></b>
                 </td>
                 <td></td>
             </tr>
