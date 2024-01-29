@@ -78,7 +78,7 @@
                             <!-- Dark Logo icon -->
                             <img src="{{ asset('img/logo_baru.png') }}" alt="homepage" style="right: 5px; width:80%">
                             <!-- Light Logo icon -->
-                            <img src="../../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                            {{-- <img src="../../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" /> --}}
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
@@ -86,7 +86,7 @@
                             <!-- dark Logo text -->
                             {{-- <img src="../../assets/images/logo-text.png" alt="homepage" class="dark-logo" /> --}}
                             <!-- Light Logo text -->
-                            <img src="../../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                            {{-- <img src="../../assets/images/logo-light-text.png" class="light-logo" alt="homepage" /> --}}
                         </span>
                     </a>
                     <!-- ============================================================== -->
@@ -137,7 +137,7 @@
                         <li class="nav-item dropdown profile-dropdown">
                             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="../../assets/images/users/account.jpg" alt="user" width="30"
+                                <img src="{{asset('assets/images/users/account.jpg')}}" alt="user" width="30"
                                     class="profile-pic rounded-circle" />
                                 <div class="d-none d-md-flex">
                                     <span class="ms-2">
@@ -410,27 +410,27 @@
     <!-- ============================================================= -->
     <!-- All Jquery -->
     <!-- ============================================================= -->
-    <script src="../../dist/libs/jquery/dist/jquery.min.js"></script>
+    <script src="{{ asset('dist/libs/jquery/dist/jquery.min.js') }}"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../../dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <!-- apps -->
-    <script src="../../dist/js/app.min.js"></script>
-    <script src="../../dist/js/app.init.js"></script>
-    <script src="../../dist/js/app-style-switcher.js"></script>
+    <script src="{{ asset('dist/js/app.min.js') }}"></script>
+    <script src="{{ asset('dist/js/app.init.js') }}"></script>
+    <script src="{{ asset('dist/js/app-style-switcher.js') }}"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="../../dist/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.js"></script>
-    <script src="../../dist/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="{{ asset('dist/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.js') }}"></script>
+    <script src="{{ asset('dist/libs/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
     <!--Wave Effects -->
-    <script src="../../dist/js/waves.js"></script>
+    <script src="{{ asset('dist/js/waves.js') }}"></script>
     <!--Menu sidebar -->
-    <script src="../../dist/js/sidebarmenu.js"></script>
+    <script src="{{ asset('dist/js/sidebarmenu.js') }}"></script>
     <!--Custom JavaScript -->
-    <script src="../../dist/js/feather.min.js"></script>
-    <script src="../../dist/js/custom.min.js"></script>
+    <script src="{{ asset('dist/js/feather.min.js') }}"></script>
+    <script src="{{ asset('dist/js/custom.min.js') }}"></script>
     <!--This page plugins -->
-    <script src="../../dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('dist/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 
-    <script src="../../dist/js/pages/datatable/datatable-basic.init.js"></script>
+    <script src="{{ asset('dist/js/pages/datatable/datatable-basic.init.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
