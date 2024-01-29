@@ -350,7 +350,7 @@ class PdfController extends Controller
                 }
             }
             //create a download link
-            $link = url('storage/zip/' . $zip_name);
+            $link = url('public/storage/zip/' . $zip_name);
             return response()->json([
                 'success' => true,
                 'link' => $link,
@@ -775,7 +775,7 @@ class PdfController extends Controller
         }
         //length $data
         if (count($data) < 2) {
-            $link = url('storage/pdf/' . $pdfs[0] . '.pdf');
+            $link = url('public/storage/pdf/' . $pdfs[0] . '.pdf');
             return response()->json([
                 'success' => true,
                 'link' => $link,
@@ -815,7 +815,7 @@ class PdfController extends Controller
                     }
                 }
                 //create a download link
-                $link = url('storage/zip/' . $zip_name);
+                $link = url('public/storage/zip/' . $zip_name);
                 return response()->json([
                     'success' => true,
                     'link' => $link,

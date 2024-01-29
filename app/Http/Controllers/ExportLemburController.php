@@ -46,7 +46,7 @@ class ExportLemburController extends Controller
         Excel::store(new GajiLemburExport($approvals), 'public/excel/' . $random_name . '.xlsx');
 
         $data = [
-            'file' => url('storage/excel/' . $random_name . '.xlsx'),
+            'file' => url('public/storage/excel/' . $random_name . '.xlsx'),
             'success' => TRUE,
         ];
 
