@@ -63,7 +63,7 @@ use App\Http\Controllers\ViewInkaSuperController;
 use App\Http\Controllers\viewPkwtController;
 use App\Http\Controllers\ViewPkwtSuperController;
 use App\Http\Controllers\viewTetapController;
-use App\Http\Controllers\viewTetapSuperController;
+use App\Http\Controllers\ViewTetapSuperController;
 use App\Models\GajiLembur;
 
 /*
@@ -302,7 +302,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('ApprovalLemburSuper', [ApprovalLemburController::class, 'index'])->name('superuser.approval_lembur');
 
         //Routing Halaman View Tetap Superuser
-        Route::get('ViewTetapSuper', [viewTetapSuperController::class, 'index'])->name('superuser.view_tetap');
+        Route::get('ViewTetapSuper', [ViewTetapSuperController::class, 'index'])->name('superuser.view_tetap');
 
         //Routing Halaman View Lembur Tetap
         Route::get('viewLemburTetap', [GajiLemburTetapSuperController::class, 'detail'])->name('superuser.view_lembur_tetap');
