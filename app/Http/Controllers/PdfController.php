@@ -380,7 +380,7 @@ class PdfController extends Controller
                     if ($i == 0) {
                         $result_besaran[$a][0] =  (int)$b[0];
                     } else {
-                        $result_besaran[$a][] = round($result_besaran[$a][$i - 1] + ($nilai_awal * 0.053));
+                        $result_besaran[$a][] = ($result_besaran[$a][$i - 1] + ($nilai_awal * 0.0530001763357));
                     }
                 }
             }
@@ -414,6 +414,8 @@ class PdfController extends Controller
         $hasil_besaran = $salaries->where('golongan', 'like', $awal)->first()->hasil_besaran;
         $tingkatan = explode('-', $prefix)[2];
         $result_gaji = $hasil_besaran[$posisi][$tingkatan - 1];
+
+        // dd($salaries);
 
         return $result_gaji;
     }
@@ -567,6 +569,8 @@ class PdfController extends Controller
 
             $result[] = $obj;
         }
+
+        // dd($result);
 
         return $result;
     }

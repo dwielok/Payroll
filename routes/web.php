@@ -91,10 +91,10 @@ Route::post('/export_pkwt', [App\Http\Controllers\ExportTetapController::class, 
 Route::post('/export_lembur_action', [App\Http\Controllers\ExportLemburSuperController::class, 'export'])->name('export.export_lembur');
 
 Route::post('/preview_gaji/{id}', [App\Http\Controllers\EditTetapSuperController::class, 'preview_gaji'])->name('preview_gaji');
-Route::post('/preview_gaji_pkwt/{id}', [App\Http\Controllers\EditTetapSuperController::class, 'preview_gaji_pkwt'])->name('preview_gaji');
-Route::post('/preview_gaji_lembur/{id}', [App\Http\Controllers\EditLemburTetapInkaController::class, 'preview_gaji'])->name('preview_gaji');
+Route::post('/preview_gaji_pkwt/{id}', [App\Http\Controllers\EditTetapSuperController::class, 'preview_gaji_pkwt'])->name('preview_gaji_pkwt');
+Route::post('/preview_gaji_lembur/{id}', [App\Http\Controllers\EditLemburTetapInkaController::class, 'preview_gaji'])->name('preview_gaji_lembur');
 Route::post('/edit_gaji_tetap/{id}', [App\Http\Controllers\EditTetapSuperController::class, 'edit_gaji_tetap'])->name('edit_gaji_tetap');
-Route::post('/edit_gaji_pkwt/{id}', [App\Http\Controllers\EditPkwtSuperController::class, 'edit_gaji_pkwt'])->name('edit_gaji_tetap');
+Route::post('/edit_gaji_pkwt/{id}', [App\Http\Controllers\EditPkwtSuperController::class, 'edit_gaji_pkwt'])->name('edit_gaji_pkwt');
 Route::post('/edit_gaji_lembur/{id}', [App\Http\Controllers\EditLemburTetapInkaController::class, 'edit_gaji_lembur'])->name('edit_gaji_lembur');
 
 //ROUTING UNTUK LOGIN
@@ -147,7 +147,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', [LoginController::class, 'index'])->name('logout');
 
     //Routing Halaman Slip Gaji
-    Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip');
+    Route::get('SlipGaji', [SlipController::class, 'index'])->name('slip_gaji');
 
     //Routing Import Tetap
     Route::get('ImportTetap', [ImportTetapController::class, 'index'])->name('import_tetap');
@@ -168,7 +168,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('ExportPkwt', [ExportPkwtController::class, 'index'])->name('export_pkwt');
 
     //Routing Export
-    Route::get('Export', [ExportTetapController::class, 'index'])->name('export_tetap');
+    Route::get('Export', [ExportTetapController::class, 'index'])->name('export_tetap_2');
 
     //Routing View Tetap
     Route::get('viewTetap', [viewTetapController::class, 'index'])->name('viewTetap');
@@ -221,9 +221,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Delete Tetap & Inka
     Route::post('DeleteTetapSuper', [KaryawanTetapController::class, 'deleteTetap'])->name('deleteTetap');
-    Route::post('DeleteInkaSuper', [KaryawanTetapController::class, 'deleteTetap'])->name('deleteTetap');
-    Route::post('DeletePkwtSuper', [KaryawanPkwtController::class, 'deleteTetap'])->name('deleteTetap');
-    Route::post('DeleteLemburSuper', [GajiLemburTetapSuperController::class, 'delete'])->name('deleteTetap');
+    Route::post('DeleteInkaSuper', [KaryawanTetapController::class, 'deleteTetap'])->name('delete_inka');
+    Route::post('DeletePkwtSuper', [KaryawanPkwtController::class, 'deleteTetap'])->name('delete_pkwt');
+    Route::post('DeleteLemburSuper', [GajiLemburTetapSuperController::class, 'delete'])->name('delete_lembur');
 
     Route::group(['middleware' => ['superuser']], function () {
         Route::get('dashboardSuperuser', [DashboardSuperController::class, 'index'])->name('superuser.dashboard');
@@ -248,7 +248,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('ExportPkwtSuper', [ExportPkwtSuperController::class, 'index'])->name('superuser.export_pkwt');
 
         //Routing Halaman Export Lembur
-        Route::get('ExportLembur', [ExportLemburSuperController::class, 'index'])->name('superuser.export_lembur');
+        Route::get('ExportLembur', [ExportLemburSuperController::class, 'index'])->name('superuser.export_lembur_2');
 
         //Routing Halaman Import Tetap
         Route::get('ImportTetapSuper', [ImportTetapSuperController::class, 'index'])->name('superuser.import_tetap');
@@ -263,10 +263,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('ImportLemburTetapSuper', [ImportLemburSuperController::class, 'index'])->name('superuser.import_lembur');
 
         //Routing Import Lembur INKA
-        Route::get('ImportLemburInkaSuper', [ImportLemburSuperController::class, 'index'])->name('superuser.import_lembur');
+        Route::get('ImportLemburInkaSuper', [ImportLemburSuperController::class, 'index'])->name('superuser.import_lembur_inka');
 
         //Routing Import Lembur PKWT
-        Route::get('ImportLemburPkwtSuper', [ImportLemburSuperController::class, 'index'])->name('superuser.import_lembur');
+        Route::get('ImportLemburPkwtSuper', [ImportLemburSuperController::class, 'index'])->name('superuser.import_lembur_pkwt');
 
         //Routing Halaman Rekap Superuser
         Route::get('RekapSuper', [RekapSuperController::class, 'index'])->name('superuser.rekap');
