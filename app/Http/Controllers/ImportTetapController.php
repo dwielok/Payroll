@@ -85,7 +85,8 @@ class ImportTetapController extends Controller
 
         $nama_file = rand() . $file->getClientOriginalName();
 
-        $file->move('importTetapDoc', $nama_file);
+        // $file->move('importTetapDoc', $nama_file);
+        $file->move(public_path('/importTetapDoc'), $nama_file);
 
         // Excel::import(new KaryawanTetapImport, public_path('/importTetap/' . $nama_file));
         $collection = Excel::toCollection(new KaryawanTetapImport, public_path('/importTetapDoc/' . $nama_file));
@@ -241,7 +242,8 @@ class ImportTetapController extends Controller
 
         $nama_file = rand() . $file->getClientOriginalName();
 
-        $file->move('importTetapDoc', $nama_file);
+        // $file->move('importTetapDoc', $nama_file);
+        $file->move(public_path('/importTetapDoc'), $nama_file);
 
         // Excel::import(new KaryawanTetapImport, public_path('/importTetap/' . $nama_file));
         $collection = Excel::toCollection(new KaryawanTetapImport, public_path('/importTetapDoc/' . $nama_file));
