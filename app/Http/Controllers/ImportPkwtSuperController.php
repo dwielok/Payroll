@@ -29,7 +29,8 @@ class ImportPkwtSuperController extends Controller
 
         $nama_file = rand() . $file->getClientOriginalName();
 
-        $file->move('importPkwtDoc', $nama_file);
+        // $file->move('importPkwtDoc', $nama_file);
+        $file->move(public_path('/importPkwtDoc'), $nama_file);
 
         $collection = Excel::toCollection(new KaryawanPkwtImport, public_path('/importPkwtDoc/' . $nama_file));
 
