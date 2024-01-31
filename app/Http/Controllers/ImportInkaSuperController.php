@@ -27,7 +27,8 @@ class ImportInkaSuperController extends Controller
 
         $nama_file = rand() . $file->getClientOriginalName();
 
-        $file->move('importInkaDoc', $nama_file);
+        // $file->move('importInkaDoc', $nama_file);
+        $file->move(public_path('/importInkaDoc'), $nama_file);
 
         $collection = Excel::toCollection(new KaryawanInkaImport, public_path('/importInkaDoc/' . $nama_file));
 
