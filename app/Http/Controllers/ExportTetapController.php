@@ -62,7 +62,7 @@ class ExportTetapController extends Controller
 
         //redirect to excel file
         $data = [
-            'file' => asset('storage/excel/' . $random_name . '.xlsx'),
+        'file' => asset('storage/excel/' . $random_name . '.xlsx'),
             'success' => TRUE,
         ];
 
