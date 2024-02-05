@@ -122,6 +122,12 @@ class ApprovalSuperController extends Controller
 
     public function decline(Request $request)
     {
+        $request->validate([
+            'keterangan' => 'required'
+        ], [
+            'keterangan.required' => 'Keterangan harus diisi'
+        ]);
+
         $approval = Approval::where('id', $request->id)->update([
             'status' => 1,
             'keterangan' => $request->keterangan //ini berdasarkan "name" ng blade mau

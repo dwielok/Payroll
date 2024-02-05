@@ -92,7 +92,7 @@
                             </div>
                             <div class="table-responsive">
                                 <table id="zero_config" class="table table-striped table-bordered text-nowrap myTable"
-                                style="width:100%">
+                                    style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>
@@ -193,6 +193,12 @@
         //print clicked then ajax to test_rar
         $('#print').click(function(e) {
             e.preventDefault();
+
+            if (selected.length == 0) {
+                alert('Please select at least one data');
+                return;
+            }
+
             $.ajax({
                 url: "{{ url('generate_slip') }}",
                 type: "POST",

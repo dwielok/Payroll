@@ -55,6 +55,12 @@ class ApprovalLemburController extends Controller
 
     public function decline(Request $request)
     {
+        $request->validate([
+            'keterangan' => 'required'
+        ], [
+            'keterangan.required' => 'Keterangan harus diisi'
+        ]);
+
         $approval = ApprovalLembur::where('id', $request->id)->update([
             'status' => 1,
             'keterangan' => $request->keterangan //ini berdasarkan "name" ng blade mau

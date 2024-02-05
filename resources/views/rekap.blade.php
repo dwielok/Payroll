@@ -177,6 +177,10 @@
         //print clicked then ajax to test_rar
         $('#print').click(function(e) {
             e.preventDefault();
+            if (selected.length == 0) {
+                alert('Please select at least one data');
+                return;
+            }
             $.ajax({
                 url: "{{ url('generate_zip') }}",
                 type: "POST",
