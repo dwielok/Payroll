@@ -6,6 +6,7 @@ use App\Imports\KaryawanInkaImport;
 use App\Models\Approval;
 use App\Models\GajiTemp;
 use App\Models\Karyawan;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -112,7 +113,7 @@ class ImportInkaSuperController extends Controller
         $datas->map(function ($item) use ($id_approval) {
             $nip = $item[1];
             if ($nip != null) {
-                $karyawan = Karyawan::where('nip', $nip)->first();
+                $karyawan = Pegawai::where('nip', $nip)->first();
                 GajiTemp::insert([
                     'id_karyawan' => $karyawan->id,
                     'id_approval' => $id_approval,
