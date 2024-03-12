@@ -96,6 +96,8 @@ class ImportPkwtSuperController extends Controller
         //remove the 3 index top
         $id_approval = $approval->id;
 
+        //kocak
+
         //search NIP in karyawan by looping $datas
         $datas->map(function ($item) use ($id_approval) {
             $nip = $item[1];
